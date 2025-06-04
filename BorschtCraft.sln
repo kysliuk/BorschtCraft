@@ -13,13 +13,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zenject-Editor", "Zenject-E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zenject-IntegrationTests", "Zenject-IntegrationTests.csproj", "{03E537A0-AE6E-E600-929A-C00294F1EE06}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{B2BE578D-19DF-42FA-1DEC-E6D422E4CDED}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zenject-TestFramework", "Zenject-TestFramework.csproj", "{440E9D15-6A21-93E1-9DAB-0E559D7EA42A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{7A6D879A-9764-0377-74D0-4FFC1ECEE847}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zenject-PoolMonitor-Editor", "Zenject-PoolMonitor-Editor.csproj", "{29B3DA9E-90DE-31FF-8A9A-318BF795D810}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{B2BE578D-19DF-42FA-1DEC-E6D422E4CDED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +51,10 @@ Global
 		{03E537A0-AE6E-E600-929A-C00294F1EE06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03E537A0-AE6E-E600-929A-C00294F1EE06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03E537A0-AE6E-E600-929A-C00294F1EE06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2BE578D-19DF-42FA-1DEC-E6D422E4CDED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2BE578D-19DF-42FA-1DEC-E6D422E4CDED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2BE578D-19DF-42FA-1DEC-E6D422E4CDED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2BE578D-19DF-42FA-1DEC-E6D422E4CDED}.Release|Any CPU.Build.0 = Release|Any CPU
 		{440E9D15-6A21-93E1-9DAB-0E559D7EA42A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{440E9D15-6A21-93E1-9DAB-0E559D7EA42A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{440E9D15-6A21-93E1-9DAB-0E559D7EA42A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -63,10 +67,6 @@ Global
 		{29B3DA9E-90DE-31FF-8A9A-318BF795D810}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29B3DA9E-90DE-31FF-8A9A-318BF795D810}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29B3DA9E-90DE-31FF-8A9A-318BF795D810}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B2BE578D-19DF-42FA-1DEC-E6D422E4CDED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B2BE578D-19DF-42FA-1DEC-E6D422E4CDED}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B2BE578D-19DF-42FA-1DEC-E6D422E4CDED}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B2BE578D-19DF-42FA-1DEC-E6D422E4CDED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

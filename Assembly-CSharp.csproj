@@ -9,7 +9,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>BorschtCraft</RootNamespace>
     <ProjectGuid>{B2BE578D-19DF-42FA-1DEC-E6D422E4CDED}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -61,7 +61,25 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.38f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Components\Bread\BreadStack.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Interfaces\IReleasable.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Components\Bread\BreadRaw.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Components\Bread\BreadComponents\Consumed\Garlic.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Components\Bread\BreadComponents\Consumable\MustardStack.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Components\Bread\BreadComponents\Consumable\GarlicStack.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Components\Bread\BreadComponents\Consumable\OnionStack.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Components\Bread\BreadComponents\Consumed\Salo.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Components\Bread\BreadComponents\Consumed\Mustard.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Components\Bread\BreadComponents\Consumed\Horseradish.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Components\Bread\BreadComponents\Consumable\SaloStack.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumed.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumable.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Item.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Interfaces\ICookable.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Components\Bread\BreadComponents\Consumed\Onion.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Components\Bread\BreadComponents\Consumable\HorseradishStack.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Components\Bread\BreadCooked.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -542,6 +560,26 @@
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@d6f9955a5d5f\Mono.Cecil.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Zenject.ReflectionBaking.Mono.Cecil.Rocks">
+      <HintPath>Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.Rocks.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Zenject.ReflectionBaking.Mono.Cecil.Pdb">
+      <HintPath>Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.Pdb.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Zenject-usage">
+      <HintPath>Assets\Plugins\Zenject\Source\Usage\Zenject-usage.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Zenject.ReflectionBaking.Mono.Cecil">
+      <HintPath>Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Zenject.ReflectionBaking.Mono.Cecil.Mdb">
+      <HintPath>Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.Mdb.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
@@ -1366,6 +1404,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Zenject-ReflectionBaking-Editor.csproj">
+      <Project>{1832DFBD-0D42-1575-0964-5F9E29B82124}</Project>
+      <Name>Zenject-ReflectionBaking-Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Zenject-Editor.csproj">
+      <Project>{77EA94FF-022F-A498-7D39-1A41F4BCDECF}</Project>
+      <Name>Zenject-Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Zenject-PoolMonitor-Editor.csproj">
+      <Project>{29B3DA9E-90DE-31FF-8A9A-318BF795D810}</Project>
+      <Name>Zenject-PoolMonitor-Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Zenject.csproj">
+      <Project>{18CB4CA9-CC88-2BCE-66D5-B8D4B8D200D2}</Project>
+      <Name>Zenject</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
