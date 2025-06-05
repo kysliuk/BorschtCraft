@@ -63,17 +63,21 @@
   <ItemGroup>
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Interfaces\IReleasable.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Bread\Components\Consumable\HorseradishStack.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\UI\Consumable\ConsumableViewModel.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Common\ViewModel.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Common\Model.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Bread\Components\Consumable\MustardStack.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Bread\Components\Consumable\SaloStack.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Bread\Components\Consumed\Horseradish.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\UI\ConsumableView.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Signals\ConsumableSignalHelper.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Signals\Entities\ConsumableInteractionRequestSignal.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Signals\Entities\ConsumedItemCreatedSignal.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Bread\BreadRaw.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumed.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumable.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Bread\BreadCooked.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Bread\Components\Consumed\Salo.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\UI\Consumable\ConsumableView.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Bread\BreadFactory\BreadFactory.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Item.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Interfaces\ICookable.cs" />
@@ -1161,6 +1165,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Zenject.csproj">
+      <Project>{18CB4CA9-CC88-2BCE-66D5-B8D4B8D200D2}</Project>
+      <Name>Zenject</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniRx.csproj">
+      <Project>{5E007ECB-BB5B-7BAE-C883-036B14A0E54C}</Project>
+      <Name>UniRx</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
