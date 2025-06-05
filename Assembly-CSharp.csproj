@@ -61,25 +61,7 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.38f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Components\Bread\BreadStack.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Interfaces\IReleasable.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Components\Bread\BreadRaw.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Components\Bread\BreadComponents\Consumed\Garlic.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Components\Bread\BreadComponents\Consumable\MustardStack.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Components\Bread\BreadComponents\Consumable\GarlicStack.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Components\Bread\BreadComponents\Consumable\OnionStack.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Components\Bread\BreadComponents\Consumed\Salo.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Components\Bread\BreadComponents\Consumed\Mustard.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Components\Bread\BreadComponents\Consumed\Horseradish.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Components\Bread\BreadComponents\Consumable\SaloStack.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumed.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumable.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Item.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Interfaces\ICookable.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Components\Bread\BreadComponents\Consumed\Onion.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Components\Bread\BreadComponents\Consumable\HorseradishStack.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Components\Bread\BreadCooked.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -1404,6 +1386,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Scripts.csproj">
+      <Project>{47E57516-A146-196E-547E-A9A9A95C7F6D}</Project>
+      <Name>Scripts</Name>
+    </ProjectReference>
     <ProjectReference Include="Zenject-ReflectionBaking-Editor.csproj">
       <Project>{1832DFBD-0D42-1575-0964-5F9E29B82124}</Project>
       <Name>Zenject-ReflectionBaking-Editor</Name>

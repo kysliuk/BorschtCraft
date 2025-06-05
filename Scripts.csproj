@@ -77,6 +77,7 @@
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Item.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Interfaces\ICookable.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Bread\BreadStack.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Bread\ICookable.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Bread\Components\Consumable\GarlicStack.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Bread\Components\Consumed\Garlic.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Common\Logger\Logger.cs" />

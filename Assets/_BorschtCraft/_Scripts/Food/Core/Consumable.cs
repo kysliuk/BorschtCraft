@@ -2,7 +2,7 @@
 {
     public class Consumable : Item
     {
-        public T Consume<T>(int price) where T : Consumed => BreadFactory.CreateItem<T>(price, this);
+        public T Consume<T>(Consumed item) where T : Consumed => BreadFactory.CreateConsumed<T>(Price, item);
 
         public Consumable(int price) : base(price) { }
     }

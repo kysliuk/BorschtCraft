@@ -6,7 +6,7 @@
 
         public Item(int price)
         {
-            Price += price;
+            Price = price;
         }
     }
 }
