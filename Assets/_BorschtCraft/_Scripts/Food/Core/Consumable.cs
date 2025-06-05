@@ -1,8 +1,8 @@
 ﻿namespace BorschtCraft.Food
 {
-    public class Consumable : Item
+    public class Consumable<T> : Item where T : Consumed
     {
-        public T Consume<T>(Consumed item) where T : Consumed => BreadFactory.CreateConsumed<T>(Price, item);
+        public virtual T Consume(Consumed item) => BreadFactory.CreateConsumed<T>(Price, item);
 
         public Consumable(int price) : base(price) { }
     }

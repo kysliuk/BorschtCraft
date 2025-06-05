@@ -39,34 +39,35 @@ public class BreadTest
     {
         CreateConsumables();
 
-        _bread = BreadFactory.CreateConsumed<BreadRaw>(10, _bread);
+        _bread = _breadStack.Consume();
         Assert.IsNotNull(_bread);
         Assert.AreEqual(10, _bread.Price);
+        Assert.IsInstanceOf<BreadRaw>(_bread);
 
         _bread = (_bread as BreadRaw).Cook();
         Assert.IsInstanceOf<BreadCooked>(_bread);
         Assert.AreEqual(10, _bread.Price);
 
-        _bread = _saloStack.Consume<Salo>(_bread);
+        _bread = _saloStack.Consume(_bread);
         Assert.AreEqual(15, _bread.Price);
         Assert.IsInstanceOf<Salo>(_bread);
 
-        _bread = _garlicStack.Consume<Garlic>(_bread);
+        _bread = _garlicStack.Consume(_bread);
         Assert.AreEqual(18, _bread.Price);
         Assert.IsInstanceOf<Garlic>(_bread);
 
-        _bread = _onionStack.Consume<Onion>(_bread);
+        _bread = _onionStack.Consume(_bread);
         Assert.AreEqual(20, _bread.Price);
         Assert.IsInstanceOf<Onion>(_bread);
 
-        _bread = _horseradishStack.Consume<Horseradish>(_bread);
+        _bread = _horseradishStack.Consume(_bread);
         Assert.AreEqual(21, _bread.Price);
         Assert.IsInstanceOf<Horseradish>(_bread);
 
-        _bread = _mustardStack.Consume<Mustard>(_bread);
+        _bread = _mustardStack.Consume(_bread);
         Assert.AreEqual(25, _bread.Price);
         Assert.IsInstanceOf<Mustard>(_bread);
 
-        _bread = _breadStack.Consume<Mustard>(_bread);
+        _bread = _breadStack.Consume(_bread);
     }
 }

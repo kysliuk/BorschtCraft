@@ -9,7 +9,7 @@ namespace BorschtCraft.Food
             return (T)Activator.CreateInstance(typeof(T), price, item);
         }
 
-        public static T CreateConsumable<T>(int price) where T : Consumable
+        public static T CreateConsumable<T>(int price) where T : Item
         {
             return (T)Activator.CreateInstance(typeof(T), price);
         }

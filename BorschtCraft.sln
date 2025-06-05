@@ -1,7 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zenject", "Zenject.csproj", "{18CB4CA9-CC88-2BCE-66D5-B8D4B8D200D2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{47E57516-A146-196E-547E-A9A9A95C7F6D} = {47E57516-A146-196E-547E-A9A9A95C7F6D}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zenject-IntegrationTests-Editor", "Zenject-IntegrationTests-Editor.csproj", "{9106F55C-9570-BD85-05BC-37D394742109}"
 EndProject

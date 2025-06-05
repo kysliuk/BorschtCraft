@@ -68,6 +68,7 @@
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Bread\Components\Consumable\MustardStack.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Bread\Components\Consumable\SaloStack.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Bread\Components\Consumed\Horseradish.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\UI\ConsumableView.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Bread\BreadRaw.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumed.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumable.cs" />
