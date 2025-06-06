@@ -4,19 +4,25 @@ using Zenject;
 
 namespace BorschtCraft.Food.UI
 {
-    public class ConsumableView<T1, T2> : MonoBehaviour, IPointerClickHandler where T1 : Consumable<T2> where T2 : Consumed 
+    public class ConsumableView<T1, T2, T3> : MonoBehaviour, IPointerClickHandler
+        where T1 : ConsumableViewModel<T2, T3>
+        where T2 : Consumable<T3>
+        where T3 : Consumed
     {
-        private ConsumableViewModel<T1, T2> _viewModel;
+        private T1 _viewModel;
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            _viewModel.AttemptConsume();
+            Logger.LogInfo(this, $"View model exists: {_viewModel != null}. {_viewModel?.GetType()?.Name}");
+            _viewModel?.AttemptConsume();
         }
 
         [Inject]
-        public void Construct(ConsumableViewModel<T1, T2> viewModel)
+        public void Construct(T1 viewModel)
         {
             _viewModel = viewModel;
+            Logger.LogInfo(this, $"Constructed with view model: {_viewModel?.GetType()?.Name}");
         }
     }
+
 }

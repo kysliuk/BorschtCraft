@@ -1398,6 +1398,10 @@
       <Project>{77EA94FF-022F-A498-7D39-1A41F4BCDECF}</Project>
       <Name>Zenject-Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="UniRx.csproj">
+      <Project>{5E007ECB-BB5B-7BAE-C883-036B14A0E54C}</Project>
+      <Name>UniRx</Name>
+    </ProjectReference>
     <ProjectReference Include="Zenject-PoolMonitor-Editor.csproj">
       <Project>{29B3DA9E-90DE-31FF-8A9A-318BF795D810}</Project>
       <Name>Zenject-PoolMonitor-Editor</Name>
