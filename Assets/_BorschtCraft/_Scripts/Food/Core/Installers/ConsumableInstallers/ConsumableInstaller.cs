@@ -7,7 +7,7 @@ namespace BorschtCraft.Food.Installers
     {
         public override void InstallBindings()
         {
-            Container.BindInterfacesAndSelfTo<ItemConsumptionService>()
+            Container.Bind<IItemConsumptionService>().To<ItemConsumptionService>()
                 .AsSingle()
                 .NonLazy();
 
