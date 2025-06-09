@@ -1,4 +1,4 @@
-﻿using BorschtCraft.Food.Singnals;
+﻿using BorschtCraft.Food.Signals;
 using UniRx;
 using Zenject;
 
@@ -20,7 +20,7 @@ namespace BorschtCraft.Food.UI
             Logger.LogInfo(this, $"Attempting to consume {_consumableModel.GetType().Name}. Can consume {_canBeConsumed.Value}");
             if (_canBeConsumed.Value)
             {
-                _signalBus.Fire(ConsumableSignalHelper.ConsumableInteractionRequestSignal<T1, T2>(_consumableModel));
+                _signalBus.Fire(new ConsumableInteractionRequestSignal<T1, T2>(_consumableModel));
             }
         }
 

@@ -1,4 +1,4 @@
-﻿using BorschtCraft.Food.Singnals;
+﻿using BorschtCraft.Food.Signals;
 using Zenject;
 
 namespace BorschtCraft.Food
@@ -45,7 +45,7 @@ namespace BorschtCraft.Food
             {
                 Logger.LogInfo(this, $"ItemConsumptionService: Created {consumedItem.GetType().Name} from {consumableModel.GetType().Name}");
 
-                _signalBus.Fire(ConsumableSignalHelper.ConsumedItemCreatedSignal(consumableModel, consumedItem));
+                _signalBus.Fire(new ConsumedItemCreatedSignal<T1, T2>(consumableModel, consumed));
             }
             else
             {

@@ -80,11 +80,9 @@
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Onion\UI\OnionStackView.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Horseradish\UI\HorseradishStackViewModel.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Bread\PrefabInstaller\BreadStackPrefabInstaller.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Installers\ConsumableInstallers\ConsumableInstaller.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Mustard\PrefabInstaller\MustardStackPrefabInstaller.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Horseradish\HorseradishStack.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Garlic\UI\GarlicStackView.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Signals\ConsumableSignalHelper.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Signals\Entities\ConsumableInteractionRequestSignal.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Signals\Entities\ConsumedItemCreatedSignal.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\BreadFactory\BreadFactory.cs" />
@@ -114,6 +112,7 @@
     <Compile Include="Assets\_BorschtCraft\_Scripts\Common\View.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Onion\OnionStack.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Salo\Salo.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Bread\ICooked.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\_BorschtCraft\_Scripts\Scripts.asmdef" />
