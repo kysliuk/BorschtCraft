@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace BorschtCraft
 {
@@ -16,7 +17,7 @@ namespace BorschtCraft
 
         public static void LogError(object sender, string message)
         {
-            LogWarning($"[ERROR] {sender.GetType().Name}: {message}");
+            LogError($"[ERROR] {sender.GetType().Name}: {message}");
         }
 
         public static void LogInfoFormat(object sender, string format, params object[] args)

@@ -44,7 +44,7 @@ public class BreadTest
         Assert.AreEqual(10, _bread.Price);
         Assert.IsInstanceOf<BreadRaw>(_bread);
 
-        _bread = (_bread as BreadRaw).Cook();
+        _bread = (_bread as ICookable<BreadCooked>).Cook();
         Assert.IsInstanceOf<BreadCooked>(_bread);
         Assert.AreEqual(10, _bread.Price);
 
@@ -67,7 +67,5 @@ public class BreadTest
         _bread = _mustardStack.Consume(_bread);
         Assert.AreEqual(25, _bread.Price);
         Assert.IsInstanceOf<Mustard>(_bread);
-
-        _bread = _breadStack.Consume(_bread);
     }
 }

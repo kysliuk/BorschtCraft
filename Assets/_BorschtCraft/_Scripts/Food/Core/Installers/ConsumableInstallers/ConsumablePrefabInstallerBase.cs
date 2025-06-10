@@ -4,7 +4,7 @@ using Zenject;
 
 namespace BorschtCraft.Food
 {
-    public class ConsumablePrefabInstallerBase<T1, T2, T3> : MonoInstaller where T1 : ConsumableViewModel<T2, T3> where T2 : Consumable<T3> where T3 : Consumed
+    public abstract class ConsumablePrefabInstallerBase<T1, T2, T3> : MonoInstaller where T1 : ConsumableViewModel<T2, T3> where T2 : Consumable<T3> where T3 : Consumed
     {
         [Tooltip("The initial price for creating the consumable model. This will be used by the factory to create the model.")]
         [SerializeField] protected int _initialPrice = 10;

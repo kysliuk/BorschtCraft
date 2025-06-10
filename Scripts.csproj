@@ -9,7 +9,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{47E57516-A146-196E-547E-A9A9A95C7F6D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -83,6 +84,7 @@
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Mustard\PrefabInstaller\MustardStackPrefabInstaller.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Horseradish\HorseradishStack.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Garlic\UI\GarlicStackView.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Interfaces\ICooked.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Signals\Entities\ConsumableInteractionRequestSignal.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Signals\Entities\ConsumedItemCreatedSignal.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\BreadFactory\BreadFactory.cs" />
@@ -112,7 +114,6 @@
     <Compile Include="Assets\_BorschtCraft\_Scripts\Common\View.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Onion\OnionStack.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Salo\Salo.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Bread\ICooked.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\_BorschtCraft\_Scripts\Scripts.asmdef" />
@@ -1196,6 +1197,9 @@
       <Project>{5E007ECB-BB5B-7BAE-C883-036B14A0E54C}</Project>
       <Name>UniRx</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\_BorschtCraft\_Scripts\Food\Core\UI\NewFolder1\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

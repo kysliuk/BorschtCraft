@@ -28,29 +28,15 @@ namespace BorschtCraft.Food
         where T1 : Consumable<T2>
         where T2 : Consumed
         {
-            HandleConsumption(signal.ConsumableSource, signal.TargetItem);
+            HandleConsumption<T1, T2>(signal.ConsumableSource);
         }
 
 
-
-        private void HandleConsumption<T1, T2>(T1 consumableModel, T2 consumed)
+        private void HandleConsumption<T1, T2>(T1 consumableModel)
         where T1 : Consumable<T2>
         where T2 : Consumed
         {
             Logger.LogInfo(this, $"ItemConsumptionService: Received request for {consumableModel.GetType().Name}");
-
-            T2 consumedItem = consumableModel.Consume(consumed);
-
-            if (consumedItem != null)
-            {
-                Logger.LogInfo(this, $"ItemConsumptionService: Created {consumedItem.GetType().Name} from {consumableModel.GetType().Name}");
-
-                _signalBus.Fire(new ConsumedItemCreatedSignal<T1, T2>(consumableModel, consumed));
-            }
-            else
-            {
-                Logger.LogInfo(this, $"ItemConsumptionService: Failed to create consumed item from {consumableModel.GetType().Name}");
-            }
         }
 
         public ItemConsumptionService(SignalBus signalBus)

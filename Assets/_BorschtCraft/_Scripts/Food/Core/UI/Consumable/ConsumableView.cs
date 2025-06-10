@@ -4,14 +4,14 @@ using Zenject;
 
 namespace BorschtCraft.Food.UI
 {
-    public class ConsumableView<T1, T2, T3> : MonoBehaviour, IPointerClickHandler
+    public abstract class ConsumableView<T1, T2, T3> : MonoBehaviour, IPointerClickHandler
         where T1 : ConsumableViewModel<T2, T3>
         where T2 : Consumable<T3>
         where T3 : Consumed
     {
-        private T1 _viewModel;
+        protected T1 _viewModel;
 
-        public void OnPointerClick(PointerEventData eventData)
+        public virtual void OnPointerClick(PointerEventData eventData)
         {
             Logger.LogInfo(this, $"View model exists: {_viewModel != null}. {_viewModel?.GetType()?.Name}");
             _viewModel?.AttemptConsume();
