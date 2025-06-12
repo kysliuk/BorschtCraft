@@ -100,8 +100,8 @@
     <Compile Include="Assets\Plugins\UniTask\Runtime\Linq\ToObservable.cs" />
     <Compile Include="Assets\Plugins\UniTask\Runtime\Linq\Repeat.cs" />
     <Compile Include="Assets\Plugins\UniTask\Runtime\Linq\Where.cs" />
-    <Compile Include="Assets\Plugins\UniTask\Runtime\Linq\UnityExtensions\Timer.cs" />
     <Compile Include="Assets\Plugins\UniTask\Runtime\Linq\Create.cs" />
+    <Compile Include="Assets\Plugins\UniTask\Runtime\Linq\UnityExtensions\Timer.cs" />
     <Compile Include="Assets\Plugins\UniTask\Runtime\Linq\Concat.cs" />
     <Compile Include="Assets\Plugins\UniTask\Runtime\Linq\SelectMany.cs" />
     <Compile Include="Assets\Plugins\UniTask\Runtime\Linq\ToUniTaskAsyncEnumerable.cs" />

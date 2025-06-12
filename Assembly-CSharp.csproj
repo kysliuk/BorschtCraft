@@ -1390,13 +1390,13 @@
       <Project>{A3F60567-63E5-3FE9-FE53-2EE152EBA152}</Project>
       <Name>UniTask.Linq</Name>
     </ProjectReference>
-    <ProjectReference Include="Scripts.csproj">
-      <Project>{47E57516-A146-196E-547E-A9A9A95C7F6D}</Project>
-      <Name>Scripts</Name>
-    </ProjectReference>
     <ProjectReference Include="UniTask.csproj">
       <Project>{AD1C8C83-C3F8-F6ED-3C31-C2860AC04530}</Project>
       <Name>UniTask</Name>
+    </ProjectReference>
+    <ProjectReference Include="Scripts.csproj">
+      <Project>{47E57516-A146-196E-547E-A9A9A95C7F6D}</Project>
+      <Name>Scripts</Name>
     </ProjectReference>
     <ProjectReference Include="Zenject-ReflectionBaking-Editor.csproj">
       <Project>{1832DFBD-0D42-1575-0964-5F9E29B82124}</Project>

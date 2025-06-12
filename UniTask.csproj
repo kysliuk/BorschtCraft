@@ -74,8 +74,8 @@
     <Compile Include="Assets\Plugins\UniTask\Runtime\Triggers\AsyncTriggerExtensions.cs" />
     <Compile Include="Assets\Plugins\UniTask\Runtime\UniTask.WhenAny.cs" />
     <Compile Include="Assets\Plugins\UniTask\Runtime\Triggers\AsyncStartTrigger.cs" />
-    <Compile Include="Assets\Plugins\UniTask\Runtime\UniTaskScheduler.cs" />
     <Compile Include="Assets\Plugins\UniTask\Runtime\Internal\StatePool.cs" />
+    <Compile Include="Assets\Plugins\UniTask\Runtime\UniTaskScheduler.cs" />
     <Compile Include="Assets\Plugins\UniTask\Runtime\_InternalVisibleTo.cs" />
     <Compile Include="Assets\Plugins\UniTask\Runtime\Internal\ArrayPoolUtil.cs" />
     <Compile Include="Assets\Plugins\UniTask\Runtime\UniTaskVoid.cs" />
