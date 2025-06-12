@@ -1,6 +1,6 @@
 ﻿namespace BorschtCraft.Food
 {
-    public class Item
+    public abstract class Item
     {
         public int Price { get; private set; }
 

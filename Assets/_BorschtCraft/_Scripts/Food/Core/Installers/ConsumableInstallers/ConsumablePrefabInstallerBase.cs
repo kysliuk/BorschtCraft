@@ -13,7 +13,7 @@ namespace BorschtCraft.Food
         {
             Logger.LogInfo(this, $"Installing bindings for {typeof(T1).Name} and {typeof(T2).Name}");
             Container.Bind<T2>()
-                .FromMethod(model => BreadFactory.CreateConsumable<T2>(_initialPrice))
+                .FromMethod(model => ConsumeAbstractFactory.CreateConsumable<T2>(_initialPrice))
                 .AsCached();
 
             Container.Bind<T1>().AsCached();

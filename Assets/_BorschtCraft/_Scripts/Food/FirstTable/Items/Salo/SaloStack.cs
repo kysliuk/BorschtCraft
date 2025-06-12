@@ -2,16 +2,17 @@
 {
     public class SaloStack : Consumable<Salo>
     {
-        public override Salo Consume(Consumed item)
+        public override IConsumed Consume(IConsumed item)
         {
             if (item == null)
             {
                 Logger.LogError(this, "cannot consume null item. There should be an item.");
-                return null;
+                return item;
             }
 
             return base.Consume(item);
         }
+
         public SaloStack(int price) : base(price)
         {
         }

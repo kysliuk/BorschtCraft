@@ -1,7 +1,7 @@
 ﻿namespace BorschtCraft.Food
 {
-    public interface ICookable<T> where T : Consumed, ICooked
+    public interface ICookable
     {
-        T Cook();
+        IConsumed Cook();
     }
 }
