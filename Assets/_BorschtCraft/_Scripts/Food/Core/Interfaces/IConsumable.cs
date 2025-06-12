@@ -1,6 +1,6 @@
 ﻿namespace BorschtCraft.Food
 {
-    public interface IConsumable : IConsumed
+    public interface IConsumable
     {
         IConsumed Consume(IConsumed item);
     }

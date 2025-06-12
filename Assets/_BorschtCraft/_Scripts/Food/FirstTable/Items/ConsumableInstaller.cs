@@ -17,7 +17,7 @@ namespace BorschtCraft.Food
         public override void InstallBindings()
         {
             //ViewMode mappings for consumable items
-            var viewModelMappings = new ConsumedViewModelMapping[]
+            var viewModelMappings = new List<ConsumedViewModelMapping>
             {
                 new ConsumedViewModelMapping(typeof(BreadRaw), typeof(BreadRawViewModel)),
                 new ConsumedViewModelMapping(typeof(BreadCooked), typeof(BreadCookedViewModel)),
@@ -29,7 +29,7 @@ namespace BorschtCraft.Food
             };
 
             //Bind the view model mappings to the container
-            Container.Bind<ConsumedViewModelMapping[]>()
+            Container.Bind< List<ConsumedViewModelMapping>>()
                 .FromInstance(viewModelMappings).AsSingle();
 
             //Bind the consumable items
@@ -63,13 +63,13 @@ namespace BorschtCraft.Food
             Container.BindInterfacesAndSelfTo<ItemTransferService>().AsSingle().NonLazy();
 
             //Bind Signals
-            Container.DeclareSignal<IConsumableInteractionRequestSignal>();
-            Container.DeclareSignal<ConsumableInteractionRequestSignal<BreadStack, BreadRaw>>();
-            Container.DeclareSignal<ConsumableInteractionRequestSignal<SaloStack, Salo>>();
-            Container.DeclareSignal<ConsumableInteractionRequestSignal<GarlicStack, Garlic>>();
-            Container.DeclareSignal<ConsumableInteractionRequestSignal<OnionStack, Onion>>();
-            Container.DeclareSignal<ConsumableInteractionRequestSignal<MustardStack, Mustard>>();
-            Container.DeclareSignal<ConsumableInteractionRequestSignal<HorseradishStack, Horseradish>>();
+            Container.DeclareSignal<ConsumableInteractionRequestSignal>();
+            //Container.DeclareSignal<ConsumableInteractionRequestSignal<BreadStack, BreadRaw>>();
+            //Container.DeclareSignal<ConsumableInteractionRequestSignal<SaloStack, Salo>>();
+            //Container.DeclareSignal<ConsumableInteractionRequestSignal<GarlicStack, Garlic>>();
+            //Container.DeclareSignal<ConsumableInteractionRequestSignal<OnionStack, Onion>>();
+            //Container.DeclareSignal<ConsumableInteractionRequestSignal<MustardStack, Mustard>>();
+            //Container.DeclareSignal<ConsumableInteractionRequestSignal<HorseradishStack, Horseradish>>();
 
             Container.DeclareSignal<CookItemInSlotRequestSignal>();
             Container.DeclareSignal<ItemCookedSignal>();

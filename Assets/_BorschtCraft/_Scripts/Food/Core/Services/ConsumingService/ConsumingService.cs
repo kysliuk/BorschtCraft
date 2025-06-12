@@ -13,25 +13,29 @@ namespace BorschtCraft.Food
 
         public void Initialize()
         {
-            _signalBus.Subscribe<IConsumableInteractionRequestSignal>(OnConsumableInteractionRequested);
+            _signalBus.Subscribe<ConsumableInteractionRequestSignal>(OnConsumableInteractionRequested);
         }
 
-        private void OnConsumableInteractionRequested(IConsumableInteractionRequestSignal signal)
+        private void OnConsumableInteractionRequested(ConsumableInteractionRequestSignal signal)
         {
             Logger.LogInfo(this, $"Received consumable interaction request signal for {signal.ConsumableSource.GetType().Name}.");
-            //if (_selectedItemService.CurrentSelectedItem != null)
-            //    return;
+            if (_selectedItemService.CurrentSelectedItem != null)
+                return;
 
-            //var targetSlot = FindEmptyCookingSlot();
-            //if (targetSlot == null)
-            //    return;
+            var targetSlot = FindEmptyCookingSlot();
+            if (targetSlot == null)
+                return;
 
-            //IConsumable consumableSource = signal.ConsumableSource;
+            IConsumable consumableSource = signal.ConsumableSource;
 
-            //IConsumed producedItem = consumableSource.Consume(null);
+            IConsumed producedItem = consumableSource.Consume(null);
 
-            //targetSlot.TrySetItem(producedItem);
-            //Logger.LogInfo(this, $"Produced {producedItem.GetType().Name} from {consumableSource.GetType().Name} into cooking slot {targetSlot.gameObject.name}.");
+            var itemSetted = targetSlot.TrySetItem(producedItem);
+            Logger.LogInfo(this, $"Produced {producedItem.GetType().Name} from {consumableSource.GetType().Name} into cooking slot {targetSlot.gameObject.name}.");
+
+            if (producedItem is ICookable && itemSetted)
+                _signalBus.Fire(new CookItemInSlotRequestSignal(targetSlot));
+
         }
 
         private ItemSlotController FindEmptyCookingSlot()
@@ -41,7 +45,7 @@ namespace BorschtCraft.Food
 
         public void Dispose()
         {
-            _signalBus.TryUnsubscribe<IConsumableInteractionRequestSignal>(OnConsumableInteractionRequested);
+            _signalBus.TryUnsubscribe<ConsumableInteractionRequestSignal>(OnConsumableInteractionRequested);
         }
 
         public ConsumingService(SignalBus signalBus,

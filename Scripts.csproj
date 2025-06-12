@@ -99,7 +99,6 @@
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Horseradish\HorseradishStack.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Garlic\UI\GarlicStackView.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Interfaces\ICooked.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Signals\Consumable\IConsumableInteractionRequestSignal.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Services\ItemTransferService\ItemTransferService.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Bread\Stack\BreadStackPrefabInstaller.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumed.cs" />

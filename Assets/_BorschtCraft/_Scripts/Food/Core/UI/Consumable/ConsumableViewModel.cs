@@ -20,9 +20,7 @@ namespace BorschtCraft.Food.UI
             Logger.LogInfo(this, $"Attempting to consume {_consumableModel.GetType().Name}. Can consume {_canBeConsumed.Value}");
             if (_canBeConsumed.Value)
             {
-                var signal = new ConsumableInteractionRequestSignal<T1, T2>(_consumableModel) as IConsumableInteractionRequestSignal;
-                Logger.LogInfo(this, $"Firing signal: {signal.GetType().Name} for consumable {_consumableModel.GetType().Name}");
-                _signalBus.Fire(signal);
+                _signalBus.Fire(new ConsumableInteractionRequestSignal(_consumableModel));
             }
         }
 

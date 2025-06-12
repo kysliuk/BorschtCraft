@@ -2,7 +2,7 @@
 {
     public class BreadRaw : Cookable<BreadCooked>
     {
-        public BreadRaw(int price, Item item) : base(price, item)
+        public BreadRaw(int price, IConsumed item) : base(price, item)
         {
         }
     }

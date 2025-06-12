@@ -4,7 +4,7 @@ namespace BorschtCraft.Food
 {
     public class BreadCooked : Consumed, ICooked
     {
-        public BreadCooked(int price, Item item) : base(price, item)
+        public BreadCooked(int price, IConsumed item) : base(price, item)
         {
         }
     }

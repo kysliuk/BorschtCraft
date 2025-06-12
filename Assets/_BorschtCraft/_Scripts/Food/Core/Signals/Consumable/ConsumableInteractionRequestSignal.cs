@@ -1,16 +1,12 @@
 ﻿namespace BorschtCraft.Food.Signals
 {
-    public class ConsumableInteractionRequestSignal<T1, T2> : IConsumableInteractionRequestSignal
-        where T1 : Consumable<T2>
-        where T2 : Consumed
+    public class ConsumableInteractionRequestSignal
     {
-        public T1 ConsumableSourceConcrete { get; }
+        public IConsumable ConsumableSource { get; }
 
-        IConsumable IConsumableInteractionRequestSignal.ConsumableSource => ConsumableSourceConcrete;
-
-        public ConsumableInteractionRequestSignal(T1 consumableSource)
+        public ConsumableInteractionRequestSignal(IConsumable consumableSource)
         {
-            ConsumableSourceConcrete = consumableSource;
+            ConsumableSource = consumableSource;
             Logger.LogInfo(this, $"Created. {consumableSource.GetType().Name} requested interaction");
         }
     }

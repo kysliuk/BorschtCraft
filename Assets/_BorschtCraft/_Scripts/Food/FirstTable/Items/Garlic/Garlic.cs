@@ -2,7 +2,7 @@
 {
     public class Garlic : Consumed
     {
-        public Garlic(int price, Item item) : base(price, item)
+        public Garlic(int price, IConsumed item) : base(price, item)
         {
         }
     }

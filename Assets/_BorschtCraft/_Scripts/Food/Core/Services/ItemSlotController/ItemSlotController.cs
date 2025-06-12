@@ -42,46 +42,90 @@ namespace BorschtCraft.Food.UI
 
         public bool TrySetItem(IConsumed newItem)
         {
-            Logger.LogInfo(this, $"Slot {gameObject.name} TrySetItem: {(newItem == null ? "null" : newItem.GetType().Name)}");
+            if (_childViews == null)
+                return false;
 
             ClearSlotView();
-
             CurrentItemInSlot = newItem;
 
             if (CurrentItemInSlot == null)
                 return true;
 
-            IConsumed currentLayer = CurrentItemInSlot;
+            IConsumed currentDisplayLayer = CurrentItemInSlot;
+            var layerProcessingCount = 0;
 
-            while (currentLayer != null)
+            while (currentDisplayLayer != null && layerProcessingCount < 10)
             {
-                Type modelType = currentLayer.GetType();
-                Logger.LogInfo(this, $"Slot {gameObject.name} processing layer: {modelType.Name}");
+                layerProcessingCount++;
+                Type modelType = currentDisplayLayer.GetType();
+                Logger.LogInfo(this, $"Slot {gameObject.name} TrySetItem: Processing layer {layerProcessingCount}: {modelType.Name}");
 
-                if (_childViews.TryGetValue(modelType, out var managedView))
+                if (!_childViews.TryGetValue(modelType, out IManagedConsumedView managedView) || managedView == null)
+                {
+                    Logger.LogWarning(this, $"Slot {gameObject.name} TrySetItem: No active child view found or view is null for model type: {modelType.Name}.");
+
+                }
+                else 
                 {
                     var mapping = _viewModelMappings.FirstOrDefault(m => m.ConsumedModelType == modelType);
-
-                    if (mapping != null)
+                    if (mapping == null)
                     {
-                        var viewModelArgs = new object[] { currentLayer, _signalBus };
-                        var newViewmodel = _diContainer.Instantiate(mapping.ViewModelType, viewModelArgs) as IConsumedViewModel;
-                        managedView.AttachViewModel(newViewmodel);
-                        newViewmodel.SetVisibility(true);
-                        _activeViewModels.Add(newViewmodel);
-                        Logger.LogInfo(this, $"Slot {gameObject.name} attached view model {newViewmodel.GetType().Name} for model type {modelType.Name} on {managedView.GetGameObject().name}.");
+                        Logger.LogError(this, $"Slot {gameObject.name} TrySetItem: No ViewModel mapping found for Consumed type: {modelType.Name}");
                     }
                     else
-                        Logger.LogError(this, $"Slot {gameObject.name}: No ViewModel mapping found for Consumed type: {modelType.Name}");
+                    {
+                        Logger.LogInfo(this, $"Slot {gameObject.name} TrySetItem: Found mapping for {modelType.Name} to ViewModel {mapping.ViewModelType.Name}. Instantiating...");
+                        var viewModelArgs = new object[] { currentDisplayLayer, _signalBus };
+                        IConsumedViewModel newViewModelInstance = null;
+                        try
+                        {
+                            object instantiatedObject = _diContainer.Instantiate(mapping.ViewModelType, viewModelArgs);
+                            newViewModelInstance = instantiatedObject as IConsumedViewModel;
+
+                            if (newViewModelInstance == null)
+                            {
+                                Logger.LogError(this, $"Slot {gameObject.name} TrySetItem: Instantiated object of type '{instantiatedObject?.GetType().Name}' for '{mapping.ViewModelType.Name}' could not be cast to IConsumedViewModel.");
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Logger.LogError(this, $"Slot {gameObject.name} TrySetItem: EXCEPTION during ViewModel instantiation for {mapping.ViewModelType.Name}. Args: {currentDisplayLayer.GetType().Name}, SignalBus. Error: {ex.ToString()}");
+                            currentDisplayLayer = null;
+                            continue;
+                        }
+
+                        if (newViewModelInstance != null)
+                        {
+                            Logger.LogInfo(this, $"Slot {gameObject.name} TrySetItem: ViewModel {newViewModelInstance.GetType().Name} instantiated. Attaching to view {managedView.GetGameObject().name}.");
+                            try
+                            {
+                                managedView.AttachViewModel(newViewModelInstance);
+                                newViewModelInstance.SetVisibility(true);
+                                _activeViewModels.Add(newViewModelInstance);
+                                Logger.LogInfo(this, $"Slot {gameObject.name} TrySetItem: ViewModel attached and configured for {modelType.Name}.");
+                            }
+                            catch (System.Exception ex)
+                            {
+                                Logger.LogError(this, $"Slot {gameObject.name} TrySetItem: EXCEPTION during AttachViewModel or SetVisibility for {newViewModelInstance.GetType().Name} on {managedView.GetGameObject().name}. Error: {ex.ToString()}");
+                                currentDisplayLayer = null;
+                                continue;
+                            }
+                        }
+                    }
+                }
+                if (currentDisplayLayer is Consumed consumedLayerInstance)
+                {
+                    currentDisplayLayer = consumedLayerInstance.WrappedItem;
                 }
                 else
-                    Logger.LogWarning(this, $"Slot {gameObject.name}: No child view found for Consumed layer type: {modelType.Name}");
-
+                {
+                    Logger.LogWarning(this, $"Slot {gameObject.name} TrySetItem: currentDisplayLayer ({currentDisplayLayer?.GetType().Name}) is not a 'Consumed' instance, cannot get DirectlyConsumedItem. Ending layer processing.");
+                    currentDisplayLayer = null;
+                }
+                Logger.LogInfo(this, $"Slot {gameObject.name} TrySetItem: Next layer to process: {(currentDisplayLayer == null ? "null" : currentDisplayLayer.GetType().Name)}");
             }
-
             return true;
         }
-
         public IConsumed ReleaseItem()
         {
             var releasedItem = CurrentItemInSlot;

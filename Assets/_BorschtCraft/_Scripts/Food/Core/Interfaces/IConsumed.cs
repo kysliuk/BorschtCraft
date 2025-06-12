@@ -2,6 +2,7 @@
 {
     public interface IConsumed
     {
+        IConsumed WrappedItem { get; }
         int Price { get; }
     }
 }
