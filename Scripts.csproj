@@ -9,7 +9,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{47E57516-A146-196E-547E-A9A9A95C7F6D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -1215,6 +1216,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="UniTask.csproj">
+      <Project>{AD1C8C83-C3F8-F6ED-3C31-C2860AC04530}</Project>
+      <Name>UniTask</Name>
+    </ProjectReference>
     <ProjectReference Include="Zenject.csproj">
       <Project>{18CB4CA9-CC88-2BCE-66D5-B8D4B8D200D2}</Project>
       <Name>Zenject</Name>

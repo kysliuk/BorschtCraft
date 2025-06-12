@@ -1470,9 +1470,17 @@
       <Project>{B2BE578D-19DF-42FA-1DEC-E6D422E4CDED}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
+    <ProjectReference Include="UniTask.Linq.csproj">
+      <Project>{A3F60567-63E5-3FE9-FE53-2EE152EBA152}</Project>
+      <Name>UniTask.Linq</Name>
+    </ProjectReference>
     <ProjectReference Include="Scripts.csproj">
       <Project>{47E57516-A146-196E-547E-A9A9A95C7F6D}</Project>
       <Name>Scripts</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniTask.csproj">
+      <Project>{AD1C8C83-C3F8-F6ED-3C31-C2860AC04530}</Project>
+      <Name>UniTask</Name>
     </ProjectReference>
     <ProjectReference Include="Zenject-ReflectionBaking-Editor.csproj">
       <Project>{1832DFBD-0D42-1575-0964-5F9E29B82124}</Project>
@@ -1486,9 +1494,21 @@
       <Project>{77EA94FF-022F-A498-7D39-1A41F4BCDECF}</Project>
       <Name>Zenject-Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="UniTask.Addressables.csproj">
+      <Project>{F21580AE-C6D6-CFFC-02DA-D02B980AA885}</Project>
+      <Name>UniTask.Addressables</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniTask.DOTween.csproj">
+      <Project>{A423C407-BD65-FF11-2440-BE6201F092C4}</Project>
+      <Name>UniTask.DOTween</Name>
+    </ProjectReference>
     <ProjectReference Include="Zenject-PoolMonitor-Editor.csproj">
       <Project>{29B3DA9E-90DE-31FF-8A9A-318BF795D810}</Project>
       <Name>Zenject-PoolMonitor-Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniTask.TextMeshPro.csproj">
+      <Project>{A0191E09-533A-7AA2-5204-FF4B2E2F0C58}</Project>
+      <Name>UniTask.TextMeshPro</Name>
     </ProjectReference>
     <ProjectReference Include="Zenject.csproj">
       <Project>{18CB4CA9-CC88-2BCE-66D5-B8D4B8D200D2}</Project>

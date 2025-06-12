@@ -1,5 +1,6 @@
 ﻿using BorschtCraft.Food.Signals;
 using BorschtCraft.Food.UI;
+using Cysharp.Threading.Tasks;
 using Zenject;
 
 namespace BorschtCraft.Food
@@ -24,7 +25,8 @@ namespace BorschtCraft.Food
             var itemToCook = slotController.CurrentItemInSlot;
 
             if(itemToCook is ICookable cookableItem)
-            {
+            {   
+                UniTask.Delay((int)(cookableItem.CookingTime * 1000)).Forget();
                 IConsumed coockedItem = cookableItem.Cook();
                 slotController.TrySetItem(coockedItem);
 
