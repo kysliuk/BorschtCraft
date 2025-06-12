@@ -20,6 +20,9 @@ namespace BorschtCraft.Food.UI
         private void Awake()
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
+            if(_spriteRenderer == null)
+                Logger.LogError(this, $"{gameObject.name} requires a SpriteRenderer component. Please add one to the GameObject.");
+
             _parentSlotController = GetComponentInParent<ItemSlotController>();
             if(_parentSlotController == null)
                 Logger.LogError(this, $"{this.GetType().Name} must be a child of ItemSlotController. Please check your hierarchy.");

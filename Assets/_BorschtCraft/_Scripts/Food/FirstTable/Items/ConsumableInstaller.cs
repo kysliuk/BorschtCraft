@@ -56,9 +56,14 @@ namespace BorschtCraft.Food
                     .AsCached();
 
             //Bind the cooking service
-            Container.Bind<ICookingService>().To<CookingService>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<CookingService>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<SelectedItemService>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<ConsumingService>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<CombiningService>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<ItemTransferService>().AsSingle().NonLazy();
 
             //Bind Signals
+            Container.DeclareSignal<IConsumableInteractionRequestSignal>();
             Container.DeclareSignal<ConsumableInteractionRequestSignal<BreadStack, BreadRaw>>();
             Container.DeclareSignal<ConsumableInteractionRequestSignal<SaloStack, Salo>>();
             Container.DeclareSignal<ConsumableInteractionRequestSignal<GarlicStack, Garlic>>();
@@ -68,6 +73,8 @@ namespace BorschtCraft.Food
 
             Container.DeclareSignal<CookItemInSlotRequestSignal>();
             Container.DeclareSignal<ItemCookedSignal>();
+            Container.DeclareSignal<SlotClickedSignal>();
+
         }
     }
 }
