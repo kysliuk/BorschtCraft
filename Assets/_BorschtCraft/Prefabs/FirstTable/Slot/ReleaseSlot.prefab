@@ -364,7 +364,9 @@ GameObject:
   m_Component:
   - component: {fileID: 9120030014058033235}
   - component: {fileID: 1855074449219848382}
-  - component: {fileID: 7941026421241158055}
+  - component: {fileID: 8708833547879560752}
+  - component: {fileID: 3339335623456942718}
+  - component: {fileID: 760756235852020412}
   m_Layer: 0
   m_Name: ReleaseSlot
   m_TagString: Untagged
@@ -439,7 +441,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &7941026421241158055
+--- !u!114 &8708833547879560752
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -448,9 +450,41 @@ MonoBehaviour:
   m_GameObject: {fileID: 4928490638252623630}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ecdeea3ba22da749b55450ad9f80fe7, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f4792c974087cb48b68078902825560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _slotType: 2
+--- !u!114 &3339335623456942718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4928490638252623630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c68da92b2dbe80499bc0c2baa2eb36a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slotType: 2
+--- !u!114 &760756235852020412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4928490638252623630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scriptableObjectInstallers: []
+  _monoInstallers:
+  - {fileID: 3339335623456942718}
+  _installerPrefabs: []
+  _autoRun: 1
+  _kernel: {fileID: 0}
 --- !u!1 &6791776919999478082
 GameObject:
   m_ObjectHideFlags: 0

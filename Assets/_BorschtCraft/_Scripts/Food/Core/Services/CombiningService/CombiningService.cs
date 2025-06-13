@@ -6,66 +6,46 @@ namespace BorschtCraft.Food
     {
         private readonly IItemSlot[] _releasingSlots;
 
+        public CombiningService([Inject(Id = "ReleasingSlots")] IItemSlot[] releasingSlots)
+        {
+            _releasingSlots = releasingSlots;
+        }
+
         public bool AttemptCombination(IConsumable consumable)
         {
-            Logger.LogInfo(this, $"AttemptCombination called for {consumable?.GetType().Name}");
+            if (consumable == null) return false;
 
-            if (consumable == null)
-                return false;
-
-            IItemSlot targetSlotWithItem = FindDecoratableItemSlot(consumable);
-
-            if (targetSlotWithItem == null || targetSlotWithItem.GetCurrentItem() == null)
+            IItemSlot targetSlot = FindDecoratableItemSlot(consumable);
+            if (targetSlot == null)
             {
-                Logger.LogInfo(this, $"No suitable item found in releasing slots to decorate with {consumable.GetType().Name}.");
+                Logger.LogInfo(this, $"No suitable item found to decorate with {consumable.GetType().Name}.");
                 return false;
             }
 
-            IConsumed itemToDecorate = targetSlotWithItem.GetCurrentItem();
-            Logger.LogInfo(this, $"Found '{itemToDecorate.GetType().Name}' in slot '{targetSlotWithItem.GetGameObject().name}' to decorate with '{consumable.GetType().Name}'."); // Changed access
+            IConsumed itemToDecorate = targetSlot.CurrentItem.Value;
             IConsumed decoratedItem = consumable.Consume(itemToDecorate);
 
-            if (decoratedItem != null && decoratedItem != itemToDecorate)
+            if (decoratedItem != itemToDecorate)
             {
-                targetSlotWithItem.TrySetItem(decoratedItem);
-                Logger.LogInfo(this, $"Successfully decorated '{itemToDecorate.GetType().Name}' with '{consumable.GetType().Name}'. New top layer: '{decoratedItem.GetType().Name}'.");
+                targetSlot.TrySetItem(decoratedItem);
+                Logger.LogInfo(this, $"Successfully decorated '{itemToDecorate.GetType().Name}'.");
                 return true;
             }
-            else
-            {
-                Logger.LogWarning(this, $"Decorating '{itemToDecorate.GetType().Name}' with '{consumable.GetType().Name}' did not result in a new item or failed.");
-                return false;
-            }
+
+            Logger.LogWarning(this, $"Decorating '{itemToDecorate.GetType().Name}' failed.");
+            return false;
         }
 
         private IItemSlot FindDecoratableItemSlot(IConsumable decorator)
         {
-            if (_releasingSlots == null || decorator == null) return null;
-
-            Logger.LogInfo(this, $"FindDecoratableItemSlot: Searching for item that '{decorator.GetType().Name}' can decorate.");
             foreach (var slot in _releasingSlots)
             {
-                if (slot != null && slot.GetCurrentItem() != null) 
+                if (!slot.IsEmpty() && decorator.CanDecorate(slot.CurrentItem.Value))
                 {
-                    Logger.LogInfo(this, $"FindDecoratableItemSlot: Checking slot '{slot.GetGameObject().name}' with item '{slot.GetCurrentItem().GetType().Name}'."); // Changed access
-                    if (decorator.CanDecorate(slot.GetCurrentItem())) 
-                    {
-                        Logger.LogInfo(this, $"FindDecoratableItemSlot: Found suitable slot '{slot.GetGameObject().name}' with item '{slot.GetCurrentItem().GetType().Name}'."); // Changed access
-                        return slot;
-                    }
-                    else
-                    {
-                        Logger.LogInfo(this, $"FindDecoratableItemSlot: Decorator '{decorator.GetType().Name}' cannot decorate item '{slot.GetCurrentItem().GetType().Name}' in slot '{slot.GetGameObject().name}'."); // Changed access
-                    }
+                    return slot;
                 }
             }
-            Logger.LogInfo(this, $"FindDecoratableItemSlot: No suitable item found in any releasing slot.");
             return null;
-        }
-
-        public CombiningService([Inject(Id = "ReleasingSlots")] IItemSlot[] releasingSlots) 
-        {
-            _releasingSlots = releasingSlots;
         }
     }
 }

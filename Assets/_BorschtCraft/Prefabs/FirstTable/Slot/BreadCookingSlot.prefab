@@ -110,7 +110,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1773956354120222341}
   - component: {fileID: 4309957117413504206}
-  - component: {fileID: 3364768196774749092}
+  - component: {fileID: 3728013994369694784}
+  - component: {fileID: 5728872963954834047}
   m_Layer: 0
   m_Name: BreadCookingSlot
   m_TagString: Untagged
@@ -148,11 +149,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers: []
-  _monoInstallers: []
+  _monoInstallers:
+  - {fileID: 5728872963954834047}
   _installerPrefabs: []
   _autoRun: 1
   _kernel: {fileID: 0}
---- !u!114 &3364768196774749092
+--- !u!114 &3728013994369694784
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,9 +163,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 5447602710402696835}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ecdeea3ba22da749b55450ad9f80fe7, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f4792c974087cb48b68078902825560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _slotType: 1
+--- !u!114 &5728872963954834047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5447602710402696835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c68da92b2dbe80499bc0c2baa2eb36a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slotType: 1
 --- !u!1 &8419645490153067170
 GameObject:
   m_ObjectHideFlags: 0

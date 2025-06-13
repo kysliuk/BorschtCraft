@@ -3,12 +3,12 @@
     public class ItemCookedSignal
     {
         public IConsumed Consumed { get; }
-        public IItemSlot OriginSlot { get; } // Changed type
+        public IItemSlot OriginSlot { get; }
 
-        public ItemCookedSignal(IConsumed consumed, IItemSlot originSlot) // Changed parameter type
+        public ItemCookedSignal(IConsumed consumed, IItemSlot originSlot)
         {
             Consumed = consumed;
-            OriginSlot = originSlot; // Assignment is fine
+            OriginSlot = originSlot;
         }
     }
 }

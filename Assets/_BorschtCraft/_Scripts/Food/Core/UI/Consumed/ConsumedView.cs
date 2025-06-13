@@ -9,23 +9,27 @@ namespace BorschtCraft.Food.UI
 {
     [RequireComponent(typeof(SpriteRenderer))]
     public abstract class ConsumedView<T1, T2> : MonoBehaviour, IManagedConsumedView, IPointerClickHandler
-    where T1 : IConsumedViewModel
-    where T2 : Consumed
+        where T1 : IConsumedViewModel
+        where T2 : Consumed
     {
         protected T1 _viewModel;
         protected SpriteRenderer _spriteRenderer;
-        protected SignalBus _signalBus;
-        protected IItemSlot _parentSlotController;
+
+        private SignalBus _signalBus;
+        private IItemSlot _parentSlotModel;
 
         private void Awake()
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
-            if(_spriteRenderer == null)
-                Logger.LogError(this, $"{gameObject.name} requires a SpriteRenderer component. Please add one to the GameObject.");
+            if (_spriteRenderer == null)
+                Logger.LogError(this, $"{gameObject.name} requires a SpriteRenderer component.");
+        }
 
-            _parentSlotController = GetComponentInParent<ItemSlotController>();
-            if(_parentSlotController == null)
-                Logger.LogError(this, $"{this.GetType().Name} must be a child of ItemSlotController. Please check your hierarchy.");
+        [Inject]
+        public void Construct(SignalBus signalBus, IItemSlot parentSlotModel)
+        {
+            _signalBus = signalBus;
+            _parentSlotModel = parentSlotModel;
         }
 
         public Type GetConsumedModelType()
@@ -37,8 +41,8 @@ namespace BorschtCraft.Food.UI
         {
             if (viewModel is T1 typedViewModel)
                 InitializeWithViewModel(typedViewModel);
-            else if(viewModel != null)
-                throw new ArgumentException($"View model type {viewModel.GetType().Name} does not match expected type {typeof(T1).Name} for view {this.GetType().Name} and model {typeof(T2).Name}");
+            else if (viewModel != null)
+                Logger.LogError(this, $"View model type {viewModel.GetType().Name} does not match expected type {typeof(T1).Name}");
             else
                 InitializeWithViewModel(default);
         }
@@ -55,20 +59,27 @@ namespace BorschtCraft.Food.UI
 
         public virtual void OnPointerClick(PointerEventData eventData)
         {
-            Logger.LogInfo(this, $"View model exists: {_viewModel != null}. {_viewModel?.GetType()?.Name}");
-            if (_parentSlotController != null)
-                _signalBus.Fire(new SlotClickedSignal(_parentSlotController));
+            if (_parentSlotModel == null)
+            {
+                Logger.LogWarning(this, "OnPointerClick: Cannot fire SlotClickedSignal because parent IItemSlot model is null.");
+                return;
+            }
+
+            Logger.LogInfo(this, $"View clicked. Firing SlotClickedSignal for slot of type {_parentSlotModel.Type}.");
+            _signalBus.Fire(new SlotClickedSignal(_parentSlotModel));
         }
 
         protected void EnableVisibility(bool enable)
         {
-            _spriteRenderer.enabled = enable;
+            if (_spriteRenderer != null)
+            {
+                _spriteRenderer.enabled = enable;
+            }
         }
 
         public virtual void InitializeWithViewModel(T1 viewModel)
         {
             _viewModel = viewModel;
-            Logger.LogInfo(this, $"Constructed with view model: {_viewModel?.GetType()?.Name}");
 
             if (_viewModel == null)
             {
@@ -77,12 +88,6 @@ namespace BorschtCraft.Food.UI
             }
 
             _viewModel.IsVisible.Subscribe(EnableVisibility).AddTo(this);
-        }
-
-        [Inject]
-        public void Construct(SignalBus signalBus)
-        {
-            _signalBus = signalBus;
         }
     }
 }

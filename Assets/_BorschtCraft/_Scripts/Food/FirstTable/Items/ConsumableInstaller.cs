@@ -3,24 +3,79 @@ using BorschtCraft.Food.Signals;
 using UnityEngine;
 using BorschtCraft.Food.UI;
 using System.Collections.Generic;
-using UnityEngine.Scripting;
-using UnityEditor.Graphs;
+using BorschtCraft.Food.Handlers;
+using System.Linq;
 
 namespace BorschtCraft.Food
 {
     public class ConsumableInstaller : MonoInstaller
     {
-        [RequiredMember]
-        [SerializeField] ItemSlotController[] _cookingSlots;
-        [RequiredMember]
-        [SerializeField] ItemSlotController[] _releasingSlots;
         public override void InstallBindings()
         {
-            Container.Bind<MonoBehaviour>().WithId("CoroutineHost").FromInstance(this).AsSingle();
+            BindViewModelMappings();
+            BindViewModels();
+            BindServicesAndHandlers();
+            BindSignals();
 
-            //ViewMode mappings for consumable items
-            var viewModelMappings = new List<ConsumedViewModelMapping>
+            Container.Bind<IItemSlot[]>()
+                .WithId("CookingSlots")
+                .FromMethod(ResolveSlotsOfType(SlotType.Cooking))
+                .AsCached().Lazy();
+
+            Container.Bind<IItemSlot[]>()
+                .WithId("ReleasingSlots")
+                .FromMethod(ResolveSlotsOfType(SlotType.Releasing))
+                .AsCached().Lazy();
+        }
+
+        private System.Func<InjectContext, IItemSlot[]> ResolveSlotsOfType(SlotType type)
+        {
+            return (ctx) =>
             {
+                var installers = ctx.Container.Resolve<SceneContext>().GetComponentsInChildren<ItemSlotInstaller>();
+
+                var slots = installers
+                    .Where(inst => inst != null && inst.gameObject.activeInHierarchy)
+                    .Select(inst => {
+                        var goContext = inst.GetComponent<GameObjectContext>();
+
+                        if (goContext == null || goContext.Container == null)
+                        {
+                            Debug.LogWarning($"ItemSlotInstaller on {inst.name} is missing a GameObjectContext or its container is not ready.", inst.gameObject);
+                            return null;
+                        }
+
+                        return goContext.Container.Resolve<IItemSlot>();
+                    })
+                    .Where(slot => slot != null && slot.Type == type) 
+                    .ToArray();
+
+                Logger.LogInfo(this, $"Successfully resolved {slots.Length} slots of type '{type}'.");
+                return slots;
+            };
+        }
+
+
+        #region Helper Binding Methods (Unchanged)
+        private void BindServicesAndHandlers()
+        {
+            Container.BindInterfacesAndSelfTo<CookingService>().AsSingle();
+            Container.BindInterfacesAndSelfTo<CombiningService>().AsSingle();
+            Container.BindInterfacesAndSelfTo<ItemTransferService>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<ConsumingService>().AsSingle().NonLazy();
+            Container.Bind<MonoBehaviour>().WithId("CoroutineHost").FromInstance(this).AsSingle();
+            Container.Bind<ProductionHandler>().AsSingle();
+            Container.Bind<DecorationHandler>().AsSingle();
+            Container.Bind<IConsumableHandler>().FromMethod(ctx => {
+                var decorationHandler = ctx.Container.Resolve<DecorationHandler>();
+                var productionHandler = ctx.Container.Resolve<ProductionHandler>();
+                decorationHandler.SetNext(productionHandler);
+                return decorationHandler;
+            }).AsSingle();
+        }
+        private void BindViewModelMappings()
+        {
+            var viewModelMappings = new List<ConsumedViewModelMapping> {
                 new ConsumedViewModelMapping(typeof(BreadRaw), typeof(BreadRawViewModel)),
                 new ConsumedViewModelMapping(typeof(BreadCooked), typeof(BreadCookedViewModel)),
                 new ConsumedViewModelMapping(typeof(Salo), typeof(ConsumedViewModel<Salo>)),
@@ -29,12 +84,10 @@ namespace BorschtCraft.Food
                 new ConsumedViewModelMapping(typeof(Mustard), typeof(ConsumedViewModel<Mustard>)),
                 new ConsumedViewModelMapping(typeof(Horseradish), typeof(ConsumedViewModel<Horseradish>))
             };
-
-            //Bind the view model mappings to the container
-            Container.Bind< List<ConsumedViewModelMapping>>()
-                .FromInstance(viewModelMappings).AsSingle();
-
-            //Bind the consumable items
+            Container.Bind<List<ConsumedViewModelMapping>>().FromInstance(viewModelMappings).AsSingle();
+        }
+        private void BindViewModels()
+        {
             Container.Bind<BreadRawViewModel>().AsTransient();
             Container.Bind<BreadCookedViewModel>().AsTransient();
             Container.Bind<ConsumedViewModel<Salo>>().AsTransient();
@@ -42,32 +95,14 @@ namespace BorschtCraft.Food
             Container.Bind<ConsumedViewModel<Onion>>().AsTransient();
             Container.Bind<ConsumedViewModel<Mustard>>().AsTransient();
             Container.Bind<ConsumedViewModel<Horseradish>>().AsTransient();
-
-            //Bind the item slot controllers for cooking and releasing
-            foreach (var slot in _cookingSlots) Container.QueueForInject(slot);
-            Container.Bind<IItemSlot[]>()
-                    .WithId("CookingSlots")
-                    .FromInstance(_cookingSlots)
-                    .AsCached();
-
-            // Bind the releasing slots
-            foreach (var slot in _releasingSlots) Container.QueueForInject(slot);
-            Container.Bind<IItemSlot[]>()
-                    .WithId("ReleasingSlots")
-                    .FromInstance(_releasingSlots)
-                    .AsCached();
-
-            //Bind the cooking service
-            Container.BindInterfacesAndSelfTo<CookingService>().AsSingle().NonLazy();
-            Container.BindInterfacesAndSelfTo<ConsumingService>().AsSingle().NonLazy();
-            Container.BindInterfacesAndSelfTo<CombiningService>().AsSingle().NonLazy();
-            Container.BindInterfacesAndSelfTo<ItemTransferService>().AsSingle().NonLazy();
-
-            //Bind Signals
+        }
+        private void BindSignals()
+        {
             Container.DeclareSignal<ConsumableInteractionRequestSignal>();
             Container.DeclareSignal<CookItemInSlotRequestSignal>();
             Container.DeclareSignal<ItemCookedSignal>();
             Container.DeclareSignal<SlotClickedSignal>();
         }
+        #endregion
     }
 }

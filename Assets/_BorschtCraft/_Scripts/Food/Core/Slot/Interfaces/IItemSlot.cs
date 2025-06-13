@@ -1,13 +1,13 @@
-using UnityEngine;
+using UniRx;
 
 namespace BorschtCraft.Food
 {
     public interface IItemSlot
     {
-        IConsumed GetCurrentItem();
+        IReadOnlyReactiveProperty<IConsumed> CurrentItem { get; }
+        SlotType Type { get; }
         bool TrySetItem(IConsumed newItem);
         IConsumed ReleaseItem();
         bool IsEmpty();
-        GameObject GetGameObject();
     }
 }
