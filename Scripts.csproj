@@ -74,8 +74,8 @@
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Salo\PrefabInstaller\SaloStackPrefabInstaller.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\UI\Consumable\ConsumableViewModel.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\UI\Consumed\ConsumedViewModelMapping.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Services\SelectedItemService\ISelectedItemService.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\UI\Consumed\ConsumedView.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Interfaces\IItemSlot1.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\UI\Consumed\IManagedConsumedView.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Horseradish\PrefabInstaller\HorseradishStackPrefabInstaller.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Salo\UI\SaloStackViewModel.cs" />
@@ -88,7 +88,6 @@
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Bread\Cooked\BreadCookedViewModel.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Interfaces\FoodLayers\ISecondLayer.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Salo\UI\SaloStackView.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Services\SelectedItemService\SelectedItemService.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Onion\UI\OnionStackViewModel.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\UI\Consumed\ConsumedViewModel.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Signals\Slot\MoveItemRequestSignal.cs" />
@@ -100,8 +99,10 @@
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Horseradish\HorseradishStack.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Garlic\UI\GarlicStackView.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Interfaces\ICooked.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Interfaces\IItemSlotViewManager1.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Services\ItemTransferService\ItemTransferService.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Bread\Stack\BreadStackPrefabInstaller.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Services\ItemSlotController\ItemSlotViewManager1.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Interfaces\ICantDecorate.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Interfaces\FoodLayers\IThirdLayer.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumed.cs" />

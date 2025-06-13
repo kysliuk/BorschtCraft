@@ -1,7 +1,4 @@
-﻿using BorschtCraft.Food.UI;
-using BorschtCraft.Food.Core.Interfaces; // Added
-
-namespace BorschtCraft.Food.Signals
+﻿namespace BorschtCraft.Food.Signals
 {
     public class CookItemInSlotRequestSignal
     {

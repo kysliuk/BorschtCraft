@@ -1,12 +1,10 @@
-﻿using BorschtCraft.Food.UI;
-using Zenject;
-using BorschtCraft.Food.Core.Interfaces; // Added
+﻿using Zenject;
 
 namespace BorschtCraft.Food
 {
     public class CombiningService : ICombiningService
     {
-        private readonly IItemSlot[] _releasingSlots; // Changed type
+        private readonly IItemSlot[] _releasingSlots;
 
         public bool AttemptCombination(IConsumable consumable)
         {
@@ -15,15 +13,15 @@ namespace BorschtCraft.Food
             if (consumable == null)
                 return false;
 
-            IItemSlot targetSlotWithItem = FindDecoratableItemSlot(consumable); // Changed type
+            IItemSlot targetSlotWithItem = FindDecoratableItemSlot(consumable);
 
-            if (targetSlotWithItem == null || targetSlotWithItem.GetCurrentItem() == null) // Changed access
+            if (targetSlotWithItem == null || targetSlotWithItem.GetCurrentItem() == null)
             {
                 Logger.LogInfo(this, $"No suitable item found in releasing slots to decorate with {consumable.GetType().Name}.");
                 return false;
             }
 
-            IConsumed itemToDecorate = targetSlotWithItem.GetCurrentItem(); // Changed access
+            IConsumed itemToDecorate = targetSlotWithItem.GetCurrentItem();
             Logger.LogInfo(this, $"Found '{itemToDecorate.GetType().Name}' in slot '{targetSlotWithItem.GetGameObject().name}' to decorate with '{consumable.GetType().Name}'."); // Changed access
             IConsumed decoratedItem = consumable.Consume(itemToDecorate);
 
@@ -40,17 +38,17 @@ namespace BorschtCraft.Food
             }
         }
 
-        private IItemSlot FindDecoratableItemSlot(IConsumable decorator) // Changed return type
+        private IItemSlot FindDecoratableItemSlot(IConsumable decorator)
         {
             if (_releasingSlots == null || decorator == null) return null;
 
             Logger.LogInfo(this, $"FindDecoratableItemSlot: Searching for item that '{decorator.GetType().Name}' can decorate.");
-            foreach (var slot in _releasingSlots) // slot is IItemSlot
+            foreach (var slot in _releasingSlots)
             {
-                if (slot != null && slot.GetCurrentItem() != null) // Changed access
+                if (slot != null && slot.GetCurrentItem() != null) 
                 {
                     Logger.LogInfo(this, $"FindDecoratableItemSlot: Checking slot '{slot.GetGameObject().name}' with item '{slot.GetCurrentItem().GetType().Name}'."); // Changed access
-                    if (decorator.CanDecorate(slot.GetCurrentItem())) // Changed access
+                    if (decorator.CanDecorate(slot.GetCurrentItem())) 
                     {
                         Logger.LogInfo(this, $"FindDecoratableItemSlot: Found suitable slot '{slot.GetGameObject().name}' with item '{slot.GetCurrentItem().GetType().Name}'."); // Changed access
                         return slot;
@@ -65,7 +63,7 @@ namespace BorschtCraft.Food
             return null;
         }
 
-        public CombiningService([Inject(Id = "ReleasingSlots")] IItemSlot[] releasingSlots) // Changed parameter type
+        public CombiningService([Inject(Id = "ReleasingSlots")] IItemSlot[] releasingSlots) 
         {
             _releasingSlots = releasingSlots;
         }

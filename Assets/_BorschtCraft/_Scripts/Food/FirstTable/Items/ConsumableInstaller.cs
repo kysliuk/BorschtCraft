@@ -2,7 +2,6 @@
 using BorschtCraft.Food.Signals;
 using UnityEngine;
 using BorschtCraft.Food.UI;
-using BorschtCraft.Food.Core.Interfaces; // Added
 using System.Collections.Generic;
 using UnityEngine.Scripting;
 using UnityEditor.Graphs;
@@ -60,7 +59,6 @@ namespace BorschtCraft.Food
 
             //Bind the cooking service
             Container.BindInterfacesAndSelfTo<CookingService>().AsSingle().NonLazy();
-            Container.BindInterfacesAndSelfTo<SelectedItemService>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<ConsumingService>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<CombiningService>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<ItemTransferService>().AsSingle().NonLazy();

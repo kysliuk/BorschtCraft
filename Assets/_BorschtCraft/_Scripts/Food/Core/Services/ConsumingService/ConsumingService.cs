@@ -1,6 +1,4 @@
 ﻿using BorschtCraft.Food.Signals;
-using BorschtCraft.Food.UI; // Potentially still needed for ItemSlotController cast
-using BorschtCraft.Food.Core.Interfaces; // Added
 using System.Linq;
 using Zenject;
 
@@ -9,7 +7,7 @@ namespace BorschtCraft.Food
     public class ConsumingService : IConsumingService
     {
         private readonly SignalBus _signalBus;
-        private readonly IItemSlot[] _cookingSlots; // Changed type
+        private readonly IItemSlot[] _cookingSlots;
         private readonly ICombiningService _combiningService;
 
         public void Initialize()
@@ -51,7 +49,7 @@ namespace BorschtCraft.Food
 
             if (producedItem != null)
             {
-                var targetSlot = FindEmptyCookingSlot(); // targetSlot is IItemSlot
+                var targetSlot = FindEmptyCookingSlot();
 
                 if (targetSlot != null)
                 {
@@ -61,7 +59,7 @@ namespace BorschtCraft.Food
                     if (producedItem is ICookable)
                     {
                         Logger.LogInfo(this, $"Auto-requesting cook for {producedItem.GetType().Name} in slot {targetSlot.GetGameObject().name}");
-                        _signalBus.Fire(new CookItemInSlotRequestSignal(targetSlot)); // Removed cast
+                        _signalBus.Fire(new CookItemInSlotRequestSignal(targetSlot));
                     }
                 }
                 else
@@ -80,11 +78,10 @@ namespace BorschtCraft.Food
             return consumable is not ICantDecorate;
         }
 
-        private IItemSlot FindEmptyCookingSlot() // Changed return type
+        private IItemSlot FindEmptyCookingSlot()
         {
             if (_cookingSlots == null) return null;
-            // slot is IItemSlot, access CurrentItemInSlot via GetCurrentItem()
-            return _cookingSlots.FirstOrDefault(slot => slot != null && slot.GetCurrentItem() == null); // Changed access
+            return _cookingSlots.FirstOrDefault(slot => slot != null && slot.GetCurrentItem() == null);
         }
 
         public void Dispose()
@@ -93,7 +90,7 @@ namespace BorschtCraft.Food
         }
 
         public ConsumingService(SignalBus signalBus,
-                                [Inject(Id = "CookingSlots")] IItemSlot[] cookingSlots, // Changed parameter type
+                                [Inject(Id = "CookingSlots")] IItemSlot[] cookingSlots,
                                 ICombiningService combiningService)
         {
             _signalBus = signalBus;

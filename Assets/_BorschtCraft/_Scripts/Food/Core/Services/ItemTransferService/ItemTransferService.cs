@@ -1,6 +1,4 @@
 ﻿using BorschtCraft.Food.Signals;
-// using BorschtCraft.Food.UI; // No longer needed as signal.ClickedSlot is IItemSlot
-using BorschtCraft.Food.Core.Interfaces;
 using System.Linq;
 using Zenject;
 
