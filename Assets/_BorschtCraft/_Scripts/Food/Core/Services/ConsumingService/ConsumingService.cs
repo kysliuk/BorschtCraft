@@ -1,5 +1,6 @@
 ﻿using BorschtCraft.Food.Signals;
-using BorschtCraft.Food.UI;
+using BorschtCraft.Food.UI; // Potentially still needed for ItemSlotController cast
+using BorschtCraft.Food.Core.Interfaces; // Added
 using System.Linq;
 using Zenject;
 
@@ -8,7 +9,7 @@ namespace BorschtCraft.Food
     public class ConsumingService : IConsumingService
     {
         private readonly SignalBus _signalBus;
-        private readonly ItemSlotController[] _cookingSlots;
+        private readonly IItemSlot[] _cookingSlots; // Changed type
         private readonly ICombiningService _combiningService;
 
         public void Initialize()
@@ -43,29 +44,30 @@ namespace BorschtCraft.Food
 
             var producedItem = consumableSource.Consume(null);
 
-            if(producedItem != null)
+            if (producedItem != null)
             {
-                var targetSlot = FindEmptyCookingSlot();
+                var targetSlot = FindEmptyCookingSlot(); // targetSlot is IItemSlot
 
                 if (targetSlot != null)
                 {
                     targetSlot.TrySetItem(producedItem);
-                    Logger.LogInfo(this, $"Produced {producedItem.GetType().Name} from {consumableSource.GetType().Name} into cooking slot {targetSlot.gameObject.name}.");
+                    Logger.LogInfo(this, $"Produced {producedItem.GetType().Name} from {consumableSource.GetType().Name} into cooking slot {targetSlot.GetGameObject().name}."); // Changed access
 
-                    if(producedItem is ICookable)
+                    if (producedItem is ICookable)
                     {
-                        Logger.LogInfo(this, $"Auto-requesting cook for {producedItem.GetType().Name} in slot {targetSlot.gameObject.name}");
-                        _signalBus.Fire(new CookItemInSlotRequestSignal(targetSlot));
-                    }
-                    else
-                    {
-                        Logger.LogWarning(this, $"No empty cooking slot found for {producedItem.GetType().Name} from {consumableSource.GetType().Name}.");
+                        Logger.LogInfo(this, $"Auto-requesting cook for {producedItem.GetType().Name} in slot {targetSlot.GetGameObject().name}"); // Changed access
+                        // Use cast for the signal as decided
+                        _signalBus.Fire(new CookItemInSlotRequestSignal(targetSlot as ItemSlotController));
                     }
                 }
                 else
                 {
-                    Logger.LogWarning(this, $"{consumableSource.GetType().Name}.Consume(null) did not produce an item. This is expected if it's purely a decorator.");
+                    Logger.LogWarning(this, $"No empty cooking slot found for {producedItem.GetType().Name} from {consumableSource.GetType().Name}.");
                 }
+            }
+            else
+            {
+                Logger.LogWarning(this, $"{consumableSource.GetType().Name}.Consume(null) did not produce an item. This is expected if it's purely a decorator.");
             }
         }
 
@@ -74,10 +76,11 @@ namespace BorschtCraft.Food
             return consumable is not ICantDecorate;
         }
 
-        private ItemSlotController FindEmptyCookingSlot()
+        private IItemSlot FindEmptyCookingSlot() // Changed return type
         {
             if (_cookingSlots == null) return null;
-            return _cookingSlots.FirstOrDefault(slot => slot != null && slot.CurrentItemInSlot == null);
+            // slot is IItemSlot, access CurrentItemInSlot via GetCurrentItem()
+            return _cookingSlots.FirstOrDefault(slot => slot != null && slot.GetCurrentItem() == null); // Changed access
         }
 
         public void Dispose()
@@ -86,7 +89,7 @@ namespace BorschtCraft.Food
         }
 
         public ConsumingService(SignalBus signalBus,
-                                [Inject(Id = "CookingSlots")] ItemSlotController[] cookingSlots,
+                                [Inject(Id = "CookingSlots")] IItemSlot[] cookingSlots, // Changed parameter type
                                 ICombiningService combiningService)
         {
             _signalBus = signalBus;
