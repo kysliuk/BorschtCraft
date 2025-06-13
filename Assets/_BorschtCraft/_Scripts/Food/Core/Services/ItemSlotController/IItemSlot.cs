@@ -8,6 +8,6 @@ namespace BorschtCraft.Food
         bool TrySetItem(IConsumed newItem);
         IConsumed ReleaseItem();
         bool IsEmpty();
-        GameObject GetGameObject(); // Added for logging/context, as ItemSlotController is a MonoBehaviour
+        GameObject GetGameObject();
     }
 }
