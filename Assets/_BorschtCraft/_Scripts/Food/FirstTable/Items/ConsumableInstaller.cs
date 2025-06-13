@@ -2,8 +2,10 @@
 using BorschtCraft.Food.Signals;
 using UnityEngine;
 using BorschtCraft.Food.UI;
+using BorschtCraft.Food.Core.Interfaces; // Added
 using System.Collections.Generic;
 using UnityEngine.Scripting;
+using UnityEditor.Graphs;
 
 namespace BorschtCraft.Food
 {

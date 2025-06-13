@@ -15,7 +15,7 @@ namespace BorschtCraft.Food.UI
         protected T1 _viewModel;
         protected SpriteRenderer _spriteRenderer;
         protected SignalBus _signalBus;
-        protected IItemSlot _parentSlotController;
+        protected ItemSlotController _parentSlotController;
 
         private void Awake()
         {

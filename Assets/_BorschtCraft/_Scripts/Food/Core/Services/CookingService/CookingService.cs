@@ -1,5 +1,6 @@
 ﻿using BorschtCraft.Food.Signals;
-using BorschtCraft.Food.UI;
+using BorschtCraft.Food.UI; // May still be needed if ItemSlotController is used elsewhere, or for casting if necessary.
+using BorschtCraft.Food.Core.Interfaces; // Added
 using Cysharp.Threading.Tasks;
 using System.Collections;
 using UnityEngine;
@@ -17,19 +18,19 @@ namespace BorschtCraft.Food
             _signalBus.Subscribe<CookItemInSlotRequestSignal>(OnCookItemInSlotRequested);
         }
 
-        public bool CookItemInSlot(ItemSlotController slotController)
+        public bool CookItemInSlot(IItemSlot slot) // Changed parameter type
         {
-            if (slotController == null || slotController.CurrentItemInSlot == null)
+            if (slot == null || slot.GetCurrentItem() == null) // Changed access
             {
                 Logger.LogWarning(this, "Cannot cook: Slot is null or empty.");
                 return false;
             }
 
-            var itemToCook = slotController.CurrentItemInSlot;
+            var itemToCook = slot.GetCurrentItem(); // Changed access
 
             if(itemToCook is ICookable cookableItem)
             {   
-                _coroutineHost.StartCoroutine(PerformCookeing(cookableItem, slotController));
+                _coroutineHost.StartCoroutine(PerformCookeing(cookableItem, slot)); // Pass IItemSlot
                 return true;
             }
 
@@ -38,24 +39,25 @@ namespace BorschtCraft.Food
 
         private void OnCookItemInSlotRequested(CookItemInSlotRequestSignal signal)
         {
-            if(signal.SlotController == null || signal.SlotController.CurrentItemInSlot == null)
+            // Access signal.Slot (which is IItemSlot)
+            if(signal.Slot == null || signal.Slot.GetCurrentItem() == null) // Changed access
             {
                 Logger.LogWarning(this, "Cook request received for an invalid or empty slot.");
                 return;
             }
 
-            CookItemInSlot(signal.SlotController);
+            CookItemInSlot(signal.Slot); // Pass IItemSlot
         }
 
-        private IEnumerator PerformCookeing(ICookable cookableItem, ItemSlotController slot)
+        private IEnumerator PerformCookeing(ICookable cookableItem, IItemSlot slot) // Changed parameter type
         {
             yield return new WaitForSeconds(cookableItem.CookingTime);
 
             IConsumed coockedItem = cookableItem.Cook();
-            slot.TrySetItem(coockedItem);
+            slot.TrySetItem(coockedItem); // TrySetItem is on IItemSlot
 
-            _signalBus.Fire(new ItemCookedSignal(coockedItem, slot));
-            Logger.LogInfo(this, $"Cooked item: {coockedItem.GetType().Name} in slot: {slot.gameObject.name}");
+            _signalBus.Fire(new ItemCookedSignal(coockedItem, slot)); // Pass IItemSlot
+            Logger.LogInfo(this, $"Cooked item: {coockedItem.GetType().Name} in slot: {slot.GetGameObject().name}"); // Changed access
         }
 
         public void Dispose()

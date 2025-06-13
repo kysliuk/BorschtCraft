@@ -1,4 +1,6 @@
-﻿using Zenject;
+﻿using BorschtCraft.Food.UI;
+using Zenject;
+using BorschtCraft.Food.Core.Interfaces; // Added
 
 namespace BorschtCraft.Food
 {

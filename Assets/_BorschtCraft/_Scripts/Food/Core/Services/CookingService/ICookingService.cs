@@ -1,4 +1,5 @@
 ﻿using BorschtCraft.Food.UI;
+using BorschtCraft.Food.Core.Interfaces; // Added
 using System;
 using Zenject;
 
@@ -6,6 +7,6 @@ namespace BorschtCraft.Food
 {
     public interface ICookingService : IInitializable, IDisposable
     {
-        bool CookItemInSlot(ItemSlotController slotController);
+        bool CookItemInSlot(IItemSlot slot); // Changed parameter type
     }
 }

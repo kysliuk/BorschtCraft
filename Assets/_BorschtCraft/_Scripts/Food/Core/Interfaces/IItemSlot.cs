@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace BorschtCraft.Food
+namespace BorschtCraft.Food.Core.Interfaces
 {
     public interface IItemSlot
     {
@@ -8,6 +8,6 @@ namespace BorschtCraft.Food
         bool TrySetItem(IConsumed newItem);
         IConsumed ReleaseItem();
         bool IsEmpty();
-        GameObject GetGameObject();
+        GameObject GetGameObject(); // Added for logging/context, as ItemSlotController is a MonoBehaviour
     }
 }

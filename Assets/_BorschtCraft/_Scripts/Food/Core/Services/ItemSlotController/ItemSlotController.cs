@@ -1,7 +1,10 @@
 using System.Collections.Generic;
+// using System.Linq; // No longer needed here
 using UnityEngine;
 using Zenject;
 using System;
+using BorschtCraft.Food.Core.Interfaces;
+using BorschtCraft.Food.Core; // Required for IConsumed, Consumed, ICookable, ICooked if used in logging or specific checks, but likely not needed after refactor.
 
 namespace BorschtCraft.Food.UI
 {
@@ -14,6 +17,7 @@ namespace BorschtCraft.Food.UI
         public IConsumed CurrentItemInSlot { get; private set; }
 
         private readonly Dictionary<Type, IManagedConsumedView> _childViews = new Dictionary<Type, IManagedConsumedView>();
+        // private readonly List<IConsumedViewModel> _activeViewModels = new List<IConsumedViewModel>(); // Removed
         private IItemSlotViewManager _viewManager;
 
         private void Awake()
@@ -27,6 +31,7 @@ namespace BorschtCraft.Food.UI
                     if (!_childViews.ContainsKey(modelType))
                     {
                         _childViews.Add(modelType, managedView);
+                        // managedView.DetachViewModel(); // This will be handled by ItemSlotViewManager.Initialize
                     }
                 }
             }
@@ -37,21 +42,29 @@ namespace BorschtCraft.Food.UI
 
         public bool TrySetItem(IConsumed newItem)
         {
-            this.CurrentItemInSlot = newItem;
-            _viewManager.DisplayItem(this.CurrentItemInSlot, this.CurrentItemInSlot);
+            // Basic validation for dependencies can remain if desired, or be fully delegated.
+            // For now, keeping it simple and assuming _viewManager is initialized.
+            // if (_viewManager == null)
+            // {
+            //    Logger.LogError(this, $"Slot {gameObject.name} TrySetItem: _viewManager is null. Awake might not have run or initialization failed.");
+            //    return false;
+            // }
 
-            return true;
+            this.CurrentItemInSlot = newItem;
+            _viewManager.DisplayItem(this.CurrentItemInSlot, this.CurrentItemInSlot); // Passing CurrentItemInSlot as overallRootItem
+
+            return true; // Assuming success unless an exception is thrown by DisplayItem
         }
 
         public IConsumed ReleaseItem()
         {
             var releasedItem = CurrentItemInSlot;
             CurrentItemInSlot = null;
-            ClearSlotView();
+            _viewManager.ClearView(); // Use view manager to clear
             return releasedItem;
         }
 
-        private void ClearSlotView()
+        private void ClearSlotView() // This method now delegates
         {
             _viewManager?.ClearView();
         }

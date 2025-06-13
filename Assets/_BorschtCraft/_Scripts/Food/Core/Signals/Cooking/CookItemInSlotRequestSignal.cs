@@ -1,14 +1,15 @@
 ﻿using BorschtCraft.Food.UI;
+using BorschtCraft.Food.Core.Interfaces; // Added
 
 namespace BorschtCraft.Food.Signals
 {
     public class CookItemInSlotRequestSignal
     {
-        public ItemSlotController SlotController { get; }
+        public IItemSlot Slot { get; } // Changed property name and type
 
-        public CookItemInSlotRequestSignal(ItemSlotController slotController)
+        public CookItemInSlotRequestSignal(IItemSlot slot) // Changed parameter name and type
         {
-            SlotController = slotController;
+            Slot = slot; // Updated assignment
         }
     }
 }
