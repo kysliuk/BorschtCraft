@@ -1,5 +1,5 @@
 ﻿using BorschtCraft.Food.Signals;
-using BorschtCraft.Food.UI; // Potentially still needed for ItemSlotController cast
+using BorschtCraft.Food.UI;
 using System.Linq;
 using Zenject;
 
@@ -8,7 +8,7 @@ namespace BorschtCraft.Food
     public class ConsumingService : IConsumingService
     {
         private readonly SignalBus _signalBus;
-        private readonly IItemSlot[] _cookingSlots; // Changed type
+        private readonly IItemSlot[] _cookingSlots;
         private readonly ICombiningService _combiningService;
 
         public void Initialize()
@@ -45,7 +45,7 @@ namespace BorschtCraft.Food
 
             if (producedItem != null)
             {
-                var targetSlot = FindEmptyCookingSlot(); // targetSlot is IItemSlot
+                var targetSlot = FindEmptyCookingSlot(); 
 
                 if (targetSlot != null)
                 {
@@ -55,7 +55,6 @@ namespace BorschtCraft.Food
                     if (producedItem is ICookable)
                     {
                         Logger.LogInfo(this, $"Auto-requesting cook for {producedItem.GetType().Name} in slot {targetSlot.GetGameObject().name}"); // Changed access
-                        // Use cast for the signal as decided
                         _signalBus.Fire(new CookItemInSlotRequestSignal(targetSlot as ItemSlotController));
                     }
                 }

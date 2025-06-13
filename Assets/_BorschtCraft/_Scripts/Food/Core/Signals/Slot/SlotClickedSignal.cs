@@ -4,9 +4,9 @@ namespace BorschtCraft.Food.Signals
 {
     public class SlotClickedSignal
     {
-        public ItemSlotController ClickedSlot { get; }
+        public IItemSlot ClickedSlot { get; }
 
-        public SlotClickedSignal(ItemSlotController clickedSlot)
+        public SlotClickedSignal(IItemSlot clickedSlot)
         {
             ClickedSlot = clickedSlot;
         }

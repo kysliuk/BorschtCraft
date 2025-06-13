@@ -8,8 +8,8 @@ namespace BorschtCraft.Food
     public class ItemTransferService : IItemTransferService
     {
         private readonly SignalBus _signalBus;
-        private readonly ItemSlotController[] _cookingSlots;
-        private readonly ItemSlotController[] _releasingSlots;
+        private readonly IItemSlot[] _cookingSlots;
+        private readonly IItemSlot[] _releasingSlots;
         private readonly ISelectedItemService _selectedItemService;
 
         public void Initialize()
@@ -19,6 +19,7 @@ namespace BorschtCraft.Food
 
         private void OnSlotClickedToMove(SlotClickedSignal signal)
         {
+            Logger.LogInfo(this, $"{nameof(OnSlotClickedToMove)} for {signal.ClickedSlot?.GetGameObject()?.name}");
             var clickedSlot = signal.ClickedSlot;
             if (clickedSlot == null)
                 return;
@@ -28,7 +29,7 @@ namespace BorschtCraft.Food
                 return;
 
 
-            if (_cookingSlots.Contains(clickedSlot) && clickedSlot.CurrentItemInSlot is ICooked)
+            if (_cookingSlots.Contains(clickedSlot) && clickedSlot.GetCurrentItem() is ICooked)
             {
                 if(_selectedItemService.CurrentSelectedSlot == clickedSlot)
                     _selectedItemService.Deselect();
@@ -36,13 +37,13 @@ namespace BorschtCraft.Food
                 var consumedToMove = clickedSlot.ReleaseItem();
 
                 targetReleasingSlot.TrySetItem(consumedToMove);
-                Logger.LogInfo(this, $"Moved {consumedToMove.GetType().Name} from cooking slot {clickedSlot.gameObject.name} to releasing slot {targetReleasingSlot.gameObject.name}.");
+                Logger.LogInfo(this, $"Moved {consumedToMove.GetType().Name} from cooking slot {clickedSlot.GetGameObject()?.name} to releasing slot {targetReleasingSlot.GetGameObject().name}.");
             }
         }
 
-        private ItemSlotController FindEmptyReleasingSlot()
+        private IItemSlot FindEmptyReleasingSlot()
         {
-            return _releasingSlots.FirstOrDefault(slot => slot.CurrentItemInSlot == null);
+            return _releasingSlots.FirstOrDefault(slot => slot.GetCurrentItem() == null);
         }
 
         public void Dispose()
@@ -51,8 +52,8 @@ namespace BorschtCraft.Food
         }
 
         public ItemTransferService(SignalBus signalBus,
-                                   [Inject(Id = "CookingSlots")] ItemSlotController[] cookingSlots,
-                                   [Inject(Id = "ReleasingSlots")] ItemSlotController[] releasingSlots,
+                                   [Inject(Id = "CookingSlots")] IItemSlot[] cookingSlots,
+                                   [Inject(Id = "ReleasingSlots")] IItemSlot[] releasingSlots,
                                    ISelectedItemService selectedItemService)
         {
             _signalBus = signalBus;
