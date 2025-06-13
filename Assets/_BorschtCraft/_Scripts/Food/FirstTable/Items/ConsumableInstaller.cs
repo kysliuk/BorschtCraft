@@ -45,14 +45,14 @@ namespace BorschtCraft.Food
 
             //Bind the item slot controllers for cooking and releasing
             foreach (var slot in _cookingSlots) Container.QueueForInject(slot);
-            Container.Bind<IItemSlot[]>() // Changed type
+            Container.Bind<IItemSlot[]>()
                     .WithId("CookingSlots")
                     .FromInstance(_cookingSlots)
                     .AsCached();
 
             // Bind the releasing slots
             foreach (var slot in _releasingSlots) Container.QueueForInject(slot);
-            Container.Bind<IItemSlot[]>() // Changed type
+            Container.Bind<IItemSlot[]>()
                     .WithId("ReleasingSlots")
                     .FromInstance(_releasingSlots)
                     .AsCached();
