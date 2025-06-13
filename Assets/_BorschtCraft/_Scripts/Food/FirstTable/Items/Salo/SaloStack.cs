@@ -2,7 +2,7 @@
 {
     public class SaloStack : Consumable<Salo>
     {
-        public override bool InnerCanDecorate(IConsumed item)
+        protected override bool InnerCanDecorate(IConsumed item)
         {
             return item is ICooked || item is ISecondLayer;
         }

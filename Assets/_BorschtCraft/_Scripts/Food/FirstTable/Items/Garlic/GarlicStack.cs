@@ -2,7 +2,7 @@
 {
     public class GarlicStack : Consumable<Garlic>
     {
-        public override bool InnerCanDecorate(IConsumed item)
+        protected override bool InnerCanDecorate(IConsumed item)
         {
             return item is ICooked;
         }

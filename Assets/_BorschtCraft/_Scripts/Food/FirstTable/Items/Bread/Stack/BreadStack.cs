@@ -8,6 +8,7 @@
             return false;
         }
 
+
         public BreadStack(int price) : base(price)
         {
         }

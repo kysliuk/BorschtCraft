@@ -28,7 +28,7 @@ namespace BorschtCraft.Food
             return InnerCanDecorate(item);
         }
 
-        public virtual bool InnerCanDecorate(IConsumed item)
+        protected virtual bool InnerCanDecorate(IConsumed item)
         {
             return true;
         }

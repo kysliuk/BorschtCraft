@@ -2,7 +2,7 @@
 {
     public class HorseradishStack : Consumable<Horseradish>
     {
-        public override bool InnerCanDecorate(IConsumed item)
+        protected override bool InnerCanDecorate(IConsumed item)
         {
             return item is IFourthLayer || item is IThirdLayer;
         }
