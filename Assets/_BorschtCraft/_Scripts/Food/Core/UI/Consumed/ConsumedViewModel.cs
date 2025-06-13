@@ -16,27 +16,6 @@ namespace BorschtCraft.Food.UI
             _isVisible.Value = visible;
         }
 
-        //protected virtual void SubscribeToInteractionSignals<TConsumable, TConsumed>() where TConsumable : Consumable<TConsumed> where TConsumed : Consumed
-        //{
-        //    _signalBus.Subscribe<ConsumableInteractionRequestSignal<TConsumable, TConsumed>>(OnConsumableInteractionRequestSignal);
-        //}
-
-        //protected virtual void OnConsumableInteractionRequestSignal<TConsumable, TConsumed>(ConsumableInteractionRequestSignal<TConsumable, TConsumed> signal)
-        //    where TConsumable : Consumable<TConsumed>
-        //    where TConsumed : Consumed
-        //{
-        //    if (signal.ConsumableSource is TConsumed consumable && consumable == _consumedModel)
-        //    {
-        //        _isVisible.Value = true;
-        //        signal.ConsumableSource.Consume(_consumedModel);
-        //    }
-        //}
-
-        //public virtual void Dispose()
-        //{
-
-        //}
-
         public ConsumedViewModel(T consumedModel, SignalBus signalBus)
         {
             _consumedModel = consumedModel;

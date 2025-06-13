@@ -9,8 +9,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{47E57516-A146-196E-547E-A9A9A95C7F6D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -87,6 +86,7 @@
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Mustard\UI\MustardStackViewModel.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Signals\Cooking\ItemCookedSignal.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Bread\Cooked\BreadCookedViewModel.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Interfaces\FoodLayers\ISecondLayer.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Salo\UI\SaloStackView.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Services\SelectedItemService\SelectedItemService.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Onion\UI\OnionStackViewModel.cs" />
@@ -102,11 +102,14 @@
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Interfaces\ICooked.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Services\ItemTransferService\ItemTransferService.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Bread\Stack\BreadStackPrefabInstaller.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Interfaces\ICantDecorate.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Interfaces\FoodLayers\IThirdLayer.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumed.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumable.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Salo\SaloStack.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Bread\Raw\BreadRawViewModel.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Cookable.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Interfaces\FoodLayers\IFourthLayer.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Horseradish\UI\HorseradishView.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\UI\Consumed\ConsumedUIDefinition.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Services\CombiningService\ICombiningService.cs" />
@@ -119,6 +122,7 @@
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Bread\Stack\BreadStackViewModel.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Garlic\Garlic.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Services\ConsumingService\ConsumingService.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Common\Exception\CannotDecorateException.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Mustard\UI\MustardStackView.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Services\ConsumingService\IConsumingService.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Interfaces\IConsumable.cs" />
@@ -1216,10 +1220,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="UniTask.csproj">
-      <Project>{AD1C8C83-C3F8-F6ED-3C31-C2860AC04530}</Project>
-      <Name>UniTask</Name>
-    </ProjectReference>
     <ProjectReference Include="Zenject.csproj">
       <Project>{18CB4CA9-CC88-2BCE-66D5-B8D4B8D200D2}</Project>
       <Name>Zenject</Name>
@@ -1227,6 +1227,10 @@
     <ProjectReference Include="UniRx.csproj">
       <Project>{5E007ECB-BB5B-7BAE-C883-036B14A0E54C}</Project>
       <Name>UniRx</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniTask.csproj">
+      <Project>{AD1C8C83-C3F8-F6ED-3C31-C2860AC04530}</Project>
+      <Name>UniTask</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,6 +1,6 @@
 ﻿namespace BorschtCraft.Food
 {
-    public class Onion : Consumed
+    public class Onion : Consumed, ISecondLayer
     {
         public Onion(int price, IConsumed item) : base(price, item)
         {

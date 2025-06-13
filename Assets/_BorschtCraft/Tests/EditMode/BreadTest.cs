@@ -42,7 +42,7 @@ public class BreadTest
     {
         CreateConsumables();
 
-        _bread = _breadStack.Consume();
+        _bread = _breadStack.Consume(null);
         Assert.IsNotNull(_bread);
         Assert.AreEqual(10, _bread.Price);
         Assert.IsInstanceOf<BreadRaw>(_bread);
@@ -59,7 +59,7 @@ public class BreadTest
         Assert.AreEqual(18, _bread.Price);
         Assert.IsInstanceOf<Salo>(_bread);
 
-        LogAssert.Expect(LogType.Error, "[ERROR] OnionStack: cannot be consumed for Salo. Only BreadCooked is allowed.");
+        LogAssert.Expect(LogType.Warning, "[WARNING] OnionStack: Cannot decorate Salo by OnionStack");
 
         _bread = _onionStack.Consume(_bread);
         Assert.AreEqual(18, _bread.Price);

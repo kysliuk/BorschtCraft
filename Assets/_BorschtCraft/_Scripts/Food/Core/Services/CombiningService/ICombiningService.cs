@@ -1,9 +1,9 @@
-﻿using System;
-using Zenject;
+﻿using Zenject;
 
 namespace BorschtCraft.Food
 {
-    public interface ICombiningService : IInitializable, IDisposable
+    public interface ICombiningService
     {
+        bool AttemptCombination(IConsumable consumable);
     }
 }

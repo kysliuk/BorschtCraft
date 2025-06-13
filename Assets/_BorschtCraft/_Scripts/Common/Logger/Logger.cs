@@ -34,5 +34,12 @@ namespace BorschtCraft
         {
             LogFormat($"[ERROR] {sender.GetType().Name}: {format}", args);
         }
+
+        public static void LogException(object sender, Type exceptionType, string message)
+        {
+            var exceptionMessage = $"[EXCEPTION] {sender.GetType().Name}: {message}";
+            var exception = Activator.CreateInstance(exceptionType, exceptionMessage) as Exception;
+            LogException(exception);
+        }
     }
 }

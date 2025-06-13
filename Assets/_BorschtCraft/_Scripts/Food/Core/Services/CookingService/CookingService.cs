@@ -1,6 +1,8 @@
 ﻿using BorschtCraft.Food.Signals;
 using BorschtCraft.Food.UI;
 using Cysharp.Threading.Tasks;
+using System.Collections;
+using UnityEngine;
 using Zenject;
 
 namespace BorschtCraft.Food
@@ -8,6 +10,7 @@ namespace BorschtCraft.Food
     public class CookingService : ICookingService
     {
         private readonly SignalBus _signalBus;
+        private readonly MonoBehaviour _coroutineHost;
 
         public void Initialize()
         {
@@ -26,11 +29,7 @@ namespace BorschtCraft.Food
 
             if(itemToCook is ICookable cookableItem)
             {   
-                UniTask.Delay((int)(cookableItem.CookingTime * 1000)).Forget();
-                IConsumed coockedItem = cookableItem.Cook();
-                slotController.TrySetItem(coockedItem);
-
-                _signalBus.Fire(new ItemCookedSignal(coockedItem, slotController));
+                _coroutineHost.StartCoroutine(PerformCookeing(cookableItem, slotController));
                 return true;
             }
 
@@ -48,14 +47,30 @@ namespace BorschtCraft.Food
             CookItemInSlot(signal.SlotController);
         }
 
+        private IEnumerator PerformCookeing(ICookable cookableItem, ItemSlotController slot)
+        {
+            yield return new WaitForSeconds(cookableItem.CookingTime);
+
+            IConsumed coockedItem = cookableItem.Cook();
+            slot.TrySetItem(coockedItem);
+
+            _signalBus.Fire(new ItemCookedSignal(coockedItem, slot));
+            Logger.LogInfo(this, $"Cooked item: {coockedItem.GetType().Name} in slot: {slot.gameObject.name}");
+        }
+
         public void Dispose()
         {
             _signalBus.TryUnsubscribe<CookItemInSlotRequestSignal>(OnCookItemInSlotRequested);
         }
 
-        public CookingService(SignalBus signalBus, [Inject(Id = "CookingSlots", Optional = true)] ItemSlotController[] cookingSlots)
+        public CookingService(SignalBus signalBus, [Inject(Id = "CoroutineHost", Optional = true)] MonoBehaviour coroutineHost)
         {
             _signalBus = signalBus;
+            _coroutineHost = coroutineHost;
+            if (_coroutineHost == null)
+            {
+                Logger.LogError(this, "CoroutineHost MonoBehaviour was not injected into CookingService. Cooking timers will not work.");
+            }
         }
     }
 }

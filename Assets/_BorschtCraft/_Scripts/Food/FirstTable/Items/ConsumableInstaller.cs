@@ -16,6 +16,8 @@ namespace BorschtCraft.Food
         [SerializeField] ItemSlotController[] _releasingSlots;
         public override void InstallBindings()
         {
+            Container.Bind<MonoBehaviour>().WithId("CoroutineHost").FromInstance(this).AsSingle();
+
             //ViewMode mappings for consumable items
             var viewModelMappings = new List<ConsumedViewModelMapping>
             {
@@ -64,17 +66,9 @@ namespace BorschtCraft.Food
 
             //Bind Signals
             Container.DeclareSignal<ConsumableInteractionRequestSignal>();
-            //Container.DeclareSignal<ConsumableInteractionRequestSignal<BreadStack, BreadRaw>>();
-            //Container.DeclareSignal<ConsumableInteractionRequestSignal<SaloStack, Salo>>();
-            //Container.DeclareSignal<ConsumableInteractionRequestSignal<GarlicStack, Garlic>>();
-            //Container.DeclareSignal<ConsumableInteractionRequestSignal<OnionStack, Onion>>();
-            //Container.DeclareSignal<ConsumableInteractionRequestSignal<MustardStack, Mustard>>();
-            //Container.DeclareSignal<ConsumableInteractionRequestSignal<HorseradishStack, Horseradish>>();
-
             Container.DeclareSignal<CookItemInSlotRequestSignal>();
             Container.DeclareSignal<ItemCookedSignal>();
             Container.DeclareSignal<SlotClickedSignal>();
-
         }
     }
 }

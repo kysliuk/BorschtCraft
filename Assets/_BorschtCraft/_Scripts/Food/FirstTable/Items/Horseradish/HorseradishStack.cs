@@ -2,15 +2,9 @@
 {
     public class HorseradishStack : Consumable<Horseradish>
     {
-        public override IConsumed Consume(IConsumed item)
+        public override bool InnerCanDecorate(IConsumed item)
         {
-            if (item == null)
-            {
-                Logger.LogError(this, "cannot consume null item. There should be an item.");
-                return item;
-            }
-
-            return base.Consume(item);
+            return item is IFourthLayer || item is IThirdLayer;
         }
 
         public HorseradishStack(int price) : base(price)
