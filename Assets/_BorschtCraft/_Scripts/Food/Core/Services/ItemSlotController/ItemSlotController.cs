@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 using System;
-using BorschtCraft.Food.Core.Interfaces;
-using BorschtCraft.Food.Core; // Required for IConsumed, Consumed, ICookable, ICooked if used in logging or specific checks, but likely not needed after refactor.
+using BorschtCraft.Food;
 
 namespace BorschtCraft.Food.UI
 {

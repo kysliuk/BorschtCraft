@@ -3,9 +3,6 @@ using Zenject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using BorschtCraft.Food.Core; // For IConsumed, Consumed, ICooked, ICookable etc.
-using BorschtCraft.Food.Core.Interfaces; // For IItemSlotViewManager
-using BorschtCraft.Food.UI; // For IManagedConsumedView, IConsumedViewModel, ConsumedViewModelMapping
 
 namespace BorschtCraft.Food.UI // Adjusted namespace
 {
@@ -26,8 +23,6 @@ namespace BorschtCraft.Food.UI // Adjusted namespace
             _viewModelMappings = viewModelMappings;
             _childViews = childViews; // Store the views discovered by ItemSlotController
 
-            // Initial detachment of any existing viewmodels from views
-            // This replicates part of ItemSlotController's Awake logic for views.
             if (_childViews != null)
             {
                 foreach (var managedView in _childViews.Values)

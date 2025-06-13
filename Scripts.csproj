@@ -9,7 +9,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{47E57516-A146-196E-547E-A9A9A95C7F6D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -61,6 +62,8 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.38f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Interfaces\IItemSlot.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Services\ItemSlotController\ItemSlotViewManager.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Mustard\MustardStack.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Bread\Stack\BreadStackView.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Interfaces\IReleasable.cs" />
@@ -74,6 +77,7 @@
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Salo\PrefabInstaller\SaloStackPrefabInstaller.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\UI\Consumable\ConsumableViewModel.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\UI\Consumed\ConsumedViewModelMapping.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Services\ItemSlotController\IItemSlotViewManager.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Services\SelectedItemService\ISelectedItemService.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\UI\Consumed\ConsumedView.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\UI\Consumed\IManagedConsumedView.cs" />
@@ -1233,6 +1237,7 @@
       <Name>UniTask</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
