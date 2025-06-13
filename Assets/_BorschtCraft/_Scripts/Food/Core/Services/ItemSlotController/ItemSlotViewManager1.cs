@@ -140,15 +140,6 @@ namespace BorschtCraft.Food.UI
 
         private void ClearManagedViews()
         {
-            if (_activeViewModels != null)
-            {
-                // Optional: Explicitly hide view models before detaching, though DetachViewModel should handle cleanup.
-                // foreach (var vm in _activeViewModels)
-                // {
-                //     vm?.SetVisibility(false);
-                // }
-            }
-
             if (_childViews != null)
             {
                 foreach (var managedView in _childViews.Values)
