@@ -1,5 +1,4 @@
 ﻿using BorschtCraft.Food.Signals;
-using BorschtCraft.Food.UI;
 using System.Linq;
 using Zenject;
 
@@ -8,7 +7,7 @@ namespace BorschtCraft.Food
     public class ConsumingService : IConsumingService
     {
         private readonly SignalBus _signalBus;
-        private readonly ItemSlotController[] _cookingSlots;
+        private readonly IItemSlot[] _cookingSlots;
         private readonly ICombiningService _combiningService;
 
         public void Initialize()
@@ -39,33 +38,38 @@ namespace BorschtCraft.Food
                 return;
             }
 
+            AttemptInitialProduction(consumableSource);
+        }
+
+        private void AttemptInitialProduction(IConsumable consumableSource)
+        {
             Logger.LogInfo(this, $"{consumableSource.GetType().Name} not handled by Combiner or not a decorator. Attempting initial production.");
 
             var producedItem = consumableSource.Consume(null);
 
-            if(producedItem != null)
+            if (producedItem != null)
             {
                 var targetSlot = FindEmptyCookingSlot();
 
                 if (targetSlot != null)
                 {
                     targetSlot.TrySetItem(producedItem);
-                    Logger.LogInfo(this, $"Produced {producedItem.GetType().Name} from {consumableSource.GetType().Name} into cooking slot {targetSlot.gameObject.name}.");
+                    Logger.LogInfo(this, $"Produced {producedItem.GetType().Name} from {consumableSource.GetType().Name} into cooking slot {targetSlot.GetGameObject().name}.");
 
-                    if(producedItem is ICookable)
+                    if (producedItem is ICookable)
                     {
-                        Logger.LogInfo(this, $"Auto-requesting cook for {producedItem.GetType().Name} in slot {targetSlot.gameObject.name}");
+                        Logger.LogInfo(this, $"Auto-requesting cook for {producedItem.GetType().Name} in slot {targetSlot.GetGameObject().name}");
                         _signalBus.Fire(new CookItemInSlotRequestSignal(targetSlot));
-                    }
-                    else
-                    {
-                        Logger.LogWarning(this, $"No empty cooking slot found for {producedItem.GetType().Name} from {consumableSource.GetType().Name}.");
                     }
                 }
                 else
                 {
-                    Logger.LogWarning(this, $"{consumableSource.GetType().Name}.Consume(null) did not produce an item. This is expected if it's purely a decorator.");
+                    Logger.LogWarning(this, $"No empty cooking slot found for {producedItem.GetType().Name} from {consumableSource.GetType().Name}.");
                 }
+            }
+            else
+            {
+                Logger.LogWarning(this, $"{consumableSource.GetType().Name}.Consume(null) did not produce an item. This is expected if it's purely a decorator.");
             }
         }
 
@@ -74,10 +78,10 @@ namespace BorschtCraft.Food
             return consumable is not ICantDecorate;
         }
 
-        private ItemSlotController FindEmptyCookingSlot()
+        private IItemSlot FindEmptyCookingSlot()
         {
             if (_cookingSlots == null) return null;
-            return _cookingSlots.FirstOrDefault(slot => slot != null && slot.CurrentItemInSlot == null);
+            return _cookingSlots.FirstOrDefault(slot => slot != null && slot.GetCurrentItem() == null);
         }
 
         public void Dispose()
@@ -86,7 +90,7 @@ namespace BorschtCraft.Food
         }
 
         public ConsumingService(SignalBus signalBus,
-                                [Inject(Id = "CookingSlots")] ItemSlotController[] cookingSlots,
+                                [Inject(Id = "CookingSlots")] IItemSlot[] cookingSlots,
                                 ICombiningService combiningService)
         {
             _signalBus = signalBus;

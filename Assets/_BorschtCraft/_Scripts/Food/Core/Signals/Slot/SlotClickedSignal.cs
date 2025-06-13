@@ -1,14 +1,12 @@
-﻿using BorschtCraft.Food.UI;
-
-namespace BorschtCraft.Food.Signals
+﻿namespace BorschtCraft.Food.Signals
 {
     public class SlotClickedSignal
     {
-        public ItemSlotController ClickedSlot { get; }
+        public IItemSlot ClickedSlot { get; } // Changed type
 
-        public SlotClickedSignal(ItemSlotController clickedSlot)
+        public SlotClickedSignal(IItemSlot clickedSlot) // Changed parameter type
         {
-            ClickedSlot = clickedSlot;
+            ClickedSlot = clickedSlot; // Assignment is fine
         }
     }
 }

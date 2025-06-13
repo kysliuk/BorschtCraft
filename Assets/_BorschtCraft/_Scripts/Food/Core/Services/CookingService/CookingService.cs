@@ -1,6 +1,4 @@
 ﻿using BorschtCraft.Food.Signals;
-using BorschtCraft.Food.UI;
-using Cysharp.Threading.Tasks;
 using System.Collections;
 using UnityEngine;
 using Zenject;
@@ -17,19 +15,19 @@ namespace BorschtCraft.Food
             _signalBus.Subscribe<CookItemInSlotRequestSignal>(OnCookItemInSlotRequested);
         }
 
-        public bool CookItemInSlot(ItemSlotController slotController)
+        public bool CookItemInSlot(IItemSlot slot)
         {
-            if (slotController == null || slotController.CurrentItemInSlot == null)
+            if (slot == null || slot.GetCurrentItem() == null)
             {
                 Logger.LogWarning(this, "Cannot cook: Slot is null or empty.");
                 return false;
             }
 
-            var itemToCook = slotController.CurrentItemInSlot;
+            var itemToCook = slot.GetCurrentItem();
 
             if(itemToCook is ICookable cookableItem)
             {   
-                _coroutineHost.StartCoroutine(PerformCookeing(cookableItem, slotController));
+                _coroutineHost.StartCoroutine(PerformCookeing(cookableItem, slot));
                 return true;
             }
 
@@ -38,16 +36,16 @@ namespace BorschtCraft.Food
 
         private void OnCookItemInSlotRequested(CookItemInSlotRequestSignal signal)
         {
-            if(signal.SlotController == null || signal.SlotController.CurrentItemInSlot == null)
+            if(signal.Slot == null || signal.Slot.GetCurrentItem() == null)
             {
                 Logger.LogWarning(this, "Cook request received for an invalid or empty slot.");
                 return;
             }
 
-            CookItemInSlot(signal.SlotController);
+            CookItemInSlot(signal.Slot);
         }
 
-        private IEnumerator PerformCookeing(ICookable cookableItem, ItemSlotController slot)
+        private IEnumerator PerformCookeing(ICookable cookableItem, IItemSlot slot)
         {
             yield return new WaitForSeconds(cookableItem.CookingTime);
 
@@ -55,7 +53,7 @@ namespace BorschtCraft.Food
             slot.TrySetItem(coockedItem);
 
             _signalBus.Fire(new ItemCookedSignal(coockedItem, slot));
-            Logger.LogInfo(this, $"Cooked item: {coockedItem.GetType().Name} in slot: {slot.gameObject.name}");
+            Logger.LogInfo(this, $"Cooked item: {coockedItem.GetType().Name} in slot: {slot.GetGameObject().name}");
         }
 
         public void Dispose()

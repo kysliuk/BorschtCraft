@@ -1,12 +1,11 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using Zenject;
 using System;
 
 namespace BorschtCraft.Food.UI
 {
-    public class ItemSlotController : MonoBehaviour
+    public class ItemSlotController : MonoBehaviour, IItemSlot
     {
         [Inject] private DiContainer _diContainer;
         [Inject] private SignalBus _signalBus;
@@ -15,7 +14,7 @@ namespace BorschtCraft.Food.UI
         public IConsumed CurrentItemInSlot { get; private set; }
 
         private readonly Dictionary<Type, IManagedConsumedView> _childViews = new Dictionary<Type, IManagedConsumedView>();
-        private readonly List<IConsumedViewModel> _activeViewModels = new List<IConsumedViewModel>();
+        private IItemSlotViewManager _viewManager;
 
         private void Awake()
         {
@@ -28,112 +27,18 @@ namespace BorschtCraft.Food.UI
                     if (!_childViews.ContainsKey(modelType))
                     {
                         _childViews.Add(modelType, managedView);
-                        managedView.DetachViewModel();
                     }
                 }
             }
+
+            _viewManager = new ItemSlotViewManager();
+            _viewManager.Initialize(transform, _diContainer, _signalBus, _viewModelMappings, _childViews);
         }
 
         public bool TrySetItem(IConsumed newItem)
         {
-            if (_diContainer == null || _childViews == null || _viewModelMappings == null)
-            {
-                Logger.LogError(this, $"Slot {gameObject.name} TrySetItem: Crucial dependencies are null. DIContainer: {_diContainer == null}, ChildViews: {_childViews == null}, ViewModelMappings: {_viewModelMappings == null}");
-                return false;
-            }
-
-            ClearSlotView();
-            CurrentItemInSlot = newItem;
-
-            if (CurrentItemInSlot == null)
-            {
-                return true;
-            }
-
-            bool topItemIsCookedResult = CurrentItemInSlot is ICooked;
-            IConsumed currentDisplayLayer = CurrentItemInSlot;
-            int layerProcessingCount = 0;
-
-            while (currentDisplayLayer != null && layerProcessingCount < 10)
-            {
-                layerProcessingCount++;
-                Type modelType = currentDisplayLayer.GetType();
-
-                bool shouldDisplayThisLayer = true;
-                if (topItemIsCookedResult &&
-                    currentDisplayLayer != CurrentItemInSlot &&
-                    currentDisplayLayer is ICookable)
-                {
-                    Logger.LogInfo(this, $"Slot {gameObject.name} TrySetItem: Suppressing view for underlying ICookable layer '{modelType.Name}' because top item ('{CurrentItemInSlot.GetType().Name}') was ICooked.");
-                    shouldDisplayThisLayer = false;
-                }
-
-                if (shouldDisplayThisLayer)
-                {
-                    if (!_childViews.TryGetValue(modelType, out IManagedConsumedView managedView) || managedView == null)
-                    {
-                        Logger.LogWarning(this, $"Slot {gameObject.name} TrySetItem: No active child view found or view is null for model type: {modelType.Name}.");
-                    }
-                    else
-                    {
-                        var mapping = _viewModelMappings.FirstOrDefault(m => m.ConsumedModelType == modelType);
-                        if (mapping == null)
-                        {
-                            Logger.LogError(this, $"Slot {gameObject.name} TrySetItem: No ViewModel mapping found for Consumed type: {modelType.Name}");
-                        }
-                        else
-                        {
-                            IConsumedViewModel newViewModelInstance = null;
-                            try
-                            {
-                                object instantiatedObject = _diContainer.Instantiate(mapping.ViewModelType, new object[] { currentDisplayLayer, _signalBus });
-                                newViewModelInstance = instantiatedObject as IConsumedViewModel;
-
-                                if (newViewModelInstance == null)
-                                {
-                                    Logger.LogError(this, $"Slot {gameObject.name} TrySetItem: Instantiated object of type '{instantiatedObject?.GetType().Name}' for '{mapping.ViewModelType.Name}' could not be cast to IConsumedViewModel.");
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                Logger.LogError(this, $"Slot {gameObject.name} TrySetItem: EXCEPTION during ViewModel instantiation for {mapping.ViewModelType.Name}. Error: {ex.ToString()}");
-                                currentDisplayLayer = null;
-                                continue;
-                            }
-
-                            if (newViewModelInstance != null)
-                            {
-                                try
-                                {
-                                    managedView.AttachViewModel(newViewModelInstance);
-                                    newViewModelInstance.SetVisibility(true);
-                                    _activeViewModels.Add(newViewModelInstance);
-                                }
-                                catch (Exception ex)
-                                {
-                                    Logger.LogError(this, $"Slot {gameObject.name} TrySetItem: EXCEPTION during AttachViewModel or SetVisibility for {newViewModelInstance.GetType().Name}. Error: {ex.ToString()}");
-                                    currentDisplayLayer = null; 
-                                    continue;
-                                }
-                            }
-                        }
-                    }
-                }
-
-                if (currentDisplayLayer is Consumed consumedLayerInstance)
-                {
-                    currentDisplayLayer = consumedLayerInstance.WrappedItem;
-                }
-                else
-                {
-                    currentDisplayLayer = null;
-                }
-            }
-
-            if (layerProcessingCount >= 10)
-            {
-                Logger.LogWarning(this, $"Slot {gameObject.name} TrySetItem: Layer processing loop hit safety limit ({layerProcessingCount}).");
-            }
+            this.CurrentItemInSlot = newItem;
+            _viewManager.DisplayItem(this.CurrentItemInSlot, this.CurrentItemInSlot);
 
             return true;
         }
@@ -141,35 +46,34 @@ namespace BorschtCraft.Food.UI
         public IConsumed ReleaseItem()
         {
             var releasedItem = CurrentItemInSlot;
-            ClearSlotView();
             CurrentItemInSlot = null;
+            ClearSlotView();
             return releasedItem;
         }
 
         private void ClearSlotView()
         {
-            if (_childViews == null || _activeViewModels == null) return;
-
-            foreach (var managedView in _childViews.Values)
-            {
-                if (managedView != null)
-                {
-                    try
-                    {
-                        managedView.DetachViewModel();
-                    }
-                    catch (Exception ex)
-                    {
-                        Logger.LogError(this, $"Slot {gameObject.name} ClearSlotView: Exception during DetachViewModel: {ex.Message}");
-                    }
-                }
-            }
-            _activeViewModels.Clear();
+            _viewManager?.ClearView();
         }
 
         private void OnDestroy()
         {
-            ClearSlotView();
+            _viewManager?.OnDestroy();
+        }
+
+        public IConsumed GetCurrentItem()
+        {
+            return this.CurrentItemInSlot;
+        }
+
+        public bool IsEmpty()
+        {
+            return this.CurrentItemInSlot == null;
+        }
+
+        public GameObject GetGameObject()
+        {
+            return this.gameObject;
         }
     }
 }

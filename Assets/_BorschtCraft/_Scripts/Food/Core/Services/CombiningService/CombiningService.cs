@@ -1,11 +1,10 @@
-﻿using BorschtCraft.Food.UI;
-using Zenject;
+﻿using Zenject;
 
 namespace BorschtCraft.Food
 {
     public class CombiningService : ICombiningService
     {
-        private readonly ItemSlotController[] _releasingSlots;
+        private readonly IItemSlot[] _releasingSlots;
 
         public bool AttemptCombination(IConsumable consumable)
         {
@@ -14,16 +13,16 @@ namespace BorschtCraft.Food
             if (consumable == null)
                 return false;
 
-            ItemSlotController targetSlotWithItem = FindDecoratableItemSlot(consumable);
+            IItemSlot targetSlotWithItem = FindDecoratableItemSlot(consumable);
 
-            if (targetSlotWithItem == null || targetSlotWithItem.CurrentItemInSlot == null)
+            if (targetSlotWithItem == null || targetSlotWithItem.GetCurrentItem() == null)
             {
                 Logger.LogInfo(this, $"No suitable item found in releasing slots to decorate with {consumable.GetType().Name}.");
-                return false; 
+                return false;
             }
 
-            IConsumed itemToDecorate = targetSlotWithItem.CurrentItemInSlot;
-            Logger.LogInfo(this, $"Found '{itemToDecorate.GetType().Name}' in slot '{targetSlotWithItem.gameObject.name}' to decorate with '{consumable.GetType().Name}'.");
+            IConsumed itemToDecorate = targetSlotWithItem.GetCurrentItem();
+            Logger.LogInfo(this, $"Found '{itemToDecorate.GetType().Name}' in slot '{targetSlotWithItem.GetGameObject().name}' to decorate with '{consumable.GetType().Name}'."); // Changed access
             IConsumed decoratedItem = consumable.Consume(itemToDecorate);
 
             if (decoratedItem != null && decoratedItem != itemToDecorate)
@@ -35,28 +34,28 @@ namespace BorschtCraft.Food
             else
             {
                 Logger.LogWarning(this, $"Decorating '{itemToDecorate.GetType().Name}' with '{consumable.GetType().Name}' did not result in a new item or failed.");
-                return false; 
+                return false;
             }
         }
 
-        private ItemSlotController FindDecoratableItemSlot(IConsumable decorator)
+        private IItemSlot FindDecoratableItemSlot(IConsumable decorator)
         {
             if (_releasingSlots == null || decorator == null) return null;
 
             Logger.LogInfo(this, $"FindDecoratableItemSlot: Searching for item that '{decorator.GetType().Name}' can decorate.");
             foreach (var slot in _releasingSlots)
             {
-                if (slot != null && slot.CurrentItemInSlot != null)
+                if (slot != null && slot.GetCurrentItem() != null) 
                 {
-                    Logger.LogInfo(this, $"FindDecoratableItemSlot: Checking slot '{slot.gameObject.name}' with item '{slot.CurrentItemInSlot.GetType().Name}'.");
-                    if (decorator.CanDecorate(slot.CurrentItemInSlot))
+                    Logger.LogInfo(this, $"FindDecoratableItemSlot: Checking slot '{slot.GetGameObject().name}' with item '{slot.GetCurrentItem().GetType().Name}'."); // Changed access
+                    if (decorator.CanDecorate(slot.GetCurrentItem())) 
                     {
-                        Logger.LogInfo(this, $"FindDecoratableItemSlot: Found suitable slot '{slot.gameObject.name}' with item '{slot.CurrentItemInSlot.GetType().Name}'.");
-                        return slot; 
+                        Logger.LogInfo(this, $"FindDecoratableItemSlot: Found suitable slot '{slot.GetGameObject().name}' with item '{slot.GetCurrentItem().GetType().Name}'."); // Changed access
+                        return slot;
                     }
                     else
                     {
-                        Logger.LogInfo(this, $"FindDecoratableItemSlot: Decorator '{decorator.GetType().Name}' cannot decorate item '{slot.CurrentItemInSlot.GetType().Name}' in slot '{slot.gameObject.name}'.");
+                        Logger.LogInfo(this, $"FindDecoratableItemSlot: Decorator '{decorator.GetType().Name}' cannot decorate item '{slot.GetCurrentItem().GetType().Name}' in slot '{slot.GetGameObject().name}'."); // Changed access
                     }
                 }
             }
@@ -64,7 +63,7 @@ namespace BorschtCraft.Food
             return null;
         }
 
-        public CombiningService([Inject(Id = "ReleasingSlots")] ItemSlotController[] releasingSlots)
+        public CombiningService([Inject(Id = "ReleasingSlots")] IItemSlot[] releasingSlots) 
         {
             _releasingSlots = releasingSlots;
         }
