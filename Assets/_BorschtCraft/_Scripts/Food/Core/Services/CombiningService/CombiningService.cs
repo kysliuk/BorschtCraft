@@ -1,6 +1,4 @@
-﻿using BorschtCraft.Food.UI;
-using Zenject;
-using BorschtCraft.Food.Core.Interfaces; // Added
+﻿using Zenject;
 
 namespace BorschtCraft.Food
 {
