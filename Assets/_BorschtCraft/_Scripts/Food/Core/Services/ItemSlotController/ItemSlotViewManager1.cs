@@ -4,16 +4,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BorschtCraft.Food.UI // Adjusted namespace
+namespace BorschtCraft.Food.UI
 {
     public class ItemSlotViewManager : IItemSlotViewManager
     {
         private DiContainer _diContainer;
         private SignalBus _signalBus;
         private List<ConsumedViewModelMapping> _viewModelMappings;
-        private Dictionary<Type, IManagedConsumedView> _childViews; // Populated by ItemSlotController
+        private Dictionary<Type, IManagedConsumedView> _childViews;
         private readonly List<IConsumedViewModel> _activeViewModels = new List<IConsumedViewModel>();
-        private string _slotNameForLogging; // For context in logging
+        private string _slotNameForLogging;
 
         public void Initialize(Transform slotTransform, DiContainer diContainer, SignalBus signalBus, List<ConsumedViewModelMapping> viewModelMappings, Dictionary<Type, IManagedConsumedView> childViews)
         {
@@ -21,10 +21,8 @@ namespace BorschtCraft.Food.UI // Adjusted namespace
             _diContainer = diContainer;
             this._signalBus = signalBus;
             _viewModelMappings = viewModelMappings;
-            _childViews = childViews; // Store the views discovered by ItemSlotController
+            _childViews = childViews;
 
-            // Initial detachment of any existing viewmodels from views
-            // This replicates part of ItemSlotController's Awake logic for views.
             if (_childViews != null)
             {
                 foreach (var managedView in _childViews.Values)
@@ -49,19 +47,18 @@ namespace BorschtCraft.Food.UI // Adjusted namespace
                 return;
             }
 
-            bool topItemIsCookedResult = overallRootItem is ICooked; // Use overallRootItem for this check
+            bool topItemIsCookedResult = overallRootItem is ICooked;
             IConsumed currentDisplayLayer = itemToDisplay;
             int layerProcessingCount = 0;
 
-            while (currentDisplayLayer != null && layerProcessingCount < 10) // Safety break
+            while (currentDisplayLayer != null && layerProcessingCount < 10)
             {
                 layerProcessingCount++;
                 Type modelType = currentDisplayLayer.GetType();
 
                 bool shouldDisplayThisLayer = true;
-                // If the top item was cooked, we don't want to display underlying "raw" versions of cookable items
                 if (topItemIsCookedResult &&
-                    currentDisplayLayer != overallRootItem && // only apply suppression to layers below the top
+                    currentDisplayLayer != overallRootItem &&
                     currentDisplayLayer is ICookable)
                 {
                     Logger.LogInfo($"Slot {_slotNameForLogging}", $"DisplayItem: Suppressing view for underlying ICookable layer '{modelType.Name}' because top item ('{overallRootItem.GetType().Name}') was ICooked.");
@@ -86,7 +83,6 @@ namespace BorschtCraft.Food.UI // Adjusted namespace
                             IConsumedViewModel newViewModelInstance = null;
                             try
                             {
-                                // Use the stored _signalBus here
                                 object instantiatedObject = _diContainer.Instantiate(mapping.ViewModelType, new object[] { currentDisplayLayer, this._signalBus });
                                 newViewModelInstance = instantiatedObject as IConsumedViewModel;
 
@@ -98,7 +94,7 @@ namespace BorschtCraft.Food.UI // Adjusted namespace
                             catch (Exception ex)
                             {
                                 Logger.LogError($"Slot {_slotNameForLogging}", $"DisplayItem: EXCEPTION during ViewModel instantiation for {mapping.ViewModelType.Name}. Error: {ex.ToString()}");
-                                currentDisplayLayer = null; // Stop processing this branch if VM fails
+                                currentDisplayLayer = null;
                                 continue;
                             }
 
@@ -107,13 +103,13 @@ namespace BorschtCraft.Food.UI // Adjusted namespace
                                 try
                                 {
                                     managedView.AttachViewModel(newViewModelInstance);
-                                    newViewModelInstance.SetVisibility(true); // Ensure new views are visible
+                                    newViewModelInstance.SetVisibility(true);
                                     _activeViewModels.Add(newViewModelInstance);
                                 }
                                 catch (Exception ex)
                                 {
                                     Logger.LogError($"Slot {_slotNameForLogging}", $"DisplayItem: EXCEPTION during AttachViewModel or SetVisibility for {newViewModelInstance.GetType().Name}. Error: {ex.ToString()}");
-                                    currentDisplayLayer = null; // Stop processing this branch
+                                    currentDisplayLayer = null;
                                     continue;
                                 }
                             }
@@ -121,14 +117,13 @@ namespace BorschtCraft.Food.UI // Adjusted namespace
                     }
                 }
 
-                // Navigate to the next layer down (if applicable)
                 if (currentDisplayLayer is Consumed consumedLayerInstance)
                 {
                     currentDisplayLayer = consumedLayerInstance.WrappedItem;
                 }
                 else
                 {
-                    currentDisplayLayer = null; // No further wrapping
+                    currentDisplayLayer = null;
                 }
             }
 
