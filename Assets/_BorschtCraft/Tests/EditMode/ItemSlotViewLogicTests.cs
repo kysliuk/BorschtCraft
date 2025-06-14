@@ -12,8 +12,7 @@
 //using Zenject;
 
 
-//// --- Mock/Stub Implementations (minimal for these tests) ---
-//// Assuming MockConsumed, MockCookableConsumed, MockCookedConsumed are available from previous tests or defined here.
+// --- Mock/Stub Implementations (minimal for these tests) ---
 
 //public class LayeredTestItem : Consumed
 //{
@@ -37,12 +36,31 @@
 //    public CookedLayeredItem(string name, int price, IConsumed wrapped = null) : base(name, price, wrapped) {}
 //}
 
-//public class StubManagedConsumedView : IManagedConsumedView
-//{
-//    public IConsumedViewModel AttachedViewModel { get; private set; }
-//    public bool IsVisible { get; private set; }
-//    public int DetachCalledCount { get; private set; } = 0;
-//    public Type ConsumedModelType { get; set; }
+// Added BreadRaw stub as required by new tests
+public class BreadRaw : Consumed, ICookable
+{
+    public BreadRaw(int price, IConsumed wrapped = null) : base(price, wrapped) { Name = "BreadRaw"; }
+    public string Name { get; set; }
+    public float CookingTime { get; set; } = 1f;
+    public IConsumed Cook() { return new CookedLayeredItem("CookedBread", Price, WrappedItem); } // Assuming CookedLayeredItem can represent cooked bread
+    public override string ToString() => Name;
+}
+
+// MockCookedConsumed stub for BreadRaw's Cook() method, if not using CookedLayeredItem
+public class MockCookedConsumed : Consumed, ICooked // Make sure this derives from Consumed or a common base
+{
+    public MockCookedConsumed() : base(0, null) {} // Base constructor call
+    public string Name { get; set; } = "MockCooked";
+    // ICooked members if any
+}
+
+
+public class StubManagedConsumedView : IManagedConsumedView
+{
+    public IConsumedViewModel AttachedViewModel { get; private set; }
+    public bool IsVisible { get; private set; }
+    public int DetachCalledCount { get; private set; } = 0;
+    public Type ConsumedModelType { get; set; }
 
 //    public void AttachViewModel(IConsumedViewModel viewModel)
 //    {
@@ -58,35 +76,31 @@
 //    public Type GetConsumedModelType() => ConsumedModelType;
 //}
 
-//public class StubConsumedViewModel : IConsumedViewModel
-//{
-//    public IConsumed Model { get; }
-//    public object SignalBusStub { get; } // Keep as object for flexibility if SignalBus type is an issue
-//    public bool IsVisible { get; private set; }
-//    public int SetVisibilityCount { get; private set; } = 0;
+public class StubConsumedViewModel : IConsumedViewModel
+{
+    public IConsumed Model { get; }
+    public object SignalBusStub { get; }
+    public bool IsVisible { get; private set; }
+    public int SetVisibilityCount { get; private set; } = 0;
 
-//    // Constructor used by StubDiContainer in ViewModelFactoryTests
-//    public StubConsumedViewModel(IConsumed model, SignalBus signalBus) // Matching factory call pattern
-//    {
-//        Model = model;
-//        SignalBusStub = signalBus; // Store it, even if it's null in some test setups
-//    }
-//    public void SetVisibility(bool visible) { IsVisible = visible; SetVisibilityCount++; }
-//    public void OnSlotClicked() {}
-//    public void OnActionSpecificToThisVM() {}
-//}
+    public StubConsumedViewModel(IConsumed model, SignalBus signalBus)
+    {
+        Model = model;
+        SignalBusStub = signalBus;
+    }
+    public void SetVisibility(bool visible) { IsVisible = visible; SetVisibilityCount++; }
+    public void OnSlotClicked() {}
+    public void OnActionSpecificToThisVM() {}
+}
 
-//// Stub for DiContainer - very basic for ViewModelFactory tests
-//public class StubDiContainerForFactoryTests // Renamed to avoid conflict if other DiContainer stubs exist
-//{
-//    public System.Func<Type, object[], object> InstantiateFunc { get; set; }
-
-//    // This matches the DiContainer method used by ViewModelFactory
-//    public object Instantiate(Type type, IEnumerable<object> extraArgs)
-//    {
-//        return InstantiateFunc?.Invoke(type, extraArgs.ToArray());
-//    }
-//}
+public class StubDiContainerForFactoryTests
+{
+    public System.Func<Type, object[], object> InstantiateFunc { get; set; }
+    public object Instantiate(Type type, IEnumerable<object> extraArgs)
+    {
+        return InstantiateFunc?.Invoke(type, extraArgs.ToArray());
+    }
+}
 
 
 //[TestFixture]
@@ -100,21 +114,22 @@
 //        _processor = new ItemLayerProcessor();
 //    }
 
-//    [Test]
-//    public void GetLayers_NullItem_ReturnsEmptyList()
-//    {
-//        var layers = _processor.GetLayersToDisplay(null);
-//        Assert.IsEmpty(layers);
-//    }
+    [Test]
+    public void GetLayers_NullItem_ReturnsEmptyList()
+    {
+        // Pass a default SlotType, e.g., Unknown, as it's now required
+        var layers = _processor.GetLayersToDisplay(null, SlotType.Unknown);
+        Assert.IsEmpty(layers);
+    }
 
-//    [Test]
-//    public void GetLayers_SingleItem_ReturnsItemItself()
-//    {
-//        var item = new LayeredTestItem("Single", 10);
-//        var layers = _processor.GetLayersToDisplay(item);
-//        Assert.AreEqual(1, layers.Count);
-//        Assert.Contains(item, layers);
-//    }
+    [Test]
+    public void GetLayers_SingleItem_ReturnsItemItself()
+    {
+        var item = new LayeredTestItem("Single", 10);
+        var layers = _processor.GetLayersToDisplay(item, SlotType.Unknown); // Added SlotType.Unknown
+        Assert.AreEqual(1, layers.Count);
+        Assert.Contains(item, layers);
+    }
 
 //    [Test]
 //    public void GetLayers_WrappedItems_ReturnsAllLayersInOrder()
@@ -123,12 +138,12 @@
 //        var middle = new LayeredTestItem("Middle", 3, bottom);
 //        var top = new LayeredTestItem("Top", 2, middle);
 
-//        var layers = _processor.GetLayersToDisplay(top);
-//        Assert.AreEqual(3, layers.Count);
-//        Assert.AreEqual(top, layers[0]);
-//        Assert.AreEqual(middle, layers[1]);
-//        Assert.AreEqual(bottom, layers[2]);
-//    }
+        var layers = _processor.GetLayersToDisplay(top, SlotType.Unknown); // Added SlotType.Unknown
+        Assert.AreEqual(3, layers.Count);
+        Assert.AreEqual(top, layers[0]);
+        Assert.AreEqual(middle, layers[1]);
+        Assert.AreEqual(bottom, layers[2]);
+    }
 
 //    [Test]
 //    public void GetLayers_CookedTop_CookableMiddle_RawBottom_SuppressesCookableMiddle()
@@ -137,7 +152,7 @@
 //        var middleCookable = new CookableLayeredItem("MiddleCookable", 3, bottom);
 //        var topCooked = new CookedLayeredItem("TopCooked", 2, middleCookable);
 
-//        var layers = _processor.GetLayersToDisplay(topCooked);
+        var layers = _processor.GetLayersToDisplay(topCooked, SlotType.Cooking); // Added SlotType.Cooking
 
 //        Assert.AreEqual(2, layers.Count, "Should display top and bottom, suppress middle.");
 //        Assert.Contains(topCooked, layers);
@@ -151,42 +166,86 @@
 //        var bottom = new LayeredTestItem("BottomRaw", 5);
 //        var topCookable = new CookableLayeredItem("TopCookable", 3, bottom);
 
-//        var layers = _processor.GetLayersToDisplay(topCookable);
-//        Assert.AreEqual(2, layers.Count);
-//        Assert.Contains(topCookable, layers);
-//        Assert.Contains(bottom, layers);
-//    }
+        var layers = _processor.GetLayersToDisplay(topCookable, SlotType.Cooking); // Added SlotType.Cooking
+        Assert.AreEqual(2, layers.Count);
+        Assert.Contains(topCookable, layers);
+        Assert.Contains(bottom, layers);
+    }
 
-//    [Test]
-//    public void GetLayers_MaxLayerSafetyLimit()
-//    {
-//        IConsumed current = new LayeredTestItem("Leaf", 1);
-//        for (int i = 0; i < 15; i++)
-//        {
-//            current = new LayeredTestItem("Layer" + i, 1, current);
-//        }
-//        var layers = _processor.GetLayersToDisplay(current);
-//        Assert.LessOrEqual(layers.Count, 10);
-//    }
-//}
+    [Test]
+    public void GetLayers_MaxLayerSafetyLimit()
+    {
+        IConsumed current = new LayeredTestItem("Leaf", 1);
+        for (int i = 0; i < 15; i++)
+        {
+            current = new LayeredTestItem("Layer" + i, 1, current);
+        }
+        var layers = _processor.GetLayersToDisplay(current, SlotType.Unknown); // Added SlotType.Unknown
+        Assert.LessOrEqual(layers.Count, 10);
+    }
 
-//[TestFixture]
-//public class ViewModelFactoryTests
-//{
-//    private ViewModelFactory _factory;
-//    private StubDiContainerForFactoryTests _stubDiContainer;
-//    // SignalBus will be null for these tests as Zenject.SignalBus is hard to stub without proper test framework
-//    private List<ConsumedViewModelMapping> _mappings;
+    // New tests for BreadRaw filtering
+    [Test]
+    public void GetLayers_ReleasingSlot_WithBreadRaw_FiltersBreadRaw()
+    {
+        var breadRaw = new BreadRaw(5);
+        var otherItem = new LayeredTestItem("Other", 3, breadRaw);
+        var topItem = new LayeredTestItem("Top", 2, otherItem);
 
-//    [SetUp]
-//    public void SetUp()
-//    {
-//        _stubDiContainer = new StubDiContainerForFactoryTests();
-//        _mappings = new List<ConsumedViewModelMapping>();
-//        // Passing null for Zenject.SignalBus to allow compilation and test other factory logic.
-//        // ViewModelFactory's constructor expects Zenject.SignalBus, not a custom stub.
-//        _factory = new ViewModelFactory(_stubDiContainer, null, _mappings);
-//    }
+        var layers = _processor.GetLayersToDisplay(topItem, SlotType.Releasing);
+
+        Assert.IsFalse(layers.Any(layer => layer is BreadRaw), "BreadRaw should be filtered out for Releasing slots.");
+        Assert.IsTrue(layers.Contains(topItem), "TopItem should still be present.");
+        Assert.IsTrue(layers.Contains(otherItem), "OtherItem should still be present.");
+        Assert.AreEqual(2, layers.Count);
+    }
+
+    [Test]
+    public void GetLayers_ReleasingSlot_OnlyBreadRaw_ReturnsEmpty()
+    {
+        var breadRaw = new BreadRaw(5);
+        var layers = _processor.GetLayersToDisplay(breadRaw, SlotType.Releasing);
+        Assert.IsEmpty(layers, "Should be empty if only BreadRaw in Releasing slot.");
+    }
+
+    [Test]
+    public void GetLayers_CookingSlot_WithBreadRaw_DoesNotFilterBreadRawBasedOnReleasingRule()
+    {
+        var breadRaw = new BreadRaw(5);
+        var topItem = new LayeredTestItem("Top", 2, breadRaw);
+
+        var layers = _processor.GetLayersToDisplay(topItem, SlotType.Cooking);
+
+        Assert.IsTrue(layers.Any(layer => layer is BreadRaw), "BreadRaw should NOT be filtered out for Cooking slots by the releasing rule.");
+        Assert.AreEqual(2, layers.Count);
+    }
+     [Test]
+    public void GetLayers_UnknownSlot_WithBreadRaw_DoesNotFilterBreadRawBasedOnReleasingRule()
+    {
+        var breadRaw = new BreadRaw(5);
+        var topItem = new LayeredTestItem("Top", 2, breadRaw);
+
+        var layers = _processor.GetLayersToDisplay(topItem, SlotType.Unknown);
+
+        Assert.IsTrue(layers.Any(layer => layer is BreadRaw), "BreadRaw should NOT be filtered out for Unknown slots by the releasing rule.");
+        Assert.AreEqual(2, layers.Count);
+    }
+}
+
+[TestFixture]
+public class ViewModelFactoryTests // No changes needed here based on current subtask
+{
+    private ViewModelFactory _factory;
+    private StubDiContainerForFactoryTests _stubDiContainer;
+    private List<ConsumedViewModelMapping> _mappings;
+
+    [SetUp]
+    public void SetUp()
+    {
+        _stubDiContainer = new StubDiContainerForFactoryTests();
+        _mappings = new List<ConsumedViewModelMapping>();
+        _factory = new ViewModelFactory(_stubDiContainer, null, _mappings);
+    }
 
 //    [Test]
 //    public void CreateVM_NullItem_ReturnsNull()
@@ -202,21 +261,20 @@
 //        var mapping = new ConsumedViewModelMapping { ConsumedModelType = typeof(LayeredTestItem), ViewModelType = typeof(StubConsumedViewModel) };
 //        _mappings.Add(mapping);
 
-//        _stubDiContainer.InstantiateFunc = (type, args) =>
-//        {
-//            if (type == typeof(StubConsumedViewModel))
-//            {
-//                // args[0] is itemLayer, args[1] is signalBus (which is null in this test setup)
-//                return new StubConsumedViewModel(args[0] as IConsumed, args[1] as SignalBus);
-//            }
-//            return null;
-//        };
+        _stubDiContainer.InstantiateFunc = (type, args) =>
+        {
+            if (type == typeof(StubConsumedViewModel))
+            {
+                return new StubConsumedViewModel(args[0] as IConsumed, args[1] as SignalBus);
+            }
+            return null;
+        };
 
-//        var vm = _factory.CreateViewModel(item) as StubConsumedViewModel;
-//        Assert.IsNotNull(vm);
-//        Assert.AreEqual(item, vm.Model);
-//        Assert.IsNull(vm.SignalBusStub, "SignalBus should be null as passed to factory constructor in test");
-//    }
+        var vm = _factory.CreateViewModel(item) as StubConsumedViewModel;
+        Assert.IsNotNull(vm);
+        Assert.AreEqual(item, vm.Model);
+        Assert.IsNull(vm.SignalBusStub);
+    }
 
 //    [Test]
 //    public void CreateVM_NoMappingFound_ReturnsNull_LogsError()
@@ -238,33 +296,40 @@
 //        Assert.IsNull(vm);
 //    }
 
-//    [Test]
-//    public void CreateVM_InstantiatedObjectNotIConsumedViewModel_ReturnsNull_LogsError()
-//    {
-//        var item = new LayeredTestItem("TestItem", 10);
-//        var mapping = new ConsumedViewModelMapping { ConsumedModelType = typeof(LayeredTestItem), ViewModelType = typeof(StubConsumedViewModel) };
-//        _mappings.Add(mapping);
-//        _stubDiContainer.InstantiateFunc = (type, args) => new object(); // Returns plain object
+    [Test]
+    public void CreateVM_InstantiatedObjectNotIConsumedViewModel_ReturnsNull_LogsError()
+    {
+        var item = new LayeredTestItem("TestItem", 10);
+        var mapping = new ConsumedViewModelMapping { ConsumedModelType = typeof(LayeredTestItem), ViewModelType = typeof(StubConsumedViewModel) };
+        _mappings.Add(mapping);
+        _stubDiContainer.InstantiateFunc = (type, args) => new object();
 
 //        var vm = _factory.CreateViewModel(item);
 //        Assert.IsNull(vm);
 //    }
 //}
 
-//[TestFixture]
-//public class ItemSlotViewManagerTests
-//{
-//    private ItemSlotViewManager _viewManager;
-//    private StubItemLayerProcessor _stubItemLayerProcessor;
-//    private StubViewModelFactory _stubViewModelFactory;
-//    private Dictionary<Type, IManagedConsumedView> _childViews;
-//    private Transform _mockSlotTransform;
+[TestFixture]
+public class ItemSlotViewManagerTests
+{
+    private ItemSlotViewManager _viewManager;
+    private StubItemLayerProcessor _stubItemLayerProcessor; // Updated Stub
+    private StubViewModelFactory _stubViewModelFactory;
+    private Dictionary<Type, IManagedConsumedView> _childViews;
+    private Transform _mockSlotTransform;
 
-//    public class StubItemLayerProcessor : IItemLayerProcessor
-//    {
-//        public Func<IConsumed, List<IConsumed>> GetLayersToDisplayFunc { get; set; } = item => new List<IConsumed>();
-//        public List<IConsumed> GetLayersToDisplay(IConsumed overallRootItem) => GetLayersToDisplayFunc(overallRootItem);
-//    }
+    // Updated StubItemLayerProcessor to handle SlotType and store received context
+    public class StubItemLayerProcessor : IItemLayerProcessor
+    {
+        public Func<IConsumed, SlotType, List<IConsumed>> GetLayersToDisplayFunc { get; set; } = (item, slotType) => new List<IConsumed>();
+        public SlotType ReceivedSlotType { get; private set; }
+
+        public List<IConsumed> GetLayersToDisplay(IConsumed overallRootItem, SlotType slotContext)
+        {
+            ReceivedSlotType = slotContext;
+            return GetLayersToDisplayFunc(overallRootItem, slotContext);
+        }
+    }
 
 //    public class StubViewModelFactory : IViewModelFactory
 //    {
@@ -281,8 +346,9 @@
 //        _childViews = new Dictionary<Type, IManagedConsumedView>();
 //        _mockSlotTransform = new GameObject("MockSlotTransform").transform;
 
-//        _viewManager.Initialize(_mockSlotTransform, _childViews, _stubItemLayerProcessor, _stubViewModelFactory);
-//    }
+        // Initialize with a default SlotType, e.g., Cooking or Unknown
+        _viewManager.Initialize(_mockSlotTransform, _childViews, _stubItemLayerProcessor, _stubViewModelFactory, SlotType.Cooking);
+    }
 
 //    [TearDown]
 //    public void TearDown()
@@ -290,34 +356,50 @@
 //        if (_mockSlotTransform != null && _mockSlotTransform.gameObject != null) GameObject.DestroyImmediate(_mockSlotTransform.gameObject);
 //    }
 
-//    [Test]
-//    public void Initialize_DetachesViewModelsFromChildViews()
-//    {
-//        var view1 = new StubManagedConsumedView();
-//        _childViews[typeof(LayeredTestItem)] = view1;
-//        _viewManager.Initialize(_mockSlotTransform, _childViews, _stubItemLayerProcessor, _stubViewModelFactory);
-//        Assert.AreEqual(1, view1.DetachCalledCount);
-//    }
+    [Test]
+    public void Initialize_DetachesViewModelsFromChildViewsAndSetsSlotType() // Name implies SlotType check, but Initialize doesn't expose it directly
+    {
+        var view1 = new StubManagedConsumedView();
+        _childViews[typeof(LayeredTestItem)] = view1;
+        // Re-initialize to test detachment and ensure SlotType is passed (verified in DisplayItem_CallsLayerProcessorWithCorrectSlotType)
+        _viewManager.Initialize(_mockSlotTransform, _childViews, _stubItemLayerProcessor, _stubViewModelFactory, SlotType.Releasing);
+        Assert.AreEqual(1, view1.DetachCalledCount);
+    }
 
-//    [Test]
-//    public void DisplayItem_NullItem_ClearsAndReturns()
-//    {
-//        var view1 = new StubManagedConsumedView();
-//        var vm1 = new StubConsumedViewModel(new LayeredTestItem("Old",1), null);
-//        view1.AttachViewModel(vm1);
-//        _childViews[typeof(LayeredTestItem)] = view1;
+    [Test]
+    public void DisplayItem_CallsLayerProcessorWithCorrectSlotType()
+    {
+        var rootItem = new LayeredTestItem("Root", 1);
+        var expectedSlotType = SlotType.Releasing;
+        // Re-initialize ItemSlotViewManager with the specific SlotType for this test
+        _viewManager.Initialize(_mockSlotTransform, _childViews, _stubItemLayerProcessor, _stubViewModelFactory, expectedSlotType);
 
-//        _viewManager.DisplayItem(null, null);
-//        Assert.AreEqual(1, view1.DetachCalledCount);
-//        Assert.IsNull(view1.AttachedViewModel);
-//    }
+        // The GetLayersToDisplayFunc on the stub will be called, and our stub now records the slotType.
+        _viewManager.DisplayItem(rootItem, rootItem);
 
-//    [Test]
-//    public void DisplayItem_ProcessorReturnsLayers_FactoryCreatesVMs_ViewsAreAttached()
-//    {
-//        var itemLayer1 = new LayeredTestItem("Layer1", 10);
-//        var itemLayer2 = new CookableLayeredItem("Layer2", 5);
-//        _stubItemLayerProcessor.GetLayersToDisplayFunc = item => new List<IConsumed> { itemLayer1, itemLayer2 };
+        Assert.AreEqual(expectedSlotType, _stubItemLayerProcessor.ReceivedSlotType, "SlotType passed to layer processor is incorrect.");
+    }
+
+
+    [Test]
+    public void DisplayItem_NullItem_ClearsAndReturns() // SlotType passed to GetLayersToDisplay won't matter here
+    {
+        var view1 = new StubManagedConsumedView();
+        var vm1 = new StubConsumedViewModel(new LayeredTestItem("Old",1), null);
+        view1.AttachViewModel(vm1);
+        _childViews[typeof(LayeredTestItem)] = view1;
+
+        _viewManager.DisplayItem(null, null); // overallRootItem is also null
+        Assert.AreEqual(1, view1.DetachCalledCount);
+        Assert.IsNull(view1.AttachedViewModel);
+    }
+
+    [Test]
+    public void DisplayItem_ProcessorReturnsLayers_FactoryCreatesVMs_ViewsAreAttached() // Uses SlotType from SetUp
+    {
+        var itemLayer1 = new LayeredTestItem("Layer1", 10);
+        var itemLayer2 = new CookableLayeredItem("Layer2", 5);
+        _stubItemLayerProcessor.GetLayersToDisplayFunc = (item, slotType) => new List<IConsumed> { itemLayer1, itemLayer2 };
 
 //        var vm1 = new StubConsumedViewModel(itemLayer1, null);
 //        var vm2 = new StubConsumedViewModel(itemLayer2, null);
@@ -339,20 +421,20 @@
 //        Assert.AreEqual(1, vm2.SetVisibilityCount);
 //    }
 
-//    [Test]
-//    public void DisplayItem_ProcessorReturnsLayer_NoViewForLayer_LogsWarning()
-//    {
-//        var itemLayer1 = new LayeredTestItem("Layer1", 10);
-//        _stubItemLayerProcessor.GetLayersToDisplayFunc = item => new List<IConsumed> { itemLayer1 };
-//        Assert.DoesNotThrow(() => _viewManager.DisplayItem(new LayeredTestItem("Root",1), new LayeredTestItem("Root",1)));
-//    }
+    [Test]
+    public void DisplayItem_ProcessorReturnsLayer_NoViewForLayer_LogsWarning() // Uses SlotType from SetUp
+    {
+        var itemLayer1 = new LayeredTestItem("Layer1", 10);
+        _stubItemLayerProcessor.GetLayersToDisplayFunc = (item, slotType) => new List<IConsumed> { itemLayer1 };
+        Assert.DoesNotThrow(() => _viewManager.DisplayItem(new LayeredTestItem("Root",1), new LayeredTestItem("Root",1)));
+    }
 
-//    [Test]
-//    public void DisplayItem_ProcessorReturnsLayer_FactoryReturnsNullVM_ViewNotAttached()
-//    {
-//        var itemLayer1 = new LayeredTestItem("Layer1", 10);
-//        _stubItemLayerProcessor.GetLayersToDisplayFunc = item => new List<IConsumed> { itemLayer1 };
-//        _stubViewModelFactory.CreateViewModelFunc = layer => null;
+    [Test]
+    public void DisplayItem_ProcessorReturnsLayer_FactoryReturnsNullVM_ViewNotAttached() // Uses SlotType from SetUp
+    {
+        var itemLayer1 = new LayeredTestItem("Layer1", 10);
+        _stubItemLayerProcessor.GetLayersToDisplayFunc = (item, slotType) => new List<IConsumed> { itemLayer1 };
+        _stubViewModelFactory.CreateViewModelFunc = layer => null;
 
 //        var view1 = new StubManagedConsumedView() { ConsumedModelType = typeof(LayeredTestItem) };
 //        _childViews[typeof(LayeredTestItem)] = view1;

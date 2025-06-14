@@ -2,19 +2,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 using System;
-using BorschtCraft.Food.UI.DisplayLogic; // Added
-using BorschtCraft.Food.UI.Factories;    // Added
+using BorschtCraft.Food.UI.DisplayLogic; // Added for SlotType
+using BorschtCraft.Food.UI.Factories;
 
 namespace BorschtCraft.Food.UI
 {
     public class ItemSlotController : MonoBehaviour, IItemSlot
     {
-        [Inject] private DiContainer _diContainer; // Still needed for ViewModelFactory
-        [Inject] private SignalBus _signalBus;       // Still needed for ViewModelFactory
-        [Inject] private List<ConsumedViewModelMapping> _viewModelMappings; // Still needed for ViewModelFactory
+        [Header("Slot Configuration")]
+        public SlotType SlotContextType = SlotType.Unknown; // Public field to be set in Inspector
 
-        // Optional injections for the new services, if they are bound in Zenject
-        // Otherwise, ItemSlotController can new them up if they have no Zenject dependencies themselves.
+        [Inject] private DiContainer _diContainer;
+        [Inject] private SignalBus _signalBus;
+        [Inject] private List<ConsumedViewModelMapping> _viewModelMappings;
+
         [InjectOptional] private IItemLayerProcessor _itemLayerProcessor;
         [InjectOptional] private IViewModelFactory _viewModelFactory;
 
@@ -37,26 +38,26 @@ namespace BorschtCraft.Food.UI
                 }
             }
 
-            // Instantiate services if not injected by Zenject
             if (_itemLayerProcessor == null)
             {
                 _itemLayerProcessor = new ItemLayerProcessor();
             }
             if (_viewModelFactory == null)
             {
-                // ViewModelFactory needs DiContainer, SignalBus, Mappings
                 _viewModelFactory = new ViewModelFactory(_diContainer, _signalBus, _viewModelMappings);
             }
 
             _viewManager = new ItemSlotViewManager();
-            // Updated Initialize call for _viewManager
-            _viewManager.Initialize(transform, _childViews, _itemLayerProcessor, _viewModelFactory);
+            // Pass the public SlotContextType field to the Initialize method
+            _viewManager.Initialize(transform, _childViews, _itemLayerProcessor, _viewModelFactory, this.SlotContextType);
         }
 
         public bool TrySetItem(IConsumed newItem)
         {
             this.CurrentItemInSlot = newItem;
-            _viewManager.DisplayItem(this.CurrentItemInSlot, this.CurrentItemInSlot); // Second param was overallRootItem, now just pass current
+            // ItemSlotViewManager.DisplayItem expects itemToDisplay and overallRootItem.
+            // As per previous refactoring, overallRootItem is the same as itemToDisplay for the root call.
+            _viewManager.DisplayItem(this.CurrentItemInSlot, this.CurrentItemInSlot);
             return true;
         }
 

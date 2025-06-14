@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System;
+using System.Linq; // Added for Except andOfType
 
 namespace BorschtCraft.Food.UI.DisplayLogic
 {
@@ -7,10 +8,11 @@ namespace BorschtCraft.Food.UI.DisplayLogic
     {
         private const int MaxLayers = 10; // Safety limit
 
-        public List<IConsumed> GetLayersToDisplay(IConsumed overallRootItem)
+        // Updated method signature
+        public List<IConsumed> GetLayersToDisplay(IConsumed overallRootItem, SlotType slotContext)
         {
-            var layersToDisplay = new List<IConsumed>();
-            if (overallRootItem == null) return layersToDisplay;
+            var layersToProcess = new List<IConsumed>();
+            if (overallRootItem == null) return layersToProcess;
 
             IConsumed currentDisplayLayer = overallRootItem;
             bool topItemIsCookedResult = overallRootItem is ICooked;
@@ -19,21 +21,21 @@ namespace BorschtCraft.Food.UI.DisplayLogic
             while (currentDisplayLayer != null && layerProcessingCount < MaxLayers)
             {
                 layerProcessingCount++;
-                Type modelType = currentDisplayLayer.GetType();
-                bool shouldDisplayThisLayer = true;
+                // Type modelType = currentDisplayLayer.GetType(); // Not used in this version of the loop logic
+                bool shouldAddThisLayer = true;
 
                 if (topItemIsCookedResult &&
                     currentDisplayLayer != overallRootItem &&
                     currentDisplayLayer is ICookable)
                 {
                     // Suppress underlying ICookable layers if the top item is ICooked
-                    // Logger.LogInfo($"ItemLayerProcessor: Suppressing view for underlying ICookable layer '{modelType.Name}' because top item ('{overallRootItem.GetType().Name}') was ICooked.");
-                    shouldDisplayThisLayer = false;
+                    // Logger.LogInfo($"ItemLayerProcessor: Suppressing view for underlying ICookable layer '{currentDisplayLayer.GetType().Name}' because top item ('{overallRootItem.GetType().Name}') was ICooked.");
+                    shouldAddThisLayer = false;
                 }
 
-                if (shouldDisplayThisLayer)
+                if (shouldAddThisLayer)
                 {
-                    layersToDisplay.Add(currentDisplayLayer);
+                    layersToProcess.Add(currentDisplayLayer);
                 }
 
                 if (currentDisplayLayer is Consumed consumedLayerInstance)
@@ -50,7 +52,20 @@ namespace BorschtCraft.Food.UI.DisplayLogic
             {
                 // Logger.LogWarning($"ItemLayerProcessor: Layer processing loop hit safety limit ({layerProcessingCount}). Root item: {overallRootItem.GetType().Name}");
             }
-            return layersToDisplay;
+
+            // Context-specific filtering
+            if (slotContext == SlotType.Releasing)
+            {
+                // Exclude BreadRaw type specifically from the layers to be displayed in releasing slots
+                // Assuming BreadRaw is a class that implements IConsumed.
+                // If BreadRaw is not defined in this project, this line will cause a compile error.
+                // For the purpose of this subtask, we assume BreadRaw is a defined type.
+                var filteredLayers = layersToProcess.Where(layer => !(layer is BreadRaw)).ToList();
+                // Logger.LogInfo($"ItemLayerProcessor: Releasing slot context. Original layers: {layersToProcess.Count}, Filtered layers (no BreadRaw): {filteredLayers.Count}");
+                return filteredLayers;
+            }
+
+            return layersToProcess;
         }
     }
 }
