@@ -5,6 +5,9 @@ using BorschtCraft.Food.UI;
 using System.Collections.Generic;
 using UnityEngine.Scripting;
 using UnityEditor.Graphs;
+using BorschtCraft.Food.Core.Services.ConsumingService.Strategies;
+using BorschtCraft.Food.UI.DisplayLogic;
+using BorschtCraft.Food.UI.Factories;
 
 namespace BorschtCraft.Food
 {
@@ -62,6 +65,12 @@ namespace BorschtCraft.Food
             Container.BindInterfacesAndSelfTo<ConsumingService>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<CombiningService>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<ItemTransferService>().AsSingle().NonLazy();
+
+            Container.Bind<IConsumptionStrategy>().To<DecorationStrategy>().AsTransient();
+            Container.Bind<IConsumptionStrategy>().To<InitialProductionStrategy>().AsTransient();
+            Container.Bind<IItemLayerProcessor>().To<ItemLayerProcessor>().AsTransient();
+            Container.Bind<IViewModelFactory>().To<ViewModelFactory>().AsSingle();
+
 
             //Bind Signals
             Container.DeclareSignal<ConsumableInteractionRequestSignal>();

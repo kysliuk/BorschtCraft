@@ -1,8 +1,6 @@
 using UnityEngine;
 using System;
 using System.Collections.Generic;
-// Removed: using Zenject;
-// Removed: using System.Linq;
 using BorschtCraft.Food.UI.DisplayLogic;
 using BorschtCraft.Food.UI.Factories;
 
@@ -71,7 +69,6 @@ namespace BorschtCraft.Food.UI
                         Logger.LogError($"Slot {_slotNameForLogging}", $"DisplayItem: EXCEPTION during AttachViewModel or SetVisibility for {viewModel.GetType().Name} on view for {modelType.Name}. Error: {ex.ToString()}");
                     }
                 }
-                // If CreateViewModel returns null, it has already logged the error.
             }
         }
 
@@ -86,7 +83,7 @@ namespace BorschtCraft.Food.UI
             {
                 foreach (var managedView in _childViews.Values)
                 {
-                    managedView?.DetachViewModel(); // Exception handling for Detach can be inside IManagedConsumedView if preferred
+                    managedView?.DetachViewModel();
                 }
             }
             _activeViewModels.Clear();
