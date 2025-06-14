@@ -7,9 +7,8 @@ namespace BorschtCraft.Food
     public class ItemTransferService : IItemTransferService
     {
         private readonly SignalBus _signalBus;
-        private readonly IItemSlot[] _cookingSlots; // Changed type
-        private readonly IItemSlot[] _releasingSlots; // Changed type
-        // private readonly ISelectedItemService _selectedItemService; // Removed
+        private readonly IItemSlot[] _cookingSlots;
+        private readonly IItemSlot[] _releasingSlots;
 
         public void Initialize()
         {
@@ -18,25 +17,22 @@ namespace BorschtCraft.Food
 
         private void OnSlotClickedToMove(SlotClickedSignal signal)
         {
-            var clickedSlot = signal.ClickedSlot; // This is now IItemSlot
+            var clickedSlot = signal.ClickedSlot;
             if (clickedSlot == null)
                 return;
 
-            var targetReleasingSlot = FindEmptyReleasingSlot(); // returns IItemSlot
+            var targetReleasingSlot = FindEmptyReleasingSlot(); 
             if (targetReleasingSlot == null)
             {
                 Logger.LogInfo(this, "OnSlotClickedToMove: No empty releasing slot available.");
                 return;
             }
 
-            // Compare GameObjects since clickedSlot is IItemSlot and _cookingSlots contains IItemSlot
             bool isClickedSlotACookingSlot = _cookingSlots.Any(s => s.GetGameObject() == clickedSlot.GetGameObject());
 
             if (isClickedSlotACookingSlot && clickedSlot.GetCurrentItem() is ICooked)
             {
-                // Removed _selectedItemService.Deselect() logic
-
-                var consumedToMove = clickedSlot.ReleaseItem(); // ReleaseItem is on IItemSlot
+                var consumedToMove = clickedSlot.ReleaseItem();
 
                 if (consumedToMove != null)
                 {
@@ -48,12 +44,10 @@ namespace BorschtCraft.Food
                     Logger.LogWarning(this, $"Attempted to move from {clickedSlot.GetGameObject().name}, but ReleaseItem() returned null.");
                 }
             }
-            // else: Slot clicked was not a cooking slot with a cooked item, or was not a cooking slot at all.
         }
 
-        private IItemSlot FindEmptyReleasingSlot() // Return type is already IItemSlot
+        private IItemSlot FindEmptyReleasingSlot()
         {
-            // slot is IItemSlot, use GetCurrentItem()
             return _releasingSlots.FirstOrDefault(slot => slot != null && slot.GetCurrentItem() == null);
         }
 
@@ -63,14 +57,12 @@ namespace BorschtCraft.Food
         }
 
         public ItemTransferService(SignalBus signalBus,
-                                   [Inject(Id = "CookingSlots")] IItemSlot[] cookingSlots, // Changed parameter type
-                                   [Inject(Id = "ReleasingSlots")] IItemSlot[] releasingSlots // Changed parameter type
-                                   /* ISelectedItemService selectedItemService Removed */ )
+                                   [Inject(Id = "CookingSlots")] IItemSlot[] cookingSlots,
+                                   [Inject(Id = "ReleasingSlots")] IItemSlot[] releasingSlots)
         {
             _signalBus = signalBus;
             _cookingSlots = cookingSlots;
             _releasingSlots = releasingSlots;
-            // this._selectedItemService = selectedItemService; // Removed
         }
     }
 }

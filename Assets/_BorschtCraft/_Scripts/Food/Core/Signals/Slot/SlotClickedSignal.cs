@@ -2,11 +2,11 @@
 {
     public class SlotClickedSignal
     {
-        public IItemSlot ClickedSlot { get; } // Changed type
+        public IItemSlot ClickedSlot { get; }
 
-        public SlotClickedSignal(IItemSlot clickedSlot) // Changed parameter type
+        public SlotClickedSignal(IItemSlot clickedSlot)
         {
-            ClickedSlot = clickedSlot; // Assignment is fine
+            ClickedSlot = clickedSlot;
         }
     }
 }

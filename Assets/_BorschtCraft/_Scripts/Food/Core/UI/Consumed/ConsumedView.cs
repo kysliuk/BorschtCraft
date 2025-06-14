@@ -8,7 +8,7 @@ using Zenject;
 namespace BorschtCraft.Food.UI
 {
     [RequireComponent(typeof(SpriteRenderer))]
-    public abstract class ConsumedView<T1, T2> : MonoBehaviour, IManagedConsumedView, IPointerClickHandler
+    public abstract class ConsumedView<T1, T2> : MonoBehaviour, IManagedConsumedView
     where T1 : IConsumedViewModel
     where T2 : Consumed
     {
@@ -51,13 +51,6 @@ namespace BorschtCraft.Food.UI
         public void DetachViewModel()
         {
             InitializeWithViewModel(default);
-        }
-
-        public virtual void OnPointerClick(PointerEventData eventData)
-        {
-            Logger.LogInfo(this, $"View model exists: {_viewModel != null}. {_viewModel?.GetType()?.Name}");
-            if (_parentSlotController != null)
-                _signalBus.Fire(new SlotClickedSignal(_parentSlotController));
         }
 
         protected void EnableVisibility(bool enable)
