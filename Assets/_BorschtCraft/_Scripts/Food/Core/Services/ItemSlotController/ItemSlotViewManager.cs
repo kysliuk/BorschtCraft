@@ -1,27 +1,31 @@
 using UnityEngine;
-using Zenject;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+// Removed: using Zenject;
+// Removed: using System.Linq;
+using BorschtCraft.Food.UI.DisplayLogic;
+using BorschtCraft.Food.UI.Factories;
 
 namespace BorschtCraft.Food.UI
 {
     public class ItemSlotViewManager : IItemSlotViewManager
     {
-        private DiContainer _diContainer;
-        private SignalBus _signalBus;
-        private List<ConsumedViewModelMapping> _viewModelMappings;
+        private IItemLayerProcessor _itemLayerProcessor;
+        private IViewModelFactory _viewModelFactory;
         private Dictionary<Type, IManagedConsumedView> _childViews;
         private readonly List<IConsumedViewModel> _activeViewModels = new List<IConsumedViewModel>();
         private string _slotNameForLogging;
 
-        public void Initialize(Transform slotTransform, DiContainer diContainer, SignalBus signalBus, List<ConsumedViewModelMapping> viewModelMappings, Dictionary<Type, IManagedConsumedView> childViews)
+        // Updated Initialize method
+        public void Initialize(Transform slotTransform,
+                               Dictionary<Type, IManagedConsumedView> childViews,
+                               IItemLayerProcessor itemLayerProcessor,
+                               IViewModelFactory viewModelFactory)
         {
             _slotNameForLogging = slotTransform != null ? slotTransform.name : "UnknownSlot";
-            _diContainer = diContainer;
-            this._signalBus = signalBus;
-            _viewModelMappings = viewModelMappings;
             _childViews = childViews;
+            _itemLayerProcessor = itemLayerProcessor;
+            _viewModelFactory = viewModelFactory;
 
             if (_childViews != null)
             {
@@ -32,104 +36,42 @@ namespace BorschtCraft.Food.UI
             }
         }
 
-        public void DisplayItem(IConsumed itemToDisplay, IConsumed overallRootItem)
+        public void DisplayItem(IConsumed itemToDisplay, IConsumed overallRootItem) // overallRootItem is now effectively itemToDisplay
         {
             ClearManagedViews();
 
-            if (itemToDisplay == null)
+            if (itemToDisplay == null || _itemLayerProcessor == null || _viewModelFactory == null || _childViews == null)
             {
+                Logger.LogError($"Slot {_slotNameForLogging}", $"DisplayItem: Crucial dependencies are null or itemToDisplay is null. Item: {itemToDisplay == null}, Processor: {_itemLayerProcessor == null}, Factory: {_viewModelFactory == null}, ChildViews: {_childViews == null}");
                 return;
             }
 
-            if (_diContainer == null || _childViews == null || _viewModelMappings == null)
+            List<IConsumed> layersToDisplay = _itemLayerProcessor.GetLayersToDisplay(itemToDisplay);
+
+            foreach (var layer in layersToDisplay)
             {
-                Logger.LogError($"Slot {_slotNameForLogging}", $"DisplayItem: Crucial dependencies are null. DIContainer: {_diContainer == null}, ChildViews: {_childViews == null}, ViewModelMappings: {_viewModelMappings == null}");
-                return;
-            }
-
-            bool topItemIsCookedResult = overallRootItem is ICooked;
-            IConsumed currentDisplayLayer = itemToDisplay;
-            int layerProcessingCount = 0;
-
-            while (currentDisplayLayer != null && layerProcessingCount < 10)
-            {
-                layerProcessingCount++;
-                Type modelType = currentDisplayLayer.GetType();
-
-                bool shouldDisplayThisLayer = true;
-                if (topItemIsCookedResult &&
-                    currentDisplayLayer != overallRootItem &&
-                    currentDisplayLayer is ICookable)
+                Type modelType = layer.GetType();
+                if (!_childViews.TryGetValue(modelType, out IManagedConsumedView managedView) || managedView == null)
                 {
-                    Logger.LogInfo($"Slot {_slotNameForLogging}", $"DisplayItem: Suppressing view for underlying ICookable layer '{modelType.Name}' because top item ('{overallRootItem.GetType().Name}') was ICooked.");
-                    shouldDisplayThisLayer = false;
+                    Logger.LogWarning($"Slot {_slotNameForLogging}", $"DisplayItem: No active child view found or view is null for model type: {modelType.Name}.");
+                    continue;
                 }
 
-                if (shouldDisplayThisLayer)
+                IConsumedViewModel viewModel = _viewModelFactory.CreateViewModel(layer);
+                if (viewModel != null)
                 {
-                    if (!_childViews.TryGetValue(modelType, out IManagedConsumedView managedView) || managedView == null)
+                    try
                     {
-                        Logger.LogWarning($"Slot {_slotNameForLogging}", $"DisplayItem: No active child view found or view is null for model type: {modelType.Name}.");
+                        managedView.AttachViewModel(viewModel);
+                        viewModel.SetVisibility(true);
+                        _activeViewModels.Add(viewModel);
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        var mapping = _viewModelMappings.FirstOrDefault(m => m.ConsumedModelType == modelType);
-                        if (mapping == null)
-                        {
-                            Logger.LogError($"Slot {_slotNameForLogging}", $"DisplayItem: No ViewModel mapping found for Consumed type: {modelType.Name}");
-                        }
-                        else
-                        {
-                            IConsumedViewModel newViewModelInstance = null;
-                            try
-                            {
-                                object instantiatedObject = _diContainer.Instantiate(mapping.ViewModelType, new object[] { currentDisplayLayer, this._signalBus });
-                                newViewModelInstance = instantiatedObject as IConsumedViewModel;
-
-                                if (newViewModelInstance == null)
-                                {
-                                    Logger.LogError($"Slot {_slotNameForLogging}", $"DisplayItem: Instantiated object of type '{instantiatedObject?.GetType().Name}' for '{mapping.ViewModelType.Name}' could not be cast to IConsumedViewModel.");
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                Logger.LogError($"Slot {_slotNameForLogging}", $"DisplayItem: EXCEPTION during ViewModel instantiation for {mapping.ViewModelType.Name}. Error: {ex.ToString()}");
-                                currentDisplayLayer = null;
-                                continue;
-                            }
-
-                            if (newViewModelInstance != null)
-                            {
-                                try
-                                {
-                                    managedView.AttachViewModel(newViewModelInstance);
-                                    newViewModelInstance.SetVisibility(true);
-                                    _activeViewModels.Add(newViewModelInstance);
-                                }
-                                catch (Exception ex)
-                                {
-                                    Logger.LogError($"Slot {_slotNameForLogging}", $"DisplayItem: EXCEPTION during AttachViewModel or SetVisibility for {newViewModelInstance.GetType().Name}. Error: {ex.ToString()}");
-                                    currentDisplayLayer = null;
-                                    continue;
-                                }
-                            }
-                        }
+                        Logger.LogError($"Slot {_slotNameForLogging}", $"DisplayItem: EXCEPTION during AttachViewModel or SetVisibility for {viewModel.GetType().Name} on view for {modelType.Name}. Error: {ex.ToString()}");
                     }
                 }
-
-                if (currentDisplayLayer is Consumed consumedLayerInstance)
-                {
-                    currentDisplayLayer = consumedLayerInstance.WrappedItem;
-                }
-                else
-                {
-                    currentDisplayLayer = null;
-                }
-            }
-
-            if (layerProcessingCount >= 10)
-            {
-                Logger.LogWarning($"Slot {_slotNameForLogging}", $"DisplayItem: Layer processing loop hit safety limit ({layerProcessingCount}). This might indicate a circular wrapping or too deep an item structure.");
+                // If CreateViewModel returns null, it has already logged the error.
             }
         }
 
@@ -144,21 +86,10 @@ namespace BorschtCraft.Food.UI
             {
                 foreach (var managedView in _childViews.Values)
                 {
-                    if (managedView != null)
-                    {
-                        try
-                        {
-                            managedView.DetachViewModel();
-                        }
-                        catch (Exception ex)
-                        {
-                            Logger.LogError($"Slot {_slotNameForLogging}", $"ClearManagedViews: Exception during DetachViewModel: {ex.Message}");
-                        }
-                    }
+                    managedView?.DetachViewModel(); // Exception handling for Detach can be inside IManagedConsumedView if preferred
                 }
             }
-
-            if(_activeViewModels != null)  _activeViewModels.Clear();
+            _activeViewModels.Clear();
         }
 
         public void OnDestroy()
