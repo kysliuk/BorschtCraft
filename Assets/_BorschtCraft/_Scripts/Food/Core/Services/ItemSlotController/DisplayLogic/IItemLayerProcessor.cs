@@ -4,6 +4,7 @@ namespace BorschtCraft.Food.UI.DisplayLogic
 {
     public interface IItemLayerProcessor
     {
-        List<IConsumed> GetLayersToDisplay(IConsumed overallRootItem);
+        // Added SlotType context parameter
+        List<IConsumed> GetLayersToDisplay(IConsumed overallRootItem, SlotType slotContext);
     }
 }
