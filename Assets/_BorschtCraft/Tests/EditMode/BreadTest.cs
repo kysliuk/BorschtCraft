@@ -46,31 +46,38 @@ public class BreadTest
         Assert.IsNotNull(_bread);
         Assert.AreEqual(10, _bread.Price);
         Assert.IsInstanceOf<BreadRaw>(_bread);
+        Assert.AreEqual(0, _bread.Ingredients.Count);
 
-        _bread = (IConsumed)(_bread as BreadRaw).Cook();
+        _bread = (_bread as BreadRaw).Cook();
         Assert.IsInstanceOf<BreadCooked>(_bread);
         Assert.AreEqual(10, _bread.Price);
+        Assert.AreEqual(1, _bread.Ingredients.Count);
 
         _bread = _garlicStack.Consume(_bread);
         Assert.AreEqual(13, _bread.Price);
         Assert.IsInstanceOf<Garlic>(_bread);
+        Assert.AreEqual(2, _bread.Ingredients.Count);
 
         _bread = _saloStack.Consume(_bread);
         Assert.AreEqual(18, _bread.Price);
         Assert.IsInstanceOf<Salo>(_bread);
+        Assert.AreEqual(3, _bread.Ingredients.Count);
 
         LogAssert.Expect(LogType.Warning, "[WARNING] OnionStack: Cannot decorate Salo by OnionStack");
 
         _bread = _onionStack.Consume(_bread);
         Assert.AreEqual(18, _bread.Price);
         Assert.IsInstanceOf<Salo>(_bread);
+        Assert.AreEqual(3, _bread.Ingredients.Count);
 
         _bread = _horseradishStack.Consume(_bread);
         Assert.AreEqual(19, _bread.Price);
         Assert.IsInstanceOf<Horseradish>(_bread);
+        Assert.AreEqual(4, _bread.Ingredients.Count);
 
         _bread = _mustardStack.Consume(_bread);
         Assert.AreEqual(23, _bread.Price);
         Assert.IsInstanceOf<Mustard>(_bread);
+        Assert.AreEqual(5, _bread.Ingredients.Count);
     }
 }

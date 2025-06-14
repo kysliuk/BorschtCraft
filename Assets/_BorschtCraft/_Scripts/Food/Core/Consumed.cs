@@ -5,22 +5,35 @@ namespace BorschtCraft.Food
 {
     public class Consumed : Item, IConsumed
     {
-        //public IReadOnlyCollection<IConsumed> Ingredients => _ingredients;
-        public IConsumed WrappedItem { get; private set; }
-        protected HashSet<IConsumed> _ingredients;
+        private readonly HashSet<IConsumed> _ingredients = new HashSet<IConsumed>();
+
+        public IReadOnlyCollection<IConsumed> Ingredients => _ingredients;
+        public IConsumed WrappedItem { get; }
+
 
         public bool HasIngredientOfType<T>() where T : IConsumed
         {
             return _ingredients.OfType<T>().Any();
         }
 
-        public Consumed(int price, IConsumed item) : base(item == null ? price : price + item.Price)
+        private void AddIngredientsRecursively(IConsumed item)
         {
-            WrappedItem = item;
-            if(_ingredients == null)
-                _ingredients = new HashSet<IConsumed>();
+            if (_ingredients.Add(item))
+            {
+                foreach (var ingredient in item.Ingredients)
+                {
+                    if (ingredient != null)
+                        AddIngredientsRecursively(ingredient);
+                }
+            }
+        }
 
-            _ingredients.Add(item);
+        public Consumed(int price, IConsumed wrappedItem) : base(wrappedItem == null ? price : price + wrappedItem.Price)
+        {
+            WrappedItem = wrappedItem;
+
+            if (wrappedItem != null)
+                AddIngredientsRecursively(wrappedItem);
         }
     }
 }
