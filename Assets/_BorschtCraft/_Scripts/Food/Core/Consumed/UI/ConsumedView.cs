@@ -1,28 +1,23 @@
 ﻿using UnityEngine;
 using UniRx;
 using System;
+using Zenject;
 
 namespace BorschtCraft.Food.UI
 {
     [RequireComponent(typeof(SpriteRenderer))]
-    public class ConsumedView : MonoBehaviour
+    public class ConsumedView<T> : MonoBehaviour, IConsumedManagedView where T : IConsumed
     {
-        public Type Type => _consumedViewModel.ModelType;
+        public Type ModelType => typeof(T);
 
-        protected ConsumedViewModel _consumedViewModel;
+        protected IConsumedViewModel _consumedViewModel;
         protected SpriteRenderer _spriteRenderer;
+        protected SlotView _parentSlotView;
 
-        public virtual void SetViewModel(ConsumedViewModel viewModel)
+        [Inject]
+        public void Construct(IConsumedViewModel consumedViewModel)
         {
-            _consumedViewModel = viewModel;
-
-            if (_consumedViewModel == null)
-            {
-                EnableVisibility(false);
-                return;
-            }
-
-            _consumedViewModel.IsVisible.Subscribe(EnableVisibility).AddTo(this);
+            _consumedViewModel = consumedViewModel;
         }
 
         protected virtual void EnableVisibility(bool enable)
@@ -33,7 +28,9 @@ namespace BorschtCraft.Food.UI
         #region Unity behaviour
         protected virtual void Awake()
         {
+            _consumedViewModel?.IsVisible.Subscribe(EnableVisibility).AddTo(this);
             _spriteRenderer = GetComponent<SpriteRenderer>();
+            _consumedViewModel.SetParentSlotViewModel(GetComponentInParent<SlotView>()?.SlotViewModel);
         }
         #endregion
     }

@@ -1,4 +1,5 @@
-﻿using UniRx;
+﻿using System.Collections.Generic;
+using UniRx;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Zenject;
@@ -7,8 +8,9 @@ namespace BorschtCraft.Food.UI
 {
     public class SlotView : MonoBehaviour, IPointerClickHandler
     {
+        public SlotViewModel SlotViewModel => _slotViewModel;
+
         protected SlotViewModel _slotViewModel;
-        //protected
 
         public virtual void OnPointerClick(PointerEventData eventData)
         {
@@ -22,17 +24,10 @@ namespace BorschtCraft.Food.UI
             _slotViewModel.ReleaseItem();
         }
 
-        private void OnItemChanged(IConsumed item)
-        {
-            
-        }
-
         [Inject]
         public void Construct(SlotViewModel slotViewModel)
         {
             _slotViewModel = slotViewModel;
-            _slotViewModel.CurrentItem.Subscribe(OnItemChanged).AddTo(this);
-
         }
     }
 }

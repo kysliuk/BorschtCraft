@@ -4,7 +4,7 @@ namespace BorschtCraft.Food
 {
     public interface ISlot : IReleasable
     {
-        SlotType Type { get; }
+        SlotType SlotType { get; }
         ReactiveProperty<IConsumed> Item { get;}
         void SetItem(IConsumed item);
     }

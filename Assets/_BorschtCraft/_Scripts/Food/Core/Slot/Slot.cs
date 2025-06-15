@@ -5,7 +5,7 @@ namespace BorschtCraft.Food
 {
     public class Slot : ISlot
     {
-        public SlotType Type { get; private set; }
+        public SlotType SlotType { get; private set; }
         public ReactiveProperty<IConsumed> Item { get; private set; }
 
         public void SetItem(IConsumed item)
@@ -33,7 +33,7 @@ namespace BorschtCraft.Food
             if (item == Item.Value)
                 return false;
 
-            if (Type != SlotType.Cooking && (item is ICookable || item is ICooked))
+            if (SlotType != SlotType.Cooking && (item is ICookable || item is ICooked))
                 return false;
 
             return true;
@@ -41,7 +41,7 @@ namespace BorschtCraft.Food
 
         public Slot(SlotType type, IConsumed item, SignalBus signalBus)
         {
-            Type = type;
+            SlotType = type;
             Item.Value = item;
         }
     }
