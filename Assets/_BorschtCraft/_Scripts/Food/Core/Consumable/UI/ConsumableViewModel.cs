@@ -4,7 +4,7 @@ using Zenject;
 
 namespace BorschtCraft.Food.UI
 {
-    public abstract class ConsumableViewModel<T1, T2> where T1 : Consumable<T2> where T2 : Consumed
+    public class ConsumableViewModel<T1, T2> where T1 : Consumable<T2> where T2 : Consumed
     {
         protected readonly T1 _consumableModel;
         protected readonly SignalBus _signalBus;

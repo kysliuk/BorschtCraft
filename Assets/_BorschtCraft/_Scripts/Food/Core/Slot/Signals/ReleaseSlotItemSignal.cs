@@ -3,7 +3,7 @@
     public class ReleaseSlotItemSignal
     {
         public ISlot Slot { get; private set; }
-        public SlotType Type => Slot.Type;
+        public SlotType Type => Slot.SlotType;
 
         public ReleaseSlotItemSignal(ISlot slot)
         {

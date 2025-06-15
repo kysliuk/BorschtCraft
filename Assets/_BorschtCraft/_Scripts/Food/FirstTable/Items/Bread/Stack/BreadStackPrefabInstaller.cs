@@ -1,6 +1,6 @@
 ﻿namespace BorschtCraft.Food.UI
 {
-    public class BreadStackPrefabInstaller : ConsumablePrefabInstallerBase<BreadStackViewModel, BreadStack, BreadRaw>
+    public class BreadStackPrefabInstaller : ConsumablePrefabInstallerBase<ConsumableViewModel<BreadStack, BreadRaw>, BreadStack, BreadRaw>
     {
     }
 }

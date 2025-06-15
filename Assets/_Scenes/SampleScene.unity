@@ -1291,10 +1291,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5462054882300698356, guid: 5b4f88644f6fe4443a0e186366a13314, type: 3}
-      propertyPath: _monoInstallers.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6226383976516261251, guid: 5b4f88644f6fe4443a0e186366a13314, type: 3}
       propertyPath: m_Name
       value: BreadStack
