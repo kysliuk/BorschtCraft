@@ -12,9 +12,7 @@ namespace BorschtCraft.Food
 
             //Bind Signals
             Container.DeclareSignal<ConsumableInteractionRequestSignal>();
-            Container.DeclareSignal<CookItemInSlotRequestSignal>();
-            Container.DeclareSignal<ItemCookedSignal>();
-            Container.DeclareSignal<SlotClickedSignal>();
+            Container.DeclareSignal<ReleaseSlotItemSignal>();
         }
     }
 }

@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2057
     height: 1333
   m_ShowMode: 4
-  m_Title: Hierarchy
+  m_Title: Console
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 108
+  controlID: 119
   draggingID: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -168,8 +168,8 @@ MonoBehaviour:
     y: 0
     width: 332
     height: 1277
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 226}
+  m_MaxSize: {x: 4002, y: 4026}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -199,7 +199,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 109
+  controlID: 120
   draggingID: 0
 --- !u!114 &9
 MonoBehaviour:
@@ -220,8 +220,8 @@ MonoBehaviour:
     y: 0
     width: 795
     height: 725
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 226}
+  m_MaxSize: {x: 4002, y: 4026}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -249,8 +249,8 @@ MonoBehaviour:
     y: 725
     width: 795
     height: 552
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 226}
+  m_MaxSize: {x: 4002, y: 4026}
   m_ActualView: {fileID: 24}
   m_Panes:
   - {fileID: 21}
@@ -281,7 +281,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 124
+  controlID: 132
   draggingID: 0
 --- !u!114 &12
 MonoBehaviour:
@@ -328,8 +328,8 @@ MonoBehaviour:
     y: 642
     width: 558
     height: 635
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 101, y: 126}
+  m_MaxSize: {x: 4001, y: 4026}
   m_ActualView: {fileID: 23}
   m_Panes:
   - {fileID: 23}
@@ -358,9 +358,9 @@ MonoBehaviour:
     m_TextWithWhitespace: "Test Runner\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1426
+    x: 1507
     y: 729
-    width: 638
+    width: 557
     height: 609
   m_SerializedDataModeController:
     m_DataMode: 0
@@ -374,7 +374,7 @@ MonoBehaviour:
     m_ContainerData: []
     m_OverlaysVisible: 1
   m_Spl:
-    ID: 160
+    ID: 2621
     splitterInitialOffset: 0
     currentActiveSplitter: -1
     realSizes:
@@ -401,7 +401,7 @@ MonoBehaviour:
   m_TestListGUIs:
   - m_Window: {fileID: 14}
     runProgress:
-      RunGuid: 46e0efc2-2f02-48cd-b1be-a9a80f9c92b4
+      RunGuid: 72b7a9f4-8048-40a0-a739-32e4b8225dc6
       ExecutionSettings:
         m_TargetPlatform: 0
         m_HasTargetPlatform: 0
@@ -414,7 +414,7 @@ MonoBehaviour:
         filters:
         - testMode: 1
           testNames:
-          - BreadTest.BreadTestSimplePasses
+          - BreadTest.CreateConsumables
           groupNames: []
           categoryNames: []
           assemblyNames: []
@@ -449,7 +449,75 @@ MonoBehaviour:
       categories: []
       parentId: 
       parentUniqueId: 
-    - id: 1534
+    - id: 1004
+      uniqueId: '[EditMode][D:/Own/UnityProjects/BorschtCraft/BorschtCraft/Library/ScriptAssemblies/EditMode.dll][suite]'
+      name: EditMode.dll
+      fullName: D:/Own/UnityProjects/BorschtCraft/BorschtCraft/Library/ScriptAssemblies/EditMode.dll
+      resultStatus: 1
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1000
+      parentUniqueId: '[BorschtCraft][suite]'
+    - id: 1001
+      uniqueId: 'EditMode.dll/[EditMode][BreadTest][suite]'
+      name: BreadTest
+      fullName: BreadTest
+      resultStatus: 1
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1004
+      parentUniqueId: '[EditMode][D:/Own/UnityProjects/BorschtCraft/BorschtCraft/Library/ScriptAssemblies/EditMode.dll][suite]'
+    - id: 1003
+      uniqueId: 'EditMode.dll/BreadTest/[EditMode][BreadTest.BreadTestSimplePasses]'
+      name: BreadTestSimplePasses
+      fullName: BreadTest.BreadTestSimplePasses
+      resultStatus: 1
+      duration: 0.0175605
+      messages: 
+      output: '[WARNING] OnionStack: Cannot decorate Salo by OnionStack
+
+'
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: 'EditMode.dll/[EditMode][BreadTest][suite]'
+    - id: 1002
+      uniqueId: 'EditMode.dll/BreadTest/[EditMode][BreadTest.CreateConsumables]'
+      name: CreateConsumables
+      fullName: BreadTest.CreateConsumables
+      resultStatus: 1
+      duration: 0.0001873
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: 'EditMode.dll/[EditMode][BreadTest][suite]'
+    - id: 1538
       uniqueId: '[Zenject-UnitTests-Editor.dll][suite]'
       name: Zenject-UnitTests-Editor.dll
       fullName: D:/Own/UnityProjects/BorschtCraft/BorschtCraft/Library/ScriptAssemblies/Zenject-UnitTests-Editor.dll
@@ -465,7 +533,7 @@ MonoBehaviour:
       categories: []
       parentId: 1000
       parentUniqueId: '[BorschtCraft][suite]'
-    - id: 1535
+    - id: 1539
       uniqueId: 'Zenject-UnitTests-Editor.dll/[Zenject][suite]'
       name: Zenject
       fullName: Zenject
@@ -479,9 +547,9 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1534
+      parentId: 1538
       parentUniqueId: '[Zenject-UnitTests-Editor.dll][suite]'
-    - id: 1536
+    - id: 1540
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/[Tests][suite]'
       name: Tests
       fullName: Zenject.Tests
@@ -495,9 +563,9 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1535
+      parentId: 1539
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/[Zenject][suite]'
-    - id: 1539
+    - id: 1543
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.AbstractFactory][suite]'
       name: AbstractFactory
       fullName: Zenject.Tests.AbstractFactory
@@ -511,9 +579,9 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1536
+      parentId: 1540
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/[Tests][suite]'
-    - id: 1147
+    - id: 1151
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/AbstractFactory/[Zenject-UnitTests-Editor][Zenject.Tests.AbstractFactory.TestFactory][suite]'
       name: TestFactory
       fullName: Zenject.Tests.AbstractFactory.TestFactory
@@ -527,7 +595,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1539
+      parentId: 1543
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.AbstractFactory][suite]'
     - id: 1148
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/AbstractFactory/TestFactory/[Zenject-UnitTests-Editor][Zenject.Tests.AbstractFactory.TestFactory.TestToSelf]'
@@ -546,7 +614,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1147
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/AbstractFactory/[Zenject-UnitTests-Editor][Zenject.Tests.AbstractFactory.TestFactory][suite]'
-    - id: 1546
+    - id: 1550
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.BindFeatures][suite]'
       name: BindFeatures
       fullName: Zenject.Tests.BindFeatures
@@ -560,9 +628,9 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1536
+      parentId: 1540
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/[Tests][suite]'
-    - id: 1442
+    - id: 1446
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/BindFeatures/[Zenject-UnitTests-Editor][Zenject.Tests.BindFeatures.TestConcreteIdentifier][suite]'
       name: TestConcreteIdentifier
       fullName: Zenject.Tests.BindFeatures.TestConcreteIdentifier
@@ -576,7 +644,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1546
+      parentId: 1550
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.BindFeatures][suite]'
     - id: 1443
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/BindFeatures/TestConcreteIdentifier/[Zenject-UnitTests-Editor][Zenject.Tests.BindFeatures.TestConcreteIdentifier.Test1]'
@@ -595,7 +663,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1442
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/BindFeatures/[Zenject-UnitTests-Editor][Zenject.Tests.BindFeatures.TestConcreteIdentifier][suite]'
-    - id: 1444
+    - id: 1448
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/BindFeatures/[Zenject-UnitTests-Editor][Zenject.Tests.BindFeatures.TestIfNotBound][suite]'
       name: TestIfNotBound
       fullName: Zenject.Tests.BindFeatures.TestIfNotBound
@@ -609,7 +677,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1546
+      parentId: 1550
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.BindFeatures][suite]'
     - id: 1445
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/BindFeatures/TestIfNotBound/[Zenject-UnitTests-Editor][Zenject.Tests.BindFeatures.TestIfNotBound.Test1]'
@@ -645,7 +713,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1444
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/BindFeatures/[Zenject-UnitTests-Editor][Zenject.Tests.BindFeatures.TestIfNotBound][suite]'
-    - id: 1447
+    - id: 1451
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/BindFeatures/[Zenject-UnitTests-Editor][Zenject.Tests.BindFeatures.TestMultipleContractTypes][suite]'
       name: TestMultipleContractTypes
       fullName: Zenject.Tests.BindFeatures.TestMultipleContractTypes
@@ -659,7 +727,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1546
+      parentId: 1550
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.BindFeatures][suite]'
     - id: 1448
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/BindFeatures/TestMultipleContractTypes/[Zenject-UnitTests-Editor][Zenject.Tests.BindFeatures.TestMultipleContractTypes.TestMultiBind1]'
@@ -695,7 +763,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1447
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/BindFeatures/[Zenject-UnitTests-Editor][Zenject.Tests.BindFeatures.TestMultipleContractTypes][suite]'
-    - id: 1450
+    - id: 1454
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/BindFeatures/[Zenject-UnitTests-Editor][Zenject.Tests.BindFeatures.TestMultipleContractTypes2][suite]'
       name: TestMultipleContractTypes2
       fullName: Zenject.Tests.BindFeatures.TestMultipleContractTypes2
@@ -709,7 +777,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1546
+      parentId: 1550
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.BindFeatures][suite]'
     - id: 1451
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/BindFeatures/TestMultipleContractTypes2/[Zenject-UnitTests-Editor][Zenject.Tests.BindFeatures.TestMultipleContractTypes2.Test1]'
@@ -813,7 +881,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1450
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/BindFeatures/[Zenject-UnitTests-Editor][Zenject.Tests.BindFeatures.TestMultipleContractTypes2][suite]'
-    - id: 1457
+    - id: 1461
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/BindFeatures/[Zenject-UnitTests-Editor][Zenject.Tests.BindFeatures.TestMultipleContractTypes3][suite]'
       name: TestMultipleContractTypes3
       fullName: Zenject.Tests.BindFeatures.TestMultipleContractTypes3
@@ -827,7 +895,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1546
+      parentId: 1550
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.BindFeatures][suite]'
     - id: 1458
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/BindFeatures/TestMultipleContractTypes3/[Zenject-UnitTests-Editor][Zenject.Tests.BindFeatures.TestMultipleContractTypes3.TestMultiBind2]'
@@ -846,7 +914,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1457
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/BindFeatures/[Zenject-UnitTests-Editor][Zenject.Tests.BindFeatures.TestMultipleContractTypes3][suite]'
-    - id: 1459
+    - id: 1463
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/BindFeatures/[Zenject-UnitTests-Editor][Zenject.Tests.BindFeatures.TestRebind][suite]'
       name: TestRebind
       fullName: Zenject.Tests.BindFeatures.TestRebind
@@ -860,7 +928,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1546
+      parentId: 1550
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.BindFeatures][suite]'
     - id: 1460
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/BindFeatures/TestRebind/[Zenject-UnitTests-Editor][Zenject.Tests.BindFeatures.TestRebind.Run]'
@@ -879,7 +947,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1459
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/BindFeatures/[Zenject-UnitTests-Editor][Zenject.Tests.BindFeatures.TestRebind][suite]'
-    - id: 1461
+    - id: 1465
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/BindFeatures/[Zenject-UnitTests-Editor][Zenject.Tests.BindFeatures.TestUnbind][suite]'
       name: TestUnbind
       fullName: Zenject.Tests.BindFeatures.TestUnbind
@@ -893,7 +961,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1546
+      parentId: 1550
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.BindFeatures][suite]'
     - id: 1462
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/BindFeatures/TestUnbind/[Zenject-UnitTests-Editor][Zenject.Tests.BindFeatures.TestUnbind.Run]'
@@ -929,7 +997,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1461
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/BindFeatures/[Zenject-UnitTests-Editor][Zenject.Tests.BindFeatures.TestUnbind][suite]'
-    - id: 1464
+    - id: 1468
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/BindFeatures/[Zenject-UnitTests-Editor][Zenject.Tests.BindFeatures.TestWithArguments][suite]'
       name: TestWithArguments
       fullName: Zenject.Tests.BindFeatures.TestWithArguments
@@ -943,7 +1011,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1546
+      parentId: 1550
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.BindFeatures][suite]'
     - id: 1465
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/BindFeatures/TestWithArguments/[Zenject-UnitTests-Editor][Zenject.Tests.BindFeatures.TestWithArguments.Test1]'
@@ -979,7 +1047,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1464
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/BindFeatures/[Zenject-UnitTests-Editor][Zenject.Tests.BindFeatures.TestWithArguments][suite]'
-    - id: 1544
+    - id: 1548
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
       name: Bindings
       fullName: Zenject.Tests.Bindings
@@ -993,9 +1061,9 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1536
+      parentId: 1540
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/[Tests][suite]'
-    - id: 1545
+    - id: 1549
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.Singletons][suite]'
       name: Singletons
       fullName: Zenject.Tests.Bindings.Singletons
@@ -1009,9 +1077,9 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
-    - id: 1429
+    - id: 1433
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/Singletons/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.Singletons.TestAsSingle][suite]'
       name: TestAsSingle
       fullName: Zenject.Tests.Bindings.Singletons.TestAsSingle
@@ -1025,7 +1093,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1545
+      parentId: 1549
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.Singletons][suite]'
     - id: 1432
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/Singletons/TestAsSingle/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.Singletons.TestAsSingle.TestAsSingleAndResolveNoThrow]'
@@ -1146,7 +1214,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1429
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/Singletons/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.Singletons.TestAsSingle][suite]'
-    - id: 1437
+    - id: 1441
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/Singletons/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.Singletons.TestLazy][suite]'
       name: TestLazy
       fullName: Zenject.Tests.Bindings.Singletons.TestLazy
@@ -1160,7 +1228,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1545
+      parentId: 1549
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.Singletons][suite]'
     - id: 1438
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/Singletons/TestLazy/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.Singletons.TestLazy.Test1]'
@@ -1230,7 +1298,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1437
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/Singletons/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.Singletons.TestLazy][suite]'
-    - id: 1347
+    - id: 1351
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFrom0][suite]'
       name: TestFactoryFrom0
       fullName: Zenject.Tests.Bindings.TestFactoryFrom0
@@ -1244,7 +1312,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
     - id: 1353
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/TestFactoryFrom0/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFrom0.TestConcrete]'
@@ -1365,7 +1433,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1347
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFrom0][suite]'
-    - id: 1355
+    - id: 1359
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFrom1][suite]'
       name: TestFactoryFrom1
       fullName: Zenject.Tests.Bindings.TestFactoryFrom1
@@ -1379,7 +1447,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
     - id: 1357
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/TestFactoryFrom1/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFrom1.TestConcrete]'
@@ -1415,7 +1483,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1355
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFrom1][suite]'
-    - id: 1358
+    - id: 1362
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFrom5][suite]'
       name: TestFactoryFrom5
       fullName: Zenject.Tests.Bindings.TestFactoryFrom5
@@ -1429,7 +1497,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
     - id: 1361
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/TestFactoryFrom5/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFrom5.TestConcrete]'
@@ -1482,7 +1550,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1358
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFrom5][suite]'
-    - id: 1362
+    - id: 1366
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFromFactory0][suite]'
       name: TestFactoryFromFactory0
       fullName: Zenject.Tests.Bindings.TestFactoryFromFactory0
@@ -1496,7 +1564,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
     - id: 1364
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/TestFactoryFromFactory0/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFromFactory0.TestConcrete]'
@@ -1549,7 +1617,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1362
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFromFactory0][suite]'
-    - id: 1366
+    - id: 1370
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFromFactory1][suite]'
       name: TestFactoryFromFactory1
       fullName: Zenject.Tests.Bindings.TestFactoryFromFactory1
@@ -1563,7 +1631,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
     - id: 1368
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/TestFactoryFromFactory1/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFromFactory1.TestConcrete]'
@@ -1599,7 +1667,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1366
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFromFactory1][suite]'
-    - id: 1369
+    - id: 1373
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFromGetter0][suite]'
       name: TestFactoryFromGetter0
       fullName: Zenject.Tests.Bindings.TestFactoryFromGetter0
@@ -1613,7 +1681,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
     - id: 1370
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/TestFactoryFromGetter0/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFromGetter0.TestSelf]'
@@ -1632,7 +1700,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1369
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFromGetter0][suite]'
-    - id: 1371
+    - id: 1375
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFromInstance0][suite]'
       name: TestFactoryFromInstance0
       fullName: Zenject.Tests.Bindings.TestFactoryFromInstance0
@@ -1646,7 +1714,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
     - id: 1373
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/TestFactoryFromInstance0/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFromInstance0.TestConcrete]'
@@ -1682,7 +1750,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1371
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFromInstance0][suite]'
-    - id: 1374
+    - id: 1378
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFromMethod0][suite]'
       name: TestFactoryFromMethod0
       fullName: Zenject.Tests.Bindings.TestFactoryFromMethod0
@@ -1696,7 +1764,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
     - id: 1376
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/TestFactoryFromMethod0/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFromMethod0.TestConcrete]'
@@ -1732,7 +1800,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1374
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFromMethod0][suite]'
-    - id: 1377
+    - id: 1381
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFromMethod1][suite]'
       name: TestFactoryFromMethod1
       fullName: Zenject.Tests.Bindings.TestFactoryFromMethod1
@@ -1746,7 +1814,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
     - id: 1379
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/TestFactoryFromMethod1/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFromMethod1.TestConcrete]'
@@ -1782,7 +1850,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1377
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFromMethod1][suite]'
-    - id: 1380
+    - id: 1384
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFromResolve0][suite]'
       name: TestFactoryFromResolve0
       fullName: Zenject.Tests.Bindings.TestFactoryFromResolve0
@@ -1796,7 +1864,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
     - id: 1382
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/TestFactoryFromResolve0/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFromResolve0.TestConcrete]'
@@ -1866,7 +1934,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1380
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFromResolve0][suite]'
-    - id: 1385
+    - id: 1389
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFromSubContainerInstaller0][suite]'
       name: TestFactoryFromSubContainerInstaller0
       fullName: Zenject.Tests.Bindings.TestFactoryFromSubContainerInstaller0
@@ -1880,7 +1948,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
     - id: 1387
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/TestFactoryFromSubContainerInstaller0/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFromSubContainerInstaller0.TestConcrete]'
@@ -1916,7 +1984,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1385
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFromSubContainerInstaller0][suite]'
-    - id: 1388
+    - id: 1392
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFromSubContainerInstaller1][suite]'
       name: TestFactoryFromSubContainerInstaller1
       fullName: Zenject.Tests.Bindings.TestFactoryFromSubContainerInstaller1
@@ -1930,7 +1998,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
     - id: 1390
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/TestFactoryFromSubContainerInstaller1/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFromSubContainerInstaller1.TestConcrete]'
@@ -1966,7 +2034,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1388
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFromSubContainerInstaller1][suite]'
-    - id: 1391
+    - id: 1395
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFromSubContainerMethod0][suite]'
       name: TestFactoryFromSubContainerMethod0
       fullName: Zenject.Tests.Bindings.TestFactoryFromSubContainerMethod0
@@ -1980,7 +2048,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
     - id: 1393
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/TestFactoryFromSubContainerMethod0/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFromSubContainerMethod0.TestConcrete]'
@@ -2016,7 +2084,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1391
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFromSubContainerMethod0][suite]'
-    - id: 1394
+    - id: 1398
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFromSubContainerMethod1][suite]'
       name: TestFactoryFromSubContainerMethod1
       fullName: Zenject.Tests.Bindings.TestFactoryFromSubContainerMethod1
@@ -2030,7 +2098,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
     - id: 1396
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/TestFactoryFromSubContainerMethod1/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFromSubContainerMethod1.TestConcrete]'
@@ -2066,7 +2134,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1394
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryFromSubContainerMethod1][suite]'
-    - id: 1397
+    - id: 1401
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryWithArguments][suite]'
       name: TestFactoryWithArguments
       fullName: Zenject.Tests.Bindings.TestFactoryWithArguments
@@ -2080,7 +2148,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
     - id: 1398
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/TestFactoryWithArguments/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryWithArguments.TestWithArguments1]'
@@ -2116,7 +2184,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1397
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFactoryWithArguments][suite]'
-    - id: 1212
+    - id: 1216
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFrom][suite]'
       name: TestFrom
       fullName: Zenject.Tests.Bindings.TestFrom
@@ -2130,7 +2198,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
     - id: 1220
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/TestFrom/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFrom.TestConcreteCached]'
@@ -2455,7 +2523,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1212
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFrom][suite]'
-    - id: 1232
+    - id: 1236
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromFactory][suite]'
       name: TestFromFactory
       fullName: Zenject.Tests.Bindings.TestFromFactory
@@ -2469,7 +2537,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
     - id: 1233
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/TestFromFactory/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromFactory.Test1]'
@@ -2624,7 +2692,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1232
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromFactory][suite]'
-    - id: 1242
+    - id: 1246
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromGetter][suite]'
       name: TestFromGetter
       fullName: Zenject.Tests.Bindings.TestFromGetter
@@ -2638,7 +2706,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
     - id: 1246
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/TestFromGetter/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromGetter.TestInjectSource1]'
@@ -2759,7 +2827,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1242
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromGetter][suite]'
-    - id: 1250
+    - id: 1254
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromIFactory][suite]'
       name: TestFromIFactory
       fullName: Zenject.Tests.Bindings.TestFromIFactory
@@ -2773,7 +2841,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
     - id: 1251
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/TestFromIFactory/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromIFactory.Test1]'
@@ -2792,7 +2860,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1250
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromIFactory][suite]'
-    - id: 1252
+    - id: 1256
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromIFactory2][suite]'
       name: TestFromIFactory2
       fullName: Zenject.Tests.Bindings.TestFromIFactory2
@@ -2806,7 +2874,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
     - id: 1253
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/TestFromIFactory2/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromIFactory2.Test1]'
@@ -2825,7 +2893,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1252
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromIFactory2][suite]'
-    - id: 1254
+    - id: 1258
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromInstance][suite]'
       name: TestFromInstance
       fullName: Zenject.Tests.Bindings.TestFromInstance
@@ -2839,7 +2907,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
     - id: 1257
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/TestFromInstance/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromInstance.TestCached]'
@@ -2892,7 +2960,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1254
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromInstance][suite]'
-    - id: 1258
+    - id: 1262
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromMethod][suite]'
       name: TestFromMethod
       fullName: Zenject.Tests.Bindings.TestFromMethod
@@ -2906,7 +2974,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
     - id: 1261
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/TestFromMethod/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromMethod.TestCached]'
@@ -2993,7 +3061,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1258
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromMethod][suite]'
-    - id: 1264
+    - id: 1268
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromMethodMultiple][suite]'
       name: TestFromMethodMultiple
       fullName: Zenject.Tests.Bindings.TestFromMethodMultiple
@@ -3007,7 +3075,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
     - id: 1270
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/TestFromMethodMultiple/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromMethodMultiple.TestCached]'
@@ -3145,7 +3213,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1264
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromMethodMultiple][suite]'
-    - id: 1273
+    - id: 1277
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromMethodMultipleUntyped][suite]'
       name: TestFromMethodMultipleUntyped
       fullName: Zenject.Tests.Bindings.TestFromMethodMultipleUntyped
@@ -3159,7 +3227,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
     - id: 1279
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/TestFromMethodMultipleUntyped/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromMethodMultipleUntyped.TestCached]'
@@ -3297,7 +3365,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1273
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromMethodMultipleUntyped][suite]'
-    - id: 1405
+    - id: 1409
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromPoolableMemoryPoolOne][suite]'
       name: TestFromPoolableMemoryPoolOne
       fullName: Zenject.Tests.Bindings.TestFromPoolableMemoryPoolOne
@@ -3311,7 +3379,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
     - id: 1406
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/TestFromPoolableMemoryPoolOne/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromPoolableMemoryPoolOne.Test1]'
@@ -3330,7 +3398,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1405
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromPoolableMemoryPoolOne][suite]'
-    - id: 1407
+    - id: 1411
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromPoolableMemoryPoolSix][suite]'
       name: TestFromPoolableMemoryPoolSix
       fullName: Zenject.Tests.Bindings.TestFromPoolableMemoryPoolSix
@@ -3344,7 +3412,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
     - id: 1408
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/TestFromPoolableMemoryPoolSix/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromPoolableMemoryPoolSix.Test1]'
@@ -3363,7 +3431,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1407
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromPoolableMemoryPoolSix][suite]'
-    - id: 1409
+    - id: 1413
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromPoolableMemoryPoolValidation][suite]'
       name: TestFromPoolableMemoryPoolValidation
       fullName: Zenject.Tests.Bindings.TestFromPoolableMemoryPoolValidation
@@ -3377,7 +3445,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
     - id: 1410
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/TestFromPoolableMemoryPoolValidation/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromPoolableMemoryPoolValidation.TestFailure]'
@@ -3413,7 +3481,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1409
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromPoolableMemoryPoolValidation][suite]'
-    - id: 1412
+    - id: 1416
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromPoolableMemoryPoolZero][suite]'
       name: TestFromPoolableMemoryPoolZero
       fullName: Zenject.Tests.Bindings.TestFromPoolableMemoryPoolZero
@@ -3427,7 +3495,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
     - id: 1413
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/TestFromPoolableMemoryPoolZero/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromPoolableMemoryPoolZero.Test1]'
@@ -3446,7 +3514,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1412
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromPoolableMemoryPoolZero][suite]'
-    - id: 1282
+    - id: 1286
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromResolve][suite]'
       name: TestFromResolve
       fullName: Zenject.Tests.Bindings.TestFromResolve
@@ -3460,7 +3528,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
     - id: 1285
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/TestFromResolve/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromResolve.TestCached]'
@@ -3717,7 +3785,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1282
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromResolve][suite]'
-    - id: 1298
+    - id: 1302
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromSubContainerInstaller][suite]'
       name: TestFromSubContainerInstaller
       fullName: Zenject.Tests.Bindings.TestFromSubContainerInstaller
@@ -3731,7 +3799,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
     - id: 1301
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/TestFromSubContainerInstaller/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromSubContainerInstaller.TestInstallerSelfCached]'
@@ -3869,7 +3937,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1298
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromSubContainerInstaller][suite]'
-    - id: 1307
+    - id: 1311
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromSubContainerInstance][suite]'
       name: TestFromSubContainerInstance
       fullName: Zenject.Tests.Bindings.TestFromSubContainerInstance
@@ -3883,7 +3951,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
     - id: 1310
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/TestFromSubContainerInstance/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromSubContainerInstance.TestInstallerSelfCached]'
@@ -4021,7 +4089,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1307
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromSubContainerInstance][suite]'
-    - id: 1316
+    - id: 1320
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromSubContainerInstanceGetter][suite]'
       name: TestFromSubContainerInstanceGetter
       fullName: Zenject.Tests.Bindings.TestFromSubContainerInstanceGetter
@@ -4035,7 +4103,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
     - id: 1319
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/TestFromSubContainerInstanceGetter/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromSubContainerInstanceGetter.TestInstallerSelfCached]'
@@ -4173,7 +4241,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1316
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromSubContainerInstanceGetter][suite]'
-    - id: 1325
+    - id: 1329
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromSubContainerMethod][suite]'
       name: TestFromSubContainerMethod
       fullName: Zenject.Tests.Bindings.TestFromSubContainerMethod
@@ -4187,7 +4255,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
     - id: 1328
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/TestFromSubContainerMethod/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromSubContainerMethod.TestDanglingBinding]'
@@ -4376,7 +4444,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1325
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestFromSubContainerMethod][suite]'
-    - id: 1400
+    - id: 1404
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestIFactory][suite]'
       name: TestIFactory
       fullName: Zenject.Tests.Bindings.TestIFactory
@@ -4390,7 +4458,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
     - id: 1401
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/TestIFactory/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestIFactory.Test1]'
@@ -4460,7 +4528,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1400
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestIFactory][suite]'
-    - id: 1414
+    - id: 1418
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestMemoryPool0][suite]'
       name: TestMemoryPool0
       fullName: Zenject.Tests.Bindings.TestMemoryPool0
@@ -4474,7 +4542,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
     - id: 1422
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/TestMemoryPool0/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestMemoryPool0.TestExpandAndShrinkManually]'
@@ -4663,7 +4731,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1414
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestMemoryPool0][suite]'
-    - id: 1426
+    - id: 1430
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestMemoryPoolCustomFactory][suite]'
       name: TestMemoryPoolCustomFactory
       fullName: Zenject.Tests.Bindings.TestMemoryPoolCustomFactory
@@ -4677,7 +4745,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
     - id: 1427
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/TestMemoryPoolCustomFactory/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestMemoryPoolCustomFactory.TestFromBinding]'
@@ -4713,7 +4781,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1426
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestMemoryPoolCustomFactory][suite]'
-    - id: 1337
+    - id: 1341
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestNonGeneric][suite]'
       name: TestNonGeneric
       fullName: Zenject.Tests.Bindings.TestNonGeneric
@@ -4727,7 +4795,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
     - id: 1338
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/TestNonGeneric/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestNonGeneric.Test1]'
@@ -4797,7 +4865,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1337
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestNonGeneric][suite]'
-    - id: 1208
+    - id: 1212
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestNonLazy][suite]'
       name: TestNonLazy
       fullName: Zenject.Tests.Bindings.TestNonLazy
@@ -4811,7 +4879,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
     - id: 1209
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/TestNonLazy/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestNonLazy.Test1]'
@@ -4864,7 +4932,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1208
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestNonLazy][suite]'
-    - id: 1342
+    - id: 1346
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestWithKernel][suite]'
       name: TestWithKernel
       fullName: Zenject.Tests.Bindings.TestWithKernel
@@ -4878,7 +4946,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1544
+      parentId: 1548
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Bindings][suite]'
     - id: 1343
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/TestWithKernel/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestWithKernel.TestByInstaller]'
@@ -4948,7 +5016,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1342
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Bindings/[Zenject-UnitTests-Editor][Zenject.Tests.Bindings.TestWithKernel][suite]'
-    - id: 1543
+    - id: 1547
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Conditions][suite]'
       name: Conditions
       fullName: Zenject.Tests.Conditions
@@ -4962,9 +5030,9 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1536
+      parentId: 1540
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/[Tests][suite]'
-    - id: 1164
+    - id: 1168
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Conditions/[Zenject-UnitTests-Editor][Zenject.Tests.Conditions.TestConditionsBasic][suite]'
       name: TestConditionsBasic
       fullName: Zenject.Tests.Conditions.TestConditionsBasic
@@ -4978,7 +5046,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1543
+      parentId: 1547
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Conditions][suite]'
     - id: 1165
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Conditions/TestConditionsBasic/[Zenject-UnitTests-Editor][Zenject.Tests.Conditions.TestConditionsBasic.Test1]'
@@ -5014,7 +5082,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1164
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Conditions/[Zenject-UnitTests-Editor][Zenject.Tests.Conditions.TestConditionsBasic][suite]'
-    - id: 1167
+    - id: 1171
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Conditions/[Zenject-UnitTests-Editor][Zenject.Tests.Conditions.TestConditionsComplex][suite]'
       name: TestConditionsComplex
       fullName: Zenject.Tests.Conditions.TestConditionsComplex
@@ -5028,7 +5096,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1543
+      parentId: 1547
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Conditions][suite]'
     - id: 1168
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Conditions/TestConditionsComplex/[Zenject-UnitTests-Editor][Zenject.Tests.Conditions.TestConditionsComplex.TestCorrespondingIdentifiers]'
@@ -5047,7 +5115,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1167
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Conditions/[Zenject-UnitTests-Editor][Zenject.Tests.Conditions.TestConditionsComplex][suite]'
-    - id: 1169
+    - id: 1173
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Conditions/[Zenject-UnitTests-Editor][Zenject.Tests.Conditions.TestConditionsFieldName][suite]'
       name: TestConditionsFieldName
       fullName: Zenject.Tests.Conditions.TestConditionsFieldName
@@ -5061,7 +5129,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1543
+      parentId: 1547
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Conditions][suite]'
     - id: 1170
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Conditions/TestConditionsFieldName/[Zenject-UnitTests-Editor][Zenject.Tests.Conditions.TestConditionsFieldName.TestNameConditionError]'
@@ -5097,7 +5165,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1169
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Conditions/[Zenject-UnitTests-Editor][Zenject.Tests.Conditions.TestConditionsFieldName][suite]'
-    - id: 1172
+    - id: 1176
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Conditions/[Zenject-UnitTests-Editor][Zenject.Tests.Conditions.TestConditionsIdentifier][suite]'
       name: TestConditionsIdentifier
       fullName: Zenject.Tests.Conditions.TestConditionsIdentifier
@@ -5111,7 +5179,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1543
+      parentId: 1547
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Conditions][suite]'
     - id: 1177
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Conditions/TestConditionsIdentifier/[Zenject-UnitTests-Editor][Zenject.Tests.Conditions.TestConditionsIdentifier.TestFailConstructorInjectionEnum]'
@@ -5249,7 +5317,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1172
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Conditions/[Zenject-UnitTests-Editor][Zenject.Tests.Conditions.TestConditionsIdentifier][suite]'
-    - id: 1181
+    - id: 1185
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Conditions/[Zenject-UnitTests-Editor][Zenject.Tests.Conditions.TestConditionsParents][suite]'
       name: TestConditionsParents
       fullName: Zenject.Tests.Conditions.TestConditionsParents
@@ -5263,7 +5331,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1543
+      parentId: 1547
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Conditions][suite]'
     - id: 1182
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Conditions/TestConditionsParents/[Zenject-UnitTests-Editor][Zenject.Tests.Conditions.TestConditionsParents.TestCase1]'
@@ -5367,7 +5435,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1181
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Conditions/[Zenject-UnitTests-Editor][Zenject.Tests.Conditions.TestConditionsParents][suite]'
-    - id: 1188
+    - id: 1192
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Conditions/[Zenject-UnitTests-Editor][Zenject.Tests.Conditions.TestConditionsTarget][suite]'
       name: TestConditionsTarget
       fullName: Zenject.Tests.Conditions.TestConditionsTarget
@@ -5381,7 +5449,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1543
+      parentId: 1547
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Conditions][suite]'
     - id: 1189
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Conditions/TestConditionsTarget/[Zenject-UnitTests-Editor][Zenject.Tests.Conditions.TestConditionsTarget.TestTargetConditionError]'
@@ -5417,7 +5485,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1188
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Conditions/[Zenject-UnitTests-Editor][Zenject.Tests.Conditions.TestConditionsTarget][suite]'
-    - id: 1191
+    - id: 1195
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Conditions/[Zenject-UnitTests-Editor][Zenject.Tests.Conditions.TestConditionsTargetInstance][suite]'
       name: TestConditionsTargetInstance
       fullName: Zenject.Tests.Conditions.TestConditionsTargetInstance
@@ -5431,7 +5499,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1543
+      parentId: 1547
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Conditions][suite]'
     - id: 1192
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Conditions/TestConditionsTargetInstance/[Zenject-UnitTests-Editor][Zenject.Tests.Conditions.TestConditionsTargetInstance.TestTargetConditionError]'
@@ -5450,7 +5518,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1191
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Conditions/[Zenject-UnitTests-Editor][Zenject.Tests.Conditions.TestConditionsTargetInstance][suite]'
-    - id: 1193
+    - id: 1197
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Conditions/[Zenject-UnitTests-Editor][Zenject.Tests.Conditions.TestIdentifiers][suite]'
       name: TestIdentifiers
       fullName: Zenject.Tests.Conditions.TestIdentifiers
@@ -5464,7 +5532,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1543
+      parentId: 1547
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Conditions][suite]'
     - id: 1194
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Conditions/TestIdentifiers/[Zenject-UnitTests-Editor][Zenject.Tests.Conditions.TestIdentifiers.TestBasic]'
@@ -5551,7 +5619,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1193
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Conditions/[Zenject-UnitTests-Editor][Zenject.Tests.Conditions.TestIdentifiers][suite]'
-    - id: 1199
+    - id: 1203
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Conditions/[Zenject-UnitTests-Editor][Zenject.Tests.Conditions.TestIdentifierTypes][suite]'
       name: TestIdentifierTypes
       fullName: Zenject.Tests.Conditions.TestIdentifierTypes
@@ -5565,7 +5633,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1543
+      parentId: 1547
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Conditions][suite]'
     - id: 1205
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Conditions/TestIdentifierTypes/[Zenject-UnitTests-Editor][Zenject.Tests.Conditions.TestIdentifierTypes.TestEnumIdentifiers1]'
@@ -5703,7 +5771,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1199
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Conditions/[Zenject-UnitTests-Editor][Zenject.Tests.Conditions.TestIdentifierTypes][suite]'
-    - id: 1540
+    - id: 1544
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Convention][suite]'
       name: Convention
       fullName: Zenject.Tests.Convention
@@ -5717,9 +5785,9 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1536
+      parentId: 1540
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/[Tests][suite]'
-    - id: 1541
+    - id: 1545
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Convention/[Zenject-UnitTests-Editor][Zenject.Tests.Convention.Names][suite]'
       name: Names
       fullName: Zenject.Tests.Convention.Names
@@ -5733,9 +5801,9 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1540
+      parentId: 1544
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Convention][suite]'
-    - id: 1157
+    - id: 1161
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Convention/Names/[Zenject-UnitTests-Editor][Zenject.Tests.Convention.Names.TestConventionNames][suite]'
       name: TestConventionNames
       fullName: Zenject.Tests.Convention.Names.TestConventionNames
@@ -5749,7 +5817,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1541
+      parentId: 1545
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Convention/[Zenject-UnitTests-Editor][Zenject.Tests.Convention.Names][suite]'
     - id: 1160
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Convention/Names/TestConventionNames/[Zenject-UnitTests-Editor][Zenject.Tests.Convention.Names.TestConventionNames.TestMatchingRegex]'
@@ -5802,7 +5870,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1157
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Convention/Names/[Zenject-UnitTests-Editor][Zenject.Tests.Convention.Names.TestConventionNames][suite]'
-    - id: 1149
+    - id: 1153
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Convention/[Zenject-UnitTests-Editor][Zenject.Tests.Convention.TestConvention][suite]'
       name: TestConvention
       fullName: Zenject.Tests.Convention.TestConvention
@@ -5816,7 +5884,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1540
+      parentId: 1544
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Convention][suite]'
     - id: 1154
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Convention/TestConvention/[Zenject-UnitTests-Editor][Zenject.Tests.Convention.TestConvention.TestAttributeFilter]'
@@ -5937,7 +6005,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1149
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Convention/[Zenject-UnitTests-Editor][Zenject.Tests.Convention.TestConvention][suite]'
-    - id: 1542
+    - id: 1546
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Convention/[Zenject-UnitTests-Editor][Zenject.Tests.Convention.Two][suite]'
       name: Two
       fullName: Zenject.Tests.Convention.Two
@@ -5951,9 +6019,9 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1540
+      parentId: 1544
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Convention][suite]'
-    - id: 1161
+    - id: 1165
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Convention/Two/[Zenject-UnitTests-Editor][Zenject.Tests.Convention.Two.TestConvention2][suite]'
       name: TestConvention2
       fullName: Zenject.Tests.Convention.Two.TestConvention2
@@ -5967,7 +6035,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1542
+      parentId: 1546
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Convention/[Zenject-UnitTests-Editor][Zenject.Tests.Convention.Two][suite]'
     - id: 1163
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Convention/Two/TestConvention2/[Zenject-UnitTests-Editor][Zenject.Tests.Convention.Two.TestConvention2.TestBindAllInterfaces2]'
@@ -6003,7 +6071,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1161
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Convention/Two/[Zenject-UnitTests-Editor][Zenject.Tests.Convention.Two.TestConvention2][suite]'
-    - id: 1538
+    - id: 1542
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Injection][suite]'
       name: Injection
       fullName: Zenject.Tests.Injection
@@ -6017,9 +6085,9 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1536
+      parentId: 1540
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/[Tests][suite]'
-    - id: 1080
+    - id: 1084
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestAllInjectionTypes][suite]'
       name: TestAllInjectionTypes
       fullName: Zenject.Tests.Injection.TestAllInjectionTypes
@@ -6033,7 +6101,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1538
+      parentId: 1542
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Injection][suite]'
     - id: 1081
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/TestAllInjectionTypes/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestAllInjectionTypes.TestCase1]'
@@ -6052,7 +6120,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1080
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestAllInjectionTypes][suite]'
-    - id: 1082
+    - id: 1086
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestBaseClassPropertyInjection][suite]'
       name: TestBaseClassPropertyInjection
       fullName: Zenject.Tests.Injection.TestBaseClassPropertyInjection
@@ -6066,7 +6134,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1538
+      parentId: 1542
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Injection][suite]'
     - id: 1083
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/TestBaseClassPropertyInjection/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestBaseClassPropertyInjection.TestCaseBaseClassPropertyInjection]'
@@ -6085,7 +6153,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1082
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestBaseClassPropertyInjection][suite]'
-    - id: 1084
+    - id: 1088
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestCircularDependencies][suite]'
       name: TestCircularDependencies
       fullName: Zenject.Tests.Injection.TestCircularDependencies
@@ -6099,7 +6167,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1538
+      parentId: 1542
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Injection][suite]'
     - id: 1087
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/TestCircularDependencies/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestCircularDependencies.TestConstructorInject]'
@@ -6169,7 +6237,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1084
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestCircularDependencies][suite]'
-    - id: 1089
+    - id: 1093
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestConstructorInjection][suite]'
       name: TestConstructorInjection
       fullName: Zenject.Tests.Injection.TestConstructorInjection
@@ -6183,7 +6251,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1538
+      parentId: 1542
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Injection][suite]'
     - id: 1091
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/TestConstructorInjection/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestConstructorInjection.TestInstantiate]'
@@ -6253,7 +6321,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1089
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestConstructorInjection][suite]'
-    - id: 1094
+    - id: 1098
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestConstructorInjectionOptional][suite]'
       name: TestConstructorInjectionOptional
       fullName: Zenject.Tests.Injection.TestConstructorInjectionOptional
@@ -6267,7 +6335,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1538
+      parentId: 1542
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Injection][suite]'
     - id: 1095
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/TestConstructorInjectionOptional/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestConstructorInjectionOptional.TestCase1]'
@@ -6320,7 +6388,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1094
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestConstructorInjectionOptional][suite]'
-    - id: 1098
+    - id: 1102
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestDuplicateInjection][suite]'
       name: TestDuplicateInjection
       fullName: Zenject.Tests.Injection.TestDuplicateInjection
@@ -6334,7 +6402,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1538
+      parentId: 1542
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Injection][suite]'
     - id: 1099
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/TestDuplicateInjection/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestDuplicateInjection.TestCaseDuplicateInjection]'
@@ -6353,7 +6421,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1098
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestDuplicateInjection][suite]'
-    - id: 1100
+    - id: 1104
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestInjectSources][suite]'
       name: TestInjectSources
       fullName: Zenject.Tests.Injection.TestInjectSources
@@ -6367,7 +6435,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1538
+      parentId: 1542
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Injection][suite]'
     - id: 1101
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/TestInjectSources/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestInjectSources.TestAny]'
@@ -6488,7 +6556,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1100
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestInjectSources][suite]'
-    - id: 1108
+    - id: 1112
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestListInjection][suite]'
       name: TestListInjection
       fullName: Zenject.Tests.Injection.TestListInjection
@@ -6502,7 +6570,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1538
+      parentId: 1542
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Injection][suite]'
     - id: 1113
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/TestListInjection/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestListInjection.TestArrays]'
@@ -6589,7 +6657,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1108
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestListInjection][suite]'
-    - id: 1114
+    - id: 1118
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestNullableValues][suite]'
       name: TestNullableValues
       fullName: Zenject.Tests.Injection.TestNullableValues
@@ -6603,7 +6671,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1538
+      parentId: 1542
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Injection][suite]'
     - id: 1115
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/TestNullableValues/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestNullableValues.RunTest1]'
@@ -6639,7 +6707,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1114
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestNullableValues][suite]'
-    - id: 1117
+    - id: 1121
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestParameters][suite]'
       name: TestParameters
       fullName: Zenject.Tests.Injection.TestParameters
@@ -6653,7 +6721,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1538
+      parentId: 1542
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Injection][suite]'
     - id: 1118
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/TestParameters/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestParameters.TestExtraParametersSameType]'
@@ -6689,7 +6757,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1117
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestParameters][suite]'
-    - id: 1120
+    - id: 1124
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestPostInjectCall][suite]'
       name: TestPostInjectCall
       fullName: Zenject.Tests.Injection.TestPostInjectCall
@@ -6703,7 +6771,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1538
+      parentId: 1542
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Injection][suite]'
     - id: 1121
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/TestPostInjectCall/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestPostInjectCall.Test]'
@@ -6773,7 +6841,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1120
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestPostInjectCall][suite]'
-    - id: 1125
+    - id: 1129
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestPostInjectParameters][suite]'
       name: TestPostInjectParameters
       fullName: Zenject.Tests.Injection.TestPostInjectParameters
@@ -6787,7 +6855,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1538
+      parentId: 1542
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Injection][suite]'
     - id: 1126
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/TestPostInjectParameters/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestPostInjectParameters.Test]'
@@ -6806,7 +6874,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1125
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestPostInjectParameters][suite]'
-    - id: 1127
+    - id: 1131
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestPropertyInjection][suite]'
       name: TestPropertyInjection
       fullName: Zenject.Tests.Injection.TestPropertyInjection
@@ -6820,7 +6888,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1538
+      parentId: 1542
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Injection][suite]'
     - id: 1129
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/TestPropertyInjection/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestPropertyInjection.TestCase2]'
@@ -6856,7 +6924,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1127
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestPropertyInjection][suite]'
-    - id: 1130
+    - id: 1134
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestStructInjection][suite]'
       name: TestStructInjection
       fullName: Zenject.Tests.Injection.TestStructInjection
@@ -6870,7 +6938,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1538
+      parentId: 1542
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Injection][suite]'
     - id: 1133
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/TestStructInjection/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestStructInjection.TestInjectConstructorOfStruct]'
@@ -6923,7 +6991,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1130
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestStructInjection][suite]'
-    - id: 1134
+    - id: 1138
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestTestOptional][suite]'
       name: TestTestOptional
       fullName: Zenject.Tests.Injection.TestTestOptional
@@ -6937,7 +7005,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1538
+      parentId: 1542
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Injection][suite]'
     - id: 1141
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/TestTestOptional/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestTestOptional.TestChildDependencyOptional]'
@@ -7143,7 +7211,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1134
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Injection/[Zenject-UnitTests-Editor][Zenject.Tests.Injection.TestTestOptional][suite]'
-    - id: 1547
+    - id: 1551
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Other][suite]'
       name: Other
       fullName: Zenject.Tests.Other
@@ -7157,9 +7225,9 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1536
+      parentId: 1540
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/[Tests][suite]'
-    - id: 1474
+    - id: 1478
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestBindCallbacks][suite]'
       name: TestBindCallbacks
       fullName: Zenject.Tests.Other.TestBindCallbacks
@@ -7173,7 +7241,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1547
+      parentId: 1551
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Other][suite]'
     - id: 1475
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/TestBindCallbacks/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestBindCallbacks.Test1]'
@@ -7226,7 +7294,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1474
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestBindCallbacks][suite]'
-    - id: 1467
+    - id: 1471
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestBindingInheritanceMethod][suite]'
       name: TestBindingInheritanceMethod
       fullName: Zenject.Tests.Other.TestBindingInheritanceMethod
@@ -7240,7 +7308,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1547
+      parentId: 1551
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Other][suite]'
     - id: 1471
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/TestBindingInheritanceMethod/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestBindingInheritanceMethod.TestCopyDirect1]'
@@ -7344,7 +7412,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1467
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestBindingInheritanceMethod][suite]'
-    - id: 1478
+    - id: 1482
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestCircularDependencies][suite]'
       name: TestCircularDependencies
       fullName: Zenject.Tests.Other.TestCircularDependencies
@@ -7358,7 +7426,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1547
+      parentId: 1551
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Other][suite]'
     - id: 1481
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/TestCircularDependencies/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestCircularDependencies.TestField]'
@@ -7411,7 +7479,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1478
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestCircularDependencies][suite]'
-    - id: 1482
+    - id: 1486
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestClearCacheProvider][suite]'
       name: TestClearCacheProvider
       fullName: Zenject.Tests.Other.TestClearCacheProvider
@@ -7425,7 +7493,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1547
+      parentId: 1551
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Other][suite]'
     - id: 1483
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/TestClearCacheProvider/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestClearCacheProvider.Test1]'
@@ -7444,7 +7512,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1482
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestClearCacheProvider][suite]'
-    - id: 1484
+    - id: 1488
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestCustomInjectAttribute][suite]'
       name: TestCustomInjectAttribute
       fullName: Zenject.Tests.Other.TestCustomInjectAttribute
@@ -7458,7 +7526,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1547
+      parentId: 1551
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Other][suite]'
     - id: 1485
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/TestCustomInjectAttribute/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestCustomInjectAttribute.Test1]'
@@ -7477,7 +7545,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1484
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestCustomInjectAttribute][suite]'
-    - id: 1486
+    - id: 1490
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestDecorators][suite]'
       name: TestDecorators
       fullName: Zenject.Tests.Other.TestDecorators
@@ -7491,7 +7559,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1547
+      parentId: 1551
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Other][suite]'
     - id: 1489
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/TestDecorators/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestDecorators.TestCaching]'
@@ -7595,7 +7663,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1486
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestDecorators][suite]'
-    - id: 1493
+    - id: 1497
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestDecoratorValidation][suite]'
       name: TestDecoratorValidation
       fullName: Zenject.Tests.Other.TestDecoratorValidation
@@ -7609,7 +7677,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1547
+      parentId: 1551
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Other][suite]'
     - id: 1495
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/TestDecoratorValidation/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestDecoratorValidation.TestFail1]'
@@ -7662,7 +7730,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1493
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestDecoratorValidation][suite]'
-    - id: 1497
+    - id: 1501
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestFacadeSubContainer][suite]'
       name: TestFacadeSubContainer
       fullName: Zenject.Tests.Other.TestFacadeSubContainer
@@ -7676,7 +7744,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1547
+      parentId: 1551
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Other][suite]'
     - id: 1498
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/TestFacadeSubContainer/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestFacadeSubContainer.Test1]'
@@ -7695,7 +7763,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1497
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestFacadeSubContainer][suite]'
-    - id: 1499
+    - id: 1503
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestFactoryMemoryPoolCustomInterface][suite]'
       name: TestFactoryMemoryPoolCustomInterface
       fullName: Zenject.Tests.Other.TestFactoryMemoryPoolCustomInterface
@@ -7709,7 +7777,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1547
+      parentId: 1551
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Other][suite]'
     - id: 1500
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/TestFactoryMemoryPoolCustomInterface/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestFactoryMemoryPoolCustomInterface.Test1]'
@@ -7745,7 +7813,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1499
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestFactoryMemoryPoolCustomInterface][suite]'
-    - id: 1502
+    - id: 1506
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestGenericContract][suite]'
       name: TestGenericContract
       fullName: Zenject.Tests.Other.TestGenericContract
@@ -7759,7 +7827,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1547
+      parentId: 1551
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Other][suite]'
     - id: 1503
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/TestGenericContract/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestGenericContract.TestToSingle]'
@@ -7829,7 +7897,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1502
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestGenericContract][suite]'
-    - id: 1507
+    - id: 1511
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestKeyedFactoryExample][suite]'
       name: TestKeyedFactoryExample
       fullName: Zenject.Tests.Other.TestKeyedFactoryExample
@@ -7843,7 +7911,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1547
+      parentId: 1551
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Other][suite]'
     - id: 1508
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/TestKeyedFactoryExample/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestKeyedFactoryExample.Test1]'
@@ -7862,7 +7930,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1507
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestKeyedFactoryExample][suite]'
-    - id: 1509
+    - id: 1513
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestNestedContainer][suite]'
       name: TestNestedContainer
       fullName: Zenject.Tests.Other.TestNestedContainer
@@ -7876,7 +7944,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1547
+      parentId: 1551
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Other][suite]'
     - id: 1510
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/TestNestedContainer/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestNestedContainer.TestCase1]'
@@ -7895,7 +7963,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1509
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestNestedContainer][suite]'
-    - id: 1511
+    - id: 1515
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestPoolableManager][suite]'
       name: TestPoolableManager
       fullName: Zenject.Tests.Other.TestPoolableManager
@@ -7909,7 +7977,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1547
+      parentId: 1551
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Other][suite]'
     - id: 1512
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/TestPoolableManager/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestPoolableManager.TestDefaultOrder]'
@@ -7945,7 +8013,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1511
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestPoolableManager][suite]'
-    - id: 1514
+    - id: 1518
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestResolve][suite]'
       name: TestResolve
       fullName: Zenject.Tests.Other.TestResolve
@@ -7959,7 +8027,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1547
+      parentId: 1551
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Other][suite]'
     - id: 1517
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/TestResolve/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestResolve.TestDirectListBindings1]'
@@ -8012,7 +8080,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1514
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestResolve][suite]'
-    - id: 1518
+    - id: 1522
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestResolveMany][suite]'
       name: TestResolveMany
       fullName: Zenject.Tests.Other.TestResolveMany
@@ -8026,7 +8094,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1547
+      parentId: 1551
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Other][suite]'
     - id: 1519
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/TestResolveMany/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestResolveMany.TestCase1]'
@@ -8062,7 +8130,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1518
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestResolveMany][suite]'
-    - id: 1521
+    - id: 1525
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestSubContainers][suite]'
       name: TestSubContainers
       fullName: Zenject.Tests.Other.TestSubContainers
@@ -8076,7 +8144,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1547
+      parentId: 1551
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Other][suite]'
     - id: 1523
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/TestSubContainers/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestSubContainers.TestCase2]'
@@ -8129,7 +8197,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1521
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestSubContainers][suite]'
-    - id: 1525
+    - id: 1529
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestSubContainers4][suite]'
       name: TestSubContainers4
       fullName: Zenject.Tests.Other.TestSubContainers4
@@ -8143,7 +8211,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1547
+      parentId: 1551
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Other][suite]'
     - id: 1526
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/TestSubContainers4/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestSubContainers4.RunTest]'
@@ -8162,7 +8230,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1525
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestSubContainers4][suite]'
-    - id: 1527
+    - id: 1531
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestTaskUpdater][suite]'
       name: TestTaskUpdater
       fullName: Zenject.Tests.Other.TestTaskUpdater
@@ -8176,7 +8244,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1547
+      parentId: 1551
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Other][suite]'
     - id: 1529
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/TestTaskUpdater/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestTaskUpdater.TestOrder]'
@@ -8212,7 +8280,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1527
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestTaskUpdater][suite]'
-    - id: 1530
+    - id: 1534
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestTransientMockProvider][suite]'
       name: TestTransientMockProvider
       fullName: Zenject.Tests.Other.TestTransientMockProvider
@@ -8226,7 +8294,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1547
+      parentId: 1551
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Other][suite]'
     - id: 1531
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/TestTransientMockProvider/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestTransientMockProvider.TestCase1]'
@@ -8245,7 +8313,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1530
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.TestTransientMockProvider][suite]'
-    - id: 1532
+    - id: 1536
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.ZenjectProfileTest][suite]'
       name: ZenjectProfileTest
       fullName: Zenject.Tests.Other.ZenjectProfileTest
@@ -8259,7 +8327,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1547
+      parentId: 1551
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Other][suite]'
     - id: 1533
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/ZenjectProfileTest/[Zenject-UnitTests-Editor][Zenject.Tests.Other.ZenjectProfileTest.Test]'
@@ -8278,7 +8346,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1532
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Other/[Zenject-UnitTests-Editor][Zenject.Tests.Other.ZenjectProfileTest][suite]'
-    - id: 1537
+    - id: 1541
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Signals][suite]'
       name: Signals
       fullName: Zenject.Tests.Signals
@@ -8292,9 +8360,9 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1536
+      parentId: 1540
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/[Tests][suite]'
-    - id: 1040
+    - id: 1044
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Signals/[Zenject-UnitTests-Editor][Zenject.Tests.Signals.TestAsyncSignals][suite]'
       name: TestAsyncSignals
       fullName: Zenject.Tests.Signals.TestAsyncSignals
@@ -8308,7 +8376,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1537
+      parentId: 1541
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Signals][suite]'
     - id: 1041
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Signals/TestAsyncSignals/[Zenject-UnitTests-Editor][Zenject.Tests.Signals.TestAsyncSignals.TestBasicAsync]'
@@ -8344,7 +8412,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1040
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Signals/[Zenject-UnitTests-Editor][Zenject.Tests.Signals.TestAsyncSignals][suite]'
-    - id: 1043
+    - id: 1047
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Signals/[Zenject-UnitTests-Editor][Zenject.Tests.Signals.TestBindSignal][suite]'
       name: TestBindSignal
       fullName: Zenject.Tests.Signals.TestBindSignal
@@ -8358,7 +8426,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1537
+      parentId: 1541
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Signals][suite]'
     - id: 1045
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Signals/TestBindSignal/[Zenject-UnitTests-Editor][Zenject.Tests.Signals.TestBindSignal.TestBindWithoutDeclaration]'
@@ -8479,7 +8547,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1043
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Signals/[Zenject-UnitTests-Editor][Zenject.Tests.Signals.TestBindSignal][suite]'
-    - id: 1051
+    - id: 1055
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Signals/[Zenject-UnitTests-Editor][Zenject.Tests.Signals.TestSignalIdentifiers][suite]'
       name: TestSignalIdentifiers
       fullName: Zenject.Tests.Signals.TestSignalIdentifiers
@@ -8493,7 +8561,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1537
+      parentId: 1541
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Signals][suite]'
     - id: 1055
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Signals/TestSignalIdentifiers/[Zenject-UnitTests-Editor][Zenject.Tests.Signals.TestSignalIdentifiers.TestBindWithoutDeclaration]'
@@ -8614,7 +8682,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1051
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Signals/[Zenject-UnitTests-Editor][Zenject.Tests.Signals.TestSignalIdentifiers][suite]'
-    - id: 1059
+    - id: 1063
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Signals/[Zenject-UnitTests-Editor][Zenject.Tests.Signals.TestSignalRuntimeDeclaration][suite]'
       name: TestSignalRuntimeDeclaration
       fullName: Zenject.Tests.Signals.TestSignalRuntimeDeclaration
@@ -8628,7 +8696,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1537
+      parentId: 1541
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Signals][suite]'
     - id: 1061
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Signals/TestSignalRuntimeDeclaration/[Zenject-UnitTests-Editor][Zenject.Tests.Signals.TestSignalRuntimeDeclaration.TestFireSuccess]'
@@ -8698,7 +8766,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1059
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Signals/[Zenject-UnitTests-Editor][Zenject.Tests.Signals.TestSignalRuntimeDeclaration][suite]'
-    - id: 1064
+    - id: 1068
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Signals/[Zenject-UnitTests-Editor][Zenject.Tests.Signals.TestSignals1][suite]'
       name: TestSignals1
       fullName: Zenject.Tests.Signals.TestSignals1
@@ -8712,7 +8780,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1537
+      parentId: 1541
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Signals][suite]'
     - id: 1065
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Signals/TestSignals1/[Zenject-UnitTests-Editor][Zenject.Tests.Signals.TestSignals1.TestMissingDeclaration]'
@@ -8799,7 +8867,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1064
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Signals/[Zenject-UnitTests-Editor][Zenject.Tests.Signals.TestSignals1][suite]'
-    - id: 1070
+    - id: 1074
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Signals/[Zenject-UnitTests-Editor][Zenject.Tests.Signals.TestSignalsAdvanced][suite]'
       name: TestSignalsAdvanced
       fullName: Zenject.Tests.Signals.TestSignalsAdvanced
@@ -8813,7 +8881,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1537
+      parentId: 1541
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.Signals][suite]'
     - id: 1077
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Signals/TestSignalsAdvanced/[Zenject-UnitTests-Editor][Zenject.Tests.Signals.TestSignalsAdvanced.TestIsDeclared1]'
@@ -8968,7 +9036,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1070
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/Signals/[Zenject-UnitTests-Editor][Zenject.Tests.Signals.TestSignalsAdvanced][suite]'
-    - id: 1006
+    - id: 1010
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.TestArrayPool][suite]'
       name: TestArrayPool
       fullName: Zenject.Tests.TestArrayPool
@@ -8982,7 +9050,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1536
+      parentId: 1540
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/[Tests][suite]'
     - id: 1007
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/TestArrayPool/[Zenject-UnitTests-Editor][Zenject.Tests.TestArrayPool.RunTest]'
@@ -9001,7 +9069,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1006
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.TestArrayPool][suite]'
-    - id: 1008
+    - id: 1012
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.TestDisposeBlock][suite]'
       name: TestDisposeBlock
       fullName: Zenject.Tests.TestDisposeBlock
@@ -9015,7 +9083,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1536
+      parentId: 1540
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/[Tests][suite]'
     - id: 1009
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/TestDisposeBlock/[Zenject-UnitTests-Editor][Zenject.Tests.TestDisposeBlock.TestExceptions]'
@@ -9068,7 +9136,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1008
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.TestDisposeBlock][suite]'
-    - id: 1012
+    - id: 1016
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.TestPoolableStaticMemoryPool][suite]'
       name: TestPoolableStaticMemoryPool
       fullName: Zenject.Tests.TestPoolableStaticMemoryPool
@@ -9082,7 +9150,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1536
+      parentId: 1540
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/[Tests][suite]'
     - id: 1013
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/TestPoolableStaticMemoryPool/[Zenject-UnitTests-Editor][Zenject.Tests.TestPoolableStaticMemoryPool.RunTest]'
@@ -9101,7 +9169,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1012
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.TestPoolableStaticMemoryPool][suite]'
-    - id: 1014
+    - id: 1018
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.TestStaticMemoryPool][suite]'
       name: TestStaticMemoryPool
       fullName: Zenject.Tests.TestStaticMemoryPool
@@ -9115,7 +9183,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1536
+      parentId: 1540
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/[Tests][suite]'
     - id: 1015
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/TestStaticMemoryPool/[Zenject-UnitTests-Editor][Zenject.Tests.TestStaticMemoryPool.RunTest]'
@@ -9185,7 +9253,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1014
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.TestStaticMemoryPool][suite]'
-    - id: 1019
+    - id: 1023
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.TestTestUtil][suite]'
       name: TestTestUtil
       fullName: Zenject.Tests.TestTestUtil
@@ -9199,7 +9267,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1536
+      parentId: 1540
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/[Tests][suite]'
     - id: 1021
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/TestTestUtil/[Zenject-UnitTests-Editor][Zenject.Tests.TestTestUtil.TestFalse]'
@@ -9235,7 +9303,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1019
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.TestTestUtil][suite]'
-    - id: 1022
+    - id: 1026
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.TestValidation][suite]'
       name: TestValidation
       fullName: Zenject.Tests.TestValidation
@@ -9249,7 +9317,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1536
+      parentId: 1540
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/[Tests][suite]'
     - id: 1035
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/TestValidation/[Zenject-UnitTests-Editor][Zenject.Tests.TestValidation.TestCustomValidatable]'
@@ -9472,7 +9540,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1022
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.TestValidation][suite]'
-    - id: 1036
+    - id: 1040
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.TestValidationSettings][suite]'
       name: TestValidationSettings
       fullName: Zenject.Tests.TestValidationSettings
@@ -9486,7 +9554,7 @@ MonoBehaviour:
       description: 
       isSuite: 1
       categories: []
-      parentId: 1536
+      parentId: 1540
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/[Tests][suite]'
     - id: 1038
       uniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/TestValidationSettings/[Zenject-UnitTests-Editor][Zenject.Tests.TestValidationSettings.TestOutsideObjectGraph1]'
@@ -9539,17 +9607,12 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1036
       parentUniqueId: 'Zenject-UnitTests-Editor.dll/Zenject/Tests/[Zenject-UnitTests-Editor][Zenject.Tests.TestValidationSettings][suite]'
-    m_ResultText: 'BreadTestSimplePasses (0,021s)
-
-      ---
-
-      [WARNING] OnionStack:
-      Cannot decorate Salo by OnionStack'
+    m_ResultText: BreadTest (2 tests) (0,000s)
     m_ResultStacktrace: 
     m_TestListState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 2bfa46b1
-      m_LastClickedID: -1320748501
+      m_SelectedIDs: 6794d05a
+      m_LastClickedID: 1523618919
       m_ExpandedIDs: bf584f95290f5edde08200070e6e76376794d05ab49aa8774b5ea47cffffff7f
       m_RenameOverlay:
         m_UserAcceptedRename: 0
@@ -9580,7 +9643,7 @@ MonoBehaviour:
     m_SelectedOption: 0
   - m_Window: {fileID: 14}
     runProgress:
-      RunGuid: 46e0efc2-2f02-48cd-b1be-a9a80f9c92b4
+      RunGuid: 72b7a9f4-8048-40a0-a739-32e4b8225dc6
       ExecutionSettings:
         m_TargetPlatform: 0
         m_HasTargetPlatform: 0
@@ -9593,7 +9656,7 @@ MonoBehaviour:
         filters:
         - testMode: 1
           testNames:
-          - BreadTest.BreadTestSimplePasses
+          - BreadTest.CreateConsumables
           groupNames: []
           categoryNames: []
           assemblyNames: []
@@ -14904,7 +14967,7 @@ MonoBehaviour:
     m_SelectedOption: 0
   - m_Window: {fileID: 14}
     runProgress:
-      RunGuid: 46e0efc2-2f02-48cd-b1be-a9a80f9c92b4
+      RunGuid: 72b7a9f4-8048-40a0-a739-32e4b8225dc6
       ExecutionSettings:
         m_TargetPlatform: 0
         m_HasTargetPlatform: 0
@@ -14917,7 +14980,7 @@ MonoBehaviour:
         filters:
         - testMode: 1
           testNames:
-          - BreadTest.BreadTestSimplePasses
+          - BreadTest.CreateConsumables
           groupNames: []
           categoryNames: []
           assemblyNames: []
@@ -20310,8 +20373,7 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SkipHidden: 1
     m_SearchArea: 1
-    m_Folders:
-    - Assets/_BorschtCraft/_Scripts/Food/Core/Services/ItemSlotController
+    m_Folders: []
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -20329,7 +20391,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 8c590000
     m_LastClickedID: 22924
-    m_ExpandedIDs: 000000008ec5000090c5000092c5000094c5000096c5000098c500009ac500009cc500009ec50000a0c50000a2c50000a4c50000a6c50000a8c50000aac50000acc50000aec50000b0c50000b2c50000b4c50000b6c50000b8c50000bac50000bcc50000bec50000c0c50000c2c50000c4c50000c6c50000c8c50000
+    m_ExpandedIDs: 000000000ac500000cc500000ec5000010c5000012c5000014c5000016c5000018c500001ac500001cc500001ec5000020c5000022c5000024c5000026c5000028c500002ac500002cc500002ec5000030c5000032c5000034c5000036c5000038c500003ac500003cc500003ec5000040c5000042c5000044c50000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -20355,10 +20417,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 251}
+    scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff000000008ec5000090c5000092c5000094c5000096c5000098c500009ac500009cc500009ec50000a0c50000a2c50000a4c50000a6c50000a8c50000aac50000acc50000aec50000b0c50000b2c50000b4c50000b6c50000b8c50000bac50000bcc50000bec50000c0c50000c2c50000c4c50000c6c50000c8c50000
+    m_ExpandedIDs: ffffffff000000000ac500000cc500000ec5000010c5000012c5000014c5000016c5000018c500001ac500001cc500001ec5000020c5000022c5000024c5000026c5000028c500002ac500002cc500002ec5000030c5000032c5000034c5000036c500003ac500003ec5000040c5000042c5000044c50000a4c70000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -20437,8 +20499,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Hierarchy\u200B"
   m_Pos:
     serializedVersion: 2
-    x: -31628
-    y: -31964
+    x: 380
+    y: 87
     width: 330
     height: 1251
   m_SerializedDataModeController:
@@ -20455,9 +20517,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 02fbffff
+      m_SelectedIDs: b05effff
+      m_LastClickedID: -41296
+      m_ExpandedIDs: 505fffff0a60ffff9c63ffff74faffff02fbffff18c3000028c3000092c90000dec90000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -21514,7 +21576,7 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 56348
+  m_LastSelectedObjectID: -41296
 --- !u!114 &22
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -21585,8 +21647,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Console\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1507
-    y: 729
+    x: -30501
+    y: -31322
     width: 557
     height: 609
   m_SerializedDataModeController:
@@ -21621,8 +21683,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Simulator\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 712
-    y: 812
+    x: -31296
+    y: -31239
     width: 793
     height: 526
   m_SerializedDataModeController:

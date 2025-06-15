@@ -2,6 +2,6 @@
 {
     public interface IReleasable
     {
-        int Release();
+        void Release();
     }
 }

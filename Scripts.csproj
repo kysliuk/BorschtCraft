@@ -62,58 +62,60 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.38f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumed\Interfaces\IConsumed.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Slot\UI\SlotView.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Slot\UI\SlotViewModel.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Mustard\MustardStack.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Bread\Stack\BreadStackView.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Interfaces\IReleasable.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Slot\Slot.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Bread\Cooked\BreadCooked.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Bread\Stack\BreadStack.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Interfaces\IConsumed.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\BreadFactory\ConsumeAbstractFactory.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumable\Consumable.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Onion\Onion.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Salo\PrefabInstaller\SaloStackPrefabInstaller.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\UI\Consumable\ConsumableViewModel.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumed\Interfaces\FoodLayers\ISecondLayer.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Horseradish\PrefabInstaller\HorseradishStackPrefabInstaller.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Salo\UI\SaloStackViewModel.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Horseradish\Horseradish.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumed\Cookable.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Horseradish\UI\HorseradishStackView.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Mustard\UI\MustardStackViewModel.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Signals\Cooking\ItemCookedSignal.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Interfaces\FoodLayers\ISecondLayer.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Salo\UI\SaloStackView.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Onion\UI\OnionStackViewModel.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Signals\Slot\MoveItemRequestSignal.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumed\Interfaces\FoodLayers\IThirdLayer.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Onion\UI\OnionStackView.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Horseradish\UI\HorseradishStackViewModel.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Signals\Consumable\ConsumableInteractionRequestSignal.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Mustard\PrefabInstaller\MustardStackPrefabInstaller.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Horseradish\HorseradishStack.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Garlic\UI\GarlicStackView.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Interfaces\ICooked.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumable\Signals\ConsumableInteractionRequestSignal.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Bread\Stack\BreadStackPrefabInstaller.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Interfaces\ICantDecorate.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Interfaces\FoodLayers\IThirdLayer.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumed.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumable.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumed\Interfaces\ICookable.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumable\UI\ConsumableView.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Salo\SaloStack.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Cookable.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Interfaces\FoodLayers\IFourthLayer.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\UI\Consumable\ConsumableView.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumable\UI\ConsumableViewModel.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Slot\Enums\SlotType.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Onion\PrefabInstaller\OnionStackPrefabInstaller.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumed\Interfaces\FoodLayers\IFourthLayer.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Item.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Interfaces\ICookable.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\ConsumableInstaller.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Bootstrapper\ZenjectInstaller.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Bread\Stack\BreadStackViewModel.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumable\Interfaces\IConsumable.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Garlic\Garlic.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumed\Consumed.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Slot\Interfaces\ISlot.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Common\Exception\CannotDecorateException.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Slot\Signals\ReleaseSlotItemSignal.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Mustard\UI\MustardStackView.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Interfaces\IConsumable.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\IReleasable.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Common\Logger\Logger.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumable\Interfaces\ICantDecorate.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Bread\Raw\BreadRaw.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Signals\Cooking\CookItemInSlotRequestSignal.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Garlic\GarlicStack.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumed\Interfaces\ICooked.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Mustard\Mustard.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Signals\Slot\SlotClickedSignal.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Garlic\UI\GarlicStackViewModel.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Garlic\PrefabInstaller\GarlicStackPrefabInstaller.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Installers\ConsumableInstallers\ConsumablePrefabInstallerBase.cs" />
@@ -1208,7 +1210,6 @@
       <Name>UniTask</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

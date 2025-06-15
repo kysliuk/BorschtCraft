@@ -13,7 +13,7 @@ namespace BorschtCraft.Food.UI
 
         public virtual void OnPointerClick(PointerEventData eventData)
         {
-            Logger.LogInfo(this, $"View model exists: {_viewModel != null}. {_viewModel?.GetType()?.Name}");
+            Logger.LogInfo(this, $"Clicked on {_viewModel?.GetType()?.Name}");
             _viewModel?.AttemptConsume();
         }
 

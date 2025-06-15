@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2383142320800062093}
   - component: {fileID: 933493762866824150}
-  - component: {fileID: 5249696042911820314}
-  - component: {fileID: 9035221193258104131}
   m_Layer: 0
   m_Name: Salo
   m_TagString: Untagged
@@ -89,35 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5249696042911820314
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3101835438868054707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _scriptableObjectInstallers: []
-  _monoInstallers: []
-  _installerPrefabs: []
-  _autoRun: 1
-  _kernel: {fileID: 0}
---- !u!114 &9035221193258104131
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3101835438868054707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f58955b88a68ff4d91d50d5ee5ede5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4069357586598476188
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,8 +97,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6701761740614714832}
   - component: {fileID: 6680706579782734830}
-  - component: {fileID: 5362777550045455512}
-  - component: {fileID: 5838765815252005127}
   m_Layer: 0
   m_Name: BreadPiece
   m_TagString: Untagged
@@ -207,35 +174,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5362777550045455512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4069357586598476188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _scriptableObjectInstallers: []
-  _monoInstallers: []
-  _installerPrefabs: []
-  _autoRun: 1
-  _kernel: {fileID: 0}
---- !u!114 &5838765815252005127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4069357586598476188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b84dff655b8ab2f4d9968474bffd52a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4221476090171336580
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,8 +184,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2205255012389248609}
   - component: {fileID: 7138186150225063449}
-  - component: {fileID: 3163550134930440982}
-  - component: {fileID: 3729726911853226923}
   m_Layer: 0
   m_Name: Garlic
   m_TagString: Untagged
@@ -325,35 +261,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3163550134930440982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4221476090171336580}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _scriptableObjectInstallers: []
-  _monoInstallers: []
-  _installerPrefabs: []
-  _autoRun: 1
-  _kernel: {fileID: 0}
---- !u!114 &3729726911853226923
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4221476090171336580}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fe8da71c3d07a346a335e56c8ee13f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4928490638252623630
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,7 +271,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9120030014058033235}
   - component: {fileID: 1855074449219848382}
-  - component: {fileID: 7941026421241158055}
   m_Layer: 0
   m_Name: ReleaseSlot
   m_TagString: Untagged
@@ -439,18 +345,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &7941026421241158055
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4928490638252623630}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ecdeea3ba22da749b55450ad9f80fe7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6791776919999478082
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,8 +355,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4577073376061225985}
   - component: {fileID: 7275730930834668175}
-  - component: {fileID: 7138699839623941062}
-  - component: {fileID: 2862603791702423690}
   m_Layer: 0
   m_Name: Onion
   m_TagString: Untagged
@@ -540,35 +432,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7138699839623941062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6791776919999478082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _scriptableObjectInstallers: []
-  _monoInstallers: []
-  _installerPrefabs: []
-  _autoRun: 1
-  _kernel: {fileID: 0}
---- !u!114 &2862603791702423690
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6791776919999478082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ab6fcdc43bb05548ab455ca187f598a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7001946786329474536
 GameObject:
   m_ObjectHideFlags: 0
@@ -579,8 +442,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1401643445457094721}
   - component: {fileID: 3089500847505840231}
-  - component: {fileID: 4214692627568893815}
-  - component: {fileID: 6766747189596757010}
   m_Layer: 0
   m_Name: Mustard
   m_TagString: Untagged
@@ -658,35 +519,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4214692627568893815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7001946786329474536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _scriptableObjectInstallers: []
-  _monoInstallers: []
-  _installerPrefabs: []
-  _autoRun: 1
-  _kernel: {fileID: 0}
---- !u!114 &6766747189596757010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7001946786329474536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d5cd9b3ccbe9a148b26275dd369694b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7691310742412124360
 GameObject:
   m_ObjectHideFlags: 0
@@ -697,8 +529,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1779448594724058560}
   - component: {fileID: 3032357944198444113}
-  - component: {fileID: 6530591606550178691}
-  - component: {fileID: 8765525653343241657}
   m_Layer: 0
   m_Name: Horseradish
   m_TagString: Untagged
@@ -776,32 +606,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6530591606550178691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7691310742412124360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _scriptableObjectInstallers: []
-  _monoInstallers: []
-  _installerPrefabs: []
-  _autoRun: 1
-  _kernel: {fileID: 0}
---- !u!114 &8765525653343241657
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7691310742412124360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9cf0dc9d3de0224aa2eca59386fbafc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
