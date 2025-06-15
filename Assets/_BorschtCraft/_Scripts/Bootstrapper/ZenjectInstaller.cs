@@ -7,6 +7,7 @@ namespace BorschtCraft
         public override void InstallBindings()
         {
             SignalBusInstaller.Install(Container);
+
         }
     }
 }

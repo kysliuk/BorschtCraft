@@ -1,6 +1,6 @@
 ﻿namespace BorschtCraft.Food.UI
 {
-    public class OnionView : ConsumedView<ConsumedViewModel<Onion>, Onion>
+    public class OnionView : ConsumedView<Onion>
     {
     }
 }

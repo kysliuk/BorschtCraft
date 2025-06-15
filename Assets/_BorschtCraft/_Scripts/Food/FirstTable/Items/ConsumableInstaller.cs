@@ -2,72 +2,65 @@
 using BorschtCraft.Food.Signals;
 using UnityEngine;
 using BorschtCraft.Food.UI;
-using System.Collections.Generic;
-using UnityEngine.Scripting;
-using UnityEditor.Graphs;
 
 namespace BorschtCraft.Food
 {
     public class ConsumableInstaller : MonoInstaller
     {
-        [RequiredMember]
-        [SerializeField] ItemSlotController[] _cookingSlots;
-        [RequiredMember]
-        [SerializeField] ItemSlotController[] _releasingSlots;
+        [SerializeField] private int _initialPrice = 10; //To be changed with gameconfig
         public override void InstallBindings()
         {
             Container.Bind<MonoBehaviour>().WithId("CoroutineHost").FromInstance(this).AsSingle();
 
-            //ViewMode mappings for consumable items
-            var viewModelMappings = new List<ConsumedViewModelMapping>
-            {
-                new ConsumedViewModelMapping(typeof(BreadRaw), typeof(BreadRawViewModel)),
-                new ConsumedViewModelMapping(typeof(BreadCooked), typeof(BreadCookedViewModel)),
-                new ConsumedViewModelMapping(typeof(Salo), typeof(ConsumedViewModel<Salo>)),
-                new ConsumedViewModelMapping(typeof(Garlic), typeof(ConsumedViewModel<Garlic>)),
-                new ConsumedViewModelMapping(typeof(Onion), typeof(ConsumedViewModel<Onion>)),
-                new ConsumedViewModelMapping(typeof(Mustard), typeof(ConsumedViewModel<Mustard>)),
-                new ConsumedViewModelMapping(typeof(Horseradish), typeof(ConsumedViewModel<Horseradish>))
-            };
-
-            //Bind the view model mappings to the container
-            Container.Bind< List<ConsumedViewModelMapping>>()
-                .FromInstance(viewModelMappings).AsSingle();
-
-            //Bind the consumable items
-            Container.Bind<BreadRawViewModel>().AsTransient();
-            Container.Bind<BreadCookedViewModel>().AsTransient();
-            Container.Bind<ConsumedViewModel<Salo>>().AsTransient();
-            Container.Bind<ConsumedViewModel<Garlic>>().AsTransient();
-            Container.Bind<ConsumedViewModel<Onion>>().AsTransient();
-            Container.Bind<ConsumedViewModel<Mustard>>().AsTransient();
-            Container.Bind<ConsumedViewModel<Horseradish>>().AsTransient();
-
-            //Bind the item slot controllers for cooking and releasing
-            foreach (var slot in _cookingSlots) Container.QueueForInject(slot);
-            Container.Bind<IItemSlot[]>()
-                    .WithId("CookingSlots")
-                    .FromInstance(_cookingSlots)
-                    .AsCached();
-
-            // Bind the releasing slots
-            foreach (var slot in _releasingSlots) Container.QueueForInject(slot);
-            Container.Bind<IItemSlot[]>()
-                    .WithId("ReleasingSlots")
-                    .FromInstance(_releasingSlots)
-                    .AsCached();
-
-            //Bind the cooking service
-            Container.BindInterfacesAndSelfTo<CookingService>().AsSingle().NonLazy();
-            Container.BindInterfacesAndSelfTo<ConsumingService>().AsSingle().NonLazy();
-            Container.BindInterfacesAndSelfTo<CombiningService>().AsSingle().NonLazy();
-            Container.BindInterfacesAndSelfTo<ItemTransferService>().AsSingle().NonLazy();
-
             //Bind Signals
+            InstallSignals();
+
+            //Install Consumables
+            InstallConsumables();
+
+            //Install Consumed
+            InstallConsumed();
+        }
+
+        private void InstallConsumables()
+        {
+            new GenericConsumableInstaller<BreadStack, BreadRaw>().Install(Container, _initialPrice);
+            new GenericConsumableInstaller<SaloStack, Salo>().Install(Container, _initialPrice);
+            new GenericConsumableInstaller<GarlicStack, Garlic>().Install(Container, _initialPrice);
+            new GenericConsumableInstaller<HorseradishStack, Horseradish>().Install(Container, _initialPrice);
+            new GenericConsumableInstaller<MustardStack, Mustard>().Install(Container, _initialPrice);
+            new GenericConsumableInstaller<OnionStack, Onion>().Install(Container, _initialPrice);
+        }
+
+        private void InstallConsumed()
+        {
+            new GenericConsumedInstaller<BreadRaw>().Install(Container);
+            new GenericConsumedInstaller<BreadCooked>().Install(Container);
+            new GenericConsumedInstaller<Salo>().Install(Container);
+            new GenericConsumedInstaller<Garlic>().Install(Container);
+            new GenericConsumedInstaller<Horseradish>().Install(Container);
+            new GenericConsumedInstaller<Mustard>().Install(Container);
+            new GenericConsumedInstaller<Onion>().Install(Container);
+        }
+
+        private void InstallSignals()
+        {
             Container.DeclareSignal<ConsumableInteractionRequestSignal>();
-            Container.DeclareSignal<CookItemInSlotRequestSignal>();
-            Container.DeclareSignal<ItemCookedSignal>();
-            Container.DeclareSignal<SlotClickedSignal>();
+            Container.DeclareSignal<ReleaseSlotItemSignal>();
+
+            GenericInstallSignal<BreadRaw>();
+            GenericInstallSignal<BreadCooked>();
+            GenericInstallSignal<Salo>();
+            GenericInstallSignal<Garlic>();
+            GenericInstallSignal<Horseradish>();
+            GenericInstallSignal<Mustard>();
+            GenericInstallSignal<Onion>();
+            GenericInstallSignal<Garlic>();
+        }
+
+        private void GenericInstallSignal<T>() where T : IConsumed
+        {
+            Container.DeclareSignal<SlotItemChangedSignal<T>>();
         }
     }
 }

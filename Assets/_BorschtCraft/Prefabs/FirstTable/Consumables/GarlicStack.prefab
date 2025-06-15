@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 2970624711154180455}
   - component: {fileID: 2890871817684226439}
   - component: {fileID: 8044604724190180693}
-  - component: {fileID: 327026188675493929}
-  - component: {fileID: 5638695485850684779}
   - component: {fileID: 2080045437738939396}
   m_Layer: 0
   m_Name: GarlicStack
@@ -137,37 +135,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.35000002, y: 0.6701636}
   m_EdgeRadius: 0
---- !u!114 &327026188675493929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6507688796730143621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _scriptableObjectInstallers: []
-  _monoInstallers:
-  - {fileID: 5638695485850684779}
-  _installerPrefabs: []
-  _autoRun: 1
-  _kernel: {fileID: 0}
---- !u!114 &5638695485850684779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6507688796730143621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac4f309a537f9ce40b3edc0c3e46aa82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _initialPrice: 10
 --- !u!114 &2080045437738939396
 MonoBehaviour:
   m_ObjectHideFlags: 0

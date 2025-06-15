@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 8197510675249248121}
   - component: {fileID: 3511076640060411979}
   - component: {fileID: 8040279016992285278}
-  - component: {fileID: 5823518351521440271}
-  - component: {fileID: 6107746505583756034}
   - component: {fileID: 8189642546271885216}
   m_Layer: 0
   m_Name: OnionStack
@@ -137,37 +135,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.95, y: 0.9102222}
   m_EdgeRadius: 0
---- !u!114 &5823518351521440271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7757308910505183980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _scriptableObjectInstallers: []
-  _monoInstallers:
-  - {fileID: 6107746505583756034}
-  _installerPrefabs: []
-  _autoRun: 1
-  _kernel: {fileID: 0}
---- !u!114 &6107746505583756034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7757308910505183980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07bb7a2ac7a49964c9bd0d4cad7604e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _initialPrice: 10
 --- !u!114 &8189642546271885216
 MonoBehaviour:
   m_ObjectHideFlags: 0

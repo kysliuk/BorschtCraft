@@ -1,6 +1,6 @@
 ﻿namespace BorschtCraft.Food.UI
 {
-    public class MustardStackView : ConsumableView<MustardStackViewModel, MustardStack, Mustard>
+    public class MustardStackView : ConsumableView<MustardStack, Mustard>
     {
     }
 }
