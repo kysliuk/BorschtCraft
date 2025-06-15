@@ -63,6 +63,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumed\Interfaces\IConsumed.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumed\UI\ConsumedView.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumed\UI\ConsumedViewModel.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Slot\UI\SlotView.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Slot\UI\SlotViewModel.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Mustard\MustardStack.cs" />

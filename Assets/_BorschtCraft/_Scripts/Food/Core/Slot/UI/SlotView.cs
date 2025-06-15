@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UniRx;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using Zenject;
 
@@ -23,14 +24,14 @@ namespace BorschtCraft.Food.UI
 
         private void OnItemChanged(IConsumed item)
         {
-
+            
         }
 
         [Inject]
         public void Construct(SlotViewModel slotViewModel)
         {
             _slotViewModel = slotViewModel;
-            _slotViewModel.CurrentItem.Subscribe(OnItemChanged);
+            _slotViewModel.CurrentItem.Subscribe(OnItemChanged).AddTo(this);
 
         }
     }
