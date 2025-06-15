@@ -11,9 +11,7 @@ GameObject:
   - component: {fileID: 679850562688185028}
   - component: {fileID: 4469491944177781812}
   - component: {fileID: 6390772373961357981}
-  - component: {fileID: 5678773370889709002}
   - component: {fileID: 5121797086292705661}
-  - component: {fileID: 8255206847436350222}
   m_Layer: 0
   m_Name: MustardStack
   m_TagString: Untagged
@@ -137,24 +135,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.67, y: 0.5101245}
   m_EdgeRadius: 0
---- !u!114 &5678773370889709002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4691848893545796846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _scriptableObjectInstallers: []
-  _monoInstallers:
-  - {fileID: 8255206847436350222}
-  _installerPrefabs: []
-  _autoRun: 1
-  _kernel: {fileID: 0}
 --- !u!114 &5121797086292705661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,16 +147,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be3b2b03e360f014ba138255206c68eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8255206847436350222
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4691848893545796846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e29c78db2c1ee4d48aab7a7dbb9fa443, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _initialPrice: 10

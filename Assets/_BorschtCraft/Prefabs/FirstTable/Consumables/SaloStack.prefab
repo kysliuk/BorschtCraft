@@ -10,9 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1598948260119258275}
   - component: {fileID: 5677543636137835314}
-  - component: {fileID: 4482140496331701841}
   - component: {fileID: 3319622804207393345}
-  - component: {fileID: 1268595525936012412}
   - component: {fileID: 8428758006304368947}
   m_Layer: 0
   m_Name: SaloStack
@@ -91,24 +89,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4482140496331701841
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5859654257404721939}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _scriptableObjectInstallers: []
-  _monoInstallers:
-  - {fileID: 1268595525936012412}
-  _installerPrefabs: []
-  _autoRun: 1
-  _kernel: {fileID: 0}
 --- !u!114 &3319622804207393345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,19 +101,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77f252ee0db1e104ab51044b95dde0f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1268595525936012412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5859654257404721939}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 456ffaf6760c8ed4c97b7d339f529b83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _initialPrice: 10
 --- !u!61 &8428758006304368947
 BoxCollider2D:
   m_ObjectHideFlags: 0

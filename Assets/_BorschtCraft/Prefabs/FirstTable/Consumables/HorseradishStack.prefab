@@ -12,9 +12,7 @@ GameObject:
   - component: {fileID: 4942728193772518791}
   - component: {fileID: 1851925383077238473}
   - component: {fileID: 8398528316890363986}
-  - component: {fileID: 5160488854230828065}
   - component: {fileID: 7446446074042461776}
-  - component: {fileID: 8123024560585621110}
   m_Layer: 0
   m_Name: HorseradishStack
   m_TagString: Untagged
@@ -184,24 +182,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.67, y: 0.5101245}
   m_EdgeRadius: 0
---- !u!114 &5160488854230828065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2504314184358847987}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _scriptableObjectInstallers: []
-  _monoInstallers:
-  - {fileID: 8123024560585621110}
-  _installerPrefabs: []
-  _autoRun: 1
-  _kernel: {fileID: 0}
 --- !u!114 &7446446074042461776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,16 +194,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86555434223716f4baaa83a57243a03e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8123024560585621110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2504314184358847987}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b87cf4aa26b28d42ac3078ed7b8fa9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _initialPrice: 10

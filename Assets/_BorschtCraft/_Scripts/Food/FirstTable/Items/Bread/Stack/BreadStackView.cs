@@ -1,6 +1,6 @@
 ﻿namespace BorschtCraft.Food.UI
 {
-    public class BreadStackView : ConsumableView<ConsumableViewModel<BreadStack, BreadRaw>, BreadStack, BreadRaw>
+    public class BreadStackView : ConsumableView<BreadStack, BreadRaw>
     {
     }
 }
