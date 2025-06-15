@@ -42,7 +42,7 @@ namespace BorschtCraft.Food
         public Slot(SlotType type, IConsumed item, SignalBus signalBus)
         {
             SlotType = type;
-            Item.Value = item;
+            Item = new ReactiveProperty<IConsumed>(item);
         }
     }
 }

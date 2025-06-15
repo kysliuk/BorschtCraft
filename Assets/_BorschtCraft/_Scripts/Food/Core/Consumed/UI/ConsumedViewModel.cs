@@ -4,7 +4,7 @@ using Zenject;
 
 namespace BorschtCraft.Food.UI
 {
-    public class ConsumedViewModel<T> : IConsumedViewModel, IDisposable where T : IConsumed
+    public class ConsumedViewModel<T> : IDisposable where T : IConsumed
     {
         public IReadOnlyReactiveProperty<bool> IsVisible => _isVisible;
         public Type ModelType => typeof(T);

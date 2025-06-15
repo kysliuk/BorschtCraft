@@ -2,36 +2,36 @@
 using UniRx;
 using System;
 using Zenject;
+using static UnityEditor.Profiling.HierarchyFrameDataView;
 
 namespace BorschtCraft.Food.UI
 {
     [RequireComponent(typeof(SpriteRenderer))]
-    public class ConsumedView<T> : MonoBehaviour, IConsumedManagedView where T : IConsumed
+    public class ConsumedView<T> : MonoBehaviour where T : IConsumed
     {
         public Type ModelType => typeof(T);
 
-        protected IConsumedViewModel _consumedViewModel;
+        protected ConsumedViewModel<T> _consumedViewModel;
         protected SpriteRenderer _spriteRenderer;
         protected SlotView _parentSlotView;
 
         [Inject]
-        public void Construct(IConsumedViewModel consumedViewModel)
+        public void Construct(ConsumedViewModel<T> consumedViewModel)
         {
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+            if (_spriteRenderer == null)
+                Logger.LogWarning(this, $"{nameof(SpriteRenderer)} is null in {nameof(ConsumedView<T>)}");
+
             _consumedViewModel = consumedViewModel;
+            _consumedViewModel.SetParentSlotViewModel(GetComponentInParent<SlotView>()?.SlotViewModel);
+            _consumedViewModel?.IsVisible?.Subscribe(EnableVisibility).AddTo(this);
+
+            Logger.LogInfo(this, $"Constructed with view model: {_consumedViewModel?.GetType()?.Name}<{typeof(T).Name}>");
         }
 
         protected virtual void EnableVisibility(bool enable)
         {
             _spriteRenderer.enabled = enable;
         }
-
-        #region Unity behaviour
-        protected virtual void Awake()
-        {
-            _consumedViewModel?.IsVisible.Subscribe(EnableVisibility).AddTo(this);
-            _spriteRenderer = GetComponent<SpriteRenderer>();
-            _consumedViewModel.SetParentSlotViewModel(GetComponentInParent<SlotView>()?.SlotViewModel);
-        }
-        #endregion
     }
 }

@@ -3,7 +3,7 @@ using Zenject;
 
 namespace BorschtCraft.Food.UI
 {
-    public class GenericConsumablePrefabInstaller<T1, T2>  where T1 : IConsumable where T2 : IConsumed
+    public class GenericConsumableInstaller<T1, T2>  where T1 : IConsumable where T2 : IConsumed
     {
         public void Install(DiContainer container, int price)
         {
@@ -18,9 +18,9 @@ namespace BorschtCraft.Food.UI
 
             var viewModelType = typeof(ConsumableViewModel<,>).MakeGenericType(consumableType, consumedType);
 
-            Logger.LogInfo(this, $"Installing bindings for {viewModelType.Name} and {consumableType.Name}");
+            Logger.LogInfo(this, $"Installing bindings for ConsumableViewModel {consumableType.Name} and {consumedType.Name}");
 
-            var method = typeof(GenericConsumablePrefabInstaller<T1, T2>)
+            var method = typeof(GenericConsumableInstaller<T1, T2>)
                 .GetMethod(nameof(InstallGeneric), System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
                 ?.MakeGenericMethod(viewModelType, consumableType, consumedType);
 
