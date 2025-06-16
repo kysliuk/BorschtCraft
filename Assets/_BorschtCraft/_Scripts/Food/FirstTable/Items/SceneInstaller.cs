@@ -8,6 +8,9 @@ namespace BorschtCraft.Food.FirstTable
         [SerializeField] private int _initialPrice = 10; //To be changed with gameconfig
         public override void InstallBindings()
         {
+            //Install Slots
+            new SlotFinderInstaller(Container).Install();
+
             //Install Consumables
             new ConsumableInstaller(Container, _initialPrice).Install();
 

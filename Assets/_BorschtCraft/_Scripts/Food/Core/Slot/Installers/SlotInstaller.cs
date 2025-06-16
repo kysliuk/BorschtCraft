@@ -19,7 +19,7 @@ namespace BorschtCraft.Food
             })
             .AsTransient();
 
-            Container.Bind<SlotViewModel>().AsTransient();
+            Container.Bind<SlotViewModel>().AsSingle();
         }
     }
 }

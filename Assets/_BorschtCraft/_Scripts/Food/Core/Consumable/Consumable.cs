@@ -4,18 +4,26 @@ namespace BorschtCraft.Food
 {
     public class Consumable<T> : Item, IConsumable where T : IConsumed
     {
-        public virtual IConsumed Consume(IConsumed item) => TryConsume(item, out _);
-
-        public virtual IConsumed TryConsume(IConsumed item, out bool succeed)
+        public virtual IConsumed Consume(IConsumed item = null)
         {
-            succeed = CanDecorate(item);
+            TryConsume(item, out var consumed);
+            return consumed;
+        }
+
+        public virtual bool TryConsume(IConsumed item) => TryConsume(item, out _);
+
+        public virtual bool TryConsume(IConsumed item, out IConsumed consumed)
+        {
+            var succeed = CanDecorate(item);
             if (!succeed)
             {
                 Logger.LogWarning(this, $"Cannot decorate {item?.GetType().Name} by {GetType().Name}");
-                return item;
+                consumed = item;
+                return succeed;
             }
 
-            return ConsumeAbstractFactory.CreateConsumed<T>(Price, item);
+            consumed = ConsumeAbstractFactory.CreateConsumed<T>(Price, item);
+            return succeed;
         }
 
         public virtual bool CanDecorate(IConsumed item)
