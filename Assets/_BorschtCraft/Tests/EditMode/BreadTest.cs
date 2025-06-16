@@ -42,9 +42,7 @@ public class BreadTest
     {
         CreateConsumables();
 
-        var succeed = false;
-        _bread = _breadStack.TryConsume(null, out _);
-        Assert.IsTrue(succeed);
+        _bread = _breadStack.Consume(null);
         Assert.IsNotNull(_bread);
         Assert.AreEqual(10, _bread.Price);
         Assert.IsInstanceOf<BreadRaw>(_bread);
@@ -55,7 +53,7 @@ public class BreadTest
         Assert.AreEqual(10, _bread.Price);
         Assert.AreEqual(1, _bread.Ingredients.Count);
 
-        _bread = _garlicStack.TryConsume(_bread, out succeed);
+        _bread = _garlicStack.TryConsume(_bread, out var succeed);
         Assert.IsTrue(succeed);
         Assert.AreEqual(13, _bread.Price);
         Assert.IsInstanceOf<Garlic>(_bread);
