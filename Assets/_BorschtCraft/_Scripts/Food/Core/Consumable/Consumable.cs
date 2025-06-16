@@ -4,9 +4,12 @@ namespace BorschtCraft.Food
 {
     public class Consumable<T> : Item, IConsumable where T : IConsumed
     {
-        public virtual IConsumed Consume(IConsumed item)
+        public virtual IConsumed Consume(IConsumed item) => TryConsume(item, out _);
+
+        public virtual IConsumed TryConsume(IConsumed item, out bool succeed)
         {
-            if (!CanDecorate(item))
+            succeed = CanDecorate(item);
+            if (!succeed)
             {
                 Logger.LogWarning(this, $"Cannot decorate {item?.GetType().Name} by {GetType().Name}");
                 return item;

@@ -2,7 +2,7 @@
 {
     public interface IConsumable
     {
-        IConsumed Consume(IConsumed item);
+        IConsumed TryConsume(IConsumed item, out bool succeed);
         bool CanDecorate(IConsumed item);
     }
 }

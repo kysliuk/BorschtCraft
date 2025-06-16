@@ -42,7 +42,9 @@ public class BreadTest
     {
         CreateConsumables();
 
-        _bread = _breadStack.Consume(null);
+        var succeed = false;
+        _bread = _breadStack.TryConsume(null, out _);
+        Assert.IsTrue(succeed);
         Assert.IsNotNull(_bread);
         Assert.AreEqual(10, _bread.Price);
         Assert.IsInstanceOf<BreadRaw>(_bread);
@@ -53,29 +55,34 @@ public class BreadTest
         Assert.AreEqual(10, _bread.Price);
         Assert.AreEqual(1, _bread.Ingredients.Count);
 
-        _bread = _garlicStack.Consume(_bread);
+        _bread = _garlicStack.TryConsume(_bread, out succeed);
+        Assert.IsTrue(succeed);
         Assert.AreEqual(13, _bread.Price);
         Assert.IsInstanceOf<Garlic>(_bread);
         Assert.AreEqual(2, _bread.Ingredients.Count);
 
-        _bread = _saloStack.Consume(_bread);
+        _bread = _saloStack.TryConsume(_bread, out succeed);
+        Assert.IsTrue(succeed);
         Assert.AreEqual(18, _bread.Price);
         Assert.IsInstanceOf<Salo>(_bread);
         Assert.AreEqual(3, _bread.Ingredients.Count);
 
         LogAssert.Expect(LogType.Warning, "[WARNING] OnionStack: Cannot decorate Salo by OnionStack");
 
-        _bread = _onionStack.Consume(_bread);
+        _bread = _onionStack.TryConsume(_bread, out succeed);
+        Assert.IsFalse(succeed);
         Assert.AreEqual(18, _bread.Price);
         Assert.IsInstanceOf<Salo>(_bread);
         Assert.AreEqual(3, _bread.Ingredients.Count);
 
-        _bread = _horseradishStack.Consume(_bread);
+        _bread = _horseradishStack.TryConsume(_bread, out succeed);
+        Assert.IsTrue(succeed);
         Assert.AreEqual(19, _bread.Price);
         Assert.IsInstanceOf<Horseradish>(_bread);
         Assert.AreEqual(4, _bread.Ingredients.Count);
 
-        _bread = _mustardStack.Consume(_bread);
+        _bread = _mustardStack.TryConsume(_bread, out succeed);
+        Assert.IsTrue(succeed);
         Assert.AreEqual(23, _bread.Price);
         Assert.IsInstanceOf<Mustard>(_bread);
         Assert.AreEqual(5, _bread.Ingredients.Count);

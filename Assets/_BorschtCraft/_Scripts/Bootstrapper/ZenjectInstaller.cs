@@ -1,4 +1,6 @@
-﻿using Zenject;
+﻿using BorschtCraft.Food;
+using UnityEngine;
+using Zenject;
 
 namespace BorschtCraft
 {
@@ -8,6 +10,9 @@ namespace BorschtCraft
         {
             SignalBusInstaller.Install(Container);
 
+            Container.Bind<MonoBehaviour>().WithId("CoroutineHost").FromInstance(this).AsSingle();
+
+            new SlotSignalsInstaller(Container).Install();
         }
     }
 }
