@@ -7,6 +7,7 @@ namespace BorschtCraft.Food.UI
     public class SlotViewModel : IDisposable
     {
         public IReadOnlyReactiveProperty<IConsumed> CurrentItem => _slotModel.Item;
+        public ISlot Slot => _slotModel;
 
         protected readonly ISlot _slotModel;
         protected readonly SignalBus _signalBus;

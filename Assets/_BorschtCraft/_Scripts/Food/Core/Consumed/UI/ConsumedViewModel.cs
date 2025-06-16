@@ -33,6 +33,9 @@ namespace BorschtCraft.Food.UI
 
         protected void OnSlotItemChangedSignal(SlotItemChangedSignal<T> signal)
         {
+            if (signal.Slot != _parentSlotViewModel.Slot)
+                return;
+
             _consumedModel = signal.Slot.Item.Value;
             if (_consumedModel == null)
             {
