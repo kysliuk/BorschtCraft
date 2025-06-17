@@ -12,15 +12,28 @@ namespace BorschtCraft.Food
             _slots = slots;
         }
 
-        public static ISlot FindCookingSlot()
+        public static bool TryFindSlot(IConsumable consumable, out ISlot slot)
         {
-            return _slots.Where(s => s.SlotType == SlotType.Cooking && s.Item.Value == null).FirstOrDefault();
+            return TryFindCombiningSlot(consumable, out slot);
         }
 
-        public static ISlot FindCombiningSlot(IConsumable consumable)
+        private static bool TryFindCookingSlot(IConsumable consumable, out ISlot slot)
         {
-            var item = consumable.TryConsume(null, out var succeed);
-            return _slots.Where(s => s.SlotType == SlotType.Combining && consumable.TryConsume(s.Item.Value)).FirstOrDefault();
+            consumable.TryConsume(null, out var consumed);
+
+            if (consumed is ICookable)
+            {
+                slot = _slots.FirstOrDefault(s => s.SlotType == SlotType.Cooking && s.Item.Value == null);
+                return slot != null;
+            }
+
+            return TryFindCombiningSlot(consumable, out slot);
         }
+
+
+        private static bool TryFindCombiningSlot(IConsumable consumable, out ISlot slot) =>
+    (slot = _slots.FirstOrDefault(s => s.SlotType == SlotType.Combining && consumable.TryConsume(s.Item.Value))) != null;
+
+
     }
 }

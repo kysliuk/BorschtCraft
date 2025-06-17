@@ -5,7 +5,7 @@ namespace BorschtCraft.Food.FirstTable
 {
     public class SceneInstaller : MonoInstaller
     {
-        [SerializeField] private int _initialPrice = 10; //To be changed with gameconfig
+        [SerializeField] private int _initialPrice = 10; //To be changed with levelconfig
         public override void InstallBindings()
         {
             //Install Slots
