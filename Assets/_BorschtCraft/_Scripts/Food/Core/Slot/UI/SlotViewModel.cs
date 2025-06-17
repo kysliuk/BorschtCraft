@@ -33,7 +33,6 @@ namespace BorschtCraft.Food.UI
 
         public virtual void Dispose()
         {
-            _slotModel.Item.Dispose();
             _disposables.Dispose();
         }
 

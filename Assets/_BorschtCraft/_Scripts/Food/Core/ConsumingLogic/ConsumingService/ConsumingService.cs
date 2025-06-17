@@ -1,5 +1,4 @@
 ﻿using BorschtCraft.Food.Signals;
-using System;
 using Zenject;
 
 namespace BorschtCraft.Food

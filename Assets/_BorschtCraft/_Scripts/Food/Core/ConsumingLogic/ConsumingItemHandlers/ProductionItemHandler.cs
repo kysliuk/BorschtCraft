@@ -1,32 +1,37 @@
-﻿using NUnit.Framework;
-
-namespace BorschtCraft.Food
+﻿namespace BorschtCraft.Food
 {
     public class ProductionItemHandler : ItemHandlerBase
     {
+        private IConsumable _consumable;
+
         protected override bool CanHandle(IItem item)
         {
-            return true;
+            if (item is IConsumable consumable && consumable is ICantDecorate)
+            {
+                _consumable = consumable;
+                return true;
+            }
+
+            _consumable = null;
+            return false;
         }
 
         protected override bool Process(IItem item)
         {
             Logger.LogInfo(this, "Attempting initial production.");
-            if (item is not IConsumable consumable)
-                return false;
 
-            var isConsumed = consumable.TryConsume(null, out var consumed);
+            var isConsumed = _consumable.TryConsume(null, out var consumed);
             if (!isConsumed)
             {
-                Logger.LogWarning(this, $"{consumable.GetType().Name}.TryConsume(null) did not produce an item. This is expected if it's purely a decorator.");
+                Logger.LogWarning(this, $"{_consumable.GetType().Name}.TryConsume(null) did not produce an item. This is expected if it's purely a decorator.");
                 return false;
             }
 
-            var slotFound = SlotFinderHelper.TryFindSlot(consumable, out var targetSlot);
+            var slotFound = SlotFinderHelper.TryFindSlot(_consumable, out var targetSlot);
 
             if (!slotFound)
             {
-                Logger.LogWarning(this, $"No suitable slot found for {consumable.GetType().Name}. Cannot produce item.");
+                Logger.LogWarning(this, $"No suitable slot found for {_consumable.GetType().Name}. Cannot produce item.");
                 return false;
             }
 

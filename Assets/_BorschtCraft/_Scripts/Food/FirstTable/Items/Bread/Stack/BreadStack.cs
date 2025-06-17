@@ -4,8 +4,7 @@
     {
         public override bool CanDecorate(IConsumed item = null)
         {
-            if (item == null) return true;
-            return false;
+            return item == null;
         }
 
 

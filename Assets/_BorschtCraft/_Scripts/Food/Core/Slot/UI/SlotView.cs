@@ -18,7 +18,7 @@ namespace BorschtCraft.Food.UI
                 return;
             }
 
-            Logger.LogInfo(this, $"Clicked on slot with item: {_slotViewModel.CurrentItem.Value?.GetType().Name ?? "None"}");
+            Logger.LogInfo(this, $"Clicked on slot with item: {_slotViewModel?.CurrentItem?.Value?.GetType().Name ?? "None"}");
             _slotViewModel.ReleaseItem();
         }
 

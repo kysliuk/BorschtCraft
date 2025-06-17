@@ -26,22 +26,16 @@ namespace BorschtCraft.Food.UI
             _disposables.Dispose();
         }
 
-        protected virtual void SetVisibility(bool visible)
-        {
-            _isVisible.Value = visible;
-        }
-
         protected void OnSlotItemChangedSignal(SlotItemChangedSignal<T> signal)
         {
             if (signal.Slot != _parentSlotViewModel.Slot)
                 return;
 
             _consumedModel = signal.Slot.Item.Value;
-            if (_consumedModel == null)
-            {
-                SetVisibility(false);
-                return;
-            }
+
+            var hasModel = _consumedModel == null;
+
+            _isVisible.Value = hasModel;
         }
 
         public ConsumedViewModel(SignalBus signalBus)

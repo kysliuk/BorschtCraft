@@ -2,7 +2,6 @@
 using UniRx;
 using System;
 using Zenject;
-using static UnityEditor.Profiling.HierarchyFrameDataView;
 
 namespace BorschtCraft.Food.UI
 {
@@ -23,15 +22,12 @@ namespace BorschtCraft.Food.UI
                 Logger.LogWarning(this, $"{nameof(SpriteRenderer)} is null in {nameof(ConsumedView<T>)}");
 
             _consumedViewModel = consumedViewModel;
+
             _consumedViewModel.SetParentSlotViewModel(GetComponentInParent<SlotView>()?.SlotViewModel);
-            _consumedViewModel?.IsVisible?.Subscribe(EnableVisibility).AddTo(this);
+
+            _consumedViewModel?.IsVisible?.Subscribe(enabled => _spriteRenderer.enabled = enabled).AddTo(this);
 
             Logger.LogInfo(this, $"Constructed with view model: {_consumedViewModel?.GetType()?.Name}<{typeof(T).Name}>");
-        }
-
-        protected virtual void EnableVisibility(bool enable)
-        {
-            _spriteRenderer.enabled = enable;
         }
     }
 }
