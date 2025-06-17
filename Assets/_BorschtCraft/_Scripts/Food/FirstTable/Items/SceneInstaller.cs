@@ -9,7 +9,7 @@ namespace BorschtCraft.Food.FirstTable
         public override void InstallBindings()
         {
             //Install Slots
-            new SlotFinderInstaller(Container).Install();
+            new SlotHolderInstaller(Container).Install();
 
             //Install Consumables
             new ConsumableInstaller(Container, _initialPrice).Install();

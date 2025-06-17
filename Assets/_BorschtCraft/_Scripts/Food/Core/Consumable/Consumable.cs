@@ -26,7 +26,7 @@ namespace BorschtCraft.Food
             return succeed;
         }
 
-        public virtual bool CanDecorate(IConsumed item)
+        protected virtual bool CanDecorate(IConsumed item)
         {
             if(item == null) return false;
 

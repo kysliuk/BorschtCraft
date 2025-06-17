@@ -2,7 +2,7 @@
 
 namespace BorschtCraft.Food
 {
-    public class SlotFinderInstaller : InstallerBase
+    public class SlotHolderInstaller : InstallerBase
     {
         [Inject] private ISlot[] _slots;
 
@@ -13,10 +13,10 @@ namespace BorschtCraft.Food
 
             _container.Inject(this);
 
-            SlotFinderHelper.Initialize(_slots);
+            SlotHolder.Initialize(_slots);
         }
 
-        public SlotFinderInstaller(DiContainer container) : base(container)
+        public SlotHolderInstaller(DiContainer container) : base(container)
         {
         }
     }
