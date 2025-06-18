@@ -12,14 +12,9 @@ namespace BorschtCraft.Food
             _container.Bind<CookableItemHandler>().AsSingle();
             _container.Bind<CombiningItemHandler>().AsSingle();
 
-            _container.Bind<IItemHandler>().FromMethod(x => 
-            {
-                var cookableItemHandler = x.Container.Resolve<CookableItemHandler>();
-                var combiningItemHandler = x.Container.Resolve<CombiningItemHandler>();
-                cookableItemHandler.SetNext(combiningItemHandler);
-                return cookableItemHandler;
-            }
-            ).AsSingle();
+            _container.Bind(typeof(IItemHandler), typeof(IInitializable))
+                .To<CookableItemHandler>()
+                .AsSingle();
         }
 
         public ConsumingLogicInstaller(DiContainer container) : base(container)

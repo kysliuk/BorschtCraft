@@ -6,5 +6,10 @@
         {
             return new CookingSlotStrategy();
         }
+
+        public CookableItemHandler(IItemHandler itemHandler)
+        {
+            SetNext(itemHandler);
+        }
     }
 }
