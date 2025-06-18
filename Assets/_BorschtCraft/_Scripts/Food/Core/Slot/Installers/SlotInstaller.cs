@@ -17,7 +17,8 @@ namespace BorschtCraft.Food
                 var signalBus = context.Container.Resolve<SignalBus>();
                 return new Slot(_slotType, null, signalBus);
             })
-            .AsTransient();
+            .AsSingle()
+            .CopyIntoAllSubContainers();
 
             Container.Bind<SlotViewModel>().AsSingle();
         }

@@ -16,7 +16,8 @@
 
         protected override bool Process(IItem item)
         {
-            foreach (var slot in SlotHolder.Slots)
+            Logger.LogInfo(this, $"Processing {item.GetType().Name} for consumption. Number of slots {_slots.Length}.");
+            foreach (var slot in _slots)
             {
                 if (_consumable.TryConsume(slot.Item.Value, out var consumed) && _strategy.Matches(slot, consumed))
                 {

@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Zenject;
 
 namespace BorschtCraft.Food
 {
     public abstract class ItemHandlerBase : IItemHandler
     {
+        protected ISlot[] _slots { get; private set; }
+
         private IItemHandler _nextHandler;
 
         public bool Handle(IItem item)
@@ -22,5 +20,11 @@ namespace BorschtCraft.Food
 
         protected abstract bool CanHandle(IItem item);
         protected abstract bool Process(IItem item);
+
+        [Inject]
+        public void Construct(ISlot[] slots)
+        {
+            _slots = slots;
+        }
     }
 }
