@@ -6,15 +6,15 @@ namespace BorschtCraft.Food
     {
         public override void Install()
         {
-            _container.Bind<CookableItemHandler>().AsSingle();
-            _container.Bind<IInitializable>().To<CookableItemHandler>().FromResolve();
+            _container.Bind<CookingItemHandler>().AsSingle();
+            _container.Bind<IInitializable>().To<CookingItemHandler>().FromResolve();
 
             _container.Bind<CombiningItemHandler>().AsSingle();
             _container.Bind<IInitializable>().To<CombiningItemHandler>().FromResolve();
 
             _container.Bind<IConsumingItemHandler>().FromMethod(ctx =>
             {
-                var cookable = ctx.Container.Resolve<CookableItemHandler>();
+                var cookable = ctx.Container.Resolve<CookingItemHandler>();
                 var combining = ctx.Container.Resolve<CombiningItemHandler>();
                 cookable.SetNext(combining);
                 return cookable;

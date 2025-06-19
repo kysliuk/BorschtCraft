@@ -15,7 +15,6 @@ namespace BorschtCraft.Food
             var canSet = ValidateItem(item);
             if (canSet)
             {
-                ClearCurrentItem();
                 _item.Value = item;
                 Logger.LogInfo(this, $"Item of type {item.GetType().Name} was set in slot of type {SlotType}.");
             }
@@ -27,10 +26,17 @@ namespace BorschtCraft.Food
             return canSet;
         }
 
-        private void ClearCurrentItem()
+        public void ClearCurrentItem()
         {
             if (_item.Value != null)
+            {
+                Logger.LogInfo(this, $"Clearing item of type {_item.Value.GetType().Name} from slot of type {SlotType}.");
                 _item.Value = null;
+            }
+            else
+            {
+                Logger.LogWarning(this, $"Attempted to clear an already empty slot of type {SlotType}.");
+            }
         }
 
         private bool ValidateItem(IConsumed item)
@@ -41,8 +47,11 @@ namespace BorschtCraft.Food
             if (item == _item.Value)
                 return false;
 
-            if (SlotType != SlotType.Cooking && (item is ICookable || item is ICooked))
+            if (SlotType != SlotType.Cooking && item is ICookable)
+            {
+                Logger.LogWarning(this, $"Item of type {item.GetType().Name} cannot be set in slot of type {SlotType} because it is not a cooking slot.");
                 return false;
+            }
 
             return true;
         }

@@ -35,7 +35,7 @@ namespace Zenject.Tests.Signals
             Action callback = () => received = true;
             signalBus.SubscribeId<FooSignal>(signalId, callback);
 
-            Assert.Throws(() => signalBus.Subscribe<FooSignal>(callback));
+            Assert.Throws(() => signalBus.TrySubscribe<FooSignal>(callback));
 
             Assert.That(!received);
             signalBus.FireId<FooSignal>(signalId);

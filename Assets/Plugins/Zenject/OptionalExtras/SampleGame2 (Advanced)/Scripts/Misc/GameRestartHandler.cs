@@ -22,7 +22,7 @@ namespace Zenject.SpaceFighter
 
         public void Initialize()
         {
-            _signalBus.Subscribe<PlayerDiedSignal>(OnPlayerDied);
+            _signalBus.TrySubscribe<PlayerDiedSignal>(OnPlayerDied);
         }
 
         public void Dispose()

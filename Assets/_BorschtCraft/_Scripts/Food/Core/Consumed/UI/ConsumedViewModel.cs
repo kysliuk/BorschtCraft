@@ -40,16 +40,28 @@ namespace BorschtCraft.Food.UI
             Logger.LogInfo(this, $"{typeof(T).Name} Setting consumed model to {_consumedModel?.GetType().Name ?? "null"} for slot of type {signal.Slot.SlotType}.");
 
             var hasModel = _consumedModel != null;
-            Logger.LogInfo(this, $"{typeof(T).Name} Checking if consumed model is null: {hasModel} for slot of type {signal.Slot.SlotType} with item of type {typeof(T).Name}.");
+            Logger.LogInfo(this, $"{typeof(T).Name} Checking if consumed model is not null: {hasModel} for slot of type {signal.Slot.SlotType} with item of type {typeof(T).Name}.");
 
             _isVisible.Value = hasModel;
             Logger.LogInfo(this, $"{typeof(T).Name} Setting visibility to {_isVisible.Value} for slot of type {signal.Slot.SlotType} with item of type {typeof(T).Name}.");
+        }
+
+        protected void OnClearAllViewsInSlotSignal(ClearAllViewsInSlotSignal signal)
+        {
+            if (signal.SlotViewModel != _parentSlotViewModel)
+            {
+                return;
+            }
+
+            Logger.LogInfo(this, $"{typeof(T).Name} Clearing all views in slot of type {signal.SlotViewModel.Slot?.SlotType}.");
+            _isVisible.Value = false;
         }
 
         public ConsumedViewModel(SignalBus signalBus)
         {
             _signalBus = signalBus;
             _signalBus.Subscribe<SlotItemChangedSignal<T>>(OnSlotItemChangedSignal);
+            _signalBus.Subscribe<ClearAllViewsInSlotSignal>(OnClearAllViewsInSlotSignal);
         }
     }
 }

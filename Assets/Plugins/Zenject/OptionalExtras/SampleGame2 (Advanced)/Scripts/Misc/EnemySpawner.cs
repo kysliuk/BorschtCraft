@@ -32,7 +32,7 @@ namespace Zenject.SpaceFighter
 
         public void Initialize()
         {
-            _signalBus.Subscribe<EnemyKilledSignal>(OnEnemyKilled);
+            _signalBus.TrySubscribe<EnemyKilledSignal>(OnEnemyKilled);
         }
 
         void OnEnemyKilled()

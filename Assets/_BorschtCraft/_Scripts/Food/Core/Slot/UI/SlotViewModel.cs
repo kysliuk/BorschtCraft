@@ -37,6 +37,11 @@ namespace BorschtCraft.Food.UI
                 Logger.LogInfo(this, $"Firing signal of type {signalType.Name} for slot of type {Slot?.SlotType} with item of type {type.Name}.");
                 _signalBus.Fire(signalInstance);
             }
+            else
+            {
+                var signalInstance = new ClearAllViewsInSlotSignal(this);
+                _signalBus.Fire(signalInstance);
+            }
         }
 
         public SlotViewModel(ISlot slotModel, SignalBus signalBus)

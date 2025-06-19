@@ -4,17 +4,26 @@ namespace BorschtCraft.Food
 {
     public class CookingSlotReleasingHandler : SlotReleasingHandlerBase<ReleasingCookingSlotStrategy>
     {
+        protected override bool CanHandle(IItem item)
+        {
+            if (_strategy.SlotType != SlotType.Cooking)
+                return false;
+
+            return base.CanHandle(item);
+        }
+
         protected override bool ProcessItemReleasing(ISlot slot)
         {
-            Logger.LogInfo(this, $"Trying to place item of type {_consumed.GetType().Name} in combining slot.");
+            Logger.LogInfo(this, $"Trying to place item of type {_consumed.GetType().Name} in combining slot: {_slots.Length}.");
 
             var emptySlots = FindAnyEmptySlot();
 
-            Logger.LogInfo(this, $"Found {emptySlots.Length} empty cooking slots.");
+            Logger.LogInfo(this, $"Found {emptySlots.Length} empty combining slots.");
 
             foreach (var emptySlot in emptySlots)
             {
                 var setted = emptySlot.TrySetItem(_consumed);
+                Logger.LogInfo(this, $"Trying to set item of type {_consumed.GetType().Name} in empty combining slot: {setted}.");
 
                 if (setted)
                 {
@@ -29,7 +38,7 @@ namespace BorschtCraft.Food
 
         private ISlot[] FindAnyEmptySlot()
         {
-            return _slots.Where(slot => slot.SlotType == SlotType.Combining && !slot.Item.HasValue).ToArray();
+            return _slots.Where(slot => slot.SlotType == SlotType.Combining && slot.Item.Value == null).ToArray();
         }
     }
 }

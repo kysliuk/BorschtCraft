@@ -7,6 +7,7 @@ namespace BorschtCraft.Food
         public override void Install()
         {
             _container.DeclareSignal<ReleaseSlotItemSignal>();
+            _container.DeclareSignal<ClearAllViewsInSlotSignal>();
         }
 
         public SlotSignalsInstaller(DiContainer container) : base(container)

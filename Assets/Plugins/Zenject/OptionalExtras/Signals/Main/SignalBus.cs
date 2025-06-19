@@ -233,7 +233,7 @@ namespace Zenject
             SubscribeInternal(typeof(TSignal), identifier, callback, wrapperCallback);
         }
 
-        public void Subscribe<TSignal>(Action callback)
+        public void TrySubscribe<TSignal>(Action callback)
         {
             SubscribeId<TSignal>(null, callback);
         }

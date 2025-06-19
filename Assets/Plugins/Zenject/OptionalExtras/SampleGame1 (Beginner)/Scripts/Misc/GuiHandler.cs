@@ -201,7 +201,7 @@ namespace Zenject.Asteroids
 
         public void Initialize()
         {
-            _signalBus.Subscribe<ShipCrashedSignal>(OnShipCrashed);
+            _signalBus.TrySubscribe<ShipCrashedSignal>(OnShipCrashed);
         }
 
         public void Dispose()

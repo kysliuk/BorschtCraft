@@ -11,10 +11,11 @@ namespace BorschtCraft.Food
 
         public bool Handle(IItem item)
         {
+            var processed = false;
             if (CanHandle(item))
-                return Process(item);
+                processed = Process(item);
 
-            return _nextHandler?.Handle(item) ?? false;
+            return processed ? processed : _nextHandler?.Handle(item) ?? false;
         }
 
         public void SetNext(IItemHandler nextHandler) => _nextHandler = nextHandler;

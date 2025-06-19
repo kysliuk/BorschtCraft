@@ -33,9 +33,9 @@ namespace Zenject.Tests.Signals
             int order3 = 0;
             Action handler3 = () => order3 = count++;
 
-            signalBus.Subscribe<FooSignal>(handler1);
-            signalBus.Subscribe<FooSignal>(handler2);
-            signalBus.Subscribe<FooSignal>(handler3);
+            signalBus.TrySubscribe<FooSignal>(handler1);
+            signalBus.TrySubscribe<FooSignal>(handler2);
+            signalBus.TrySubscribe<FooSignal>(handler3);
 
             signalBus.Fire<FooSignal>();
 
@@ -57,7 +57,7 @@ namespace Zenject.Tests.Signals
 
             Action handler = () =>
             {
-                signalBus.Subscribe<FooSignal>(handler2);
+                signalBus.TrySubscribe<FooSignal>(handler2);
             };
 
             Action handler3 = () =>
@@ -65,7 +65,7 @@ namespace Zenject.Tests.Signals
                 signalBus.Unsubscribe<FooSignal>(handler2);
             };
 
-            signalBus.Subscribe<FooSignal>(handler);
+            signalBus.TrySubscribe<FooSignal>(handler);
 
             Assert.That(!received);
             signalBus.Fire<FooSignal>();
@@ -79,7 +79,7 @@ namespace Zenject.Tests.Signals
             Assert.That(received);
             received = false;
 
-            signalBus.Subscribe<FooSignal>(handler3);
+            signalBus.TrySubscribe<FooSignal>(handler3);
             Assert.That(!received);
             signalBus.Fire<FooSignal>();
             // Should be called before handler 3 so should receive it
@@ -102,7 +102,7 @@ namespace Zenject.Tests.Signals
                 received = true;
                 signalBus.Unsubscribe<FooSignal>(handler4);
             };
-            signalBus.Subscribe<FooSignal>(handler4);
+            signalBus.TrySubscribe<FooSignal>(handler4);
 
             Assert.That(!received);
             signalBus.Fire<FooSignal>();
@@ -127,7 +127,7 @@ namespace Zenject.Tests.Signals
             bool received = false;
             Action callback = () => received = true;
 
-            signalBus2.Subscribe<FooSignal>(callback);
+            signalBus2.TrySubscribe<FooSignal>(callback);
 
             Assert.That(!received);
             signalBus1.Fire<FooSignal>();
@@ -171,7 +171,7 @@ namespace Zenject.Tests.Signals
             var signalBus = Container.Resolve<SignalBus>();
 
             bool received = false;
-            signalBus.Subscribe<FooSignal>(() => received = true);
+            signalBus.TrySubscribe<FooSignal>(() => received = true);
 
             Assert.That(!received);
             signalBus.Fire<FooSignal>();
@@ -217,7 +217,7 @@ namespace Zenject.Tests.Signals
                 signalBus.Fire<FooSignal>();
             };
 
-            signalBus.Subscribe<FooSignal>(handler);
+            signalBus.TrySubscribe<FooSignal>(handler);
 
             Assert.IsEqual(callCount, 0);
             signalBus.Fire<FooSignal>();
