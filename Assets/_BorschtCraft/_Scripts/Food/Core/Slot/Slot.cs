@@ -6,12 +6,19 @@ namespace BorschtCraft.Food
     public class Slot : ISlot
     {
         public SlotType SlotType { get; private set; }
-        public ReactiveProperty<IConsumed> Item { get; private set; }
+        public IReadOnlyReactiveProperty<IConsumed> Item => _item;
+
+        private ReactiveProperty<IConsumed> _item;
 
         public void SetItem(IConsumed item)
         {
             if (ValidateItem(item))
-                Item.Value = item;
+            {
+                _item.Value = item;
+                Logger.LogInfo(this, $"Item of type {item.GetType().Name} was set in slot of type {SlotType}.");
+            }
+            else
+                throw new System.ArgumentException("Invalid item for the slot.");
         }
 
         public void Release()
@@ -21,8 +28,8 @@ namespace BorschtCraft.Food
 
         private void ClearCurrentItem()
         {
-            if (Item.Value != null)
-                Item.Value = null;
+            if (_item.Value != null)
+                _item.Value = null;
         }
 
         private bool ValidateItem(IConsumed item)
@@ -30,7 +37,7 @@ namespace BorschtCraft.Food
             if (item == null)
                 return false;
 
-            if (item == Item.Value)
+            if (item == _item.Value)
                 return false;
 
             if (SlotType != SlotType.Cooking && (item is ICookable || item is ICooked))
@@ -39,10 +46,10 @@ namespace BorschtCraft.Food
             return true;
         }
 
-        public Slot(SlotType type, IConsumed item, SignalBus signalBus)
+        public Slot(SlotType type, IConsumed item)
         {
             SlotType = type;
-            Item = new ReactiveProperty<IConsumed>(item);
+            _item = new ReactiveProperty<IConsumed>(item);
         }
     }
 }

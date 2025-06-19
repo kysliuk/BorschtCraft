@@ -1,8 +1,8 @@
 ﻿namespace BorschtCraft.Food
 {
-    public interface IConsumable
+    public interface IConsumable : IItem
     {
-        IConsumed Consume(IConsumed item);
-        bool CanDecorate(IConsumed item);
+        bool TryConsume(IConsumed item);
+        bool TryConsume(IConsumed item, out IConsumed consumed);
     }
 }

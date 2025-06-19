@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace BorschtCraft.Food
+﻿namespace BorschtCraft.Food
 {
     public class BreadCooked : Consumed, ICooked
     {
