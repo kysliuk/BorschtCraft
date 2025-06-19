@@ -22,6 +22,9 @@ namespace BorschtCraft.Food.FirstTable
 
             //Install Consuming Logic
             new ConsumingLogicInstaller(Container).Install();
+
+            //Install Releasing Logic
+            new ReleasingLogicInstaller(Container).Install();
         }
     }
 }

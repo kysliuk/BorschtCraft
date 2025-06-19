@@ -3,7 +3,7 @@ using Zenject;
 
 namespace BorschtCraft.Food
 {
-    public interface IConsumingService : IInitializable, IDisposable
+    public interface IItemHandlableService: IInitializable, IDisposable
     {
     }
 }

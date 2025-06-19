@@ -10,20 +10,21 @@ namespace BorschtCraft.Food
 
         private ReactiveProperty<IConsumed> _item;
 
-        public void SetItem(IConsumed item)
+        public bool TrySetItem(IConsumed item)
         {
-            if (ValidateItem(item))
+            var canSet = ValidateItem(item);
+            if (canSet)
             {
+                ClearCurrentItem();
                 _item.Value = item;
                 Logger.LogInfo(this, $"Item of type {item.GetType().Name} was set in slot of type {SlotType}.");
             }
             else
-                throw new System.ArgumentException("Invalid item for the slot.");
-        }
+            {
+                Logger.LogWarning(this, $"Item of type {item.GetType().Name} cannot be set in slot of type {SlotType}.");
+            }
 
-        public void Release()
-        {
-            ClearCurrentItem();
+            return canSet;
         }
 
         private void ClearCurrentItem()

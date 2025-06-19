@@ -16,7 +16,6 @@ namespace BorschtCraft.Food.UI
 
         public virtual void ReleaseItem()
         {
-            _slotModel.Release();
             _signalBus.Fire(new ReleaseSlotItemSignal(_slotModel));
         }
 
