@@ -2,7 +2,7 @@
 {
     public abstract class ConsumingItemHandlerBase : ItemHandlerBase
     {
-        protected ISlotMatchingStrategy _strategy;
+        protected ISlotMatchingStrategy _strategy => SetStrategy();
         private IConsumable _consumable;
 
         protected override bool CanHandle(IItem item)
@@ -21,7 +21,7 @@
             {
                 if (_consumable.TryConsume(slot.Item.Value, out var consumed) && _strategy.Matches(slot, consumed))
                 {
-                    Logger.LogInfo(this, $"Placed {consumed.GetType().Name} into {slot.SlotType} slot.");
+                    Logger.LogInfo(this, $"About to place {consumed.GetType().Name} into {slot.SlotType} slot.");
                     slot.SetItem(consumed);
                     return true;
                 }

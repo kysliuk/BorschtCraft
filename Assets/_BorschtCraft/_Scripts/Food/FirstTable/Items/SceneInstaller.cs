@@ -8,8 +8,11 @@ namespace BorschtCraft.Food.FirstTable
         [SerializeField] private int _initialPrice = 10; //To be changed with levelconfig
         public override void InstallBindings()
         {
-            //Install Slots
-            new SlotsInstaller(Container).Install();
+            //Bind slot registry
+            Container.Bind<ISlotRegistry>().To<SlotRegistry>().AsSingle().Lazy();
+
+            //Install Slot Signals
+            new SlotSignalsInstaller(Container).Install();
 
             //Install Consumables
             new ConsumableInstaller(Container, _initialPrice).Install();

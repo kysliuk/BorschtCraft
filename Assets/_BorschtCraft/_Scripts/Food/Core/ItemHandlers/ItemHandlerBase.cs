@@ -2,15 +2,16 @@
 
 namespace BorschtCraft.Food
 {
-    public abstract class ItemHandlerBase : IItemHandler
+    public abstract class ItemHandlerBase : IItemHandler, IInitializable
     {
-        protected ISlot[] _slots { get; private set; }
+        protected ISlot[] _slots;
 
         private IItemHandler _nextHandler;
+        private ISlotRegistry _slotRegistry;
 
         public bool Handle(IItem item)
         {
-            if(CanHandle(item))
+            if (CanHandle(item))
                 return Process(item);
 
             return _nextHandler?.Handle(item) ?? false;
@@ -18,13 +19,22 @@ namespace BorschtCraft.Food
 
         public void SetNext(IItemHandler nextHandler) => _nextHandler = nextHandler;
 
+        public void Initialize()
+        {
+            _slots = _slotRegistry.Slots;
+            Logger.LogInfo(this, $"Number of slots: {_slots.Length}.");
+        }
+
         protected abstract bool CanHandle(IItem item);
         protected abstract bool Process(IItem item);
 
         [Inject]
-        public void Construct(ISlot[] slots)
+        public void Construct(ISlotRegistry slotRegistry)
         {
-            _slots = slots;
+            _slotRegistry = slotRegistry;
+            Logger.LogInfo(this, $"Constructed with {nameof(slotRegistry)}, is null: {_slotRegistry == null}");
         }
+
+        
     }
 }

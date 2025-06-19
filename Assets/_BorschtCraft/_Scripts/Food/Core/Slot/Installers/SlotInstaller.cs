@@ -14,11 +14,13 @@ namespace BorschtCraft.Food
             .To<Slot>()
             .FromMethod(context =>
             {
-                var signalBus = context.Container.Resolve<SignalBus>();
-                return new Slot(_slotType, null, signalBus);
+                var slot = new Slot(_slotType, null);
+                var registry = context.Container.Resolve<ISlotRegistry>();
+                registry.Register(slot);
+                return slot;
             })
             .AsSingle()
-            .CopyIntoAllSubContainers();
+            .NonLazy();
 
             Container.Bind<SlotViewModel>().AsSingle();
         }

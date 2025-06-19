@@ -11,8 +11,6 @@ namespace BorschtCraft
             SignalBusInstaller.Install(Container);
 
             Container.Bind<MonoBehaviour>().WithId("CoroutineHost").FromInstance(this).AsSingle();
-
-            new SlotSignalsInstaller(Container).Install();
         }
     }
 }

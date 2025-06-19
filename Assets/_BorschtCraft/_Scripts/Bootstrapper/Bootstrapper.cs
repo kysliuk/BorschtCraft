@@ -6,5 +6,8 @@ namespace BorschtCraft
 {
     public class Bootstrapper : MonoBehaviour
     {
+        private void Start()
+        {
+        }
     }
 }

@@ -13,7 +13,10 @@ namespace BorschtCraft.Food
         public void SetItem(IConsumed item)
         {
             if (ValidateItem(item))
+            {
                 _item.Value = item;
+                Logger.LogInfo(this, $"Item of type {item.GetType().Name} was set in slot of type {SlotType}.");
+            }
             else
                 throw new System.ArgumentException("Invalid item for the slot.");
         }
@@ -43,7 +46,7 @@ namespace BorschtCraft.Food
             return true;
         }
 
-        public Slot(SlotType type, IConsumed item, SignalBus signalBus)
+        public Slot(SlotType type, IConsumed item)
         {
             SlotType = type;
             _item = new ReactiveProperty<IConsumed>(item);

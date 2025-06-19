@@ -34,9 +34,9 @@ namespace BorschtCraft.Food.UI
         {
             diContainer.Bind<TConsumable>()
                 .FromMethod(_ => ConsumeAbstractFactory.CreateConsumable<TConsumable>(initialPrice))
-                .AsCached();
+                .AsSingle();
 
-            diContainer.Bind<TViewModel>().AsCached();
+            diContainer.Bind<TViewModel>().AsSingle();
         }
     }
 }

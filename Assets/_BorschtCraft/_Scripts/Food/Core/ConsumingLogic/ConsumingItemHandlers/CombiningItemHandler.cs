@@ -5,7 +5,6 @@
         protected override ISlotMatchingStrategy SetStrategy()
         {
             return new CombiningSlotStrategy();
-
         }
     }
 }

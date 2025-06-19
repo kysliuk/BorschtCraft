@@ -6,7 +6,7 @@ namespace BorschtCraft.Food
     public class ConsumingService : IConsumingService
     {
         private readonly SignalBus _signalBus;
-        private readonly IItemHandler _itemHandler;
+        private IItemHandler _itemHandler;
 
         public void Initialize()
         {
