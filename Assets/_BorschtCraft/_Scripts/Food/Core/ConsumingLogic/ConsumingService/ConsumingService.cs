@@ -3,17 +3,14 @@ using Zenject;
 
 namespace BorschtCraft.Food
 {
-    public class ConsumingService : IConsumingService
+    public class ConsumingService : ItemHandlableService
     {
-        private readonly SignalBus _signalBus;
-        private IItemHandler _itemHandler;
-
-        public void Initialize()
+        protected override void OnInitialize()
         {
             _signalBus.Subscribe<ConsumableInteractionRequestSignal>(OnConsumableInteractionRequested);
         }
 
-        public void Dispose()
+        protected override void OnDispose()
         {
             _signalBus.TryUnsubscribe<ConsumableInteractionRequestSignal>(OnConsumableInteractionRequested);
         }
@@ -24,10 +21,8 @@ namespace BorschtCraft.Food
             _itemHandler.Handle(signal.ConsumableSource);
         }
 
-        public ConsumingService(SignalBus signalBus, IConsumingItemHandler itemHandler)
+        public ConsumingService(SignalBus signalBus, IConsumingItemHandler itemHandler) : base(signalBus, itemHandler)
         {
-            _signalBus = signalBus;
-            _itemHandler = itemHandler;
         }
     }
 }

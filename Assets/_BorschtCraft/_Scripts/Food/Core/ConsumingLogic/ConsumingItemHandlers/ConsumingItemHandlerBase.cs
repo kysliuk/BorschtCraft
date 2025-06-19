@@ -1,8 +1,7 @@
 ﻿namespace BorschtCraft.Food
 {
-    public abstract class ConsumingItemHandlerBase : ItemHandlerBase, IConsumingItemHandler
+    public abstract class ConsumingItemHandlerBase<T> : StrategizedItemHandler<T>, IConsumingItemHandler where T : ISlotMatchingStrategy
     {
-        protected ISlotMatchingStrategy _strategy => SetStrategy();
         protected IConsumable _consumable;
         protected override bool CanHandle(IItem item)
         {
@@ -21,7 +20,7 @@
                 if (_consumable.TryConsume(slot.Item.Value, out var consumed) && _strategy.Matches(slot, consumed))
                 {
                     Logger.LogInfo(this, $"About to place {consumed.GetType().Name} into {slot.SlotType} slot.");
-                    slot.SetItem(consumed);
+                    slot.TrySetItem(consumed);
                     return true;
                 }
             }
@@ -30,6 +29,5 @@
             return false;
         }
 
-        protected abstract ISlotMatchingStrategy SetStrategy();
     }
 }

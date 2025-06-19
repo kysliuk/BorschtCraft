@@ -6,7 +6,6 @@ namespace BorschtCraft.Food
     {
         SlotType SlotType { get; }
         IReadOnlyReactiveProperty<IConsumed> Item { get;}
-        void SetItem(IConsumed item);
-        void Release();
+        bool TrySetItem(IConsumed item);
     }
 }

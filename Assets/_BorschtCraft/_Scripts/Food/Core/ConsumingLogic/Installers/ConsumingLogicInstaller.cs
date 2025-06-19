@@ -4,8 +4,6 @@ namespace BorschtCraft.Food
 {
     public class ConsumingLogicInstaller : InstallerBase
     {
-        public ConsumingLogicInstaller(DiContainer container) : base(container) { }
-
         public override void Install()
         {
             _container.Bind<CookableItemHandler>().AsSingle();
@@ -24,5 +22,7 @@ namespace BorschtCraft.Food
 
             _container.BindInterfacesAndSelfTo<ConsumingService>().AsSingle();
         }
+
+        public ConsumingLogicInstaller(DiContainer container) : base(container) { }
     }
 }

@@ -1,10 +1,6 @@
 ﻿namespace BorschtCraft.Food
 {
-    public class CombiningItemHandler : ConsumingItemHandlerBase
+    public class CombiningItemHandler : ConsumingItemHandlerBase<CombiningSlotStrategy>
     {
-        protected override ISlotMatchingStrategy SetStrategy()
-        {
-            return new CombiningSlotStrategy();
-        }
     }
 }
