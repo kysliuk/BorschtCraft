@@ -1,10 +1,9 @@
 ﻿namespace BorschtCraft.Food
 {
-    public abstract class ConsumingItemHandlerBase : ItemHandlerBase
+    public abstract class ConsumingItemHandlerBase : ItemHandlerBase, IConsumingItemHandler
     {
         protected ISlotMatchingStrategy _strategy => SetStrategy();
-        private IConsumable _consumable;
-
+        protected IConsumable _consumable;
         protected override bool CanHandle(IItem item)
         {
             if (item is not IConsumable c)

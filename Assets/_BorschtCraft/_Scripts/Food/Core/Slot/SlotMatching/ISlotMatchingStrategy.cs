@@ -2,5 +2,5 @@
 
 public interface ISlotMatchingStrategy
 {
-    bool Matches(ISlot slot, IConsumed consumed);
+    bool Matches(ISlot slot, IItem item);
 }

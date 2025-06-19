@@ -8,6 +8,8 @@ namespace BorschtCraft.Food.UI
     [RequireComponent(typeof(SpriteRenderer))]
     public class ConsumedView<T> : MonoBehaviour where T : IConsumed
     {
+        public ConsumedViewModel<T> ConsumedViewModel => _consumedViewModel;
+
         protected ConsumedViewModel<T> _consumedViewModel;
         protected SpriteRenderer _spriteRenderer;
         protected SlotView _parentSlotView;

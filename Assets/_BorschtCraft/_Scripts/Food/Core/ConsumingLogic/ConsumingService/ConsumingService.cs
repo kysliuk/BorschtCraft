@@ -24,7 +24,7 @@ namespace BorschtCraft.Food
             _itemHandler.Handle(signal.ConsumableSource);
         }
 
-        public ConsumingService(SignalBus signalBus, IItemHandler itemHandler)
+        public ConsumingService(SignalBus signalBus, IConsumingItemHandler itemHandler)
         {
             _signalBus = signalBus;
             _itemHandler = itemHandler;

@@ -1,16 +1,15 @@
-﻿using UnityEngine;
-using Zenject;
+﻿using Zenject;
 
 namespace BorschtCraft.Food.UI
 {
-    public class GenericConsumedInstaller<T> where T : IConsumed
+    public class GenericConsumedInstaller<T> : MonoInstaller where T : IConsumed
     {
-        public void Install(DiContainer container)
+        public override void InstallBindings()
         {
-            Logger.LogInfo(this, $"Installing binding for ConsumedViewModel for {typeof(T).Name}");
+            Logger.LogInfo(this, $"Binding for ConsumedViewModel for {typeof(T).Name}");
 
-            container.Bind<ConsumedViewModel<T>>()
-                .AsCached();
+            Container.Bind<ConsumedViewModel<T>>()
+                .AsSingle();
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using BorschtCraft.Food.UI;
-using System.ComponentModel;
-using Zenject;
+﻿using Zenject;
 
 namespace BorschtCraft.Food.FirstTable
 {
@@ -8,19 +6,7 @@ namespace BorschtCraft.Food.FirstTable
     {
         public override void Install()
         {
-            InstallConsumed();
             InstallSignals();
-        }
-
-        private void InstallConsumed()
-        {
-            new GenericConsumedInstaller<BreadRaw>().Install(_container);
-            new GenericConsumedInstaller<BreadCooked>().Install(_container);
-            new GenericConsumedInstaller<Salo>().Install(_container);
-            new GenericConsumedInstaller<Garlic>().Install(_container);
-            new GenericConsumedInstaller<Horseradish>().Install(_container);
-            new GenericConsumedInstaller<Mustard>().Install(_container);
-            new GenericConsumedInstaller<Onion>().Install(_container);
         }
 
         private void InstallSignals()

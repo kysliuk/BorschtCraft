@@ -2,7 +2,7 @@
 
 namespace BorschtCraft.Food
 {
-    public abstract class ItemHandlerBase : IItemHandler, IInitializable
+    public abstract class ItemHandlerBase : IInitializable
     {
         protected ISlot[] _slots;
 
