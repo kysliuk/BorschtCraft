@@ -4,7 +4,7 @@
     {
         protected override bool InnerCanDecorate(IConsumed item)
         {
-            return item is IFourthLayer || item is IThirdLayer;
+            return item is IFifthLayer || item is IThirdLayer;
         }
 
         public HorseradishStack(int price) : base(price)

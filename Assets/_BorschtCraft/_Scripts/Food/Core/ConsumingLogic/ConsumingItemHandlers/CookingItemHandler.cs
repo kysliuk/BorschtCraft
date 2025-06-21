@@ -8,7 +8,6 @@ namespace BorschtCraft.Food
 
         protected override bool CanHandle(IItem item)
         {
-            Logger.LogWarning(this, $"SlotType equals Cooking {_strategy.SlotType == SlotType.Cooking}");
             if (_strategy.SlotType != SlotType.Cooking)
                 return false;
 
