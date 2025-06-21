@@ -17,7 +17,7 @@ namespace BorschtCraft.Food
             var succeed = CanDecorate(item);
             if (!succeed)
             {
-                Logger.LogWarning(this, $"Cannot decorate {item?.GetType().Name} by {GetType().Name}");
+                Logger.LogInfo(this, $"Cannot decorate {item?.GetType().Name} by {GetType().Name}");
                 consumed = item;
                 return succeed;
             }

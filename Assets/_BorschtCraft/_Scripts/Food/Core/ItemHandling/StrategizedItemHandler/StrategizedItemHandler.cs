@@ -4,10 +4,10 @@ namespace BorschtCraft.Food
 {
     public abstract class StrategizedItemHandler<T> : ItemHandlerBase where T : ISlotMatchingStrategy
     {
-        protected ISlotMatchingStrategy _strategy => SetStrategy();
-        private ISlotMatchingStrategy SetStrategy()
+        protected readonly T _strategy;
+        protected StrategizedItemHandler()
         {
-            return Activator.CreateInstance<T>();
+            _strategy =  Activator.CreateInstance<T>();
         }
     }
 }
