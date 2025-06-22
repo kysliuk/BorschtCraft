@@ -9,7 +9,7 @@ namespace BorschtCraft.Food.FirstTable
         public override void InstallBindings()
         {
             //Bind slot registry
-            Container.Bind<ISlotRegistry>().To<SlotRegistry>().AsSingle().Lazy();
+            Container.Bind<ISlotRegistry>().To<SlotRegistry>().AsSingle();
 
             //Install Slot Signals
             new SlotSignalsInstaller(Container).Install();

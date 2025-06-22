@@ -1,6 +1,4 @@
-﻿using BorschtCraft.Food.Signals;
-using UniRx;
-using Zenject;
+﻿using Zenject;
 
 namespace BorschtCraft.Food.UI
 {

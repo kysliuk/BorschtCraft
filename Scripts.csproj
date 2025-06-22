@@ -9,7 +9,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{47E57516-A146-196E-547E-A9A9A95C7F6D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -86,7 +87,6 @@
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Item\IItem.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Salo\UI\SaloStackView.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Slot\UI\SlotViewModel.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\ReleasingLogic\ReleasingService\ReleasingService.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Slot\Signals\SlotItemChangedSignal.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumed\UI\ConsumedViewModel.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumed\Interfaces\FoodLayers\IThirdLayer.cs" />
@@ -109,7 +109,6 @@
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumable\UI\ConsumableView.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Slot\Signals\ClearAllViewsInSlotSignal.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Salo\SaloStack.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\ConsumingLogic\ConsumingService\ConsumingService.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Bread\Cooked\BreadCookedViewModelInstaller.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumable\UI\ConsumableViewModel.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\ReleasingLogic\SlotReleasingHandlers\Interfaces\ISlotReleasingHandler.cs" />
@@ -119,6 +118,7 @@
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Cooking\Installer\CookingInstaller.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Installers\ConsumedInstaller.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Horseradish\UI\HorseradishView.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Installers\SceneInstaller.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\ConsumingLogic\ConsumingItemHandlers\CombiningItemHandler.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Slot\Installers\SlotInstaller.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Slot\Signals\ReleaseSlotItemSignal.cs" />
@@ -137,7 +137,6 @@
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Slot\Interfaces\ISlot.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Common\Exception\CannotDecorateException.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Mustard\UI\MustardStackView.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\ItemHandling\ItemHandler\IItemHandler.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Common\Logger\Logger.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumable\Interfaces\ICantDecorate.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Bread\Raw\BreadRaw.cs" />
@@ -156,7 +155,6 @@
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\ReleasingLogic\Installers\ReleasingLogicInstaller.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Onion\OnionStack.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Salo\Salo.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\SceneInstaller.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\InstallerBase.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Slot\SlotMatching\ISlotMatchingStrategy.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumed\Interfaces\Installers\GenericConsumedInstaller.cs" />

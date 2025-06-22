@@ -1,4 +1,4 @@
-﻿namespace BorschtCraft.Food.Signals
+﻿namespace BorschtCraft.Food
 {
     public class ConsumableInteractionRequestSignal
     {

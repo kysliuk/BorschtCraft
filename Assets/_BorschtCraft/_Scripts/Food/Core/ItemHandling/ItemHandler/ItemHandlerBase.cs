@@ -1,41 +1,43 @@
-﻿using Zenject;
+﻿using System;
+using Zenject;
 
 namespace BorschtCraft.Food
 {
-    public abstract class ItemHandlerBase : IInitializable
+    public abstract class ItemHandlerBase : IInitializable, IDisposable
     {
-        protected ISlot[] _slots;
+        protected ISlotRegistry _slotRegistry;
+        protected SignalBus _signalBus;
 
-        private IItemHandler _nextHandler;
-        private ISlotRegistry _slotRegistry;
+        public void Initialize() => OnInitialize();
 
-        public bool Handle(IItem item)
-        {
-            var processed = false;
-            if (CanHandle(item))
-                processed = Process(item);
+        public void Dispose() => OnDispose();
 
-            return processed ? processed : _nextHandler?.Handle(item) ?? false;
-        }
-
-        public void SetNext(IItemHandler nextHandler) => _nextHandler = nextHandler;
-
-        public void Initialize()
-        {
-            _slots = _slotRegistry.Slots;
-            Logger.LogInfo(this, $"Number of slots: {_slots.Length}.");
-        }
 
         protected abstract bool CanHandle(IItem item);
+
         protected abstract bool Process(IItem item);
 
-        [Inject]
-        public void Construct(ISlotRegistry slotRegistry)
+        protected virtual void OnInitialize()
         {
-            _slotRegistry = slotRegistry;
-            Logger.LogInfo(this, $"Constructed with {nameof(slotRegistry)}, is null: {_slotRegistry == null}");
+            throw new NotImplementedException("OnInitialize method must be overridden in derived classes.");
         }
 
-        
+        protected virtual void OnDispose()
+        {
+            throw new NotImplementedException("OnDispose method must be overridden in derived classes.");
+        }
+
+        protected void Handle(IItem item)
+        {
+            if (CanHandle(item))
+                Process(item);
+        }
+
+        [Inject]
+        public void Construct(ISlotRegistry slotRegistry, SignalBus signalBus)
+        {
+            _slotRegistry = slotRegistry;
+            _signalBus = signalBus;
+        }
     }
 }

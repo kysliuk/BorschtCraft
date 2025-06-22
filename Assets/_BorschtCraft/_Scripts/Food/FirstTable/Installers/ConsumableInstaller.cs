@@ -1,6 +1,4 @@
-﻿using BorschtCraft.Food.Signals;
-using BorschtCraft.Food.UI;
-using System.ComponentModel;
+﻿using BorschtCraft.Food.UI;
 using Zenject;
 
 namespace BorschtCraft.Food.FirstTable

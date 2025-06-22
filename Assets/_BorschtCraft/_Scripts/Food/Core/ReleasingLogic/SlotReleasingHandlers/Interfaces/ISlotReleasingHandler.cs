@@ -1,6 +1,6 @@
 ﻿namespace BorschtCraft.Food
 {
-    public interface ISlotReleasingHandler : IItemHandler
+    public interface ISlotReleasingHandler
     {
     }
 }

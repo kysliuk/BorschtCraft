@@ -42,9 +42,7 @@ namespace BorschtCraft.Food.UI
         protected void OnClearAllViewsInSlotSignal(ClearAllViewsInSlotSignal signal)
         {
             if (signal.SlotViewModel != _parentSlotViewModel)
-            {
                 return;
-            }
 
             Logger.LogInfo(this, $"{typeof(T).Name} Clearing all views in slot of type {signal.SlotViewModel.Slot?.SlotType}.");
             _isVisible.Value = false;

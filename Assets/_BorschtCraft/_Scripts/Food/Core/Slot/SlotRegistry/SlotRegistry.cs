@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace BorschtCraft.Food
 {
@@ -18,5 +19,10 @@ namespace BorschtCraft.Food
         }
 
         public void Clear() => _slots.Clear();
+
+        public ISlot GetEmptySlot(SlotType? slotType = null)
+        {
+            return _slots.FirstOrDefault(s => s.Item.Value == null && (slotType == null || s.SlotType == slotType));
+        }
     }
 }
