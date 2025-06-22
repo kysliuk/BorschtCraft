@@ -8,6 +8,7 @@ namespace BorschtCraft.Food
         {
             _container.BindInterfacesAndSelfTo<CookingSlotReleasingHandler>().AsSingle().NonLazy();
             _container.BindInterfacesAndSelfTo<CombiningSlotReleasingHandler>().AsSingle().NonLazy();
+            _container.BindInterfacesAndSelfTo<DrinkingSlotReleasingHandler>().AsSingle().NonLazy();
         }
 
         public ReleasingLogicInstaller(DiContainer container) : base(container)

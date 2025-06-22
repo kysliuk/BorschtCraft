@@ -18,7 +18,7 @@ namespace BorschtCraft.Food.FirstTable
             GenericInstallSignal<Horseradish>();
             GenericInstallSignal<Mustard>();
             GenericInstallSignal<Onion>();
-
+            GenericInstallSignal<Drink>();
         }
 
         private void GenericInstallSignal<T>() where T : IConsumed

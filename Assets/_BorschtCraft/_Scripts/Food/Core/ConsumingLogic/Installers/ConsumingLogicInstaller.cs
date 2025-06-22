@@ -8,6 +8,7 @@ namespace BorschtCraft.Food
         {
             _container.BindInterfacesAndSelfTo<CookingItemHandler>().AsSingle().NonLazy();
             _container.BindInterfacesAndSelfTo<CombiningItemHandler>().AsSingle().NonLazy();
+            _container.BindInterfacesAndSelfTo<DrinkingItemHandler>().AsSingle().NonLazy();
         }
 
         public ConsumingLogicInstaller(DiContainer container) : base(container) { }

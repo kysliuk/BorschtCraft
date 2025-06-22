@@ -12,10 +12,17 @@
                 Logger.LogInfo(this, "No empty combining slot found.");
                 return false;
             }
+            
+            var canBePlaced = (_consumed as ICooked).CanPlaceOnTop(emptySlot.Item.Value, out var itemToPlace);
 
-            var setted = emptySlot.TrySetItem(_consumed);
+            if (!canBePlaced)
+            {
+                Logger.LogInfo(this, $"Item of type {itemToPlace.GetType().Name} cannot be placed on top of the item in combining slot: {emptySlot.Item.Value.GetType().Name}.");
+                return false;
+            }
+            var setted = emptySlot.TrySetItem(itemToPlace);
 
-            Logger.LogInfo(this, $"Item of type {_consumed.GetType().Name} placed in combining slot: {setted}.");
+            Logger.LogInfo(this, $"Item of type {itemToPlace.GetType().Name} placed in combining slot: {setted}.");
             return setted;
         }
     }

@@ -20,6 +20,7 @@ namespace BorschtCraft.Food.FirstTable
             new GenericConsumableInstaller<HorseradishStack, Horseradish>().Install(_container, _initialPrice);
             new GenericConsumableInstaller<MustardStack, Mustard>().Install(_container, _initialPrice);
             new GenericConsumableInstaller<OnionStack, Onion>().Install(_container, _initialPrice);
+            new GenericConsumableInstaller<DrinkMachine, Drink>().Install(_container, _initialPrice);
         }
 
         private void InstallSignals()

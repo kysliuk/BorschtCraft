@@ -6,14 +6,19 @@ public abstract class SlotMatchingStrategy : ISlotMatchingStrategy
     public virtual bool Matches(ISlot slot, IItem item) => slot.SlotType == SlotType;
 }
 
-public abstract class CookingSlotStrategy : SlotMatchingStrategy
+public class CookingSlotStrategy : SlotMatchingStrategy
 {
     public override SlotType SlotType => SlotType.Cooking;
 }
 
-public abstract class CombiningSlotStrategy : SlotMatchingStrategy
+public class CombiningSlotStrategy : SlotMatchingStrategy
 {
     public override SlotType SlotType => SlotType.Combining;
+}
+
+public class DrinkingSlotStrategy : SlotMatchingStrategy
+{
+    public override SlotType SlotType => SlotType.Drinking;
 }
 
 public class ConsumingInCookingSlotStrategy : CookingSlotStrategy

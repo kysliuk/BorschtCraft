@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8740776538405808399}
   - component: {fileID: 6327844287111842113}
   m_Layer: 0
-  m_Name: BreadCookingSlot
+  m_Name: CookingSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
