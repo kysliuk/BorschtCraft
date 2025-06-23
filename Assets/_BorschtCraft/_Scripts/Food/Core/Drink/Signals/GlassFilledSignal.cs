@@ -1,6 +1,6 @@
 ﻿namespace BorschtCraft.Food
 {
-    public class FillGlassSignal
+    public class GlassFilledSignal
     {
     }
 }

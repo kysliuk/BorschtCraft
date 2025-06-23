@@ -28,6 +28,9 @@ namespace BorschtCraft.Food.FirstTable
 
             //Install Cooking Logic
             new CookingInstaller(Container).Install();
+
+            //Install Drink signals
+            new DrinkInstaller(Container).Install();
         }
     }
 }
