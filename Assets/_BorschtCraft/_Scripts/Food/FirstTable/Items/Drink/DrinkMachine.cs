@@ -6,7 +6,6 @@
         {
             return item == null;
         }
-
         public DrinkMachine(int price) : base(price)
         {
         }

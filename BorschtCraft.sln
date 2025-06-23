@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniTask.Addressables", "Uni
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniRx.Examples", "UniRx.Examples.csproj", "{1DD30830-7B34-A371-209F-A82C15023076}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-firstpass", "Assembly-CSharp-firstpass.csproj", "{C1DC3D32-CBC1-E871-9D1A-BC1B96CA7EE2}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zenject-TestFramework", "Zenject-TestFramework.csproj", "{440E9D15-6A21-93E1-9DAB-0E559D7EA42A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniTask.TextMeshPro", "UniTask.TextMeshPro.csproj", "{A0191E09-533A-7AA2-5204-FF4B2E2F0C58}"
@@ -95,6 +97,10 @@ Global
 		{1DD30830-7B34-A371-209F-A82C15023076}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DD30830-7B34-A371-209F-A82C15023076}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DD30830-7B34-A371-209F-A82C15023076}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1DC3D32-CBC1-E871-9D1A-BC1B96CA7EE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1DC3D32-CBC1-E871-9D1A-BC1B96CA7EE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1DC3D32-CBC1-E871-9D1A-BC1B96CA7EE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1DC3D32-CBC1-E871-9D1A-BC1B96CA7EE2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{440E9D15-6A21-93E1-9DAB-0E559D7EA42A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{440E9D15-6A21-93E1-9DAB-0E559D7EA42A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{440E9D15-6A21-93E1-9DAB-0E559D7EA42A}.Release|Any CPU.ActiveCfg = Release|Any CPU
