@@ -1,0 +1,1 @@
+D:\Own\UnityProjects\BorschtCraft\BorschtCraft\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\cxx\RelWithDebInfo\6md54g17\obj\arm64-v8a

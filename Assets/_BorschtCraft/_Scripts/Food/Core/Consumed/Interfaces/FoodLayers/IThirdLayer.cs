@@ -1,6 +1,6 @@
 ﻿namespace BorschtCraft.Food
 {
-    public interface IThirdLayer
+    public interface IThirdLayer : ICombinable
     {
     }
 }

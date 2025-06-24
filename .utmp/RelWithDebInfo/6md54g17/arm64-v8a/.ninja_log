@@ -1,0 +1,12 @@
+# ninja log v5
+330	777	7724843130525528	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	6f985729f8eb7c47
+779	1289	7724843134901368	D:/Own/UnityProjects/BorschtCraft/BorschtCraft/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/6md54g17/obj/arm64-v8a/libswappywrapper.so	bd8830afa4fb0749
+271	2455	7724843147320713	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	a62144c3694db0c4
+279	2494	7724843147649110	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	e41cf5e0b9d0fe17
+263	2523	7724843148021382	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	173580120aa21ce2
+308	2569	7724843148385647	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	21bc0217a36ea7bc
+294	2643	7724843149194287	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	552044e0b22bae35
+1	2679	7724843149575099	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	57a629659d1bb62a
+287	2963	7724843152445618	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	2d5c5c8d04952c51
+254	3154	7724843154297324	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	ba5b7aeb71a49a26
+3154	3582	7724843158685964	D:/Own/UnityProjects/BorschtCraft/BorschtCraft/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/6md54g17/obj/arm64-v8a/libgame.so	7499aebe16c75f27

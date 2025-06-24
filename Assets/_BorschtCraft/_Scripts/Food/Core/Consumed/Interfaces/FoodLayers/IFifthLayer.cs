@@ -1,6 +1,6 @@
 ﻿namespace BorschtCraft.Food
 {
-    public interface IFifthLayer
+    public interface IFifthLayer : ICombinable
     {
     }
 }

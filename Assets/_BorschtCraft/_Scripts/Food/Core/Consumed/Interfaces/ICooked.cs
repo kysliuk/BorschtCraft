@@ -1,6 +1,6 @@
 ﻿namespace BorschtCraft.Food
 {
-    public interface ICooked
+    public interface ICooked : ICombinable
     {
         bool CanPlaceOnTop(IConsumed consumed, out IConsumed outConsumed);
     }

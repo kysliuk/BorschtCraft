@@ -5,6 +5,7 @@
         None,
         Cooking,
         Combining,
-        Drinking
+        Drinking,
+        Customer,
     }
 }

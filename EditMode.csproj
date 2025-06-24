@@ -1109,6 +1109,10 @@
       <Project>{47E57516-A146-196E-547E-A9A9A95C7F6D}</Project>
       <Name>Scripts</Name>
     </ProjectReference>
+    <ProjectReference Include="Zenject.csproj">
+      <Project>{18CB4CA9-CC88-2BCE-66D5-B8D4B8D200D2}</Project>
+      <Name>Zenject</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

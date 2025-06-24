@@ -29,7 +29,7 @@ public class ConsumingInCookingSlotStrategy : CookingSlotStrategy
 
 public class ConsumingInCombiningSlotStrategy : CombiningSlotStrategy
 {
-    public override bool Matches(ISlot slot, IItem item) => base.Matches(slot, item) && item is not ICookable && slot.SlotType == SlotType.Combining;
+    public override bool Matches(ISlot slot, IItem item) => base.Matches(slot, item) && item is ICombinable;
 }
 
 public class ReleasingCookingSlotStrategy : CookingSlotStrategy

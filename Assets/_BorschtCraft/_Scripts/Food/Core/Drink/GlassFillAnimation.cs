@@ -22,6 +22,7 @@ namespace BorschtCraft.Food
         private float _minFillHeight = 0.00f;
         private Bounds _maskSpriteBounds;
         private SignalBus _signalBus;
+        private bool _isFilling = false;
 
         void Start()
         {
@@ -43,6 +44,9 @@ namespace BorschtCraft.Food
 
         private async void OnFillGlassSignal(FillGlassSignal signal)
         {
+            if (_isFilling)
+                return;
+
             Logger.LogInfo(this, "Received signal for filling glass");
             StartFilling();
 
@@ -76,6 +80,7 @@ namespace BorschtCraft.Food
 
         private IEnumerator AnimateFill(float startFillPercent, float endFillPercent, float duration)
         {
+            _isFilling = true;
             float elapsedTime = 0f;
 
             while (elapsedTime < duration)
@@ -91,6 +96,7 @@ namespace BorschtCraft.Food
 
             SetMaskState(endFillPercent);
 
+            _isFilling = false;
             Logger.LogInfo(this, "Animation complete. Fill level: " + endFillPercent * 100 + "%");
         }
 

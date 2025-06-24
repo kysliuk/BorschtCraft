@@ -1,6 +1,6 @@
 ﻿namespace BorschtCraft.Food
 {
-    public class BreadCooked : Cooked<BreadCooked>
+    public class BreadCooked : Cooked<BreadCooked>, IFirstLayer
     {
         public override bool CanPlaceOnTop(IConsumed consumed, out IConsumed outConsumed)
         {
