@@ -33,8 +33,14 @@ namespace BorschtCraft.Food
 
         private Vector3 GetOffscreenSpawnPosition()
         {
-            return Camera.main.ViewportToWorldPoint(new Vector3(-0.2f, 0f, 0f));
+            float y = 0.2f;
+            float z = 0f; 
+
+            float x = Random.value < 0.5f ? -0.2f : 1.2f;
+
+            return Camera.main.ViewportToWorldPoint(new Vector3(x, y, z));
         }
+
     }
 }
 
