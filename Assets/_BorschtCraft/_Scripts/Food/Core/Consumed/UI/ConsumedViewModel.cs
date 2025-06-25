@@ -17,6 +17,7 @@ namespace BorschtCraft.Food.UI
 
         public void SetParentSlotViewModel(SlotViewModel slotViewModel)
         {
+            Logger.LogInfo(this, $"Setted parent slot view of type {slotViewModel?.Slot?.SlotType} for Consumed View Model of type {typeof(T).Name}");
             _parentSlotViewModel = slotViewModel;
         }
 
@@ -27,9 +28,12 @@ namespace BorschtCraft.Food.UI
 
         protected void OnSlotItemChangedSignal(SlotItemChangedSignal<T> signal)
         {
+            //if (_parentSlotViewModel == null)
+            //    throw new Exception("Cannot be null(or actually can?)");
+
             if (signal.SlotViewModel != _parentSlotViewModel)
             {
-                Logger.LogInfo(this, $"{typeof(T).Name} Received signal for a different slot expected {signal.SlotViewModel.GetHashCode()} but was: {_parentSlotViewModel.GetHashCode()}. Ignoring signal.");
+                Logger.LogInfo(this, $"{typeof(T).Name} Received signal for a different slot expected {signal.SlotViewModel.GetHashCode()} but was: {_parentSlotViewModel?.GetHashCode()}. Ignoring signal.");
                 return;
             }
 

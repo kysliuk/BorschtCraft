@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UniRx;
-using System;
 using Zenject;
 
 namespace BorschtCraft.Food.UI
@@ -18,16 +17,17 @@ namespace BorschtCraft.Food.UI
         public void Construct(ConsumedViewModel<T> consumedViewModel)
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
-            if (_spriteRenderer == null)
-                Logger.LogWarning(this, $"{nameof(SpriteRenderer)} is null in {nameof(ConsumedView<T>)}");
 
             _consumedViewModel = consumedViewModel;
-
-            _consumedViewModel.SetParentSlotViewModel(GetComponentInParent<SlotView>()?.SlotViewModel);
 
             _consumedViewModel?.IsVisible?.Subscribe(SetVisibility).AddTo(this);
 
             Logger.LogInfo(this, $"Constructed with view model: {_consumedViewModel?.GetType()?.Name}<{typeof(T).Name}>");
+        }
+
+        private void OnEnable()
+        {
+            _consumedViewModel.SetParentSlotViewModel(GetComponentInParent<SlotView>()?.SlotViewModel);
         }
 
         protected virtual void SetVisibility(bool enable)

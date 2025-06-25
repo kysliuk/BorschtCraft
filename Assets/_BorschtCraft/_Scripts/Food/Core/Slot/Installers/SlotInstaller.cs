@@ -23,6 +23,7 @@ namespace BorschtCraft.Food
             .NonLazy();
 
             Container.Bind<SlotViewModel>().AsSingle();
+            Container.Bind<SlotView>().FromComponentInHierarchy().AsSingle();
         }
     }
 }

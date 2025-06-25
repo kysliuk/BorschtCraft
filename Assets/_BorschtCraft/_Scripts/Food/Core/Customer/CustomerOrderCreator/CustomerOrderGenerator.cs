@@ -6,44 +6,63 @@ namespace BorschtCraft.Food
 {
     public class CustomerOrderGenerator : ICustomerOrderGenerator
     {
-        protected readonly ITableIngredientsList _tableIngredientsList;
-        protected readonly Random _random = new Random();
-        protected virtual bool GenerateNeedDrink => _random.NextDouble() > 0.5;
+        private readonly ITableIngredientsList _tableIngredientsList;
+        private readonly Random _random = new Random();
 
-        protected IConsumed _dish;
+        protected virtual bool ShouldIncludeDrink => _random.NextDouble() > 0.5;
+
+        public CustomerOrderGenerator(ITableIngredientsList tableIngredientsList)
+        {
+            _tableIngredientsList = tableIngredientsList ?? throw new ArgumentNullException(nameof(tableIngredientsList));
+        }
+
+        public CustomerOrder[] GenerateOrders(int count)
+        {
+            var orders = new CustomerOrder[count];
+            for (int i = 0; i < count; i++)
+            {
+                orders[i] = GenerateOrder();
+            }
+
+            return orders;
+        }
 
         public CustomerOrder GenerateOrder()
         {
             var ingredients = GenerateIngredients();
-
-            return new CustomerOrder(ingredients, GenerateNeedDrink);
+            var drink = ShouldIncludeDrink ? _tableIngredientsList.Drink : null;
+            return new CustomerOrder(ingredients, drink);
         }
 
-        protected IReadOnlyCollection<IConsumed> GenerateIngredients()
+        private IReadOnlyCollection<IConsumed> GenerateIngredients()
         {
-            _dish = _tableIngredientsList.FirstLayer;
-            var ingredientsAmount = _random.Next(1, _tableIngredientsList.IngredientsProviders.Count);
+            if (_tableIngredientsList.FirstLayer == null)
+                throw new InvalidOperationException("First layer (base item) is not defined.");
 
-            for (int i = 0; i <= ingredientsAmount; i++)
+            var ingredientProviders = _tableIngredientsList.IngredientsProviders?.ToList()
+                ?? throw new InvalidOperationException("Ingredient providers list is null.");
+
+            if (ingredientProviders.Count == 0)
+                throw new InvalidOperationException("No ingredient providers available.");
+
+            var baseDish = _tableIngredientsList.FirstLayer;
+            int maxIngredients = ingredientProviders.Count;
+
+            int ingredientCount = _random.Next(1, maxIngredients + 1);
+            var selectedProviders = ingredientProviders
+                .OrderBy(_ => _random.Next())
+                .Take(ingredientCount);
+
+            foreach (var provider in selectedProviders)
             {
-                var pickedIngredientProviderId = _random.Next(0, _tableIngredientsList.IngredientsProviders.Count);
-                var pickedIngredientProvider = _tableIngredientsList.IngredientsProviders.Skip(pickedIngredientProviderId - 1).First();
-
-                pickedIngredientProvider.TryConsume(_dish, out _dish);
+                provider.TryConsume(baseDish, out baseDish);
             }
 
-            List<IConsumed> ingredients = new List<IConsumed>
-            {
-                _dish
-            };
+            var result = new List<IConsumed> { baseDish };
+            result.AddRange(baseDish.Ingredients);
 
-            ingredients.AddRange(_dish.Ingredients);
-            return ingredients;
+            return result;
         }
 
-        public CustomerOrderGenerator(ITableIngredientsList tableIngredientList)
-        {
-            _tableIngredientsList = tableIngredientList;
-        }
     }
 }

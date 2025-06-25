@@ -2,11 +2,20 @@
 {
     public class Customer
     {
-        public CustomerOrder Order { get; private set; }
+        protected CustomerOrder _order { get; private set; }
+
+        public void SetOrderToSlot(ISlot slot)
+        {
+            foreach (var item in _order.Ingredients)
+                slot.TrySetItem(item);
+
+            if (_order.Drink != null)
+                slot.TrySetItem(_order.Drink as IConsumed);
+        }
 
         public Customer(CustomerOrder customerOrder) 
         {
-            Order = customerOrder;
+            _order = customerOrder;
         }
     }
 }
