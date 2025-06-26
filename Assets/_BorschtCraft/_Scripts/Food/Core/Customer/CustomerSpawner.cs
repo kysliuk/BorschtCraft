@@ -12,12 +12,6 @@ namespace BorschtCraft.Food
         [Inject] private IFactory<CustomerOrder, Customer> _customerFactory;
         [Inject] private CustomerControllerPool _customerPool;
 
-        private async void Start()
-        {
-            await UniTask.Delay(1000);
-            SpawnCustomers();
-        }
-
         public void SpawnCustomers()
         {
             var orders = _orderGenerator.GenerateOrders(_ordersAmount);
@@ -29,6 +23,16 @@ namespace BorschtCraft.Food
 
                 controller.transform.position = GetOffscreenSpawnPosition();
             }
+        }
+
+        public CustomerController SpawnCustomer()
+        {
+            var order = _orderGenerator.GenerateOrder();
+            var customer = _customerFactory.Create(order);
+            var controller = _customerPool.Spawn(customer);
+            controller.transform.position = GetOffscreenSpawnPosition();
+
+            return controller;
         }
 
         private Vector3 GetOffscreenSpawnPosition()

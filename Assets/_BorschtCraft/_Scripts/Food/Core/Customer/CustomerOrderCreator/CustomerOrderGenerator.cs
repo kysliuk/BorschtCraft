@@ -11,11 +11,6 @@ namespace BorschtCraft.Food
 
         protected virtual bool ShouldIncludeDrink => _random.NextDouble() > 0.5;
 
-        public CustomerOrderGenerator(ITableIngredientsList tableIngredientsList)
-        {
-            _tableIngredientsList = tableIngredientsList ?? throw new ArgumentNullException(nameof(tableIngredientsList));
-        }
-
         public CustomerOrder[] GenerateOrders(int count)
         {
             var orders = new CustomerOrder[count];
@@ -62,6 +57,11 @@ namespace BorschtCraft.Food
             result.AddRange(baseDish.Ingredients);
 
             return result;
+        }
+
+        public CustomerOrderGenerator(ITableIngredientsList tableIngredientsList)
+        {
+            _tableIngredientsList = tableIngredientsList ?? throw new ArgumentNullException(nameof(tableIngredientsList));
         }
 
     }

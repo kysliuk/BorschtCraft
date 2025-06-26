@@ -11,6 +11,14 @@ namespace BorschtCraft.Food
 
         private readonly IReadOnlyCollection<IConsumed> _ingredients;
 
+        public bool MathesIngredients(IReadOnlyCollection<IConsumed> ingredients)
+        {
+            if (ingredients == null)
+                return false;
+
+            return IngredientUtils.IngredientsMatch(ingredients, _ingredients);
+        }
+
         public CustomerOrder(IReadOnlyCollection<IConsumed> ingredients, IDrink drink)
         {
             _ingredients = ingredients;

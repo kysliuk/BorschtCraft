@@ -21,6 +21,9 @@ namespace BorschtCraft.Food
                 .WithInitialSize(5)
                 .FromComponentInNewPrefab(_customerPrefab)
                 .UnderTransformGroup(nameof(CustomerControllerPool));
+
+            Container.DeclareSignal<CustomerDeliverySignal>();
+            Container.BindInterfacesAndSelfTo<CustomerManager>().AsSingle();
         }
     }
 
