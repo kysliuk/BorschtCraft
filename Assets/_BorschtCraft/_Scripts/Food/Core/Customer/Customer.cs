@@ -20,12 +20,17 @@ namespace BorschtCraft.Food
                 slot.TrySetItem(_order.Drink as IConsumed);
         }
 
-        public bool Satisfy(IReadOnlyCollection<IConsumed> ingredients, IDrink drink)
+        public void CleatSlot(ISlot slot)
         {
-            if(ingredients != null && _order.MathesIngredients(ingredients))
+            slot.ClearCurrentItem();
+        }
+
+        public bool Satisfy(IConsumed item)
+        {
+            if(_order.MathesIngredients(item))
                 _receivedDish = true;
 
-            if(drink != null)
+            if(item is IDrink && MatchesOrder(item))
                 _receivedDrink = true;
 
             return IsSatisfied();
@@ -45,10 +50,9 @@ namespace BorschtCraft.Food
             return !IsSatisfied();
         }
 
-        public bool MatchesOrder(IReadOnlyCollection<IConsumed> ingredients, IDrink drink)
+        public bool MatchesOrder(IConsumed item)
         {
-            return _order.Drink != null && drink != null ||
-                   (_order.Ingredients != null && ingredients != null && _order.MathesIngredients(ingredients));
+            return item is IDrink && _order.Drink != null || _order.MathesIngredients(item);
         }
 
         public Customer(CustomerOrder customerOrder) 

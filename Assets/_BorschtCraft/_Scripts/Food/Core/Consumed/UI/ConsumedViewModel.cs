@@ -28,9 +28,6 @@ namespace BorschtCraft.Food.UI
 
         protected void OnSlotItemChangedSignal(SlotItemChangedSignal<T> signal)
         {
-            //if (_parentSlotViewModel == null)
-            //    throw new Exception("Cannot be null(or actually can?)");
-
             if (signal.SlotViewModel != _parentSlotViewModel)
             {
                 Logger.LogInfo(this, $"{typeof(T).Name} Received signal for a different slot expected {signal.SlotViewModel.GetHashCode()} but was: {_parentSlotViewModel?.GetHashCode()}. Ignoring signal.");

@@ -4,7 +4,11 @@ namespace BorschtCraft.Food
 {
     public class CustomerDeliverySignal
     {
-        public IReadOnlyCollection<IConsumed> Ingredients;
-        public IDrink Drink;
+        public IConsumed Item;
+
+        public CustomerDeliverySignal(IConsumed item)
+        {
+            Item = item;
+        }
     }
 }

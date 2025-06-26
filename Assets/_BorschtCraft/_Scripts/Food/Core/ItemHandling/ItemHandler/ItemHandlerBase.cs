@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Zenject;
 
 namespace BorschtCraft.Food
@@ -15,7 +16,7 @@ namespace BorschtCraft.Food
 
         protected abstract bool CanHandle(IItem item);
 
-        protected abstract bool Process(IItem item);
+        protected abstract Task<bool> Process(IItem item);
 
         protected virtual void OnInitialize()
         {
@@ -27,10 +28,10 @@ namespace BorschtCraft.Food
             throw new NotImplementedException("OnDispose method must be overridden in derived classes.");
         }
 
-        protected void Handle(IItem item)
+        protected async void Handle(IItem item)
         {
             if (CanHandle(item))
-                Process(item);
+                await Process(item);
         }
 
         [Inject]

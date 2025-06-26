@@ -28,7 +28,7 @@ namespace BorschtCraft.Food
         public void Dispose()
         {
             _signalBus.Unsubscribe<CustomerDeliverySignal>(OnDelivery);
-            if (_spawnRoutine != null)
+            if (this != null && _spawnRoutine != null)
                 StopCoroutine(_spawnRoutine);
         }
 
@@ -62,10 +62,10 @@ namespace BorschtCraft.Food
         private void OnDelivery(CustomerDeliverySignal signal)
         {
             var match = _activeCustomers.Find(c => c.HasMatchingOrder(signal));
-
+            var orderComplete = false;
             if (match != null)
             {
-                bool orderComplete = match.TrySatisfyOrder(signal);
+                orderComplete = match.TrySatisfyOrder(signal);
 
                 if (orderComplete)
                 {
@@ -73,6 +73,7 @@ namespace BorschtCraft.Food
                     _activeCustomers.Remove(match);
                 }
             }
+            _signalBus.Fire(new ItemDeliveredSignal(signal, orderComplete));
         }
     }
 }

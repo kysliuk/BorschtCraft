@@ -13,18 +13,21 @@ namespace BorschtCraft.Food
         private CustomerMover _mover;
         private Customer _customer;
 
+        private ISlot _slot => _customerSlotView.SlotViewModel.Slot;
+
         public bool HasMatchingOrder(CustomerDeliverySignal signal)
         {
-            return _customer.MatchesOrder(signal.Ingredients, signal.Drink);
+            return _customer.MatchesOrder(signal.Item);
         }
 
         public bool TrySatisfyOrder(CustomerDeliverySignal signal)
         {
-            return _customer.Satisfy(signal.Ingredients, signal.Drink);
+            return _customer.Satisfy(signal.Item);
         }
 
         public void LeaveSatisfied()
         {
+            _customer.CleatSlot(_slot);
             _mover.MoveCustomerOut(() => gameObject.SetActive(false));
         }
 
@@ -39,17 +42,11 @@ namespace BorschtCraft.Food
             _mover = this.gameObject.GetComponent<CustomerMover>();
         }
 
-        private void SetCustomerOrderToSlotView()
-        {
-            var slot = _customerSlotView.SlotViewModel.Slot;
-            _customer.SetOrderToSlot(slot);
-        }
-
         public void Construct(Customer customer)
         {
             _customer = customer;
 
-            _mover.MoveCustomerIn(() => SetCustomerOrderToSlotView());
+            _mover.MoveCustomerIn(() => _customer.SetOrderToSlot(_slot));
         }
     }
 }

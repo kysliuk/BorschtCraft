@@ -7,7 +7,22 @@ namespace BorschtCraft.Food
 {
     public static class IngredientUtils
     {
-        public static bool IngredientsMatch(IReadOnlyCollection<IConsumed> a, IReadOnlyCollection<IConsumed> b)
+        public static bool MatchItemToIngredients(IConsumed item, IReadOnlyCollection<IConsumed> ingredients)
+        {
+            var itemIngredients = ConvertItemToIngredients(item);
+
+            return IngredientsMatch(itemIngredients, ingredients);
+        }
+
+        public static IReadOnlyCollection<IConsumed> ConvertItemToIngredients(IConsumed item)
+        {
+            var result = new List<IConsumed> { item };
+            result.AddRange(item.Ingredients);
+
+            return result;
+        }
+
+        private static bool IngredientsMatch(IReadOnlyCollection<IConsumed> a, IReadOnlyCollection<IConsumed> b)
         {
             if (a.Count != b.Count)
                 return false;
@@ -17,14 +32,6 @@ namespace BorschtCraft.Food
 
             return aCounts.Count == bCounts.Count &&
                    aCounts.All(pair => bCounts.TryGetValue(pair.Key, out int bCount) && bCount == pair.Value);
-        }
-
-        public static IReadOnlyCollection<IConsumed> ConvertDishToIngredients(IConsumed item)
-        {
-            var result = new List<IConsumed> { item };
-            result.AddRange(item.Ingredients);
-
-            return result;
         }
 
         private static Dictionary<Type, int> GetTypeCounts(IEnumerable<IConsumed> ingredients)

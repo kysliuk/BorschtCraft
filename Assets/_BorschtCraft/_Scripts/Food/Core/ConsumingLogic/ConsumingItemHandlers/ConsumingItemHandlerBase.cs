@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 
 namespace BorschtCraft.Food
 {
@@ -16,7 +17,12 @@ namespace BorschtCraft.Food
             return true;
         }
 
-        protected override bool Process(IItem item)
+        protected override Task<bool> Process(IItem item)
+        {
+            return Task.FromResult(ProcessSync(item));
+        }
+
+        protected virtual bool ProcessSync(IItem item)
         {
             var slots = _slotRegistry.Slots
                 .Where(s => s.SlotType == _strategy.SlotType);

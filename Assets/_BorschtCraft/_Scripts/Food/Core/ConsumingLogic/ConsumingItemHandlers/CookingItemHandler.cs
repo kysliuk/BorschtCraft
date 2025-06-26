@@ -2,9 +2,9 @@
 {
     public class CookingItemHandler : ConsumingItemHandlerBase<ConsumingInCookingSlotStrategy>
     {
-        protected override bool Process(IItem item)
+        protected override bool ProcessSync(IItem item)
         {
-            var hasProcessed = base.Process(item);
+            var hasProcessed = base.ProcessSync(item);
             if (hasProcessed)
             {
                 _signalBus.Fire(new CookItemInSlotSignal(_selectedSlot));

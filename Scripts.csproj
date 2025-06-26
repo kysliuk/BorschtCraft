@@ -9,8 +9,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{47E57516-A146-196E-547E-A9A9A95C7F6D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -63,11 +62,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumed\Interfaces\IConsumed.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Customer\CustomerManager\CustomerManager.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Customer\IngredientUtils.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Customer\Signals\CustomerDeliverySignal.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Mustard\MustardStack.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Bread\Stack\BreadStackView.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Customer\CustomerManager\CustomerManager.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Slot\Slot.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Bread\Cooked\BreadCooked.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Bread\Raw\BreadRawView.cs" />
@@ -94,6 +91,7 @@
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Item\IItem.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Customer\CustomerOrderCreator\ICustomerOrderGenerator.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Salo\UI\SaloStackView.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Customer\Signals\ItemDeliveredSignal.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Slot\UI\SlotViewModel.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Slot\Signals\SlotItemChangedSignal.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumed\UI\ConsumedViewModel.cs" />
@@ -135,6 +133,8 @@
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\ConsumingLogic\ConsumingItemHandlers\Interfaces\IConsumingItemHandler.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumed\UI\ConsumedView.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Slot\Enums\SlotType.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Customer\IngredientUtils.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Customer\Signals\CustomerDeliverySignal.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Drink\Drink.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Cooking\Installer\CookingInstaller.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Installers\ConsumedInstaller.cs" />

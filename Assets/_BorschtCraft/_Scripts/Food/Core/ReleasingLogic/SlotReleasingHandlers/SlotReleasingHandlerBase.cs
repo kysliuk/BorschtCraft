@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
+using UniRx;
 
 namespace BorschtCraft.Food
 {
     public abstract class SlotReleasingHandlerBase<T> : StrategizedItemHandler<T>, ISlotReleasingHandler where T : ISlotMatchingStrategy
     {
         protected IConsumed _consumed;
+        private readonly Subject<ItemDeliveredSignal> _itemDeliveredSubject = new Subject<ItemDeliveredSignal>();
 
         protected override bool CanHandle(IItem item)
         {
@@ -16,14 +19,14 @@ namespace BorschtCraft.Food
             return true;
         }
 
-        protected override bool Process(IItem item)
+        protected override async Task<bool> Process(IItem item)
         {
             var slot = _slotRegistry.Slots.FirstOrDefault(s => _strategy.Matches(s, item) && s.Item.Value == item);
             if (slot != null)
             {
                 Logger.LogInfo(this, $"Item of type {item.GetType().Name} matches slot of type {slot.SlotType}.");
 
-                var released = ProcessItemReleasing(slot);
+                var released = await ProcessItemReleasing(slot);
                 if (released)
                     slot.ClearCurrentItem();
 
@@ -37,14 +40,35 @@ namespace BorschtCraft.Food
         protected override void OnInitialize()
         {
             _signalBus.Subscribe<ReleaseSlotItemSignal>(OnReleaseSlotItemSignal);
+            _signalBus.Subscribe<ItemDeliveredSignal>(signal =>
+            {
+                _itemDeliveredSubject.OnNext(signal);
+            });
         }
 
         protected override void OnDispose()
         {
             _signalBus.Unsubscribe<ReleaseSlotItemSignal>(OnReleaseSlotItemSignal);
+            _signalBus.Unsubscribe<ItemDeliveredSignal>(signal =>
+            {
+                _itemDeliveredSubject.OnNext(signal);
+            });
         }
 
-        protected abstract bool ProcessItemReleasing(ISlot slot);
+        protected virtual async Task<bool> ProcessItemReleasing(ISlot slot)
+        {
+            var item = slot.Item.Value;
+
+            var deliverySignal = new CustomerDeliverySignal(item);
+            _signalBus.Fire(deliverySignal);
+
+            var deliveryResult = await _itemDeliveredSubject
+                .Where(signal => signal.DeliverySignal.Item == item)
+                .First()
+                .ToTask();
+
+            return deliveryResult.Delivered;
+        }
 
         private void OnReleaseSlotItemSignal(ReleaseSlotItemSignal signal)
         {

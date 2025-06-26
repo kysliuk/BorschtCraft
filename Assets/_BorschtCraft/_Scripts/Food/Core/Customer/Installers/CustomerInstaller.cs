@@ -23,7 +23,8 @@ namespace BorschtCraft.Food
                 .UnderTransformGroup(nameof(CustomerControllerPool));
 
             Container.DeclareSignal<CustomerDeliverySignal>();
-            Container.BindInterfacesAndSelfTo<CustomerManager>().AsSingle();
+            Container.DeclareSignal<ItemDeliveredSignal>();
+            Container.BindInterfacesAndSelfTo<CustomerManager>().FromComponentInHierarchy(false).AsSingle();
         }
     }
 

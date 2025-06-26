@@ -725,6 +725,67 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &759631624
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 759631625}
+  - component: {fileID: 759631626}
+  - component: {fileID: 759631627}
+  m_Layer: 0
+  m_Name: CustomerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &759631625
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759631624}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.24024568, y: 5.8083525, z: -4.632291}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &759631626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759631624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e47acce72fbd2db4a9107c691b854003, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ordersAmount: 0
+--- !u!114 &759631627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759631624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 926f29f7c3faf7640a00bb120255f14d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxCustomers: 3
+  _spawnDelay: 3
+  _maxWaitTime: 15
 --- !u!1 &767401422
 GameObject:
   m_ObjectHideFlags: 0
@@ -1628,7 +1689,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1546381168}
   - component: {fileID: 1546381170}
-  - component: {fileID: 1546381169}
   m_Layer: 0
   m_Name: CustomerInstaller
   m_TagString: Untagged
@@ -1651,19 +1711,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 567266907}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1546381169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1546381167}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e47acce72fbd2db4a9107c691b854003, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _ordersAmount: 1
 --- !u!114 &1546381170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2200,3 +2247,4 @@ SceneRoots:
   - {fileID: 1163356059}
   - {fileID: 1913881456}
   - {fileID: 2098865588}
+  - {fileID: 759631625}
