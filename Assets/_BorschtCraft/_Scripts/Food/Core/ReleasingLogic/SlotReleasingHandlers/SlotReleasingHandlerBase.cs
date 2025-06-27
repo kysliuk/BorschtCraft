@@ -64,7 +64,6 @@ namespace BorschtCraft.Food
             Logger.LogInfo(this, $"Fired signal {nameof(CustomerDeliverySignal)} with DeliveryId: {deliverySignal.DeliveryId}");
             var deliveryResult = await _itemDeliveredSubject
                 .First(signal => signal.DeliveryId == deliverySignal.DeliveryId)
-                .Timeout(TimeSpan.FromSeconds(2))
                 .ToTask();
 
             Logger.LogInfo(this, $"Delivery {deliveryResult.DeliveryId} completed {deliveryResult?.Delivered}");

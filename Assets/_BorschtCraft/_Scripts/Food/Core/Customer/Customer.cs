@@ -32,13 +32,13 @@ namespace BorschtCraft.Food
         public bool Satisfy(IConsumed item, out IConsumed satisfiedItem)
         {
             satisfiedItem = null;
-            if (_order.MathesIngredients(item))
+            if (_order.MathesIngredients(item) && !_receivedDish)
             {
                 _receivedDish = true;
                 satisfiedItem = item;
             }
 
-            if (item is IDrink && MatchesOrder(item))
+            if (item is IDrink && MatchesOrder(item) && !_receivedDrink)
             {
                 _receivedDrink = true;
                 satisfiedItem = item;

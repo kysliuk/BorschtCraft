@@ -28,9 +28,7 @@ namespace BorschtCraft.Food
             if (satisfiedItem != null)
             {
                 var satisfiedSlot = FindSlotWithItem(satisfiedItem);
-
                 satisfiedSlot?.ClearCurrentItem();
-
                 _signalBus.Fire(new ItemDeliveredSignal(signal.DeliveryId, true));
                 Logger.LogInfo(this, $"Fired signal {nameof(ItemDeliveredSignal)}. Delivery signal HashCode: {signal.GetHashCode()}");
             }

@@ -10,7 +10,7 @@ namespace BorschtCraft.Food
         public CustomerDeliverySignal(IConsumed item)
         {
             Item = item;
-            DeliveryId = new Guid();
+            DeliveryId = Guid.NewGuid();
         }
     }
 }
