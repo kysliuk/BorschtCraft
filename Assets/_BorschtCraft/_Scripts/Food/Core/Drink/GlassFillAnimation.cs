@@ -52,7 +52,7 @@ namespace BorschtCraft.Food
 
             await UniTask.Delay(TimeSpan.FromSeconds(_fillDuration + _serveDelay));
 
-            _signalBus.Fire<GlassFilledSignal>();
+            _signalBus.Fire(new GlassFilledSignal(signal.FillingId));
             StartEmptying();
         }
 

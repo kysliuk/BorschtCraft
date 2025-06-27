@@ -17,9 +17,9 @@ namespace BorschtCraft.Food
             return true;
         }
 
-        protected override Task<bool> Process(IItem item)
+        protected override async Task<bool> Process(IItem item)
         {
-            return Task.FromResult(ProcessSync(item));
+            return await Task.FromResult(ProcessSync(item));
         }
 
         protected virtual bool ProcessSync(IItem item)

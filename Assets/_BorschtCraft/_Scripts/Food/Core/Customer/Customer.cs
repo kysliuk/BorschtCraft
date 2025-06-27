@@ -11,27 +11,35 @@ namespace BorschtCraft.Food
         protected CustomerOrder _order { get; private set; }
         private bool _receivedDish;
         private bool _receivedDrink;
+        private bool _readyToRecieve = false;
 
         public void SetOrderToSlot(ISlot[] slots)
         {
-            var firstSlot = slots[0];
-            var secondSlot = slots[1];
+            var emptySlot = GetEmptySlot(slots);
 
             if (_order.Dish != null)
             {
                 var itemsToPlace = new List<IConsumed>() { _order.Dish };
                 itemsToPlace.AddRange(_order.Dish.Ingredients);
                 foreach (var item in itemsToPlace.AsEnumerable().Reverse())
-                    firstSlot.TrySetItem(item);
+                    emptySlot.TrySetItem(item);
             }
 
+            emptySlot = GetEmptySlot(slots);
+
             if (_order.Drink != null)
-                secondSlot.TrySetItem(_order.Drink as IConsumed);
+                emptySlot.TrySetItem(_order.Drink as IConsumed);
+
+            _readyToRecieve = true;
         }
 
         public bool Satisfy(IConsumed item, out IConsumed satisfiedItem)
         {
             satisfiedItem = null;
+
+            if (!_readyToRecieve)
+                return false;   
+
             if (_order.MathesIngredients(item) && !_receivedDish)
             {
                 _receivedDish = true;
@@ -58,9 +66,10 @@ namespace BorschtCraft.Food
             return dishOk && drinkOk;
         }
 
-        public bool IsStillWaiting()
+        private ISlot GetEmptySlot(ISlot[] slots)
         {
-            return !IsSatisfied();
+            var emptySlot = slots.FirstOrDefault(s => s.Item.Value == null);
+            return emptySlot ?? throw new ArgumentNullException(nameof(emptySlot));
         }
 
         public bool MatchesOrder(IConsumed item)
