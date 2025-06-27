@@ -783,9 +783,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 926f29f7c3faf7640a00bb120255f14d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxCustomers: 3
-  _spawnDelay: 3
-  _maxWaitTime: 15
+  _maxCustomers: 1
+  _spawnDelay: 6
+  _maxWaitTime: 20
 --- !u!1 &767401422
 GameObject:
   m_ObjectHideFlags: 0

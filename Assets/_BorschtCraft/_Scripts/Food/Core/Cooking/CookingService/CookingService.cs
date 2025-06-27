@@ -17,7 +17,7 @@ namespace BorschtCraft.Food
 
         public void Dispose()
         {
-            _signalBus.Unsubscribe<CookItemInSlotSignal>(OnCookItemInSlotSignal);
+            _signalBus.TryUnsubscribe<CookItemInSlotSignal>(OnCookItemInSlotSignal);
         }
 
         private void OnCookItemInSlotSignal(CookItemInSlotSignal signal)

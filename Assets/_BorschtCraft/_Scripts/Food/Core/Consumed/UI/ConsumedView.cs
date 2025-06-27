@@ -21,8 +21,6 @@ namespace BorschtCraft.Food.UI
             _consumedViewModel = consumedViewModel;
 
             _consumedViewModel?.IsVisible?.Subscribe(SetVisibility).AddTo(this);
-
-            Logger.LogInfo(this, $"Constructed with view model: {_consumedViewModel?.GetType()?.Name}<{typeof(T).Name}>");
         }
 
         private void OnEnable()
@@ -32,7 +30,6 @@ namespace BorschtCraft.Food.UI
 
         protected virtual void SetVisibility(bool enable)
         {
-            Logger.LogInfo(this, $"Setting visibility to {enable} for slot of type {typeof(T).Name}.");
             _spriteRenderer.enabled = enable;
         }
     }

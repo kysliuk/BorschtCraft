@@ -8,7 +8,9 @@ namespace BorschtCraft.Food
     public abstract class SlotReleasingHandlerBase<T> : StrategizedItemHandler<T>, ISlotReleasingHandler where T : ISlotMatchingStrategy
     {
         protected IConsumed _consumed;
-        private readonly Subject<ItemDeliveredSignal> _itemDeliveredSubject = new Subject<ItemDeliveredSignal>();
+        private readonly ReplaySubject<ItemDeliveredSignal> _itemDeliveredSubject = new(1);
+
+        private Action<ItemDeliveredSignal> _onItemDelivered;
 
         protected override bool CanHandle(IItem item)
         {
@@ -40,40 +42,38 @@ namespace BorschtCraft.Food
         protected override void OnInitialize()
         {
             _signalBus.Subscribe<ReleaseSlotItemSignal>(OnReleaseSlotItemSignal);
-            _signalBus.Subscribe<ItemDeliveredSignal>(signal =>
-            {
-                _itemDeliveredSubject.OnNext(signal);
-            });
+
+            _onItemDelivered = signal => _itemDeliveredSubject.OnNext(signal);
+            _signalBus.Subscribe(_onItemDelivered);
         }
 
         protected override void OnDispose()
         {
-            _signalBus.Unsubscribe<ReleaseSlotItemSignal>(OnReleaseSlotItemSignal);
-            _signalBus.Unsubscribe<ItemDeliveredSignal>(signal =>
-            {
-                _itemDeliveredSubject.OnNext(signal);
-            });
+            _signalBus.TryUnsubscribe<ReleaseSlotItemSignal>(OnReleaseSlotItemSignal);
+
+            if (_onItemDelivered != null)
+                _signalBus.TryUnsubscribe(_onItemDelivered);
         }
 
         protected virtual async Task<bool> ProcessItemReleasing(ISlot slot)
         {
             var item = slot.Item.Value;
-
             var deliverySignal = new CustomerDeliverySignal(item);
             _signalBus.Fire(deliverySignal);
 
+            Logger.LogInfo(this, $"Fired signal {nameof(CustomerDeliverySignal)} with DeliveryId: {deliverySignal.DeliveryId}");
             var deliveryResult = await _itemDeliveredSubject
-                .Where(signal => signal.DeliverySignal.Item == item)
-                .First()
+                .First(signal => signal.DeliveryId == deliverySignal.DeliveryId)
+                .Timeout(TimeSpan.FromSeconds(2))
                 .ToTask();
+
+            Logger.LogInfo(this, $"Delivery {deliveryResult.DeliveryId} completed {deliveryResult?.Delivered}");
 
             return deliveryResult.Delivered;
         }
 
         private void OnReleaseSlotItemSignal(ReleaseSlotItemSignal signal)
         {
-            Logger.LogInfo(this, $"Received request to release item from slot of type {signal.Slot.SlotType}.");
-
             if (signal.Slot.SlotType == _strategy.SlotType)
                 Handle(signal.Slot.Item.Value);
         }

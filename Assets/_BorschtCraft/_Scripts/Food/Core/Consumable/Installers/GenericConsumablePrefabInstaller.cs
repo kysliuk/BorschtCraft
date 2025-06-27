@@ -18,8 +18,6 @@ namespace BorschtCraft.Food.UI
 
             var viewModelType = typeof(ConsumableViewModel<,>).MakeGenericType(consumableType, consumedType);
 
-            Logger.LogInfo(this, $"Installing bindings for ConsumableViewModel {consumableType.Name} and {consumedType.Name}");
-
             var method = typeof(GenericConsumableInstaller<T1, T2>)
                 .GetMethod(nameof(InstallGeneric), System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
                 ?.MakeGenericMethod(viewModelType, consumableType, consumedType);

@@ -1,27 +1,25 @@
-﻿using System.Collections.Generic;
-
-namespace BorschtCraft.Food
+﻿namespace BorschtCraft.Food
 {
     public class CustomerOrder
     {
-        public IReadOnlyCollection<IConsumed> Ingredients => _ingredients;
+        public IConsumed Dish => _dish;
         public IDrink Drink => _drink;
 
         private readonly IDrink _drink;
 
-        private readonly IReadOnlyCollection<IConsumed> _ingredients;
+        private readonly IConsumed _dish;
 
         public bool MathesIngredients(IConsumed item)
         {
             if (item == null)
                 return false;
 
-            return IngredientUtils.MatchItemToIngredients(item, _ingredients);
+            return IngredientUtils.MatchItemsIngredients(item, _dish);
         }
 
-        public CustomerOrder(IReadOnlyCollection<IConsumed> ingredients, IDrink drink)
+        public CustomerOrder(IConsumed dish, IDrink drink)
         {
-            _ingredients = ingredients;
+            _dish = dish;
             _drink = drink;
         }
     }

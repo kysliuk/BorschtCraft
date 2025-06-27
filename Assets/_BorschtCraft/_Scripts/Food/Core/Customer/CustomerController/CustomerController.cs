@@ -1,5 +1,4 @@
 ﻿using BorschtCraft.Food.UI;
-using System;
 using System.Linq;
 using UnityEngine;
 using Zenject;
@@ -9,11 +8,13 @@ namespace BorschtCraft.Food
     [RequireComponent(typeof(CustomerMover))]
     public class CustomerController : MonoBehaviour
     {
-        [SerializeField] private SlotView _customerSlotView;
+        [SerializeField] private SlotView[] _customerSlotViews;
         private CustomerMover _mover;
         private Customer _customer;
 
-        private ISlot _slot => _customerSlotView.SlotViewModel.Slot;
+        [Inject] private SignalBus _signalBus;
+
+        private ISlot[] _slots => _customerSlotViews.Select(sv => sv.SlotViewModel.Slot).ToArray();
 
         public bool HasMatchingOrder(CustomerDeliverySignal signal)
         {
@@ -22,12 +23,22 @@ namespace BorschtCraft.Food
 
         public bool TrySatisfyOrder(CustomerDeliverySignal signal)
         {
-            return _customer.Satisfy(signal.Item);
+            var satisfied = _customer.Satisfy(signal.Item, out var satisfiedItem);
+
+            if (satisfiedItem != null)
+            {
+                var satisfiedSlot = FindSlotWithItem(satisfiedItem);
+
+                satisfiedSlot?.ClearCurrentItem();
+
+                _signalBus.Fire(new ItemDeliveredSignal(signal.DeliveryId, true));
+                Logger.LogInfo(this, $"Fired signal {nameof(ItemDeliveredSignal)}. Delivery signal HashCode: {signal.GetHashCode()}");
+            }
+            return satisfied;
         }
 
         public void LeaveSatisfied()
         {
-            _customer.CleatSlot(_slot);
             _mover.MoveCustomerOut(() => gameObject.SetActive(false));
         }
 
@@ -36,17 +47,21 @@ namespace BorschtCraft.Food
             LeaveSatisfied();
         }
 
-
         private void Awake()
         {
             _mover = this.gameObject.GetComponent<CustomerMover>();
+        }
+
+        private ISlot FindSlotWithItem(IConsumed item)
+        {
+            return _slots.Where(s => s.Item.Value != null).FirstOrDefault(s => IngredientUtils.MatchItemsIngredients(s.Item?.Value, item));
         }
 
         public void Construct(Customer customer)
         {
             _customer = customer;
 
-            _mover.MoveCustomerIn(() => _customer.SetOrderToSlot(_slot));
+            _mover.MoveCustomerIn(() => _customer.SetOrderToSlot(_slots));
         }
     }
 }

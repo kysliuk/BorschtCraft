@@ -7,11 +7,24 @@ namespace BorschtCraft.Food
 {
     public static class IngredientUtils
     {
-        public static bool MatchItemToIngredients(IConsumed item, IReadOnlyCollection<IConsumed> ingredients)
+        public static bool MatchItemsIngredients(IConsumed item1, IConsumed item2)
         {
-            var itemIngredients = ConvertItemToIngredients(item);
+            return IngredientsMatch(ConvertItemToIngredients(item1), ConvertItemToIngredients(item2));
+        }
 
-            return IngredientsMatch(itemIngredients, ingredients);
+        public static string GetIngredientsString(IConsumed item)
+        {
+            var itemTypes = new List<string>();
+
+            if (item != null)
+                itemTypes.Add(item.GetType().Name);
+
+            if (item?.Ingredients != null)
+                itemTypes.AddRange(item.Ingredients.Select(i => i?.GetType()?.Name ?? "null"));
+
+            var reuslt = string.Join(", ", itemTypes);
+            return reuslt;
+
         }
 
         public static IReadOnlyCollection<IConsumed> ConvertItemToIngredients(IConsumed item)

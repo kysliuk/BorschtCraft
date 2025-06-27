@@ -63,7 +63,7 @@ namespace BorschtCraft.Food
 
         private void OnDisable()
         {
-            _signalBus.Unsubscribe<FillGlassSignal>(OnFillGlassSignal);
+            _signalBus.TryUnsubscribe<FillGlassSignal>(OnFillGlassSignal);
         }
 
         private void StartFilling()

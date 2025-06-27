@@ -6,8 +6,6 @@ namespace BorschtCraft.Food.UI
     {
         public override void InstallBindings()
         {
-            Logger.LogInfo(this, $"Binding for ConsumedViewModel for {typeof(T).Name}");
-
             Container.Bind<ConsumedViewModel<T>>()
                 .AsSingle();
         }

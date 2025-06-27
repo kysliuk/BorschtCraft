@@ -20,7 +20,6 @@ namespace BorschtCraft.Food.UI
         public void Construct(ConsumableViewModel<T1, T2> viewModel)
         {
             _consumableViewModel = viewModel;
-            Logger.LogInfo(this, $"Constructed with view model: {_consumableViewModel?.GetType()?.Name}<{typeof(T1).Name}, {typeof(T2).Name}>");
         }
     }
 }

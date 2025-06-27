@@ -48,7 +48,7 @@ namespace BorschtCraft.Food
 
         protected override void OnDispose()
         {
-            _signalBus.Unsubscribe<ConsumableInteractionRequestSignal>(OnConsumableInteractionRequested);
+            _signalBus.TryUnsubscribe<ConsumableInteractionRequestSignal>(OnConsumableInteractionRequested);
         }
 
         private void OnConsumableInteractionRequested(ConsumableInteractionRequestSignal signal)

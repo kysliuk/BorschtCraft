@@ -17,7 +17,6 @@ namespace BorschtCraft.Food.UI
 
         public void SetParentSlotViewModel(SlotViewModel slotViewModel)
         {
-            Logger.LogInfo(this, $"Setted parent slot view of type {slotViewModel?.Slot?.SlotType} for Consumed View Model of type {typeof(T).Name}");
             _parentSlotViewModel = slotViewModel;
         }
 
@@ -29,15 +28,11 @@ namespace BorschtCraft.Food.UI
         protected void OnSlotItemChangedSignal(SlotItemChangedSignal<T> signal)
         {
             if (signal.SlotViewModel != _parentSlotViewModel)
-            {
-                Logger.LogInfo(this, $"{typeof(T).Name} Received signal for a different slot expected {signal.SlotViewModel.GetHashCode()} but was: {_parentSlotViewModel?.GetHashCode()}. Ignoring signal.");
                 return;
-            }
 
             _consumedModel = signal.Slot.Item.Value;
             var hasModel = _consumedModel != null;
             _isVisible.Value = hasModel;
-            Logger.LogInfo(this, $"{typeof(T).Name} Setting visibility to {_isVisible.Value} for slot of type {signal.Slot.SlotType} with item of type {typeof(T).Name}.");
         }
 
         protected void OnClearAllViewsInSlotSignal(ClearAllViewsInSlotSignal signal)
@@ -45,7 +40,6 @@ namespace BorschtCraft.Food.UI
             if (signal.SlotViewModel != _parentSlotViewModel)
                 return;
 
-            Logger.LogInfo(this, $"{typeof(T).Name} Clearing all views in slot of type {signal.SlotViewModel.Slot?.SlotType}.");
             _isVisible.Value = false;
         }
 

@@ -19,6 +19,7 @@ public class CombiningSlotStrategy : SlotMatchingStrategy
 public class DrinkingSlotStrategy : SlotMatchingStrategy
 {
     public override SlotType SlotType => SlotType.Drinking;
+    public override bool Matches(ISlot slot, IItem item) => base.Matches(slot, item) && item is IDrink;
 }
 
 public class ConsumingInCookingSlotStrategy : CookingSlotStrategy

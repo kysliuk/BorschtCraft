@@ -19,7 +19,7 @@ namespace BorschtCraft.Food.UI
 
         private void OnDestroy()
         {
-            _signalBus.Unsubscribe<GlassFilledSignal>(OnGlassFilled);
+            _signalBus.TryUnsubscribe<GlassFilledSignal>(OnGlassFilled);
         }
 
         [Inject]

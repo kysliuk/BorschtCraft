@@ -1,14 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
 
 namespace BorschtCraft.Food
 {
     public class ItemDeliveredSignal
     {
-        public CustomerDeliverySignal DeliverySignal { get; }
+        public Guid DeliveryId { get; }
         public bool Delivered { get; }
-        public ItemDeliveredSignal(CustomerDeliverySignal signal, bool delivered)
+        public ItemDeliveredSignal(Guid deliveryId, bool delivered)
         {
-            DeliverySignal = signal;
+            DeliveryId = deliveryId;
             Delivered = delivered;
         }
     }

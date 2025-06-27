@@ -14,7 +14,6 @@ namespace BorschtCraft.Food
             if (!_slots.Contains(slot))
             {
                 _slots.Add(slot);
-                Logger.LogInfo(this, $"Slot of type {slot.SlotType} were added to registry with {slot.Item} item.");
             }
         }
 

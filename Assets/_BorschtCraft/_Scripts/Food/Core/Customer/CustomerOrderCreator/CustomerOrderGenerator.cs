@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace BorschtCraft.Food
@@ -24,12 +23,12 @@ namespace BorschtCraft.Food
 
         public CustomerOrder GenerateOrder()
         {
-            var ingredients = GenerateIngredients();
+            var ingredients = GenerateDish();
             var drink = ShouldIncludeDrink ? _tableIngredientsList.Drink : null;
             return new CustomerOrder(ingredients, drink);
         }
 
-        private IReadOnlyCollection<IConsumed> GenerateIngredients()
+        private IConsumed GenerateDish()
         {
             if (_tableIngredientsList.FirstLayer == null)
                 throw new InvalidOperationException("First layer (base item) is not defined.");
@@ -40,7 +39,7 @@ namespace BorschtCraft.Food
             if (ingredientProviders.Count == 0)
                 throw new InvalidOperationException("No ingredient providers available.");
 
-            var baseDish = _tableIngredientsList.FirstLayer;
+            var dish = _tableIngredientsList.FirstLayer;
             int maxIngredients = ingredientProviders.Count;
 
             int ingredientCount = _random.Next(1, maxIngredients + 1);
@@ -50,13 +49,10 @@ namespace BorschtCraft.Food
 
             foreach (var provider in selectedProviders)
             {
-                provider.TryConsume(baseDish, out baseDish);
+                provider.TryConsume(dish, out dish);
             }
 
-            var result = new List<IConsumed> { baseDish };
-            result.AddRange(baseDish.Ingredients);
-
-            return result;
+            return dish;
         }
 
         public CustomerOrderGenerator(ITableIngredientsList tableIngredientsList)
