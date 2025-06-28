@@ -19,6 +19,11 @@ namespace BorschtCraft.Food.UI
             _signalBus.Fire(new ReleaseSlotItemSignal(_slotModel));
         }
 
+        public virtual void PutItemInTrashCan()
+        {
+            _slotModel.ClearCurrentItem();
+        }
+
         public virtual void Dispose()
         {
             _disposables.Dispose();

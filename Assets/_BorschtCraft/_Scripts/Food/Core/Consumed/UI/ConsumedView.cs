@@ -17,20 +17,18 @@ namespace BorschtCraft.Food.UI
         public void Construct(ConsumedViewModel<T> consumedViewModel)
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
-
             _consumedViewModel = consumedViewModel;
-
             _consumedViewModel?.IsVisible?.Subscribe(SetVisibility).AddTo(this);
-        }
-
-        private void OnEnable()
-        {
-            _consumedViewModel.SetParentSlotViewModel(GetComponentInParent<SlotView>()?.SlotViewModel);
         }
 
         protected virtual void SetVisibility(bool enable)
         {
             _spriteRenderer.enabled = enable;
+        }
+
+        private void OnEnable()
+        {
+            _consumedViewModel.SetParentSlotViewModel(GetComponentInParent<SlotView>()?.SlotViewModel);
         }
     }
 }

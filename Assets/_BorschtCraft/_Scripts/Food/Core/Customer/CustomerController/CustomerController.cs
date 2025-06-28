@@ -42,6 +42,7 @@ namespace BorschtCraft.Food
 
         public void LeaveUnhappy()
         {
+            ClearCustomerSlots();
             LeaveSatisfied();
         }
 
@@ -53,6 +54,12 @@ namespace BorschtCraft.Food
         private ISlot FindSlotWithItem(IConsumed item)
         {
             return _slots.Where(s => s.Item.Value != null).FirstOrDefault(s => IngredientUtils.MatchItemsIngredients(s.Item?.Value, item));
+        }
+
+        private void ClearCustomerSlots()
+        {
+            foreach (var slot in _slots)
+                slot.ClearCurrentItem();
         }
 
         public void Construct(Customer customer)
