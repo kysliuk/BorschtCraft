@@ -22,6 +22,9 @@ namespace BorschtCraft.Food.UI
         public virtual void PutItemInTrashCan()
         {
             _slotModel.ClearCurrentItem();
+
+            if (CurrentItem is ICookable)
+                _signalBus.Fire(new StopCookinItemInSlotSignal(Slot));
         }
 
         public virtual void Dispose()
@@ -40,10 +43,7 @@ namespace BorschtCraft.Food.UI
                 _signalBus.Fire(signalInstance);
             }
             else
-            {
-                var signalInstance = new ClearAllViewsInSlotSignal(this);
-                _signalBus.Fire(signalInstance);
-            }
+                _signalBus.Fire(new ClearAllViewsInSlotSignal(this));
         }
 
         public SlotViewModel(ISlot slotModel, SignalBus signalBus)

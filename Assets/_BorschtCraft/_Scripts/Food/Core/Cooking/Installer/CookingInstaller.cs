@@ -8,6 +8,7 @@ namespace BorschtCraft.Food
         {
             _container.DeclareSignal<CookItemInSlotSignal>();
             _container.DeclareSignal<ItemCookedSignal>();
+            _container.DeclareSignal<StopCookinItemInSlotSignal>();
 
             _container.BindInterfacesAndSelfTo<CookingService>()
                 .AsSingle()

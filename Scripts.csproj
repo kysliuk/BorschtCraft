@@ -113,6 +113,7 @@
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Cooking\Signals\CookItemInSlotSignal.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumable\Installers\GenericConsumablePrefabInstaller.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Drink\Signals\GlassFilledSignal.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Cooking\Signals\StopCookinItemInSlotSignal.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Common\FPS\FPS.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Garlic\UI\GarlicStackView.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumable\Signals\ConsumableInteractionRequestSignal.cs" />
