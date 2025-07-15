@@ -2,11 +2,16 @@
 using UnityEngine.EventSystems;
 using Zenject;
 using System.Collections;
+using DG.Tweening;
+using System.Threading.Tasks;
 
 namespace BorschtCraft.Food.UI
 {
     public class SlotView : MonoBehaviour, IPointerClickHandler
     {
+        [SerializeField] private float _moveDuration = 1.5f;
+
+        public float MoveDuration => _moveDuration;
         public SlotViewModel SlotViewModel => _slotViewModel;
         protected SlotViewModel _slotViewModel;
 
@@ -30,6 +35,26 @@ namespace BorschtCraft.Food.UI
             }
 
             _clickCoroutine = StartCoroutine(HandleClick());
+        }
+
+        public async Task MoveSlot(SlotView slotView)
+        {
+            var originalPosition = transform.position;
+            await RunTween(transform.DOMove(slotView.transform.position, _moveDuration).SetEase(Ease.Linear));
+
+            this.SlotViewModel.Slot.ClearCurrentItem();
+            slotView.SlotViewModel.Slot.ClearCurrentItem();
+
+            await RunTween(transform.DOMove(originalPosition, 0f).SetEase(Ease.Linear));
+            Logger.LogInfo(this, $"Slot {slotView.SlotViewModel.Slot.SlotType} moved to {slotView.name}");
+        }
+
+        private Task RunTween(Tween tween)
+        {
+            var tcs = new TaskCompletionSource<bool>();
+            tween.OnComplete(() => tcs.SetResult(true));
+
+            return tcs.Task;
         }
 
         private IEnumerator HandleClick()
@@ -70,9 +95,10 @@ namespace BorschtCraft.Food.UI
         }
 
         [Inject]
-        public void Construct(SlotViewModel slotViewModel)
+        public void Construct(SlotViewModel slotViewModel, ISlotViewRegistry slotViewRegistry)
         {
             _slotViewModel = slotViewModel;
+            slotViewRegistry.Register(this);
         }
     }
 }

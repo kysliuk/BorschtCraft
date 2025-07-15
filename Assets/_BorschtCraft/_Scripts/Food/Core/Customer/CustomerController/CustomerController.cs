@@ -24,12 +24,10 @@ namespace BorschtCraft.Food
         public bool TrySatisfyOrder(CustomerDeliverySignal signal)
         {
             var satisfied = _customer.Satisfy(signal.Item, out var satisfiedItem);
-
             if (satisfiedItem != null)
             {
                 var satisfiedSlot = FindSlotWithItem(satisfiedItem);
-                satisfiedSlot?.ClearCurrentItem();
-                _signalBus.Fire(new ItemDeliveredSignal(signal.DeliveryId, true));
+                _signalBus.Fire(new ItemDeliveredSignal(signal.DeliveryId, satisfiedSlot, true));
                 Logger.LogInfo(this, $"Fired signal {nameof(ItemDeliveredSignal)}. Delivery signal HashCode: {signal.GetHashCode()}");
             }
             return satisfied;

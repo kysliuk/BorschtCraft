@@ -23,8 +23,6 @@ namespace BorschtCraft.Food
         {
             if (_item.Value != null)
                 _item.Value = null;
-            else
-                Logger.LogWarning(this, $"Attempted to clear an already empty slot of type {SlotType}.");
         }
 
         private bool ValidateItem(IConsumed item)

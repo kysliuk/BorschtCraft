@@ -114,6 +114,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc7ed2cfa65556342928455d4d655f78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _scaleFactor: 1.2
+  _animationDuration: 0.2
 --- !u!114 &6203530653695156921
 MonoBehaviour:
   m_ObjectHideFlags: 0

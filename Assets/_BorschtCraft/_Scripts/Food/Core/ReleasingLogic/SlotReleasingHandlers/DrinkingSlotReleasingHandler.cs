@@ -1,6 +1,6 @@
 ﻿namespace BorschtCraft.Food
 {
-    public class DrinkingSlotReleasingHandler : SlotReleasingHandlerBase<DrinkingSlotStrategy>
+    public class DrinkingSlotReleasingHandler : AnimatedSlotReleasingHandlerBase<DrinkingSlotStrategy>
     {
     }
 }

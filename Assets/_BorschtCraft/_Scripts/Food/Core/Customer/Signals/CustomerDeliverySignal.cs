@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BorschtCraft.Food.UI;
+using System;
 
 namespace BorschtCraft.Food
 {
@@ -6,10 +7,12 @@ namespace BorschtCraft.Food
     {
         public Guid DeliveryId { get; }
         public IConsumed Item;
+        public SlotView SlotView;
 
-        public CustomerDeliverySignal(IConsumed item)
+        public CustomerDeliverySignal(IConsumed item, SlotView slotView)
         {
             Item = item;
+            SlotView = slotView;
             DeliveryId = Guid.NewGuid();
         }
     }

@@ -2,16 +2,18 @@
 using System.Linq;
 using System.Threading.Tasks;
 using UniRx;
+using Zenject;
 
 namespace BorschtCraft.Food
 {
     public abstract class SlotReleasingHandlerBase<T> : StrategizedItemHandler<T>, ISlotReleasingHandler where T : ISlotMatchingStrategy
     {
+        [Inject] protected ISlotViewRegistry _slotViewRegistry;
         protected IConsumed _consumed;
+        protected ItemDeliveredSignal _itemDeliveredSignal;
         private readonly ReplaySubject<ItemDeliveredSignal> _itemDeliveredSubject = new(1);
 
         private Action<ItemDeliveredSignal> _onItemDelivered;
-
         protected override bool CanHandle(IItem item)
         {
             if (item is not IConsumed c)
@@ -58,17 +60,18 @@ namespace BorschtCraft.Food
         protected virtual async Task<bool> ProcessItemReleasing(ISlot slot)
         {
             var item = slot.Item.Value;
-            var deliverySignal = new CustomerDeliverySignal(item);
+            var slotView = _slotViewRegistry.GetSlotView(slot);
+            var deliverySignal = new CustomerDeliverySignal(item, slotView);
             _signalBus.Fire(deliverySignal);
 
             Logger.LogInfo(this, $"Fired signal {nameof(CustomerDeliverySignal)} with DeliveryId: {deliverySignal.DeliveryId}");
-            var deliveryResult = await _itemDeliveredSubject
+            _itemDeliveredSignal = await _itemDeliveredSubject
                 .First(signal => signal.DeliveryId == deliverySignal.DeliveryId)
                 .ToTask();
 
-            Logger.LogInfo(this, $"Delivery {deliveryResult.DeliveryId} completed {deliveryResult?.Delivered}");
+            Logger.LogInfo(this, $"Delivery {_itemDeliveredSignal.DeliveryId} completed {_itemDeliveredSignal?.Delivered}");
 
-            return deliveryResult.Delivered;
+            return _itemDeliveredSignal.Delivered;
         }
 
         private void OnReleaseSlotItemSignal(ReleaseSlotItemSignal signal)

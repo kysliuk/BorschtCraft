@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 866675151069168920}
   - component: {fileID: 2016183970640975231}
   - component: {fileID: 3437520656301530169}
+  - component: {fileID: 8323977375109715434}
   m_Layer: 0
   m_Name: CustomerSlot
   m_TagString: Untagged
@@ -100,6 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 385cde4397d93ad4e8ceac97e435b8b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _moveDuration: 0.5
 --- !u!114 &2016183970640975231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,6 +133,33 @@ MonoBehaviour:
   _installerPrefabs: []
   _autoRun: 1
   _kernel: {fileID: 0}
+--- !u!50 &8323977375109715434
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7434742204986678998}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &131443049497125960
 PrefabInstance:
   m_ObjectHideFlags: 0

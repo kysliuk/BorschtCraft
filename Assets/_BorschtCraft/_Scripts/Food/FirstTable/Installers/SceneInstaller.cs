@@ -10,6 +10,7 @@ namespace BorschtCraft.Food.FirstTable
         {
             //Bind slot registry
             Container.Bind<ISlotRegistry>().To<SlotRegistry>().AsSingle();
+            Container.Bind<ISlotViewRegistry>().To<SlotViewRegistry>().AsSingle();
 
             //Install Slot Signals
             new SlotSignalsInstaller(Container).Install();

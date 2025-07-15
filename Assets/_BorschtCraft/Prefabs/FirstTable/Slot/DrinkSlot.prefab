@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4590618497355275953}
   - component: {fileID: 1613679462410430113}
   - component: {fileID: 5416617223494679469}
+  - component: {fileID: 2440946260215834120}
   m_Layer: 0
   m_Name: DrinkSlot
   m_TagString: Untagged
@@ -48,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 385cde4397d93ad4e8ceac97e435b8b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _moveDuration: 0.5
 --- !u!114 &4590618497355275953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,6 +127,33 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &2440946260215834120
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4928490638252623630}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &8743250503195573461
 PrefabInstance:
   m_ObjectHideFlags: 0
