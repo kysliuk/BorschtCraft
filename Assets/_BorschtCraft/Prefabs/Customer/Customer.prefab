@@ -120,7 +120,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: f5bf46f907f2af84da699853cfe9babf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.51
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: f5bf46f907f2af84da699853cfe9babf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -243,10 +243,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2232a0e4417e4cc47afb82b72d165ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveDuration: 3
+  _moveEase: 1
+  _moveDuration: 5
   _horizontalOffsetRange: 3
   _fixedYPosition: -3.5
-  _moveEase: 3
+  _bobbingAmplitude: 0.15
+  _bobbingFrequency: 5
 --- !u!4 &3572664176157064407 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -7552582706839291426, guid: f5bf46f907f2af84da699853cfe9babf, type: 3}
