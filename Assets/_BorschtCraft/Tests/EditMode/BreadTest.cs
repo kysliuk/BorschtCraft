@@ -64,7 +64,7 @@ namespace BorschtCraft.Test
             Assert.IsInstanceOf<Salo>(bread);
             Assert.AreEqual(3, bread.Ingredients.Count);
 
-            LogAssert.Expect(LogType.Warning, "[WARNING] OnionStack: Cannot decorate Salo by OnionStack");
+            LogAssert.Expect(LogType.Log, "[INFO] OnionStack: Cannot decorate Salo by OnionStack");
 
             succeed = _onionStack.TryConsume(bread, out bread);
             Assert.IsFalse(succeed);
