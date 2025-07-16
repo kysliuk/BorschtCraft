@@ -13,6 +13,7 @@ namespace BorschtCraft.Food.FirstTable
         {
             GenericInstallSignal<BreadRaw>();
             GenericInstallSignal<BreadCooked>();
+            GenericInstallSignal<BreadBurned>();
             GenericInstallSignal<Salo>();
             GenericInstallSignal<Garlic>();
             GenericInstallSignal<Horseradish>();

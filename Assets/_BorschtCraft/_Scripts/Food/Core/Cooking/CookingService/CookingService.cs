@@ -57,8 +57,26 @@ namespace BorschtCraft.Food
             var cookedItem = cookable.Cook();
 
             slot.ClearCurrentItem();
-            Logger.LogInfo(this, "Clearing slot for next set");
             slot.TrySetItem(cookedItem);
+            yield return ProcessBurning(cookedItem, slot);
+        }
+
+        private IEnumerator ProcessBurning(IConsumed consumed, ISlot slot)
+        {
+            var typeName = consumed?.GetType()?.Name;
+            Logger.LogInfo(this, $"Burning of {typeName} started");
+            if(consumed is not ICooked cooked)
+            {
+                Logger.LogWarning(this, $"Item in slot {slot.GetHashCode()} is not cooked but {consumed.GetType().Name}.");
+                yield break;
+            }
+
+            yield return new WaitForSeconds(cooked.BurningTime);
+            Logger.LogInfo(this, $"{typeName} has burned");
+
+            var burned = cooked.Burn();
+            slot.ClearCurrentItem();
+            slot.TrySetItem(burned);
             RemoveSlot(slot, out _);
         }
          
@@ -67,6 +85,7 @@ namespace BorschtCraft.Food
             if (signal.Slot == null || !_slots.Values.Contains(signal.Slot))
                 return;
 
+            Logger.LogInfo(this, $"Stopping cooking for slot: {signal.Slot.GetHashCode()}");
             RemoveSlot(signal.Slot, out var coroutine);
             _coroutineHost.StopCoroutine(coroutine);
         }

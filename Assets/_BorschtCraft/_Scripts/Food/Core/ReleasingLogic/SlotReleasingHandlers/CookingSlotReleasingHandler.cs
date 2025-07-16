@@ -31,6 +31,7 @@ namespace BorschtCraft.Food
             }
 
             var set = emptySlot.TrySetItem(itemToPlace);
+            _signalBus.Fire(new StopCookinItemInSlotSignal(slot));
             Logger.LogInfo(this, $"Item of type {itemToPlace.GetType().Name} placed in combining slot: {set}.");
 
             return Task.FromResult(set);

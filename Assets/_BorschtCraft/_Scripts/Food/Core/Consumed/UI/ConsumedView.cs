@@ -8,8 +8,8 @@ namespace BorschtCraft.Food.UI
     [RequireComponent(typeof(SpriteRenderer))]
     public class ConsumedView<T> : MonoBehaviour where T : IConsumed
     {
-        [SerializeField] protected float _scaleFactor = 1.25f;
-        [SerializeField] protected float _animationDuration = 0.25f;
+        [SerializeField] protected float _scaleFactor = 1.2f;
+        [SerializeField] protected float _animationDuration = 0.2f;
 
         public ConsumedViewModel<T> ConsumedViewModel => _consumedViewModel;
 

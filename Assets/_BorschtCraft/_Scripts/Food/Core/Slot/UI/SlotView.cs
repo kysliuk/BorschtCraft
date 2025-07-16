@@ -90,7 +90,7 @@ namespace BorschtCraft.Food.UI
 
         private void HandleDoubleClick()
         {
-            Logger.LogInfo(this, $"About to put item {_slotViewModel.CurrentItem.GetType().Name} to trash can");
+            Logger.LogInfo(this, $"About to put item {_slotViewModel.CurrentItem.Value.GetType().Name} to trash can");
             _slotViewModel.PutItemInTrashCan();
         }
 

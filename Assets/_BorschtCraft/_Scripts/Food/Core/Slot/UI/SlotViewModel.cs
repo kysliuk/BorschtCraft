@@ -21,10 +21,10 @@ namespace BorschtCraft.Food.UI
 
         public virtual void PutItemInTrashCan()
         {
-            _slotModel.ClearCurrentItem();
-
-            if (CurrentItem is ICookable)
+            if (CurrentItem.Value is ICookable or ICooked)
                 _signalBus.Fire(new StopCookinItemInSlotSignal(Slot));
+
+            _slotModel.ClearCurrentItem();
         }
 
         public virtual void Dispose()

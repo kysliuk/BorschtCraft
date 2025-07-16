@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7087009349729167984}
   - component: {fileID: 6899877050776828171}
-  - component: {fileID: 5427484129907497049}
   - component: {fileID: 1202153058329315358}
-  - component: {fileID: 516415779721327822}
+  - component: {fileID: 4087158869660405382}
+  - component: {fileID: 8206365177987410168}
   m_Layer: 0
   m_Name: BreadBurned
   m_TagString: Untagged
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_Sprite: {fileID: 5357120858899214548, guid: 7697a5767e0c84b429c38b5ae34c910a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1.09, y: 1.0602587}
@@ -90,20 +90,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5427484129907497049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7123037280543784435}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9b96568890196c41931d9f67b0d1c95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _scaleFactor: 1.2
-  _animationDuration: 0.2
 --- !u!114 &1202153058329315358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,11 +104,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers: []
   _monoInstallers:
-  - {fileID: 516415779721327822}
+  - {fileID: 8206365177987410168}
   _installerPrefabs: []
   _autoRun: 1
   _kernel: {fileID: 0}
---- !u!114 &516415779721327822
+--- !u!114 &4087158869660405382
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,6 +117,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 7123037280543784435}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b1dcf5ffcfe04d44af685a5219f6698, type: 3}
+  m_Script: {fileID: 11500000, guid: ae281bd11713c214b8605746f1f2bbef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scaleFactor: 1.2
+  _animationDuration: 0.2
+--- !u!114 &8206365177987410168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7123037280543784435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46099dfff354d0044b2f2c1138c618d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
