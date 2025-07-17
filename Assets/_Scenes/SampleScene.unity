@@ -1831,6 +1831,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _initialPrice: 10
+  _foodPrices:
+  - Type: BreadRaw
+    Price: 10
+  - Type: Salo
+    Price: 15
+  - Type: BreadCooked
+    Price: 10
 --- !u!1 &1680850837
 GameObject:
   m_ObjectHideFlags: 0
