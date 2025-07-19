@@ -583,6 +583,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3590277872302830808}
     m_Modifications:
+    - target: {fileID: 1034960655663354691, guid: d52ce2671a9e2ae488c96b28da398315, type: 3}
+      propertyPath: _slotConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 04b3206b2e9ce12468ec78c199fa43d0, type: 2}
     - target: {fileID: 1773956354120222341, guid: d52ce2671a9e2ae488c96b28da398315, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.98
@@ -769,6 +773,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3590277872302830808}
     m_Modifications:
+    - target: {fileID: 1034960655663354691, guid: d52ce2671a9e2ae488c96b28da398315, type: 3}
+      propertyPath: _slotConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 04b3206b2e9ce12468ec78c199fa43d0, type: 2}
     - target: {fileID: 1773956354120222341, guid: d52ce2671a9e2ae488c96b28da398315, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.09
@@ -1017,6 +1025,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5897297643627097108}
     m_Modifications:
+    - target: {fileID: 4590618497355275953, guid: 8173dbc6848d35340a87f768286ad47b, type: 3}
+      propertyPath: _slotConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: c94bd365229ef20479a51bf36cf94479, type: 2}
     - target: {fileID: 4928490638252623630, guid: 8173dbc6848d35340a87f768286ad47b, type: 3}
       propertyPath: m_Name
       value: SingleSlot 2
@@ -1079,6 +1091,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5897297643627097108}
     m_Modifications:
+    - target: {fileID: 4590618497355275953, guid: 8173dbc6848d35340a87f768286ad47b, type: 3}
+      propertyPath: _slotConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: c94bd365229ef20479a51bf36cf94479, type: 2}
     - target: {fileID: 4928490638252623630, guid: 8173dbc6848d35340a87f768286ad47b, type: 3}
       propertyPath: m_Name
       value: SingleSlot 1
@@ -1141,6 +1157,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5897297643627097108}
     m_Modifications:
+    - target: {fileID: 4590618497355275953, guid: 8173dbc6848d35340a87f768286ad47b, type: 3}
+      propertyPath: _slotConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: c94bd365229ef20479a51bf36cf94479, type: 2}
     - target: {fileID: 4928490638252623630, guid: 8173dbc6848d35340a87f768286ad47b, type: 3}
       propertyPath: m_Name
       value: SingleSlot 3
@@ -1265,6 +1285,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5897297643627097108}
     m_Modifications:
+    - target: {fileID: 4590618497355275953, guid: 8173dbc6848d35340a87f768286ad47b, type: 3}
+      propertyPath: _slotConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: c94bd365229ef20479a51bf36cf94479, type: 2}
     - target: {fileID: 4928490638252623630, guid: 8173dbc6848d35340a87f768286ad47b, type: 3}
       propertyPath: m_Name
       value: SingleSlot 4
@@ -1389,6 +1413,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3137194482660718691}
     m_Modifications:
+    - target: {fileID: 4590618497355275953, guid: 0b60d1190b794b64a94cc923707e5065, type: 3}
+      propertyPath: _slotConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: c0168ebe7891d4242ba10adab2a4b2b1, type: 2}
     - target: {fileID: 4928490638252623630, guid: 0b60d1190b794b64a94cc923707e5065, type: 3}
       propertyPath: m_Name
       value: DrinkSlot

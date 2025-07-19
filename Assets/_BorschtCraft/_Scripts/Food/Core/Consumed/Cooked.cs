@@ -27,7 +27,7 @@ namespace BorschtCraft.Food
             if (wrappedItem is not ICookable cookable)
                 throw new ArgumentException("Wrapped item must implement ICookable interface.", wrappedItem?.GetType()?.Name);
 
-            BurningTime = cookable.CookingTime;
+            BurningTime = cookable.CookingTime * 1.5f;
         }
     }
 }

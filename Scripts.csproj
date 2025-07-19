@@ -95,6 +95,7 @@
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Customer\CustomerOrderCreator\ICustomerOrderGenerator.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Salo\UI\SaloStackView.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Customer\Signals\ItemDeliveredSignal.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Slot\Config\SlotConfig.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Slot\UI\SlotViewModel.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Slot\Signals\SlotItemChangedSignal.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Moving\Effects\StepBobbingEffect.cs" />

@@ -1,12 +1,14 @@
 ﻿using UniRx;
-using Zenject;
 
 namespace BorschtCraft.Food
 {
     public class Slot : ISlot
     {
-        public SlotType SlotType { get; private set; }
+        public SlotType SlotType => _slotConfig.SlotType;
+
         public IReadOnlyReactiveProperty<IConsumed> Item => _item;
+
+        private readonly SlotConfig _slotConfig;
 
         private ReactiveProperty<IConsumed> _item;
 
@@ -38,13 +40,15 @@ namespace BorschtCraft.Food
                 Logger.LogWarning(this, $"Item of type {item.GetType().Name} cannot be set in slot of type {SlotType} because it is not a cooking slot.");
                 return false;
             }
+            if (SlotType == SlotType.Cooking && item is ICookable)
+                (item as ICookable).CookingTime = _slotConfig.CookingTime;
 
             return true;
         }
 
-        public Slot(SlotType type, IConsumed item)
+        public Slot(SlotConfig slotConfig, IConsumed item)
         {
-            SlotType = type;
+            _slotConfig = slotConfig;
             _item = new ReactiveProperty<IConsumed>(item);
         }
     }

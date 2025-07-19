@@ -6,7 +6,7 @@ namespace BorschtCraft.Food
 {
     public class SlotInstaller : MonoInstaller
     {
-        [SerializeField] private SlotType _slotType;
+        [SerializeField] private SlotConfig _slotConfig;
 
         public override void InstallBindings()
         {
@@ -14,7 +14,7 @@ namespace BorschtCraft.Food
             .To<Slot>()
             .FromMethod(context =>
             {
-                var slot = new Slot(_slotType, null);
+                var slot = new Slot(_slotConfig, null);
                 var registry = context.Container.Resolve<ISlotRegistry>();
                 registry.Register(slot);
                 return slot;

@@ -2,7 +2,7 @@
 {
     public interface ICookable
     {
-        float CookingTime { get; }
+        float CookingTime { get; set; }
         IConsumed Cook();
     }
 }
