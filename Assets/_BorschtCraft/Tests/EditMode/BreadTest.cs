@@ -47,6 +47,8 @@ namespace BorschtCraft.Test
             Assert.IsInstanceOf<BreadRaw>(bread);
             Assert.AreEqual(0, bread.Ingredients.Count);
 
+            (bread as BreadRaw).CookingTime = 5;
+
             bread = (bread as BreadRaw).Cook();
             Assert.IsInstanceOf<BreadCooked>(bread);
             Assert.AreEqual(10, bread.Price);

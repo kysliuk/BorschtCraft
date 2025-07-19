@@ -1,5 +1,4 @@
-﻿using DG.Tweening;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -10,9 +9,7 @@ namespace BorschtCraft.Food
 {
     public class CustomerManager : MonoBehaviour, IInitializable, IDisposable
     {
-        [SerializeField] private int _maxCustomers = 5;
-        [SerializeField] private float _spawnDelay = 2f;
-        [SerializeField] private float _maxWaitTime = 15f;
+        [SerializeField] private CustomerConfig _customerConfig;
 
         [Inject] private CustomerSpawner _spawner;
         [Inject] private SignalBus _signalBus;
@@ -37,15 +34,15 @@ namespace BorschtCraft.Food
         {
             while (true)
             {
-                if (_activeCustomers.Count < _maxCustomers)
+                if (_activeCustomers.Count < _customerConfig.MaxCustomers)
                 {
                     var controller = _spawner.SpawnCustomer();
                     _activeCustomers.Add(controller);
 
-                    StartCoroutine(HandleCustomerTimeout(controller, _maxWaitTime));
+                    StartCoroutine(HandleCustomerTimeout(controller, _customerConfig.MaxWaitTime));
                 }
 
-                yield return new WaitForSeconds(_spawnDelay);
+                yield return new WaitForSeconds(_customerConfig.SpawnDelay);
             }
         }
 

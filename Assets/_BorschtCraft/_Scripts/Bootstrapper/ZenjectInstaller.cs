@@ -1,5 +1,4 @@
-﻿using BorschtCraft.Food;
-using UnityEngine;
+﻿using UnityEngine;
 using Zenject;
 
 namespace BorschtCraft

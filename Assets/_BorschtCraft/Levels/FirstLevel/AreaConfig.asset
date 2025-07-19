@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25a049525acec84478483e21b9610f74, type: 3}
+  m_Name: AreaConfig
+  m_EditorClassIdentifier: 
+  AreaName: FirstTable
+  Scene:
+    m_SceneAsset: {fileID: 102900000, guid: 8c9cfa26abfee488c85f1582747f6a02, type: 3}
+    m_SceneName: GameScene
+  SceneContextPrefab: {fileID: 565652090249758754, guid: 6b6e84548524cd548a5a5b6eaaea7bbe, type: 3}
+  TablePrefab: {fileID: 697568143854796507, guid: 28a5ebd393506ce439a049f0a1ee3313, type: 3}
+  CustomerManagerPrefab: {fileID: 93502129472008526, guid: 2a2028868a535404c9b72957bb5cf9f0, type: 3}

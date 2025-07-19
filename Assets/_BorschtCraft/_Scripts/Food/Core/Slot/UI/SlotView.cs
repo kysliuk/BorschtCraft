@@ -11,6 +11,10 @@ namespace BorschtCraft.Food.UI
     {
         [SerializeField] private float _moveDuration = 1.5f;
 
+//#if _slotViewModel.Slot.SlotType == SlotType.Cooking
+//        [SerializeField] private float _cookingTime = 5f;
+//#endif
+
         public float MoveDuration => _moveDuration;
         public SlotViewModel SlotViewModel => _slotViewModel;
         protected SlotViewModel _slotViewModel;

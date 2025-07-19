@@ -7,18 +7,7 @@ namespace BorschtCraft.Food.FirstTable
 {
     public class SceneInstaller : MonoInstaller
     {
-        [SerializeField]
-        private List<FoodPrice> _foodPrices =
-            new List<FoodPrice>
-            { new FoodPrice(nameof(BreadRaw), 10),
-              new FoodPrice(nameof(Salo), 15),
-              new FoodPrice(nameof(Garlic), 5),
-              new FoodPrice(nameof(Horseradish), 7),
-              new FoodPrice(nameof(Mustard), 8),
-              new FoodPrice(nameof(Onion), 6),
-              new FoodPrice(nameof(Drink), 12),
-            };
-
+        [SerializeField] ConsumablePriceList _foodPrices;
         public override void InstallBindings()
         {
             //Bind slot registry
@@ -29,7 +18,7 @@ namespace BorschtCraft.Food.FirstTable
             new SlotSignalsInstaller(Container).Install();
 
             //Install Consumables
-            new ConsumableInstaller(Container, _foodPrices).Install();
+            new ConsumableInstaller(Container, _foodPrices.PriceList).Install();
 
             //Install Consumed
             new ConsumedInstaller(Container).Install();

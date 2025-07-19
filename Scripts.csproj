@@ -73,6 +73,7 @@
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Customer\CustomerFactory.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumable\Consumable.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Onion\Onion.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\LevelConfig\ArealConfig.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Slot\SlotMatching\SlotStrategies\SlotStrategies.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumed\Interfaces\FoodLayers\ISecondLayer.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\ConsumingLogic\ConsumingItemHandlers\ConsumingItemHandlerBase.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\SceneField\SceneField.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Customer\CustomerOrderCreator\CustomerOrderGenerator.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumed\Interfaces\FoodLayers\IFifthLayer.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumable\Price\ConsumablePriceList.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Item\IItem.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Customer\CustomerOrderCreator\ICustomerOrderGenerator.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Salo\UI\SaloStackView.cs" />
@@ -161,8 +163,8 @@
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Slot\Installers\SlotSignalsInstaller.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Bootstrapper\ZenjectInstaller.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\ConsumeAbstractFactory.cs" />
-    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FoodPrice.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Customer\TableIngredients\ITableIngredientsList.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Customer\CustomerConfig\CustomerConfig.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\ReleasingLogic\SlotReleasingHandlers\SlotReleasingHandlerBase.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Horseradish\UI\HorseradishViewModelInstaller.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumable\Interfaces\IConsumable.cs" />
@@ -192,6 +194,7 @@
     <Compile Include="Assets\_BorschtCraft\_Scripts\Bootstrapper\Bootstrapper.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Drink\UI\DrinkViewModelInstaller.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Garlic\UI\GarlicViewModelInstaller.cs" />
+    <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\Consumable\Price\ConsumablePrice.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Bread\Burned\BreadBurned.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\Core\ReleasingLogic\Installers\ReleasingLogicInstaller.cs" />
     <Compile Include="Assets\_BorschtCraft\_Scripts\Food\FirstTable\Items\Onion\OnionStack.cs" />

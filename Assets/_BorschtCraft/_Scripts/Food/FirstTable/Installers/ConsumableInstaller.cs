@@ -7,7 +7,7 @@ namespace BorschtCraft.Food.FirstTable
 {
     public class ConsumableInstaller : InstallerBase
     {
-        private List<FoodPrice> _foodPrices;
+        private List<ConsumablePrice> _foodPrices;
 
         public override void Install()
         {
@@ -17,14 +17,6 @@ namespace BorschtCraft.Food.FirstTable
 
         private void InstallConsumables()
         {
-            //new GenericConsumableInstaller<BreadStack, BreadRaw>().Install(_container, _initialPrice);
-            //new GenericConsumableInstaller<SaloStack, Salo>().Install(_container, _initialPrice);
-            //new GenericConsumableInstaller<GarlicStack, Garlic>().Install(_container, _initialPrice);
-            //new GenericConsumableInstaller<HorseradishStack, Horseradish>().Install(_container, _initialPrice);
-            //new GenericConsumableInstaller<MustardStack, Mustard>().Install(_container, _initialPrice);
-            //new GenericConsumableInstaller<OnionStack, Onion>().Install(_container, _initialPrice);
-            //new GenericConsumableInstaller<DrinkMachine, Drink>().Install(_container, _initialPrice);
-
             InstallConsumable<BreadStack, BreadRaw>();
             InstallConsumable<SaloStack, Salo>();
             InstallConsumable<GarlicStack, Garlic>();
@@ -41,11 +33,12 @@ namespace BorschtCraft.Food.FirstTable
 
         private void InstallConsumable<T1, T2>() where T1 : IConsumable where T2 : IConsumed
         {
-            var price = _foodPrices.Find(f => f.Type == typeof(T1).Name)?.Price ?? 0;
+            var price = _foodPrices.Find(f => f.Type == typeof(T1).Name)?.Price ?? throw new Exception($"No price for {typeof(T1).Name}");
             new GenericConsumableInstaller<T1, T2>().Install(_container, price);
+            Logger.Log($"Installed consumable: {typeof(T1).Name} with price: {price}");
         }
 
-        public ConsumableInstaller(DiContainer container, List<FoodPrice> foodPrices) : base(container)
+        public ConsumableInstaller(DiContainer container, List<ConsumablePrice> foodPrices) : base(container)
         {
             _foodPrices = foodPrices;
         }
