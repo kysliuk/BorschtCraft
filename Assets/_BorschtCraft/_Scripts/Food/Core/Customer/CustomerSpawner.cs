@@ -19,6 +19,11 @@ namespace BorschtCraft.Food
             return controller;
         }
 
+        public Vector3 PeekSpawnPosition()
+        {
+            return GetOffscreenSpawnPosition();
+        }
+
         private Vector3 GetOffscreenSpawnPosition()
         {
             float y = 0.2f;

@@ -36,15 +36,28 @@ namespace BorschtCraft.Food
             {
                 if (_activeCustomers.Count < _customerConfig.MaxCustomers)
                 {
-                    var controller = _spawner.SpawnCustomer();
-                    _activeCustomers.Add(controller);
+                    Vector3 spawnPos = _spawner.PeekSpawnPosition();
 
-                    StartCoroutine(HandleCustomerTimeout(controller, _customerConfig.MaxWaitTime));
+                    bool isTooClose = _activeCustomers.Exists(c =>
+                        Vector3.Distance(c.transform.position, spawnPos) < _customerConfig.MinDistanceBetweenCustomers);
+
+                    if (!isTooClose)
+                    {
+                        var controller = _spawner.SpawnCustomer();
+                        _activeCustomers.Add(controller);
+
+                        StartCoroutine(HandleCustomerTimeout(controller, _customerConfig.MaxWaitTime));
+                    }
+                    else
+                    {
+                        Logger.LogInfo(this, "Spawn skipped due to minimum distance constraint.");
+                    }
                 }
 
                 yield return new WaitForSeconds(_customerConfig.SpawnDelay);
             }
         }
+
 
         private IEnumerator HandleCustomerTimeout(CustomerController controller, float timeout)
         {

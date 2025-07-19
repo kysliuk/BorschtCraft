@@ -15,3 +15,4 @@ MonoBehaviour:
   MaxCustomers: 4
   SpawnDelay: 3
   MaxWaitTime: 15
+  MinDistanceBetweenCustomers: 19
